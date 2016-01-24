@@ -1,4 +1,3 @@
-// Requis
 var gulp = require('gulp');
 
 var less = require('gulp-less');
@@ -19,9 +18,3 @@ gulp.task('watch', function () {
       'www/css/style.less', ['css']
   )
 });
-
-/*gulp.task('css', function () {
-return gulp.src('www/css/style.less')
-  .pipe(plugins.less())
-  .pipe(gulp.dest('www/css/'));
-});*/
