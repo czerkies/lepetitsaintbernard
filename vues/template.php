@@ -30,18 +30,12 @@
   </body>
   <script src="../www/js/jquery.js"></script>
   <script type="text/javascript">
-  var $content = 'sexe';
-    $('#'+$content).click(function(){
-      $('.spe .round').removeClass('active');
-      $('.infos .appear').removeClass('appear');
-      $(this).toggleClass('active');
-      $('#infos_'+$content).addClass('appear');
-    });
-    $('#taille').click(function(){
-      $('.spe .round').removeClass('active');
-      $('.infos .appear').removeClass('appear');
-      $(this).toggleClass('active');
-      $('#infos_taille').addClass('appear');
-    });
+  $('.spe .round').click(function(){
+    var $content = this.id;
+    $('.spe .round').removeClass('active');
+    $('.infos .appear').removeClass('appear');
+    $('#'+$content).addClass('active');
+    $('#infos_'+$content).addClass('appear');
+  });
   </script>
 </html>
