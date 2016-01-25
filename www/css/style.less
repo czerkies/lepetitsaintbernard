@@ -37,7 +37,7 @@ header {
     width: 100%;
     float: left;
     .round {
-      transition: transform 250ms ease, background-color 250ms ease, color 250ms ease;
+      transition: transform 250ms ease, color 250ms ease;
       float: left;
       margin: 2%;
       text-align: center;
@@ -48,6 +48,7 @@ header {
         transform: scale(1);
       }
       &::after {
+        transition: background-color 250ms ease;
         border: 2px solid @autre;
         content: "";
         border-radius: 50%;
