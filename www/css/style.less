@@ -4,6 +4,8 @@
 @fond2: #545937;
 @autre: #34381C;
 
+@boxshadow: rgba(0, 0, 0, .5);
+
 * {
   box-sizing:border-box;
   -webkit-font-smoothing:subpixel-antialiased;
@@ -15,54 +17,116 @@ body {
   background: @fond;
 }
 header {
-  width:100%;
+  width: 100%;
+  float: left;
   p {
     font-size: 12px;
     color: @texte;
   }
 }
-#cont{
+#cont {
+  padding:5px;
   h2 {
-    font-size: 1.5em;
+    font-size: 1.75em;
     color: @texte;
   }
   p {
-    font-size: 1em;
+    font-size: 1.25em;
   }
   .spe {
-    width:100%;
+    width: 100%;
+    float: left;
     .round {
-      float:left;
       transition: transform 250ms ease, background-color 250ms ease, color 250ms ease;
-      border: 14px solid @autre;
-      border-radius: 100%;
-      width: 200px;
-      height: 200px;
-      margin: 10px;
-      line-height: 180px;
+      float: left;
+      margin: 2%;
       text-align: center;
-      font-size:2em;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, .5);
-      &:hover,
-      &.active {
-        cursor: pointer;
-        background: @fond2;
-        color: @fond;
-        transform: scale(1.05);
-      }
+      font-size: 1.7em;
+      letter-spacing: 1px;
+      width: 29%;
       &.active {
         transform: scale(1);
+      }
+      &::after {
+        border: 2px solid @autre;
+        content: "";
+        border-radius: 50%;
+        display: block;
+        height: 0;
+        padding-bottom: 100%;
+        width: 100%;
+        box-shadow: 0 1px 2px @boxshadow;
+      }
+      span {
+        float: left;
+        line-height: 1em;
+        margin-top: -0.4em;
+        padding-top: 50%;
+        text-align: center;
+        width: 102%
+      }
+      &.active {
+        span {
+          color: @fond;
+        }
+        &::after{
+          background: @fond2;
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+        &::after{
+          background: @fond2;
+        }
+        span {
+          color: @fond;
+        }
       }
     }
   }
   .infos {
+    float: left;
     width: 100%;
-    padding: 25px;
+    padding: 2%;
+    font-size: 1.75em;
+    text-align: center;
+    min-height:225px;
     .hidden {
       display: none;
     }
     .appear {
       display: block;
+    }
+    span {
+      font-weight: 800;
+    }
+  }
+}
+
+/* Bouton call to action */
+.callto {
+  float: left;
+  width: 100%;
+  .button {
+    transition: color 250ms ease, background 250ms ease;
+    color: @liens;
+    font-size: 1.25em;
+    padding: 10px;
+    border-radius: 2px;
+    border: 2px solid @liens;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-align: center;
+    float: left;
+    box-shadow: 0 1px 2px @boxshadow;
+    &:hover{
+      color:@fond;
+      background: @liens;
+    }
+    &.w50 {
+      width: 48%;
+      margin: 1%;
     }
   }
 }
