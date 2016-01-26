@@ -10,10 +10,23 @@
     <header>
       <img src="" alt="Logo Le petit saint bernard">
       <h1>Le petit saint bernard</h1>
+      <nav>
+        <div class="callto">
+          <a href="#" id="bouton_menu" class="button w10 rotate">|||</a>
+        </div>
+        <ul>
+          <li>Menu 1</li>
+          <li>Menu 2</li>
+          <li>Menu 2</li>
+        </ul>
+      </nav>
+      <div>
     </header>
     <div id="cont">
       <div class="callto">
         <a href="#" class="button w50">Test</a>
+        <a href="#" class="button w50">Test</a>
+        <a href="#" class="button w100">Test</a>
       </div>
       <h2>Le petit Saint Bernard ?</h2>
       <p>Le petit saint bernard est un spécialiste de la configuration personalisé en vélo de montagne.<br>Notre magasin et usine se situe en Rhon-Alpes dans la ville de Bourg Saint Maurice. Notre Fabrication, votre configuration,</p>
@@ -42,6 +55,9 @@
   </body>
   <script src="../www/js/jquery.js"></script>
   <script type="text/javascript">
+  $('#bouton_menu').click(function(){
+    $('header ul').toggleClass('menu_actif');
+  });
   $('.spe .round').click(function(){
     var $content = this.id;
     $('.spe .round').removeClass('active');
