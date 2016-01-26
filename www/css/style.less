@@ -4,7 +4,7 @@
 @fond2: #545937;
 @autre: #34381C;
 
-@boxshadow: rgba(0, 0, 0, .5);
+@boxshadow: 0 1px 2px rgba(0, 0, 0, .5);
 @radius: 2px;
 
 * {
@@ -12,12 +12,17 @@
   -webkit-font-smoothing:subpixel-antialiased;
   font-family:helvetica, arial;
 }
+a {
+  text-decoration: none;
+  color: @liens;
+}
 body {
   width: 100%;
   margin: 0;
   background: @fond;
 }
 header {
+  padding:5px;
   width: 100%;
   float: left;
   p {
@@ -27,18 +32,38 @@ header {
   nav {
     position: relative;
     ul {
+      @keyframes bounce_menu{
+        0%{
+          transform: translateY(-15px);
+          opacity: 0;
+        }
+        100%{
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
       z-index: 100;
       background: @fond;
       box-shadow: @boxshadow;
       border: 2px solid @autre;
       border-radius: @radius;
-      padding:5px;
+      padding: 5px;
       display: none;
       position: absolute;
       width: 100%;
-      top: 25px;
+      top: 45px;
       &.menu_actif {
+        animation: bounce_menu 250ms ease;
         display: block;
+      }
+      li {
+        list-style: none;
+        a {
+          float: left;
+          padding:4px 2px;
+          width: 100%;
+          font-size: 1.5em;
+        }
       }
     }
   }
@@ -75,7 +100,7 @@ header {
         height: 0;
         padding-bottom: 100%;
         width: 100%;
-        box-shadow: 0 1px 2px @boxshadow;
+        box-shadow: @boxshadow;
       }
       span {
         float: left;
@@ -139,9 +164,10 @@ header {
     letter-spacing: 1px;
     text-align: center;
     float: left;
-    box-shadow: 0 1px 2px @boxshadow;
+    box-shadow: @boxshadow;
     margin: 1%;
-    &:hover {
+    &:hover,
+    &.actif {
       color:@fond;
       background: @fond2;
     }
@@ -153,9 +179,6 @@ header {
     }
     &.w100 {
       width: 98%;
-    }
-    &.rotate {
-      transform: rotate(90deg);
     }
   }
 }

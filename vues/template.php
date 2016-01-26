@@ -12,12 +12,12 @@
       <h1>Le petit saint bernard</h1>
       <nav>
         <div class="callto">
-          <a href="#" id="bouton_menu" class="button w10 rotate">|||</a>
+          <a href="#" id="bouton_menu" class="button w10">|||</a>
         </div>
         <ul>
-          <li>Menu 1</li>
-          <li>Menu 2</li>
-          <li>Menu 2</li>
+          <li><a href="#">Menu 1</a></li>
+          <li><a href="#">Menu 2</a></li>
+          <li><a href="#">Menu 2</a></li>
         </ul>
       </nav>
       <div>
@@ -57,6 +57,7 @@
   <script type="text/javascript">
   $('#bouton_menu').click(function(){
     $('header ul').toggleClass('menu_actif');
+    $(this).toggleClass('actif');
   });
   $('.spe .round').click(function(){
     var $content = this.id;
