@@ -60,6 +60,14 @@
         </div>
       </div>
     </div>
+    <footer>
+      <ul>
+        <li><a href="#">Foooter 1</a></li>
+        <li><a href="#">Foooter 1</a></li>
+        <li><a href="#">Foooter 1</a></li>
+        <li><a href="#">Foooter 1</a></li>
+      </ul>
+    </footer>
   </body>
   <script src="../www/js/jquery.js"></script>
   <script type="text/javascript">
