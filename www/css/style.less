@@ -1,22 +1,27 @@
 @fond: #fff;
-@texte: #21353e;
+@color1: #21353e;
 @liens: #21353e;
-@fond2: #00344a;
 @autre: #21353e;
 
-@fond2opac: rgba(33,53,62,.95);
+@color1opac: rgba(33,53,62,.95);
 
 @boxshadow: 0 1px 2px rgba(0, 0, 0, .5);
 @radius: 2px;
 
+@font-face {
+  font-family: 'sb-b';
+  src:url('Raleway-Black.ttf');
+}
+@font-face {
+  font-family: 'sb-s';
+  src: url('Raleway-Light.ttf');
+}
 * {
   box-sizing:border-box;
   -webkit-font-smoothing:subpixel-antialiased;
-  font-family:helvetica, arial;
 }
 a {
   text-decoration: none;
-  color: @liens;
 }
 body {
   width: 100%;
@@ -25,9 +30,9 @@ body {
 }
 h1,
 h2 {
-  color: @texte;
-  font-family: impact, arial;
-  float: left;
+  color: @color1;
+  font-family: 'sb-b', arial;
+  letter-spacing: 2px;
   width: 100%;
 }
 header {
@@ -41,10 +46,6 @@ header {
     }
     .logo_title {
       width:100%;
-    }
-    p {
-      font-size: 12px;
-      color: @texte;
     }
     nav {
       position: relative;
@@ -62,7 +63,7 @@ header {
           }
         }
         z-index: 100;
-        background: @fond2opac;
+        background: @color1opac;
         box-shadow: @boxshadow;
         border: 2px solid @autre;
         border-radius: @radius;
@@ -78,14 +79,17 @@ header {
         li {
           list-style: none;
           a {
-            color: @fond;
+            font-family: 'sb-s', arial;
+            letter-spacing: 2px;
+            color: #eee;
             float: left;
             padding:10px;
             width: 100%;
             font-size: 1.5em;
-            transition: background 250ms ease;
+            transition: color 250ms ease, background 250ms ease;
             &:hover {
-              background: @fond2opac;
+              background: @color1opac;
+              color: @fond;
             }
           }
         }
@@ -95,29 +99,31 @@ header {
 }
 #prin {
   .prin_cont{
-    padding: 5px;
+    padding: 50px 5px;
     float: left;
     width: 100%;
     .etape_accueil {
       width: 100%;
       h2 {
         font-size: 1.75em;
-        color: @texte;
+        color: @color1;
         float: left;
       }
       p {
+        font-family: 'sb-s', arial;
         font-size: 1.25em;
         float:left;
-        color: @texte;
+        color: #444;
       }
     }
     .infos {
+      font-family: 'sb-s', arial;
       float: left;
       width: 100%;
       padding: 2%;
       font-size: 1.75em;
       text-align: center;
-      min-height:225px;
+      min-height: 225px;
       .hidden {
         display: none;
       }
@@ -138,7 +144,7 @@ header {
     float: left;
     margin: 2%;
     text-align: center;
-    font-size: 1.7em;
+    font-size: 1.75em;
     letter-spacing: 1px;
     width: 29%;
     &.active {
@@ -146,7 +152,7 @@ header {
     }
     &::after {
       transition: background-color 250ms ease;
-      border: 2px solid @autre;
+      border: 2px solid @color1;
       content: "";
       border-radius: 50%;
       display: block;
@@ -156,26 +162,28 @@ header {
       box-shadow: @boxshadow;
     }
     span {
+      font-family: 'sb-s', arial;
+      color: @color1;
       float: left;
       line-height: 1em;
       margin-top: -0.4em;
       padding-top: 50%;
       text-align: center;
-      width: 102%
+      width: 102%;
     }
     &.active {
       span {
         color: @fond;
       }
       &::after{
-        background: @fond2;
+        background: @color1;
       }
     }
     &:hover {
       cursor: pointer;
       transform: scale(1.05);
       &::after{
-        background: @fond2;
+        background: @color1;
       }
       span {
         color: @fond;
@@ -190,20 +198,20 @@ header {
   .button {
     background: @fond;
     transition: color 250ms ease, background 250ms ease;
-    color: @liens;
-    font-size: 1.25em;
+    color: @color1;
     padding: 10px;
     border-radius: @radius;
-    border: 2px solid @liens;
+    border: 2px solid @color1;
     text-decoration: none;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     text-align: center;
     box-shadow: @boxshadow;
     margin: 1%;
+    font-family: 'sb-s', arial;
     &:hover,
     &.actif {
       color:@fond;
-      background: @fond2;
+      background: @color1;
       cursor: pointer;
     }
     &.w10f {
@@ -221,7 +229,7 @@ header {
 /* Footer */
 footer {
   width:100%;
-  background: @fond2opac;
+  background: @color1;
   float: left;
 }
 /* Responsive Grand ecran */
@@ -237,15 +245,19 @@ footer {
         width:960px;
         margin:50px auto;
       }
+      h1 {
+        width:700px;
+        margin: auto;
+      }
       p {
         font-size: 12px;
-        color: @texte;
+        color: @color1;
       }
       nav {
         height: 50px;
         position: fixed;
         z-index: 1000;
-        background: @fond2opac;
+        background: @color1opac;
         box-shadow: @boxshadow;
         width: 100%;
         float: none;
@@ -289,7 +301,7 @@ footer {
   /* Bouton call to action */
   .callto {
     .button {
-      font-size: 1.25em;
+      font-size: 1.5em;
       float: none;
       &.w10f {
         width: 10px;
@@ -300,7 +312,7 @@ footer {
       }
       &.d50 {
         width: 50%;
-        margin:0 25%;
+        margin: 25px 25%;
       }
     }
   }
