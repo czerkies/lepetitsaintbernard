@@ -1,10 +1,10 @@
-@fond: #f1f2f0;
-@texte: #00344a;
-@liens: #171809;
+@fond: #fff;
+@texte: #21353e;
+@liens: #21353e;
 @fond2: #00344a;
-@autre: #000;
+@autre: #21353e;
 
-@fond2opac: rgba(0,52,74,.9);
+@fond2opac: rgba(33,53,62,.95);
 
 @boxshadow: 0 1px 2px rgba(0, 0, 0, .5);
 @radius: 2px;
@@ -25,6 +25,7 @@ body {
 }
 h1,
 h2 {
+  color: @texte;
   font-family: impact, arial;
   float: left;
   width: 100%;
@@ -35,6 +36,12 @@ header {
   .header_cont {
     float: left;
     width: 100%;
+    img {
+      width:100%;
+    }
+    .logo_title {
+      width:100%;
+    }
     p {
       font-size: 12px;
       color: @texte;
@@ -78,7 +85,7 @@ header {
             font-size: 1.5em;
             transition: background 250ms ease;
             &:hover {
-              background: @fond2;
+              background: @fond2opac;
             }
           }
         }
@@ -226,19 +233,19 @@ footer {
     padding:0;
     width: 100%;
     .header_cont{
+      .logo_title {
+        width:960px;
+        margin:50px auto;
+      }
       p {
         font-size: 12px;
         color: @texte;
-      }
-      img {
-        float: left;
-        margin:50px 0;
       }
       nav {
         height: 50px;
         position: fixed;
         z-index: 1000;
-        background: rgba(0,52,74,.9);
+        background: @fond2opac;
         box-shadow: @boxshadow;
         width: 100%;
         float: none;
@@ -261,7 +268,7 @@ footer {
             a {
               text-align: center;
               width: 250px;
-              margin:0 8px;
+              margin:0;
               padding: 0;
               font-size: 1.5em;
               line-height: 50px;

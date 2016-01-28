@@ -19,8 +19,10 @@
             <li><a href="#">Menu 2</a></li>
           </ul>
         </nav>
-        <img src="" alt="Logo Le petit saint bernard">
-        <h1>Le petit saint bernard</h1>
+        <div class="logo_title">
+          <img src="../www/img/stb-logo.png" alt="Logo Le petit saint bernard">
+          <h1>Spécialiste du vélo pour Montagnard.</h1>
+        </div>
       </div>
     </header>
     <div id="prin">
