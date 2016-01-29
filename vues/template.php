@@ -10,23 +10,30 @@
     <header>
       <div class="header_cont">
         <nav>
-          <div class="callto">
-            <button href="#" id="bouton_menu" class="button w10">|||</button>
-          </div>
           <ul>
+            <li><a href="#">Votre Vélo</a></li>
             <li><a href="#">Route</a></li>
             <li><a href="#">VTT</a></li>
             <li><a href="#">Mon compte</a></li>
           </ul>
         </nav>
         <div class="logo_title">
-          <img src="../www/img/stb-logo.png" alt="Logo Le petit saint bernard">
-          <h1>Spécialiste du vélo pour Montagnard.</h1>
+          <div class="callto" id="bouton_menu">
+            <button href="#" class="button w10">|||</button>
+          </div>
+          <a href="/">
+            <img src="../www/img/stb-logo.png" alt="Logo Le petit saint bernard">
+            <h1>Spécialiste du vélo pour Montagnard.</h1>
+          </a>
         </div>
       </div>
     </header>
     <div id="prin">
       <div class="prin_cont">
+        <div class="etape_accueil">
+          <h2>Configurez, commandez et c'est livré.</h2>
+          <p>Avec <strong>Le petit saint bernard</strong>, il est très facile de choisir votre vélo : Il suffis simplement créer votre compte et nous vous proposons la meilleur solution, sur mesure. Vous pouvez aussi configurer votre vélo avec une aide à chaque étape.<br>.Avec <strong>Le petit saint bernard</strong>, votre vélo sera unique et uniquement pour vous.</p>
+        </div>
         <div class="callto">
           <button href="#" class="button w100 d50 mauto">Configurer mon vélo</button>
         </div>

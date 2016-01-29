@@ -34,6 +34,7 @@ h2 {
   font-family: 'sb-b', arial;
   letter-spacing: 2px;
   width: 100%;
+  font-size: 1.75em;
 }
 header {
   padding: 5px;
@@ -46,6 +47,13 @@ header {
     }
     .logo_title {
       width:100%;
+      .callto {
+        padding: 5% 0 0 2%;
+        width: 15%;
+      }
+      img {
+        width: 85%;
+      }
     }
     nav {
       position: relative;
@@ -71,7 +79,7 @@ header {
         display: none;
         position: absolute;
         width: 100%;
-        top: 45px;
+        top: 80px;
         &.menu_actif {
           animation: bounce_menu 250ms ease;
           display: block;
@@ -105,8 +113,6 @@ header {
     .etape_accueil {
       width: 100%;
       h2 {
-        font-size: 1.75em;
-        color: @color1;
         float: left;
       }
       p {
@@ -196,6 +202,7 @@ header {
   width: 100%;
   float: left;
   .button {
+    font-size: 1.5em;
     background: @fond;
     transition: color 250ms ease, background 250ms ease;
     color: @color1;
@@ -237,6 +244,10 @@ footer {
   #bouton_menu {
     display: none;
   }
+  h1,
+  h2 {
+    font-size: 2em;
+  }
   header {
     padding:0;
     width: 100%;
@@ -244,14 +255,15 @@ footer {
       .logo_title {
         width:960px;
         margin:50px auto;
+        img {
+          display: block;
+          width: 700px;
+          margin: auto;
+        }
       }
       h1 {
         width:700px;
         margin: auto;
-      }
-      p {
-        font-size: 12px;
-        color: @color1;
       }
       nav {
         height: 50px;
@@ -279,7 +291,7 @@ footer {
             list-style: none;
             a {
               text-align: center;
-              width: 250px;
+              width: 25%;
               margin:0;
               padding: 0;
               font-size: 1.5em;
@@ -301,7 +313,6 @@ footer {
   /* Bouton call to action */
   .callto {
     .button {
-      font-size: 1.5em;
       float: none;
       &.w10f {
         width: 10px;
@@ -312,7 +323,7 @@ footer {
       }
       &.d50 {
         width: 50%;
-        margin: 25px 25%;
+        margin: 30px 25%;
       }
     }
   }
