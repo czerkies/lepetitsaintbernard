@@ -2,7 +2,7 @@
 
 function connexionPDO(){
 
-  $host = 'lepetitsaintbernard'; // DSN
+  $host = 'localhost'; // DSN
   $dbname = 'lepetitsaintbernard'; // Nom de la BDD
   $user = 'root'; // User
   $mdp = 'root'; // MDP
