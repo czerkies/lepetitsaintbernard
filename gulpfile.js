@@ -8,7 +8,7 @@ gulp.task('css', function () {
   return gulp.src('www/css/style.less')
     .pipe(less({
       paths: [ path.join(__dirname, 'less', 'includes') ],
-      compress: true
+      compress: false
     }))
     .pipe(gulp.dest('www/css/'));
 });

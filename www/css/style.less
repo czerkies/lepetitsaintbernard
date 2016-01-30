@@ -1,5 +1,7 @@
-@fond: #fff;
+@fond: #eee;
 @color1: #21353e;
+@color2: #444;
+@hover: #fff;
 @liens: #21353e;
 @autre: #21353e;
 
@@ -7,6 +9,7 @@
 
 @boxshadow: 0 1px 2px rgba(0, 0, 0, .5);
 @radius: 2px;
+@w_desk: 1332px;
 
 @font-face {
   font-family: 'sb-b';
@@ -89,7 +92,7 @@ header {
           a {
             font-family: 'sb-s', arial;
             letter-spacing: 2px;
-            color: #eee;
+            color: @fond;
             float: left;
             padding:10px;
             width: 100%;
@@ -97,7 +100,7 @@ header {
             transition: color 250ms ease, background 250ms ease;
             &:hover {
               background: @color1opac;
-              color: @fond;
+              color: @hover;
             }
           }
         }
@@ -119,7 +122,7 @@ header {
         font-family: 'sb-s', arial;
         font-size: 1.25em;
         float:left;
-        color: #444;
+        color: @color2;
       }
     }
     .infos {
@@ -157,7 +160,7 @@ header {
       transform: scale(1);
     }
     &::after {
-      transition: background-color 250ms ease;
+      transition: color 250ms ease, background-color 250ms ease, border-color 250ms ease;
       border: 2px solid @color1;
       content: "";
       border-radius: 50%;
@@ -177,22 +180,25 @@ header {
       text-align: center;
       width: 102%;
     }
-    &.active {
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
       span {
-        color: @fond;
+        color: @hover;
       }
       &::after{
         background: @color1;
       }
     }
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.05);
-      &::after{
-        background: @color1;
-      }
+    &:active,
+    &.active {
+      transform: scale(1);
       span {
-        color: @fond;
+        color: @hover;
+      }
+      &::after{
+        border-color: @hover;
+        background: @color1;
       }
     }
   }
@@ -204,7 +210,7 @@ header {
   .button {
     font-size: 1.5em;
     background: @fond;
-    transition: color 250ms ease, background 250ms ease;
+    transition: color 250ms ease, background 250ms ease, border-color 250ms ease;
     color: @color1;
     padding: 10px;
     border-radius: @radius;
@@ -217,9 +223,12 @@ header {
     font-family: 'sb-s', arial;
     &:hover,
     &.actif {
-      color:@fond;
+      color: @hover;
       background: @color1;
       cursor: pointer;
+    }
+    &:active {
+      border-color: @hover;
     }
     &.w10f {
       width: 10px;
@@ -235,7 +244,7 @@ header {
 
 /* Footer */
 footer {
-  width:100%;
+  width: 100%;
   background: @color1;
   float: left;
 }
@@ -253,7 +262,7 @@ footer {
     width: 100%;
     .header_cont{
       .logo_title {
-        width:960px;
+        width:@w_desk;
         margin:50px auto;
         img {
           display: block;
@@ -281,7 +290,7 @@ footer {
           margin: auto;
           display: block;
           position: relative;
-          width: 960px;
+          width: @w_desk;
           top: 0;
           &.menu_actif {
             animation: bounce_menu 250ms ease;
@@ -303,7 +312,7 @@ footer {
     }
   }
   #prin {
-    width: 960px;
+    width: @w_desk;
     margin:auto;
     .prin_cont {
       width: 100%;
