@@ -62,6 +62,14 @@ class controleurMembres extends controleurSuper {
       }
     }
 
+    if($userConnect) {
+      if(isset($_GET['deconnexion']) && !empty($_GET['deconnexion']) && $_GET['deconnexion'] === 'true'){
+        session_unset();
+        $userConnect = FALSE;
+        $userConnectAdmin = FALSE;
+      }
+    }
+
     $this->Render('../vues/membres/connexion.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
 
   }

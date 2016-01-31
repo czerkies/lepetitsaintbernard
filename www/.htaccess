@@ -3,7 +3,9 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
+RewriteRule ^connexion/deconnexion/ index.php?controleur=membres&action=connexionMembre&deconnexion=true [L]
 RewriteRule ^connexion/ index.php?controleur=membres&action=connexionMembre [L]
+RewriteRule ^nos-salles/reservation-en-details/(.*)$ index.php?controleurs=produit&action=reservationDetails&id_produit=$1
 
 ErrorDocument 401 /lokisalle/www/page-introuvable/
 ErrorDocument 403 /lokisalle/www/page-introuvable/

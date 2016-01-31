@@ -14,7 +14,13 @@
             <li><a href="#">Votre Vélo</a></li>
             <li><a href="#">Route</a></li>
             <li><a href="#">VTT</a></li>
-            <li><a href="#">Mon compte</a></li>
+            <?php if(!($userConnect || $userConnectAdmin)){ ?>
+              <li><a href="<?= RACINE_SITE; ?>connexion/">Mon compte</a></li>
+              <li><a href="<?= RACINE_SITE; ?>creation-compte/">Créer un compte</a></li>
+            <?php } else { ?>
+              <li><a href="<?= RACINE_SITE; ?>mon-compte/">Mon compte</a></li>
+              <li><a href="<?= RACINE_SITE; ?>connexion/deconnexion/">Se déconnecter</a></li>
+            <?php } ?>
           </ul>
         </nav>
         <div class="logo_title">
