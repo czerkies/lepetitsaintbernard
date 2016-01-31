@@ -48,8 +48,8 @@ if(isset($_GET['controleur']) && !empty($_GET['controleur'])
 
 } else {
 
-  include('../controleurs/controleurProduit.php');
-  $instance = new controleursProduit();
-  $instance->produitACC();
+  include('../controleurs/controleurSingle.php');
+  $instance = new controleurSingle();
+  $instance->singleAccueil();
 
 }

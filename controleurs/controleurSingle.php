@@ -14,7 +14,7 @@ class controleurSingle extends controleurSuper {
 
     session_start();
     $meta['title'] = 'Accueil';
-    $meta['menu'] = 1;
+    $meta['menu'] = 'accueil';
     $userConnect = $this->userConnect();
     $userConnectAdmin = $this->userConnectAdmin();
 
