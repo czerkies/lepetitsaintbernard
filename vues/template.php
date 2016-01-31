@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title><?php if(isset($meta['title'])) echo $meta['title']; ?> | Le petit St.Bernard</title>
-    <link rel="stylesheet" type="text/css" href="../www/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?= RACINE_SITE; ?>css/style.css">
     <meta name="description" value="Spécialiste du montage de vélo pour la montagne en ligne. Simple et rapide, ce site vous permet d'avoir le vélo bien plus qu'à votre taille.">
   </head>
   <body>
@@ -21,8 +21,8 @@
           <div class="callto" id="bouton_menu">
             <button href="#" class="button w10">|||</button>
           </div>
-          <a href="/">
-            <img src="../www/img/stb-logo.png" alt="Logo Le petit saint bernard">
+          <a href="<?= RACINE_SITE; ?>">
+            <img src="<?= RACINE_SITE; ?>img/stb-logo.png" alt="Logo Le petit saint bernard">
             <h1>Spécialiste du vélo pour Montagnard.</h1>
           </a>
         </div>
@@ -42,18 +42,22 @@
       </ul>
     </footer>
   </body>
-  <script src="../www/js/jquery.js"></script>
+  <script src="<?= RACINE_SITE; ?>js/jquery.js"></script>
   <script type="text/javascript">
-  $('#bouton_menu').click(function(){
-    $('header ul').toggleClass('menu_actif');
-    $(this).toggleClass('actif');
-  });
-  $('.spe .round').click(function(){
-    var $content = this.id;
-    $('.spe .round').removeClass('active');
-    $('.infos .appear').removeClass('appear');
-    $('#'+$content).addClass('active');
-    $('#infos_'+$content).addClass('appear');
-  });
+    $('#bouton_menu').click(function(){
+      $('header ul').toggleClass('menu_actif');
+      $(this).toggleClass('actif');
+    });
   </script>
+  <?php if($meta['menu'] === 'accueil'){ ?>
+  <script type="text/javascript">
+    $('.spe .round').click(function(){
+      var $content = this.id;
+      $('.spe .round').removeClass('active');
+      $('.infos .appear').removeClass('appear');
+      $('#'+$content).addClass('active');
+      $('#infos_'+$content).addClass('appear');
+    });
+  </script>
+  <?php } ?>
 </html>

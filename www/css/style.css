@@ -9,6 +9,7 @@
 * {
   box-sizing: border-box;
   -webkit-font-smoothing: subpixel-antialiased;
+  font-family: 'sb-s', arial;
 }
 a {
   text-decoration: none;
@@ -208,7 +209,6 @@ header .header_cont nav ul li a:hover {
   text-align: center;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   margin: 1%;
-  font-family: 'sb-s', arial;
 }
 .callto .button:hover,
 .callto .button.actif {
@@ -234,7 +234,77 @@ footer {
   background: #21353e;
   float: left;
 }
-/* Responsive Grand ecran */
+form {
+  width: 100%;
+}
+form .form-group {
+  font-size: 1.5em;
+  width: 100%;
+}
+form .form-group label {
+  color: #21353e;
+  width: 100%;
+  padding: 10px;
+  float: left;
+}
+form .form-group input {
+  transition: background-color 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+  margin: 0;
+  font-size: 1em;
+  width: 100%;
+  border: 2px solid #21353e;
+  border-radius: 2px;
+  padding: 10px;
+  background: #eeeeee;
+}
+form .form-group input:focus {
+  outline: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  background: #ffffff;
+}
+form .form-group input:hover {
+  background: #ffffff;
+}
+form .form-group input[type="submit"] {
+  background: #eeeeee;
+  color: #21353e;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  margin: 50px 0;
+  letter-spacing: 2px;
+}
+form .form-group input[type="submit"]:hover {
+  background: #21353e;
+  color: #ffffff;
+}
+form .form-group input[type="submit"]:active {
+  border-color: #ffffff;
+}
+.error {
+  animation: msgbounce 500ms ease;
+  width: 100%;
+  border: 2px solid #e53e1e;
+  color: #e53e1e;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  background: #ffffff;
+  padding: 10px;
+  font-size: 1.25em;
+}
+@keyframes msgbounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  85% {
+    opacity: 1;
+    transform: scale(1.01);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/********** Responsive **********/
 @media screen and (min-width: 600px) {
   #bouton_menu {
     display: none;
@@ -330,5 +400,9 @@ footer {
     font-size: 1.7em;
     letter-spacing: 1px;
     width: 14.5%;
+  }
+  form.middle {
+    width: 50%;
+    margin: 0 25%;
   }
 }

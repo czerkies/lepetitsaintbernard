@@ -7,7 +7,8 @@
 </div>
 <div class="etape_accueil">
   <h2>Le petit Saint Bernard ?</h2>
-  <p>Le petit saint bernard est un spécialiste de la configuration personalisé en vélo de montagne.<br>Notre magasin et usine se situe en Rhon-Alpes dans la ville de Bourg Saint Maurice. Notre Fabrication, votre configuration,</p>            <h2>Col du galiber ou cross country dans le beaufortain ?</h2>
+  <p>Le petit saint bernard est un spécialiste de la configuration personalisé en vélo de montagne.<br>Notre magasin et usine se situe en Rhon-Alpes dans la ville de Bourg Saint Maurice. Notre Fabrication, votre configuration,</p>
+  <h2>Col du galiber ou cross country dans le beaufortain ?</h2>
   <p>Nous vous proposons les meilleurs vélo pour gravir les cols les plus difficile aux descentes les plus pentus.</p>
   <h2>Trouver son vélo</h2>
   <p>Pour trouver son vélo parfait, rien de plus simple, après avoir créé votre profil, nous vous proposerons les vélos qui vous conviendrait le mieux.<br>Nous prenons en compte les critères suivant :</p>

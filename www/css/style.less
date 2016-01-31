@@ -1,6 +1,7 @@
 @fond: #eee;
 @color1: #21353e;
 @color2: #444;
+@error: #e53e1e;
 @hover: #fff;
 @liens: #21353e;
 @autre: #21353e;
@@ -22,6 +23,7 @@
 * {
   box-sizing:border-box;
   -webkit-font-smoothing:subpixel-antialiased;
+  font-family: 'sb-s', arial;
 }
 a {
   text-decoration: none;
@@ -220,7 +222,6 @@ header {
     text-align: center;
     box-shadow: @boxshadow;
     margin: 1%;
-    font-family: 'sb-s', arial;
     &:hover,
     &.actif {
       color: @hover;
@@ -248,7 +249,80 @@ footer {
   background: @color1;
   float: left;
 }
-/* Responsive Grand ecran */
+
+form {
+  width: 100%;
+  .form-group {
+    font-size: 1.5em;
+    width: 100%;
+    label {
+      color: @color1;
+      width: 100%;
+      padding: 10px;
+      float: left;
+    }
+    input {
+      transition: background-color 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+      margin: 0;
+      font-size: 1em;
+      width: 100%;
+      border: 2px solid @color1;
+      border-radius: @radius;
+      padding: 10px;
+      background: @fond;
+      &:focus {
+        outline:none;
+        box-shadow: @boxshadow;
+        background: @hover;
+      }
+      &:hover {
+        background: @hover;
+      }
+      &[type="submit"] {
+        background: @fond;
+        color: @color1;
+        box-shadow: @boxshadow;
+        cursor: pointer;
+        margin: 50px 0;
+        letter-spacing: 2px;
+        &:hover {
+          background: @color1;
+          color: @hover;
+        }
+        &:active {
+          border-color: @hover;
+        }
+      }
+    }
+  }
+}
+
+.error {
+  @keyframes msgbounce{
+    0% {
+      opacity: 0;
+      transform: scale(.95);
+    }
+    85% {
+      opacity: 1;
+      transform: scale(1.01);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  animation: msgbounce 500ms ease;
+  width: 100%;
+  border: 2px solid @error;
+  color: @error;
+  box-shadow: @boxshadow;
+  border-radius: @radius;
+  background: @hover;
+  padding: 10px;
+  font-size: 1.25em;
+}
+
+/********** Responsive **********/
 @media screen and (min-width: 600px) {
   #bouton_menu {
     display: none;
@@ -347,6 +421,13 @@ footer {
       font-size: 1.7em;
       letter-spacing: 1px;
       width:14.5%;
+    }
+  }
+
+  form {
+    &.middle {
+      width: 50%;
+      margin: 0 25%;
     }
   }
 }

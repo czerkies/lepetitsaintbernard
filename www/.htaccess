@@ -1,0 +1,10 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^connexion/ index.php?controleur=membres&action=connexionMembre [L]
+
+ErrorDocument 401 /lokisalle/www/page-introuvable/
+ErrorDocument 403 /lokisalle/www/page-introuvable/
+ErrorDocument 404 /lokisalle/www/page-introuvable/
