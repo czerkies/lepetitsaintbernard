@@ -5,6 +5,7 @@
     <title><?php if(isset($meta['title'])) echo $meta['title']; ?> | Le petit St.Bernard</title>
     <link rel="stylesheet" type="text/css" href="<?= RACINE_SITE; ?>css/style.css">
     <meta name="description" value="Spécialiste du montage de vélo pour la montagne en ligne. Simple et rapide, ce site vous permet d'avoir le vélo bien plus qu'à votre taille.">
+    <?php if(isset($meta['deconnexion']) && $meta['deconnexion'] === TRUE) echo '<meta http-equiv="refresh" content="0; url='.RACINE_SITE.'connexion/">'; ?>
   </head>
   <body>
     <header>

@@ -7,6 +7,7 @@
 class controleurMembres extends controleurSuper {
 
   const ERREUR_POST = 'Une erreur est survenue lors de votre demande.';
+
   /**
   * Affichage et controle de la page de connexion
   *
@@ -14,11 +15,12 @@ class controleurMembres extends controleurSuper {
   public function connexionMembre(){
 
     session_start();
-    $msg['error'] = '';
     $meta['title'] = 'Connexion';
     $meta['menu'] = 'connexion';
     $userConnect = $this->userConnect();
     $userConnectAdmin = $this->userConnectAdmin();
+
+    $msg['error'] = array();
 
     $connexion = new modeleMembres();
 
@@ -26,11 +28,14 @@ class controleurMembres extends controleurSuper {
 
       if(isset($_POST['email']) && isset($_POST['mdp'])) {
 
+        if(empty($_POST['email']) || empty($_POST['mdp'])) {
+          $msg['error']['generale'] = 'Certains champs sont obligatoires.';
+        }
         if(empty($_POST['email'])){
-          $msg['error'] .= 'Veuillez saisir un identifiant.<br>';
+          $msg['error']['email'] = 'Veuillez saisir votre Email.';
         }
         if(empty($_POST['mdp'])){
-          $msg['error'] .= 'Veuillez saisir un mot de passe.<br>';
+          $msg['error']['mdp'] = 'Veuillez saisir un mot de passe.';
         }
 
         if(empty($msg['error'])){
@@ -45,7 +50,7 @@ class controleurMembres extends controleurSuper {
               if($key != 'mdp'){
                 $_SESSION['membre'][$key] = $value;
               }
-              if(isset($_POST['sauv_session'])){
+              if(isset($_POST['remember'])){
                 setCookie('email', $email, time()+(365*24*3600));
               }
             }
@@ -54,11 +59,11 @@ class controleurMembres extends controleurSuper {
             $userConnectAdmin = $this->userConnectAdmin();
 
           } else {
-            $msg['error'] = 'Vos identifiants sont incorrects.';
+            $msg['error']['generale'] = 'Vos identifiants sont incorrects.';
           }
         }
       } else {
-        $msg['error'] = self::ERREUR_POST;
+        $msg['error']['generale'] = self::ERREUR_POST;
       }
     }
 
@@ -67,6 +72,7 @@ class controleurMembres extends controleurSuper {
         session_unset();
         $userConnect = FALSE;
         $userConnectAdmin = FALSE;
+        $meta['deconnexion'] = TRUE;
       }
     }
 
@@ -74,4 +80,23 @@ class controleurMembres extends controleurSuper {
 
   }
 
+  /**
+  * Fonction du controle de la création d'un compte
+  *
+  */
+  public function creationCompte(){
+
+    session_start();
+    $msg['error'] = array();
+    $meta['title'] = 'Créer son compte';
+    $meta['menu'] = 'creer-son-compte';
+    $userConnect = $this->userConnect();
+    $userConnectAdmin = $this->userConnectAdmin();
+
+    //$msg['error']['generale'] = "Une erreure c'est produite";
+    //$msg['error']['nom'] = "Mince, ton nom mec.";
+
+    $this->Render('../vues/membres/creation-compte.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
+
+  }
 }
