@@ -197,6 +197,7 @@ header .header_cont nav ul li a:hover {
   float: left;
 }
 .callto .button {
+  display: block;
   font-size: 1.5em;
   background: #eeeeee;
   transition: color 250ms ease, background 250ms ease, border-color 250ms ease;
@@ -280,6 +281,17 @@ form .form-group input[type="submit"]:hover {
 form .form-group input[type="submit"]:active {
   border-color: #ffffff;
 }
+form .form-group.checkbox input,
+form .form-group.checkbox label {
+  float: left;
+}
+form .form-group.checkbox input {
+  width: 4%;
+  margin: 4%;
+}
+form .form-group.checkbox label {
+  width: 87%;
+}
 .error {
   animation: msgbounce 500ms ease;
   width: 100%;
@@ -303,6 +315,9 @@ form .form-group input[type="submit"]:active {
   100% {
     transform: scale(1);
   }
+}
+.bloc {
+  float: left;
 }
 /********** Responsive **********/
 @media screen and (min-width: 600px) {
@@ -404,5 +419,8 @@ form .form-group input[type="submit"]:active {
   form.middle {
     width: 50%;
     margin: 0 25%;
+  }
+  .bloc.w50 {
+    width: 50%;
   }
 }

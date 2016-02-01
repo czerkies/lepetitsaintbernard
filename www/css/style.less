@@ -210,6 +210,7 @@ header {
   width: 100%;
   float: left;
   .button {
+    display: block;
     font-size: 1.5em;
     background: @fond;
     transition: color 250ms ease, background 250ms ease, border-color 250ms ease;
@@ -294,6 +295,19 @@ form {
         }
       }
     }
+    &.checkbox {
+      input,
+      label {
+        float: left;
+      }
+      input {
+        width: 4%;
+        margin: 4%;
+      }
+      label {
+        width: 87%;
+      }
+    }
   }
 }
 
@@ -320,6 +334,10 @@ form {
   background: @hover;
   padding: 10px;
   font-size: 1.25em;
+}
+
+.bloc {
+  float: left;
 }
 
 /********** Responsive **********/
@@ -428,6 +446,12 @@ form {
     &.middle {
       width: 50%;
       margin: 0 25%;
+    }
+  }
+
+  .bloc {
+    &.w50{
+      width: 50%;
     }
   }
 }
