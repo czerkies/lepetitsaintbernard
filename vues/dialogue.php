@@ -1,5 +1,5 @@
-<?php if(isset($msg['error']['generale'])){ ?>
+<?php if($msg['error']){ ?>
   <div class="error">
-    <?= $msg['error']['generale']; ?>
+    <?php foreach ($msg['error'] as $key => $value) {echo $msg['error'][$key].'<br>';} ?>
   </div>
 <?php } ?>

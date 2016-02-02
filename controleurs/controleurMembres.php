@@ -28,14 +28,11 @@ class controleurMembres extends controleurSuper {
 
       if(isset($_POST['email']) && isset($_POST['mdp'])) {
 
-        if(empty($_POST['email']) || empty($_POST['mdp'])) {
-          $msg['error']['generale'] = 'Certains champs sont obligatoires.';
-        }
         if(empty($_POST['email'])){
-          $msg['error']['email'] = 'Veuillez saisir votre Email.';
+          $msg['error']['email'] = 'Veuillez saisir votre <b>Email</b>.';
         }
         if(empty($_POST['mdp'])){
-          $msg['error']['mdp'] = 'Veuillez saisir un mot de passe.';
+          $msg['error']['mdp'] = 'Veuillez saisir votre <b>mot de passe</b>.';
         }
 
         if(empty($msg['error'])){
@@ -93,8 +90,9 @@ class controleurMembres extends controleurSuper {
     $userConnect = $this->userConnect();
     $userConnectAdmin = $this->userConnectAdmin();
 
-    //$msg['error']['generale'] = "Une erreure c'est produite";
+    //$msg['error'] = array();
     //$msg['error']['nom'] = "Mince, ton nom mec.";
+    //$msg['error']['prenom'] = "Test";
 
     $this->Render('../vues/membres/creation-compte.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
 

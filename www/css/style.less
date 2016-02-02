@@ -41,6 +41,12 @@ h2 {
   width: 100%;
   font-size: 1.75em;
 }
+p {
+  font-family: 'sb-s', arial;
+  font-size: 1.25em;
+  float:left;
+  color: @color2;
+}
 header {
   padding: 5px;
   width: 100%;
@@ -119,12 +125,6 @@ header {
       width: 100%;
       h2 {
         float: left;
-      }
-      p {
-        font-family: 'sb-s', arial;
-        font-size: 1.25em;
-        float:left;
-        color: @color2;
       }
     }
     .infos {
@@ -256,11 +256,27 @@ form {
   .form-group {
     font-size: 1.5em;
     width: 100%;
+    &:hover {
+      input {
+        background: @hover;
+      }
+      em {
+        opacity: 1;
+      }
+    }
     label {
       color: @color1;
       width: 100%;
       padding: 10px;
       float: left;
+    }
+    em {
+      color: #888;
+      padding: 10px;
+      margin: 0;
+      font-size: .75em;
+      transition: opacity 250ms ease;
+      opacity: 0;
     }
     input {
       transition: background-color 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
@@ -274,9 +290,6 @@ form {
       &:focus {
         outline:none;
         box-shadow: @boxshadow;
-        background: @hover;
-      }
-      &:hover {
         background: @hover;
       }
       &[type="submit"] {
@@ -293,6 +306,11 @@ form {
         &:active {
           border-color: @hover;
         }
+      }
+    }
+    &.error-form {
+      input {
+        border-color: @error;
       }
     }
     &.checkbox {
@@ -338,6 +356,7 @@ form {
 
 .bloc {
   float: left;
+  text-align: center;
 }
 
 /********** Responsive **********/
@@ -350,12 +369,12 @@ form {
     font-size: 2em;
   }
   header {
-    padding:0;
+    padding: 0;
     width: 100%;
     .header_cont{
       .logo_title {
-        width:@w_desk;
-        margin:50px auto;
+        width: @w_desk;
+        margin: 50px auto;
         img {
           display: block;
           width: 700px;
@@ -363,7 +382,7 @@ form {
         }
       }
       h1 {
-        width:700px;
+        width: 700px;
         margin: auto;
       }
       nav {
@@ -405,7 +424,7 @@ form {
   }
   #prin {
     width: @w_desk;
-    margin:auto;
+    margin: auto;
     .prin_cont {
       width: 100%;
       float: left;
@@ -425,6 +444,10 @@ form {
       &.d50 {
         width: 50%;
         margin: 30px 25%;
+      }
+      &.d100 {
+        width:90%;
+        margin: 30px 5%;
       }
     }
   }
@@ -446,6 +469,19 @@ form {
     &.middle {
       width: 50%;
       margin: 0 25%;
+    }
+    &.large {
+      .form-group {
+        width: 48%;
+        margin: 0 1%;
+        float: left;
+      }
+    }
+    .form-group {
+      &.w100 {
+        width: 98%;
+        margin: 0 1%;
+      }
     }
   }
 

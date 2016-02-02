@@ -27,6 +27,12 @@ h2 {
   width: 100%;
   font-size: 1.75em;
 }
+p {
+  font-family: 'sb-s', arial;
+  font-size: 1.25em;
+  float: left;
+  color: #444444;
+}
 header {
   padding: 5px;
   width: 100%;
@@ -106,12 +112,6 @@ header .header_cont nav ul li a:hover {
 }
 #prin .prin_cont .etape_accueil h2 {
   float: left;
-}
-#prin .prin_cont .etape_accueil p {
-  font-family: 'sb-s', arial;
-  font-size: 1.25em;
-  float: left;
-  color: #444444;
 }
 #prin .prin_cont .infos {
   font-family: 'sb-s', arial;
@@ -242,11 +242,25 @@ form .form-group {
   font-size: 1.5em;
   width: 100%;
 }
+form .form-group:hover input {
+  background: #ffffff;
+}
+form .form-group:hover em {
+  opacity: 1;
+}
 form .form-group label {
   color: #21353e;
   width: 100%;
   padding: 10px;
   float: left;
+}
+form .form-group em {
+  color: #888;
+  padding: 10px;
+  margin: 0;
+  font-size: .75em;
+  transition: opacity 250ms ease;
+  opacity: 0;
 }
 form .form-group input {
   transition: background-color 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
@@ -263,9 +277,6 @@ form .form-group input:focus {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   background: #ffffff;
 }
-form .form-group input:hover {
-  background: #ffffff;
-}
 form .form-group input[type="submit"] {
   background: #eeeeee;
   color: #21353e;
@@ -280,6 +291,9 @@ form .form-group input[type="submit"]:hover {
 }
 form .form-group input[type="submit"]:active {
   border-color: #ffffff;
+}
+form .form-group.error-form input {
+  border-color: #e53e1e;
 }
 form .form-group.checkbox input,
 form .form-group.checkbox label {
@@ -318,6 +332,7 @@ form .form-group.checkbox label {
 }
 .bloc {
   float: left;
+  text-align: center;
 }
 /********** Responsive **********/
 @media screen and (min-width: 600px) {
@@ -403,6 +418,10 @@ form .form-group.checkbox label {
     width: 50%;
     margin: 30px 25%;
   }
+  .callto .button.d100 {
+    width: 90%;
+    margin: 30px 5%;
+  }
   .spe {
     width: 100%;
     float: left;
@@ -419,6 +438,15 @@ form .form-group.checkbox label {
   form.middle {
     width: 50%;
     margin: 0 25%;
+  }
+  form.large .form-group {
+    width: 48%;
+    margin: 0 1%;
+    float: left;
+  }
+  form .form-group.w100 {
+    width: 98%;
+    margin: 0 1%;
   }
   .bloc.w50 {
     width: 50%;

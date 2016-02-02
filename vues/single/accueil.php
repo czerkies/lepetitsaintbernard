@@ -3,7 +3,7 @@
   <p>Avec <strong>Le petit saint bernard</strong>, il est très facile de choisir votre vélo : Il suffis simplement créer votre compte et nous vous proposons la meilleur solution, sur mesure. Vous pouvez aussi configurer votre vélo avec une aide à chaque étape.<br>.Avec <strong>Le petit saint bernard</strong>, votre vélo sera unique et uniquement pour vous.</p>
 </div>
 <div class="callto">
-  <a class="button w100 d50 mauto" href="<?php if($userConnect) {
+  <a class="button w100 d50" href="<?php if($userConnect) {
       echo RACINE_SITE.'configuration/';
   } else {
       echo RACINE_SITE.'connexion/';
@@ -39,7 +39,7 @@
   <p>Chaque vélo est garantie d'une durée de 3ans, notre support technique et commercial est à votre disposition.<br>Vous pouvez nous contacter à tout moment, par notre formulaire de contact ou par téléphone au numéro suivant : 01 02 03 04 05.</p>
 </div>
 <div class="callto">
-  <a class="button w100 d50 mauto" href="<?php if($userConnect) {
+  <a class="button w100 d50" href="<?php if($userConnect) {
       echo RACINE_SITE.'configuration/';
   } else {
       echo RACINE_SITE.'connexion/';
