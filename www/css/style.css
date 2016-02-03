@@ -306,6 +306,22 @@ form .form-group.checkbox input {
 form .form-group.checkbox label {
   width: 87%;
 }
+form .form-group select {
+  width: 100%;
+  border: 2px solid #21353e;
+  height: 52px;
+  font-size: 1em;
+}
+form .form-group.radio input[type="radio"] {
+  float: left;
+  width: 4%;
+  margin: 4%;
+}
+form .form-group.radio label[for="homme"],
+form .form-group.radio label[for="femme"] {
+  width: 87%;
+  padding: 12px;
+}
 .error {
   animation: msgbounce 500ms ease;
   width: 100%;
@@ -447,6 +463,16 @@ form .form-group.checkbox label {
   form .form-group.w100 {
     width: 98%;
     margin: 0 1%;
+  }
+  form .form-group.radio input[type="radio"] {
+    float: left;
+    width: 6%;
+    margin: 4% 2%;
+  }
+  form .form-group.radio label[for="homme"],
+  form .form-group.radio label[for="femme"] {
+    width: 37%;
+    padding: 12px;
   }
   .bloc.w50 {
     width: 50%;

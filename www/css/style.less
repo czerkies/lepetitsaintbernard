@@ -326,6 +326,24 @@ form {
         width: 87%;
       }
     }
+    select {
+      width: 100%;
+      border: 2px solid @color1;
+      height: 52px;
+      font-size: 1em;
+    }
+    &.radio {
+      input[type="radio"] {
+        float: left;
+        width: 4%;
+        margin: 4%;
+      }
+      label[for="homme"],
+      label[for="femme"] {
+        width: 87%;
+        padding: 12px;
+      }
+    }
   }
 }
 
@@ -481,6 +499,18 @@ form {
       &.w100 {
         width: 98%;
         margin: 0 1%;
+      }
+      &.radio {
+        input[type="radio"] {
+          float: left;
+          width: 6%;
+          margin: 4% 2%;
+        }
+        label[for="homme"],
+        label[for="femme"] {
+          width: 37%;
+          padding: 12px;
+        }
       }
     }
   }
