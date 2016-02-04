@@ -255,7 +255,8 @@ form {
   width: 100%;
   .form-group {
     font-size: 1.5em;
-    width: 100%;
+    width: 98%;
+    margin: 0 1%;
     &:hover {
       input {
         background: @hover;
@@ -362,7 +363,8 @@ form {
     }
   }
   animation: msgbounce 500ms ease;
-  width: 100%;
+  width: 98%;
+  margin: 1%;
   border: 2px solid @error;
   color: @error;
   box-shadow: @boxshadow;
@@ -493,6 +495,10 @@ form {
         width: 48%;
         margin: 0 1%;
         float: left;
+        &.submit {
+          width: 50%;
+          margin: 0 25%;
+        }
       }
     }
     .form-group {

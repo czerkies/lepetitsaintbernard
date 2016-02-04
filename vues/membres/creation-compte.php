@@ -5,7 +5,7 @@
   <form class="large" action="" method="post">
     <div class="form-group <?php if(isset($msg['error']['email'])) echo 'error-form'; ?>">
       <label for="email">Email</label>
-      <input type="email" name="email" id="email" placeholder="Nom" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" required>
+      <input type="email" name="email" id="email" placeholder="Email" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" required>
       <em>Il vous servira d'identifiant</em>
     </div>
     <div class="form-group <?php if(isset($msg['error']['mdp'])) echo 'error-form'; ?>">
@@ -67,17 +67,17 @@
       <input type="text" name="adresse" id="adresse" placeholder="Adresse" value="<?php if(isset($_POST['adresse'])) echo $_POST['adresse']; ?>" required>
       <em>Entrez une adresse complète pour la livraison et facturation</em>
     </div>
-    <div class="form-group <?php if(isset($msg['error']['ville'])) echo 'error-form'; ?>">
-      <label for="ville">Ville</label>
-      <input type="text" name="ville" id="ville" placeholder="Ville" value="<?php if(isset($_POST['villes'])) echo $_POST['villes']; ?>" required>
-      <em>Votre Prénom est obligatoire</em>
-    </div>
     <div class="form-group <?php if(isset($msg['error']['cp'])) echo 'error-form'; ?>">
       <label for="cp">Code postal</label>
       <input type="text" name="cp" id="cp" placeholder="00000" value="<?php if(isset($_POST['cp'])) echo $_POST['cp']; ?>" required>
       <em>Votre Prénom est obligatoire</em>
     </div>
-    <div class="form-group">
+    <div class="form-group <?php if(isset($msg['error']['ville'])) echo 'error-form'; ?>">
+      <label for="ville">Ville</label>
+      <input type="text" name="ville" id="ville" placeholder="Ville" value="<?php if(isset($_POST['ville'])) echo $_POST['ville']; ?>" required>
+      <em>Votre Prénom est obligatoire</em>
+    </div>
+    <div class="form-group submit">
       <input type="submit" value="Créer mon compte">
     </div>
 

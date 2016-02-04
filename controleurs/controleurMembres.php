@@ -90,9 +90,13 @@ class controleurMembres extends controleurSuper {
     $userConnect = $this->userConnect();
     $userConnectAdmin = $this->userConnectAdmin();
 
-    //$msg['error'] = array();
-    //$msg['error']['nom'] = "Mince, ton nom mec.";
-    //$msg['error']['prenom'] = "Test";
+    if($_POST){
+
+      if(empty($_POST['email'])){
+        $msg['error']['email'] = 'Veuillez saisir votre <b>Email</b>.';
+      }
+
+    }
 
     $this->Render('../vues/membres/creation-compte.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
 
