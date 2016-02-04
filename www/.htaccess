@@ -8,6 +8,6 @@ RewriteRule ^connexion/ index.php?controleur=membres&action=connexionMembre [L]
 RewriteRule ^creation-compte/ index.php?controleur=membres&action=creationCompte [L]
 RewriteRule ^nos-salles/reservation-en-details/(.*)$ index.php?controleurs=produit&action=reservationDetails&id_produit=$1
 
-ErrorDocument 401 /lokisalle/www/page-introuvable/
-ErrorDocument 403 /lokisalle/www/page-introuvable/
-ErrorDocument 404 /lokisalle/www/page-introuvable/
+ErrorDocument 401 /lepetitsaintbernard/www/page-introuvable/
+ErrorDocument 403 /lepetitsaintbernard/www/page-introuvable/
+ErrorDocument 404 /lepetitsaintbernard/www/page-introuvable/

@@ -92,8 +92,26 @@ class controleurMembres extends controleurSuper {
 
     if($_POST){
 
-      if(empty($_POST['email'])){
-        $msg['error']['email'] = 'Veuillez saisir votre <b>Email</b>.';
+      if(isset($_POST['email']) && isset($_POST['mdp'])
+      && isset($_POST['nom']) && isset($_POST['prenom'])
+      && isset($_POST['sexe']) && ($_POST['sexe'] === 'femme' || $_POST['sexe'] === 'homme')
+      && isset($_POST['taille']) && isset($_POST['age'])
+      && isset($_POST['poids']) && isset($_POST['budget'])
+      && isset($_POST['type']) && ($_POST['type'] === 'route' || $_POST['type'] === 'vtt' || $_POST['type'] === 'both')
+      && isset($_POST['adresse']) && isset($_POST['cp'])
+      && isset($_POST['ville'])) {
+
+        $controleFormulaire = new controleurFonctions();
+        $msg = $controleFormulaire->verifFormMembre($_POST, NULL);
+
+        if(empty($msg['error'])){
+
+          echo "Ok";
+
+        }
+
+      } else {
+        $msg['error']['generale'] = self::ERREUR_POST;
       }
 
     }

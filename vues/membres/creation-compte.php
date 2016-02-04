@@ -3,6 +3,7 @@
   <h2>Créer votre compte</h2>
   <?php include '../vues/dialogue.php'; ?>
   <form class="large" action="" method="post">
+
     <div class="form-group <?php if(isset($msg['error']['email'])) echo 'error-form'; ?>">
       <label for="email">Email</label>
       <input type="email" name="email" id="email" placeholder="Email" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" required>
@@ -32,15 +33,15 @@
       <label for="femme">Femme</label>
       <em>Votre Prénom est obligatoire</em>
     </div>
-    <div class="form-group <?php if(isset($msg['error']['prenom'])) echo 'error-form'; ?>">
-      <label for="taille">Taille</label>
-      <input type="number" name="taille" id="taille" placeholder="000" value="<?php if(isset($_POST['taille'])) echo $_POST['taille']; ?>" required>
-      <em>Votre taille en centimètres.</em>
-    </div>
     <div class="form-group <?php if(isset($msg['error']['age'])) echo 'error-form'; ?>">
       <label for="age">Age</label>
       <input type="number" name="age" id="age" placeholder="00" value="<?php if(isset($_POST['age'])) echo $_POST['age']; ?>" required>
       <em>Votre age</em>
+    </div>
+    <div class="form-group <?php if(isset($msg['error']['taille'])) echo 'error-form'; ?>">
+      <label for="taille">Taille</label>
+      <input type="number" name="taille" id="taille" placeholder="000" value="<?php if(isset($_POST['taille'])) echo $_POST['taille']; ?>" required>
+      <em>Votre taille en centimètres.</em>
     </div>
     <div class="form-group <?php if(isset($msg['error']['poids'])) echo 'error-form'; ?>">
       <label for="poids">Poids</label>
@@ -52,15 +53,19 @@
       <select name="type">
         <option disabled>Choisissez votre type de vélo</option>
         <option value="route">Route</option>
-        <option value="vtt">VTT</option>
-        <option value="both">Les deux</option>
+        <option value="vtt"
+        <?php if(isset($_POST['type']) && $_POST['type'] === 'vtt') echo "selected"; ?>
+        >VTT</option>
+        <option value="both"
+        <?php if(isset($_POST['type']) && $_POST['type'] === 'both') echo "selected"; ?>
+        >Les deux</option>
       </select>
       <em>Choisissez votre type de vélo</em>
     </div>
     <div class="form-group <?php if(isset($msg['error']['budget'])) echo 'error-form'; ?>">
       <label for="budget">Prix maximum</label>
       <input type="text" name="budget" id="budget" placeholder="0000" value="<?php if(isset($_POST['budget'])) echo $_POST['budget']; ?>" required>
-      <em>Donnez nous votre budget maximum</em>
+      <em>Donnez nous votre budget maximum en euros</em>
     </div>
     <div class="form-group w100 <?php if(isset($msg['error']['adresse'])) echo 'error-form'; ?>">
       <label for="adresse">Adresse</label>
