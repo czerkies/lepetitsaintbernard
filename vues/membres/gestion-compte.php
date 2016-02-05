@@ -1,7 +1,18 @@
-<?php if(!$userConnect) { ?>
-  <?php var_dump($_POST); ?>
-  <h2>Créer votre compte</h2>
-  <?php include '../vues/dialogue.php'; ?>
+<?php if($userConnect){ ?>
+  <h2>Vos commandes</h2>
+  <p>Vous n'avez encore passé aucune commande ! N'attendez plus pour voir votre vélo parfait ou configurer le votre.</p>
+  <div class="bloc w50">
+    <div class="callto">
+      <a class="button w100 d100" href="<?= RACINE_SITE; ?>configuration/">Mes vélos unique</a>
+    </div>
+  </div>
+  <div class="bloc w50">
+    <div class="callto">
+      <a class="button w100 d100" href="<?= RACINE_SITE; ?>configuration/">Configurer mon vélo</a>
+    </div>
+  </div>
+  <h2>Vos informations</h2>
+  <?php var_dump($_SESSION['membre']); ?>
   <form class="large" action="" method="post">
 
     <?= $formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Il vous servira d'identifiant", $msg); ?>
@@ -50,9 +61,8 @@
     <?= $formulaire->fieldsFormInput('Ville', 'text', 'ville', 'Ville', "Ville obligatoire", $msg); ?>
 
     <div class="form-group submit">
-      <input type="submit" value="Créer mon compte">
+      <input type="submit" value="Modifier mes informations">
     </div>
 
   </form>
-
 <?php } ?>

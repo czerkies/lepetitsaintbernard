@@ -31,6 +31,7 @@ p {
   font-family: 'sb-s', arial;
   font-size: 1.25em;
   float: left;
+  width: 100%;
   color: #444444;
 }
 header {
@@ -50,6 +51,9 @@ header .header_cont .logo_title {
 header .header_cont .logo_title .callto {
   padding: 5% 0 0 2%;
   width: 15%;
+}
+header .header_cont .logo_title .callto#bouton_menu {
+  float: left;
 }
 header .header_cont .logo_title img {
   width: 85%;
@@ -194,7 +198,7 @@ header .header_cont nav ul li a:hover {
 /* Bouton call to action */
 .callto {
   width: 100%;
-  float: left;
+  display: inline-block;
 }
 .callto .button {
   display: block;
@@ -348,8 +352,10 @@ form .form-group.radio label[for="femme"] {
     transform: scale(1);
   }
 }
+.error label:hover {
+  cursor: pointer;
+}
 .bloc {
-  float: left;
   text-align: center;
 }
 /********** Responsive **********/
@@ -437,8 +443,8 @@ form .form-group.radio label[for="femme"] {
     margin: 30px 25%;
   }
   .callto .button.d100 {
-    width: 90%;
-    margin: 30px 5%;
+    width: 100%;
+    margin: 0;
   }
   .spe {
     width: 100%;
@@ -480,7 +486,11 @@ form .form-group.radio label[for="femme"] {
     width: 37%;
     padding: 12px;
   }
+  .bloc {
+    float: left;
+  }
   .bloc.w50 {
-    width: 50%;
+    width: 48%;
+    margin: 30px 1%;
   }
 }

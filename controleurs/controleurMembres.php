@@ -22,6 +22,7 @@ class controleurMembres extends controleurSuper {
 
     $msg['error'] = array();
 
+    $formulaire = new controleurFonctions();
     $connexion = new modeleMembres();
 
     if($_POST){
@@ -73,7 +74,7 @@ class controleurMembres extends controleurSuper {
       }
     }
 
-    $this->Render('../vues/membres/connexion.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
+    $this->Render('../vues/membres/connexion.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'formulaire' => $formulaire));
 
   }
 
@@ -90,6 +91,8 @@ class controleurMembres extends controleurSuper {
     $userConnect = $this->userConnect();
     $userConnectAdmin = $this->userConnectAdmin();
 
+    $formulaire = new controleurFonctions();
+
     if($_POST){
 
       if(isset($_POST['email']) && isset($_POST['mdp'])
@@ -101,8 +104,7 @@ class controleurMembres extends controleurSuper {
       && isset($_POST['adresse']) && isset($_POST['cp'])
       && isset($_POST['ville'])) {
 
-        $controleFormulaire = new controleurFonctions();
-        $msg = $controleFormulaire->verifFormMembre($_POST, NULL);
+        $msg = $formulaire->verifFormMembre($_POST);
 
         if(empty($msg['error'])){
 
@@ -116,7 +118,26 @@ class controleurMembres extends controleurSuper {
 
     }
 
-    $this->Render('../vues/membres/creation-compte.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
+    $this->Render('../vues/membres/creation-compte.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'formulaire' => $formulaire));
+
+  }
+
+  /**
+  * Gestion du compte d'un membre
+  *
+  */
+  public function gestionCompte(){
+
+    session_start();
+    $meta['title'] = 'Mon compte';
+    $meta['menu'] = 'mon-compte';
+    $userConnect = $this->userConnect();
+    $userConnectAdmin = $this->userConnectAdmin();
+
+    $msg = array();
+    $formulaire = new controleurFonctions();
+
+    $this->Render('../vues/membres/gestion-compte.php', array('meta' => $meta, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'msg' => $msg, 'formulaire' => $formulaire));
 
   }
 }
