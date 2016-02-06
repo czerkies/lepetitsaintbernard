@@ -1,6 +1,9 @@
 <?php if($userConnect){ ?>
   <h2>Vos commandes</h2>
-  <p>Vous n'avez encore passé aucune commande ! N'attendez plus pour voir votre vélo parfait ou configurer le votre.</p>
+  <p>
+    Vous n'avez encore passé aucune commande !<br>
+    N'attendez plus pour voir votre vélo parfait ou configurer le votre.
+  </p>
   <div class="bloc w50">
     <div class="callto">
       <a class="button w100 d100" href="<?= RACINE_SITE; ?>configuration/">Mes vélos unique</a>
@@ -27,7 +30,7 @@
       <label>Sexe</label>
       <input type="radio" id="homme" name="sexe" value="homme" checked>
       <label for="homme">Homme</label>
-      <input type="radio" id="femme" name="sexe" value="femme" <?php if(isset($_POST['sexe']) && $_POST['sexe'] === 'femme') echo 'checked'; ?>>
+      <input type="radio" id="femme" name="sexe" value="femme" <?php if(isset($_SESSION['sexe']) && $_SESSION['sexe'] === 'femme') echo 'checked'; ?>>
       <label for="femme">Femme</label>
     </div>
 
@@ -43,10 +46,10 @@
         <option disabled>Choisissez votre type de vélo</option>
         <option value="route">Route</option>
         <option value="vtt"
-        <?php if(isset($_POST['type']) && $_POST['type'] === 'vtt') echo "selected"; ?>
+        <?php if(isset($_SESSION['type']) && $_SESSION['type'] === 'vtt') echo "selected"; ?>
         >VTT</option>
         <option value="both"
-        <?php if(isset($_POST['type']) && $_POST['type'] === 'both') echo "selected"; ?>
+        <?php if(isset($_SESSION['type']) && $_SESSION['type'] === 'both') echo "selected"; ?>
         >Les deux</option>
       </select>
       <em>Choisissez votre type de vélo</em>

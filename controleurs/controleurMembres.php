@@ -92,6 +92,7 @@ class controleurMembres extends controleurSuper {
     $userConnectAdmin = $this->userConnectAdmin();
 
     $formulaire = new controleurFonctions();
+    $donneesMembre = new modeleMembres();
 
     if($_POST){
 
@@ -108,7 +109,35 @@ class controleurMembres extends controleurSuper {
 
         if(empty($msg['error'])){
 
-          echo "Ok";
+          foreach ($_POST as $key => $value){
+            $_POST[$key] = htmlspecialchars($value, ENT_QUOTES);
+          }
+
+          extract($_POST);
+
+          if($donneesMembre->insertMembre($email, $mdp, $nom, $prenom, $sexe, $age, $taille, $poids, $type, $budget, $adresse, $cp, $ville)){
+
+            foreach ($_POST as $key => $value) {
+              if($key != 'mdp'){
+                $_SESSION['membre'][$key] = $value;
+              }
+            }
+
+            $_SESSION['membre']['statut'] = 0;
+
+            $userConnect = TRUE;
+
+            $headers = 'Content-Type: text/html; charset=\"UTF-8\";' . "\r\n";
+            $headers .= 'FROM: LokiSalle <contact@lokisalle.fr>' . "\r\n";
+
+            $sujet = "Bienvenue chez LokiSalle ".ucfirst($nom)." ".$prenom.".";
+
+            $message = "Bienvenue chez Lokisalle.<br>
+            Vous pouvez désormais commander vos salle dans notre catalogue à la page suivante : <a href=\"http://loki-salle.romanczerkies.fr/nos-salles/\">Nos Salles</a>";
+
+            //mail($email, $sujet, $message, $headers);
+
+          }
 
         }
 
@@ -134,10 +163,30 @@ class controleurMembres extends controleurSuper {
     $userConnect = $this->userConnect();
     $userConnectAdmin = $this->userConnectAdmin();
 
-    $msg = array();
+    $msg['error'] = array();
     $formulaire = new controleurFonctions();
 
     $this->Render('../vues/membres/gestion-compte.php', array('meta' => $meta, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'msg' => $msg, 'formulaire' => $formulaire));
 
   }
+
+  /**
+  * Gestion de la page mot de passe oublié
+  *
+  */
+  public function motDePasseOublie(){
+
+    session_start();
+    $meta['title'] = 'Mot de passe oublié';
+    $meta['menu'] = 'mot-de-passe-oublie';
+    $userConnect = $this->userConnect();
+    $userConnectAdmin = $this->userConnectAdmin();
+
+    $msg['error'] = array();
+    $formulaire = new controleurFonctions();
+
+    $this->Render('../vues/membres/mot-de-passe-oublie.php', array('meta' => $meta, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'msg' => $msg, 'formulaire' => $formulaire));
+
+  }
+
 }

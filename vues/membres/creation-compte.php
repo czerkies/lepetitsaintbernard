@@ -55,4 +55,6 @@
 
   </form>
 
-<?php } ?>
+<?php } else {
+  header('Location: '.RACINE_SITE.'mon-compte/');
+} ?>

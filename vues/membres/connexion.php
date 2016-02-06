@@ -3,7 +3,7 @@
 
   <?php include '../vues/dialogue.php'; ?>
 
-  <?= $formulaire->fieldsFormInput('Email', 'text', 'email', 'Email', "Votre Email personnel", $msg); ?>
+  <?= $formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Votre Email personnel", $msg); ?>
 
   <?= $formulaire->fieldsFormInput('Mot de passe', 'password', 'mdp', 'Mot de passe', "Mot de passe personnel", $msg); ?>
 
