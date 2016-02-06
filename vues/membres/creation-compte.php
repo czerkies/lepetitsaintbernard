@@ -1,5 +1,4 @@
-<?php if(!$userConnect) { ?>
-  <?php var_dump($_POST); ?>
+<?php if(!($userConnect || $userConnectAdmin)) { ?>
   <h2>Créer votre compte</h2>
   <?php include '../vues/dialogue.php'; ?>
   <form class="large" action="" method="post">
@@ -57,4 +56,4 @@
 
 <?php } else {
   header('Location: '.RACINE_SITE.'mon-compte/');
-} ?>
+}

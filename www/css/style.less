@@ -38,6 +38,7 @@ h2 {
   color: @color1;
   font-family: 'sb-b', arial;
   letter-spacing: 2px;
+  display: inline-block;
   width: 100%;
   font-size: 1.75em;
 }
@@ -127,9 +128,6 @@ header {
     width: 100%;
     .etape_accueil {
       width: 100%;
-      h2 {
-        float: left;
-      }
     }
     .infos {
       font-family: 'sb-s', arial;
@@ -393,11 +391,12 @@ form {
   h1,
   h2 {
     font-size: 2em;
+    display: inline-block;
   }
   header {
     padding: 0;
     width: 100%;
-    .header_cont{
+    .header_cont {
       .logo_title {
         width: @w_desk;
         margin: 50px auto;
@@ -408,8 +407,8 @@ form {
         }
       }
       h1 {
-        width: 700px;
-        margin: auto;
+        width: 100%;
+        text-align: center;
       }
       nav {
         height: 50px;

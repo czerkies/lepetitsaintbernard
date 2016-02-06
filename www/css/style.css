@@ -24,6 +24,7 @@ h2 {
   color: #21353e;
   font-family: 'sb-b', arial;
   letter-spacing: 2px;
+  display: inline-block;
   width: 100%;
   font-size: 1.75em;
 }
@@ -113,9 +114,6 @@ header .header_cont nav ul li a:hover {
 }
 #prin .prin_cont .etape_accueil {
   width: 100%;
-}
-#prin .prin_cont .etape_accueil h2 {
-  float: left;
 }
 #prin .prin_cont .infos {
   font-family: 'sb-s', arial;
@@ -366,6 +364,7 @@ form .form-group.radio label[for="femme"] {
   h1,
   h2 {
     font-size: 2em;
+    display: inline-block;
   }
   header {
     padding: 0;
@@ -381,8 +380,8 @@ form .form-group.radio label[for="femme"] {
     margin: auto;
   }
   header .header_cont h1 {
-    width: 700px;
-    margin: auto;
+    width: 100%;
+    text-align: center;
   }
   header .header_cont nav {
     height: 50px;

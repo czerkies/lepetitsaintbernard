@@ -14,9 +14,9 @@
       <a class="button w100 d100" href="<?= RACINE_SITE; ?>configuration/">Configurer mon vélo</a>
     </div>
   </div>
-  <h2>Vos informations</h2>
+  <h2 id="vosInformations">Vos informations</h2>
   <?php include '../vues/dialogue.php'; ?>
-  <form class="large" action="" method="post">
+  <form class="large" action="#vosInformations" method="post">
 
     <?= $formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Il vous servira d'identifiant", $msg); ?>
 
@@ -30,7 +30,7 @@
       <label>Sexe</label>
       <input type="radio" id="homme" name="sexe" value="homme" checked>
       <label for="homme">Homme</label>
-      <input type="radio" id="femme" name="sexe" value="femme" <?php if(isset($_SESSION['sexe']) && $_SESSION['sexe'] === 'femme') echo 'checked'; ?>>
+      <input type="radio" id="femme" name="sexe" value="femme" <?php if(isset($_SESSION['membre']['sexe']) && $_SESSION['membre']['sexe'] === 'femme') echo 'checked'; ?>>
       <label for="femme">Femme</label>
     </div>
 
@@ -46,10 +46,10 @@
         <option disabled>Choisissez votre type de vélo</option>
         <option value="route">Route</option>
         <option value="vtt"
-        <?php if(isset($_SESSION['type']) && $_SESSION['type'] === 'vtt') echo "selected"; ?>
+        <?php if(isset($_SESSION['membre']['type']) && $_SESSION['membre']['type'] === 'vtt') echo "selected"; ?>
         >VTT</option>
         <option value="both"
-        <?php if(isset($_SESSION['type']) && $_SESSION['type'] === 'both') echo "selected"; ?>
+        <?php if(isset($_SESSION['membre']['type']) && $_SESSION['membre']['type'] === 'both') echo "selected"; ?>
         >Les deux</option>
       </select>
       <em>Choisissez votre type de vélo</em>

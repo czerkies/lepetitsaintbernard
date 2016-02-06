@@ -220,7 +220,43 @@ class controleurMembres extends controleurSuper {
     $userConnectAdmin = $this->userConnectAdmin();
 
     $msg['error'] = array();
-    $formulaire = new controleurFonctions();
+
+    if($_POST){
+
+      if(isset($_POST['email'])){
+
+        if(empty($_POST['email'])){
+          $msg .= 'Vous devez saisir une adresse email.';
+        } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+          $msg .= "Votre adresse email est invalide.<br>";
+        } else {
+          $cont = new modelesMembre();
+          if(!$cont->verifMail($_POST['email'])){
+            $msg .= 'Cet email existe n\'existe pas.';
+          } else {
+
+            $confirmation = TRUE;
+
+            // L'adresse email existe, donc génération d'un nouvau mdp.
+            $mdp_sch = str_shuffle("lpsb1234");
+            $mdp = substr($mdp_sch, 0, 6);
+
+            $headers = 'Content-Type: text/html; charset=\"UTF-8\";' . "\r\n";
+            $headers .= 'FROM: LokiSalle - Nouveau mot de passe  <motdepasse@lokisalle.fr>' . "\r\n";
+
+            $nouveauMdp = new modelesMembre();
+            $nouveauMdp->nouveauMdp($mdp, $_POST['email']);
+
+            $message = 'Voici votre nouveau mot de passe pour accéder à Lokisalle : ' . $mdp;
+
+            mail($_POST['email'], 'Changement de mot de passe',  $message, $headers);
+
+          }
+        }
+      } else {
+        $msg .= "Une erreur est survenue lors de votre demande.<br>";
+      }
+    }
 
     $this->Render('../vues/membres/mot-de-passe-oublie.php', array('meta' => $meta, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'msg' => $msg, 'formulaire' => $formulaire));
 
