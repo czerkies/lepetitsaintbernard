@@ -165,6 +165,43 @@ class controleurMembres extends controleurSuper {
 
     $msg['error'] = array();
     $formulaire = new controleurFonctions();
+    $donneesMembre = new modeleMembres();
+
+    if(isset($_POST['maj_informations'])){
+
+      if(isset($_POST['email']) && isset($_POST['mdp'])
+      && isset($_POST['nom']) && isset($_POST['prenom'])
+      && isset($_POST['sexe']) && ($_POST['sexe'] === 'femme' || $_POST['sexe'] === 'homme')
+      && isset($_POST['taille']) && isset($_POST['age'])
+      && isset($_POST['poids']) && isset($_POST['budget'])
+      && isset($_POST['type']) && ($_POST['type'] === 'route' || $_POST['type'] === 'vtt' || $_POST['type'] === 'both')
+      && isset($_POST['adresse']) && isset($_POST['cp'])
+      && isset($_POST['ville'])) {
+
+        $idMembre = $_SESSION['membre']['id_membre'];
+        $msg = $formulaire->verifFormMembre($_POST, $idMembre);
+
+        if(empty($msg['error'])){
+
+          foreach ($_POST as $key => $value){
+            $_POST[$key] = htmlspecialchars($value, ENT_QUOTES);
+          }
+
+          extract($_POST);
+
+          if($donneesMembre->updateMembre($email, $mdp, $nom, $prenom, $sexe, $age, $taille, $poids, $type, $budget, $adresse, $cp, $ville, $idMembre)){
+
+            foreach ($_POST as $key => $value) {
+              if($key != 'mdp'){
+                $_SESSION['membre'][$key] = $value;
+              }
+            }
+          }
+        }
+      } else {
+        $msg['error']['generale'] = self::ERREUR_POST;
+      }
+    }
 
     $this->Render('../vues/membres/gestion-compte.php', array('meta' => $meta, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'msg' => $msg, 'formulaire' => $formulaire));
 

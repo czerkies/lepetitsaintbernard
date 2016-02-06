@@ -15,7 +15,7 @@
     </div>
   </div>
   <h2>Vos informations</h2>
-  <?php var_dump($_SESSION['membre']); ?>
+  <?php include '../vues/dialogue.php'; ?>
   <form class="large" action="" method="post">
 
     <?= $formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Il vous servira d'identifiant", $msg); ?>
@@ -64,7 +64,7 @@
     <?= $formulaire->fieldsFormInput('Ville', 'text', 'ville', 'Ville', "Ville obligatoire", $msg); ?>
 
     <div class="form-group submit">
-      <input type="submit" value="Modifier mes informations">
+      <input type="submit" name="maj_informations" value="Modifier mes informations">
     </div>
 
   </form>
