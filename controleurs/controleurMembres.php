@@ -219,6 +219,7 @@ class controleurMembres extends controleurSuper {
     $userConnect = $this->userConnect();
     $userConnectAdmin = $this->userConnectAdmin();
 
+    $formulaire = new controleurFonctions();
     $msg['error'] = array();
 
     if($_POST){
