@@ -252,7 +252,7 @@ class controleurMembres extends controleurSuper {
 
               mail($_POST['email'], 'Changement de mot de passe - Le petit saint Bernard',  $message, $headers);
 
-              $msg['confirm']['envoie'] = "Une Email vous a été envoyé.";
+              $msg['error']['confirm'] = "Vos informations ont été mis à jour.";
 
             }
           }
