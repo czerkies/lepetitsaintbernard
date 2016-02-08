@@ -10,7 +10,7 @@
   <body>
     <header>
       <div class="header_cont">
-        <nav>
+        <nav <?php if($userConnectAdmin) echo 'class="menu_admin"';?>>
           <ul>
             <li><a href="#">Votre Vélo</a></li>
             <li><a href="#">Route</a></li>
@@ -21,6 +21,10 @@
             <?php } else { ?>
               <li><a href="<?= RACINE_SITE; ?>mon-compte/">Mon compte</a></li>
               <li><a href="<?= RACINE_SITE; ?>connexion/deconnexion/">Se déconnecter</a></li>
+            <?php } if($userConnectAdmin) { ?>
+              <li>
+                <a class="sous_li" href="<?= RACINE_SITE; ?>admin/gestion-membres/">Gestion des membres</a>
+              </li>
             <?php } ?>
           </ul>
         </nav>

@@ -39,6 +39,9 @@ header {
   padding: 5px;
   width: 100%;
 }
+header h1 {
+  margin: 0;
+}
 header .header_cont {
   float: left;
   width: 100%;
@@ -397,6 +400,9 @@ form .form-group.radio label[for="femme"] {
     width: 100%;
     float: none;
   }
+  header .header_cont nav.menu_admin {
+    height: 100px;
+  }
   header .header_cont nav ul {
     background: #eeeeee;
     box-shadow: none;
@@ -420,8 +426,11 @@ form .form-group.radio label[for="femme"] {
     width: 20%;
     margin: 0;
     padding: 0;
-    font-size: 1.5em;
+    font-size: 1em;
     line-height: 50px;
+  }
+  header .header_cont nav ul li a.sous_li {
+    width: 50%;
   }
   #prin {
     width: 960px;

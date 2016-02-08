@@ -53,6 +53,9 @@ p {
 header {
   padding: 5px;
   width: 100%;
+  h1 {
+    margin: 0;
+  }
   .header_cont {
     float: left;
     width: 100%;
@@ -122,6 +125,7 @@ header {
     }
   }
 }
+
 #prin {
   .prin_cont{
     padding: 50px 5px;
@@ -150,6 +154,7 @@ header {
     }
   }
 }
+
 .spe {
   width: 100%;
   float: left;
@@ -424,6 +429,9 @@ form {
         box-shadow: @boxshadow;
         width: 100%;
         float: none;
+        &.menu_admin {
+          height: 100px;
+        }
         ul {
           background: @fond;
           box-shadow: none;
@@ -445,8 +453,11 @@ form {
               width: 20%;
               margin:0;
               padding: 0;
-              font-size: 1.5em;
+              font-size: 1em;
               line-height: 50px;
+              &.sous_li {
+                width: 50%;
+              }
             }
           }
         }

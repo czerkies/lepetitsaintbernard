@@ -11,6 +11,10 @@ RewriteRule ^nos-salles/reservation-en-details/(.*)$ index.php?controleurs=produ
 RewriteRule ^mon-compte/ index.php?controleur=membres&action=gestionCompte [L]
 RewriteRule ^mot-de-passe-oublie/ index.php?controleur=membres&action=motDePasseOublie [L]
 
+#ADMIN
+
+RewriteRule ^admin/gestion-membres/ index.php?controleur=membresAdmin&action=gestionMembres [L]
+
 ErrorDocument 401 /lepetitsaintbernard/www/page-introuvable/
 ErrorDocument 403 /lepetitsaintbernard/www/page-introuvable/
 ErrorDocument 404 /lepetitsaintbernard/www/page-introuvable/
