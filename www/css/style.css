@@ -354,6 +354,10 @@ form .form-group.radio label[for="femme"] {
 .error label:hover {
   cursor: pointer;
 }
+.error.confirm {
+  color: #08c0a6;
+  border-color: #08c0a6;
+}
 .bloc {
   text-align: center;
 }

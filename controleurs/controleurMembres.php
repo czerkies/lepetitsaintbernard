@@ -196,6 +196,9 @@ class controleurMembres extends controleurSuper {
                 $_SESSION['membre'][$key] = $value;
               }
             }
+
+            $msg['error']['confirm'] = "Vos informations ont été mis à jour.";
+
           }
         }
       } else {
