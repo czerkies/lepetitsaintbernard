@@ -220,6 +220,7 @@ class controleurMembres extends controleurSuper {
     $userConnectAdmin = $this->userConnectAdmin();
 
     $formulaire = new controleurFonctions();
+    $contMail = new modeleMembres();
     $msg['error'] = array();
 
     if($_POST){
@@ -227,35 +228,34 @@ class controleurMembres extends controleurSuper {
       if(isset($_POST['email'])){
 
         if(empty($_POST['email'])){
-          $msg .= 'Vous devez saisir une adresse email.';
+          $msg['error']['email'] = "Vous devez saisir une adresse <b>Email</b>.";
         } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-          $msg .= "Votre adresse email est invalide.<br>";
+          $msg['error']['email'] = "Votre adresse <b>Email</b> est invalide.";
         } else {
-          $cont = new modelesMembre();
-          if(!$cont->verifMail($_POST['email'])){
-            $msg .= 'Cet email existe n\'existe pas.';
+          if(!$contMail->verifMail($_POST['email'])){
+            $msg['error']['email'] = "Cet <b>Email</b> existe n'existe pas.";
           } else {
-
-            $confirmation = TRUE;
 
             // L'adresse email existe, donc génération d'un nouvau mdp.
             $mdp_sch = str_shuffle("lpsb1234");
             $mdp = substr($mdp_sch, 0, 6);
 
             $headers = 'Content-Type: text/html; charset=\"UTF-8\";' . "\r\n";
-            $headers .= 'FROM: LokiSalle - Nouveau mot de passe  <motdepasse@lokisalle.fr>' . "\r\n";
-
-            $nouveauMdp = new modelesMembre();
-            $nouveauMdp->nouveauMdp($mdp, $_POST['email']);
+            $headers .= 'FROM: Le petit ST Bernard - Nouveau mot de passe  <motdepasse@lepetitstbernard.fr>' . "\r\n";
 
             $message = 'Voici votre nouveau mot de passe pour accéder à Lokisalle : ' . $mdp;
 
-            mail($_POST['email'], 'Changement de mot de passe',  $message, $headers);
+            if($contMail->nouveauMdp($mdp, $_POST['email'])){
 
+              mail($_POST['email'], 'Changement de mot de passe - Le petit saint Bernard',  $message, $headers);
+
+              $msg['confirm']['envoie'] = "Une Email vous a été envoyé.";
+
+            }
           }
         }
       } else {
-        $msg .= "Une erreur est survenue lors de votre demande.<br>";
+        $msg['error']['generale'] = self::ERREUR_POST;
       }
     }
 

@@ -99,7 +99,7 @@ class modeleMembres extends modeleSuper {
   *
   * @return $nbMail (int)
   */
-  public function verifMail($email, $id_membre){
+  public function verifMail($email, $id_membre = NULL){
 
     $req = "SELECT id_membre FROM membres WHERE email = '$email'";
 
@@ -110,6 +110,26 @@ class modeleMembres extends modeleSuper {
     $donnees = $this->bdd()->query($req);
 
     return $nbMail = $donnees->rowCount();
+
+  }
+
+  /**
+  * Intertion d'un nouveau mot de passe si oublié
+  *
+  * @param $mdp (string)
+  * @param $email (string)
+  *
+  * @return $insertion (bool)
+  */
+  public function nouveauMdp($mdp, $email){
+
+    $insertion = $this->bdd()->prepare("UPDATE membres SET mdp = :mdp WHERE email = '$email'");
+
+    $insertion->bindValue(':mdp', $mdp, PDO::PARAM_STR);
+
+    $insertion->execute();
+
+    return $insertion;
 
   }
 

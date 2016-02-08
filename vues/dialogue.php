@@ -5,3 +5,10 @@
     <?php } ?>
   </div>
 <?php } ?>
+<?php if(isset($msg['confirm']) && !empty($msg['confirm'])){ ?>
+  <div class="confirm">
+    <?php foreach ($msg['confirm'] as $key => $value) { ?>
+       <?= $msg['confirm'][$key] ?><br>
+    <?php } ?>
+  </div>
+<?php } ?>
