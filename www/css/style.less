@@ -117,9 +117,8 @@ header {
             transition: color 250ms ease, background 250ms ease;
             &:hover,
             &.active {
-              background: @color1opac;
               color: @hover;
-              text-decoration: overline;
+              text-decoration: underline;
             }
           }
         }
@@ -256,9 +255,32 @@ header {
 
 /* Footer */
 footer {
+  float: left;
   width: 100%;
   background: @color1;
-  float: left;
+  ul {
+    width: 100%;
+    margin: 10px 0;
+    padding: 0;
+    display: inline;
+    li {
+      width: 100%;
+      list-style: none;
+      text-align: center;
+      a {
+        float: left;
+        width: 100%;
+        color: @fond;
+        letter-spacing: 2px;
+        font-size: 1em;
+        padding: 10px;
+        &:hover {
+          color: @hover;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }
 
 form {
@@ -431,6 +453,7 @@ form {
       background: @fond;
       padding: 10px 0;
       margin: 10px 0;
+      transition: background-color 250ms ease, box-shadow 250ms ease;
       &:hover {
         background: @hover;
         box-shadow: @boxshadow;
@@ -599,4 +622,23 @@ form {
       margin: 30px 1%;
     }
   }
+
+  /* Footer */
+  footer {
+    ul {
+      display: block;
+      width: @w_desk;
+      margin: auto;
+      padding: 0;
+      li {
+        width: auto;
+        a {
+          float: left;
+          width: 25%;
+          font-size: 1em;
+        }
+      }
+    }
+  }
+
 }

@@ -30,7 +30,7 @@
       <label>Sexe</label>
       <input type="radio" id="homme" name="sexe" value="homme" checked>
       <label for="homme">Homme</label>
-      <input type="radio" id="femme" name="sexe" value="femme" <?php if(isset($_SESSION['membre']['sexe']) && $_SESSION['membre']['sexe'] === 'femme') echo 'checked'; ?>>
+      <input type="radio" id="femme" name="sexe" value="femme" <?php if(isset($_POST['sexe']) && $_POST['sexe'] === 'femme') {echo 'checked';} elseif(isset($_SESSION['membre']['sexe']) && $_SESSION['membre']['sexe'] === 'femme') {echo 'checked';} ?>>
       <label for="femme">Femme</label>
     </div>
 
@@ -46,10 +46,10 @@
         <option disabled>Choisissez votre type de vélo</option>
         <option value="route">Route</option>
         <option value="vtt"
-        <?php if(isset($_SESSION['membre']['type']) && $_SESSION['membre']['type'] === 'vtt') echo "selected"; ?>
+        <?php if(isset($_POST['type']) && $_POST['type'] === 'vtt') {echo 'selected';} elseif(isset($_SESSION['membre']['type']) && $_SESSION['membre']['type'] === 'vtt') {echo 'selected';} ?>
         >VTT</option>
         <option value="both"
-        <?php if(isset($_SESSION['membre']['type']) && $_SESSION['membre']['type'] === 'both') echo "selected"; ?>
+        <?php if(isset($_POST['type']) && $_POST['type'] === 'both') {echo 'selected';} elseif(isset($_SESSION['membre']['type']) && $_SESSION['membre']['type'] === 'both') {echo 'selected';} ?>
         >Les deux</option>
       </select>
       <em>Choisissez votre type de vélo</em>

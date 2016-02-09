@@ -108,9 +108,8 @@ header .header_cont nav ul li a {
 }
 header .header_cont nav ul li a:hover,
 header .header_cont nav ul li a.active {
-  background: rgba(33, 53, 62, 0.95);
   color: #ffffff;
-  text-decoration: overline;
+  text-decoration: underline;
 }
 #prin .prin_cont {
   padding: 50px 5px;
@@ -238,9 +237,32 @@ header .header_cont nav ul li a.active {
 }
 /* Footer */
 footer {
+  float: left;
   width: 100%;
   background: #21353e;
+}
+footer ul {
+  width: 100%;
+  margin: 10px 0;
+  padding: 0;
+  display: inline;
+}
+footer ul li {
+  width: 100%;
+  list-style: none;
+  text-align: center;
+}
+footer ul li a {
   float: left;
+  width: 100%;
+  color: #eeeeee;
+  letter-spacing: 2px;
+  font-size: 1em;
+  padding: 10px;
+}
+footer ul li a:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
 form {
   display: inline-block;
@@ -403,6 +425,7 @@ form .form-group.radio label[for="femme"] {
   background: #eeeeee;
   padding: 10px 0;
   margin: 10px 0;
+  transition: background-color 250ms ease, box-shadow 250ms ease;
 }
 .tableau .body li:hover {
   background: #ffffff;
@@ -553,5 +576,20 @@ form .form-group.radio label[for="femme"] {
   .bloc.w50 {
     width: 48%;
     margin: 30px 1%;
+  }
+  /* Footer */
+  footer ul {
+    display: block;
+    width: 960px;
+    margin: auto;
+    padding: 0;
+  }
+  footer ul li {
+    width: auto;
+  }
+  footer ul li a {
+    float: left;
+    width: 25%;
+    font-size: 1em;
   }
 }
