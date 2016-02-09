@@ -396,6 +396,53 @@ form {
   text-align: center;
 }
 
+.tableau {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  .w5 {
+    width: 5%;
+  }
+  .w20 {
+    width: 20%;
+  }
+  .head {
+    color: @fond;
+    float: left;
+    width: 100%;
+    border: 2px solid @color1;
+    background: @color1;
+    border-radius: @radius;
+    padding: 10px 0;
+    margin: 10px 0;
+    .cel {
+      float: left;
+    }
+  }
+  .body {
+    margin: 0;
+    padding: 0;
+    li {
+      float: left;
+      width: 100%;
+      list-style: none;
+      border: 2px solid @color1;
+      border-radius: @radius;
+      background: @fond;
+      padding: 10px 0;
+      margin: 10px 0;
+      &:hover {
+        background: @hover;
+        box-shadow: @boxshadow;
+      }
+      span {
+        float: left;
+        display: block;
+      }
+    }
+  }
+}
+
 /********** Responsive **********/
 @media screen and (min-width: 600px) {
   #bouton_menu {
