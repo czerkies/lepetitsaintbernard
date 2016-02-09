@@ -87,7 +87,7 @@ class controleurMembres extends controleurSuper {
     session_start();
     $msg['error'] = array();
     $meta['title'] = 'Créer son compte';
-    $meta['menu'] = 'creer-son-compte';
+    $meta['menu'] = 'creation-compte';
     $userConnect = $this->userConnect();
     $userConnectAdmin = $this->userConnectAdmin();
 

@@ -106,9 +106,11 @@ header .header_cont nav ul li a {
   font-size: 1.5em;
   transition: color 250ms ease, background 250ms ease;
 }
-header .header_cont nav ul li a:hover {
+header .header_cont nav ul li a:hover,
+header .header_cont nav ul li a.active {
   background: rgba(33, 53, 62, 0.95);
   color: #ffffff;
+  text-decoration: overline;
 }
 #prin .prin_cont {
   padding: 50px 5px;
