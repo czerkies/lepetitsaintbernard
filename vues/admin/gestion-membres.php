@@ -14,7 +14,7 @@
 <?php
 if(!$meta['add']){
   if($listeMembres){
-    include '../vues/dialogue.php';
+    include '../vues/include/dialogue.php';
 ?>
     <div class="tableau">
       <div class="head">

@@ -15,7 +15,7 @@
     </div>
   </div>
   <h2 id="vosInformations">Vos informations</h2>
-  <?php include '../vues/dialogue.php'; ?>
+  <?php include '../vues/include/dialogue.php'; ?>
   <form class="large" action="#vosInformations" method="post">
 
     <?= $formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Il vous servira d'identifiant", $msg, false, false, 'membre'); ?>

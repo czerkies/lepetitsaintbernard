@@ -1,7 +1,7 @@
 <?php if(!$userConnect){ ?>
 <form class="middle" action="" method="post">
 
-  <?php include '../vues/dialogue.php'; ?>
+  <?php include '../vues/include/dialogue.php'; ?>
 
   <?= $formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Votre Email personnel", $msg); ?>
 

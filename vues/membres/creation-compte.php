@@ -1,7 +1,7 @@
 <?php if(!($userConnect || $userConnectAdmin)) { ?>
   <h2>Créer votre compte</h2>
 
-  <?php include '../vues/dialogue.php'; ?>
+  <?php include '../vues/include/dialogue.php'; ?>
 
   <form class="large" action="" method="post">
     <?php include '../vues/include/formulaire-membre.php'; ?>
