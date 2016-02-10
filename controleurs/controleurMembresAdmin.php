@@ -23,7 +23,7 @@ class controleurMembresAdmin extends controleurSuper {
     $msg['error'] = array();
 
     $formulaire = new controleurFonctions();
-    $gestionMembres = new modeleMembresAdmin();
+    $gestionMembres = new modeleMembres();
 
     if(isset($_GET['supp']) && !empty($_GET['supp']) && is_numeric($_GET['supp'])){
 
