@@ -3,7 +3,12 @@
 
   <?php include '../vues/dialogue.php'; ?>
 
-  <?php include '../vues/include/formulaire-membre.php'; ?>
+  <form class="large" action="" method="post">
+    <?php include '../vues/include/formulaire-membre.php'; ?>
+    <div class="form-group submit">
+      <input type="submit" value="Créer mon compte">
+    </div>
+  </form>
 
 <?php } else {
   header('Location: '.RACINE_SITE.'mon-compte/');
