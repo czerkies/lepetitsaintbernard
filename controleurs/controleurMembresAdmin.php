@@ -25,6 +25,18 @@ class controleurMembresAdmin extends controleurSuper {
     $formulaire = new controleurFonctions();
     $gestionMembres = new modeleMembresAdmin();
 
+    if(isset($_GET['supp']) && !empty($_GET['supp']) && is_numeric($_GET['supp'])){
+
+      $id_membre = htmlentities($_GET['supp']);
+
+      if($gestionMembres->suppMembre($id_membre)){
+
+        $msg['error']['confirm'] = "L'utilisateur a bien été supprimé.";
+
+      }
+
+    }
+
     $listeMembres = $gestionMembres->listeMembres();
 
     $this->Render('../vues/admin/gestion-membres.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'formulaire' => $formulaire, 'listeMembres' => $listeMembres));

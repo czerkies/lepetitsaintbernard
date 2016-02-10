@@ -355,6 +355,7 @@ form .form-group.radio label[for="femme"] {
 }
 .error {
   animation: msgbounce 500ms ease;
+  display: inline-block;
   width: 98%;
   margin: 1%;
   border: 2px solid #e53e1e;
@@ -391,7 +392,8 @@ form .form-group.radio label[for="femme"] {
 .tableau {
   text-align: center;
   display: inline-block;
-  width: 100%;
+  width: 98%;
+  margin: 1%;
 }
 .tableau .w5 {
   width: 5%;

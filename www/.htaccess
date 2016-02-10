@@ -13,6 +13,7 @@ RewriteRule ^mot-de-passe-oublie/ index.php?controleur=membres&action=motDePasse
 
 #ADMIN
 
+RewriteRule ^admin/gestion-membres/suppression/(.*)$ index.php?controleur=membresAdmin&action=gestionMembres&supp=$1 [L]
 RewriteRule ^admin/gestion-membres/ index.php?controleur=membresAdmin&action=gestionMembres [L]
 
 ErrorDocument 401 /lepetitsaintbernard/www/page-introuvable/
