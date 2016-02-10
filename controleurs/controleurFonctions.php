@@ -126,7 +126,7 @@ class controleurFonctions extends controleurSuper {
   *
   * @return $field string
   */
-  public function fieldsFormInput($label, $type, $name, $placeholder, $em, $msg, $class = FALSE, $input = FALSE){
+  public function fieldsFormInput($label, $type, $name, $placeholder, $em, $msg, $class = FALSE, $input = FALSE, $sessionArray = FALSE){
 
     $field = '<div class="form-group';
     if($class) $field .= ' '.$class;
@@ -139,8 +139,8 @@ class controleurFonctions extends controleurSuper {
 
       if(isset($_POST[$name])) {
         $field .= 'value="'.$_POST[$name].'"';
-      } elseif(isset($_SESSION['membre'][$name])) {
-        $field .= 'value="'.$_SESSION['membre'][$name].'"';
+      } elseif(isset($_SESSION[$sessionArray][$name])) {
+        $field .= 'value="'.$_SESSION[$sessionArray][$name].'"';
       } elseif(isset($_COOKIE[$name])) {
         $field .= 'value="'.$_COOKIE[$name].'"';
       }
