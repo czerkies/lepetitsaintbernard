@@ -20,8 +20,8 @@ spl_autoload_register('autoloader');
 
 function erreurUrl(){
 
-  include('../controleurs/controleursFonctions.php');
-  $instance = new controleursFonctions();
+  include('../controleurs/controleurFonctions.php');
+  $instance = new controleurFonctions();
   $instance->urlIncorrect();
 
 }

@@ -37,7 +37,10 @@
               </li>
             <?php } if($userConnectAdmin) { ?>
               <li>
-                <a class="sous_li <?php if(isset($meta['menu']) && $meta['menu'] === 'gestion-membres') echo "active"; ?>" href="<?= RACINE_SITE; ?>admin/gestion-membres/">Gestion des membres</a>
+                <a class="sous_li <?php if(isset($meta['menu']) && ($meta['menu'] === 'liste-membres' || $meta['menu'] === 'ajout-admin')) echo "active"; ?>" href="<?= RACINE_SITE; ?>admin/gestion-membres/">Gestion des membres</a>
+              </li>
+              <li>
+                <a class="sous_li <?php if(isset($meta['menu']) && ($meta['menu'] === 'gestion-stocks' || $meta['menu'] === 'ajouter-reference')) echo "active"; ?>" href="<?= RACINE_SITE; ?>admin/gestion-stocks/">Gestion des stocks</a>
               </li>
             <?php } ?>
           </ul>
