@@ -18,7 +18,7 @@ RewriteRule ^admin/gestion-membres/ index.php?controleur=membresAdmin&action=ges
 RewriteRule ^admin/ajouter-administrateur/ index.php?controleur=membresAdmin&action=ajoutAdmin [L]
 
 RewriteRule ^admin/gestion-stocks/ index.php?controleur=stocks&action=gestionStocks [L]
-RewriteRule ^admin/ajouter-reference/ index.php?controleur=stock&action=ajoutReference [L]
+RewriteRule ^admin/ajouter-reference/ index.php?controleur=stocks&action=ajoutReference [L]
 
 ErrorDocument 401 /lepetitsaintbernard/www/page-introuvable/
 ErrorDocument 403 /lepetitsaintbernard/www/page-introuvable/
