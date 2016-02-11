@@ -6,6 +6,8 @@
 */
 class controleurStocks extends controleurSuper {
 
+  const ERREUR_POST = 'Une erreur est survenue lors de votre demande.';
+
   /**
   * Gestion des stocks
   *
@@ -40,10 +42,25 @@ class controleurStocks extends controleurSuper {
     $userConnectAdmin = $this->userConnectAdmin();
 
     $msg['error'] = array();
+    $formulaire = new controleurFonctions();
+
+    if(isset($_GET['type']) && !empty($_GET['type'])
+    && $_GET['type'] === 'cadre' || $_GET['type'] === 'roue'){
+
+      switch ($_GET['type']) {
+        case 'cadre':
+          $meta['type'] = 'cadre';
+          break;
+
+        case 'roue':
+        $meta['type'] = 'roue';
+          break;
+      }
+
+    }
 
 
-
-    $this->Render('../vues/admin/ajout-reference.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
+    $this->Render('../vues/admin/ajout-reference.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'formulaire' => $formulaire));
 
   }
 

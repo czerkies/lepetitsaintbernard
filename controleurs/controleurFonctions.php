@@ -156,12 +156,16 @@ class controleurFonctions extends controleurSuper {
 
   }
 
-  // ********** Fonction pour une page de type "404" ********** //
+  /**
+  * Fonction urlIncorrect gère la page 404
+  *
+  * @return Render (array)
+  */
   public function urlIncorrect(){
 
     session_start();
-    $title['name'] = 'Page non trouvée';
-    $title['menu'] = 0;
+    $meta['title'] = 'Page non trouvée';
+    $meta['menu'] = '';
     $userConnect = $this->userConnect();
     $userConnectAdmin = $this->userConnectAdmin();
 
