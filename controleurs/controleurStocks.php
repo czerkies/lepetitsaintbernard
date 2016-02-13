@@ -46,8 +46,17 @@ class controleurStocks extends controleurSuper {
 
     $dataGet = array();
 
+    // Pièces
+    $valuesPieces = ['cadre', 'roue', 'selle', 'guidon', 'guidon', 'plateau'];
+
+    // Vélos
+    $valuesType = ['route', 'vtt'];
+
+    // Tailles
+    $valuesTaille = ['150-161', '162-174', '175-187', '188-200'];
+
     if(isset($_GET['piece']) && !empty($_GET['piece'])
-    && ($_GET['piece'] === 'cadre' || $_GET['piece'] === 'roue')){
+    && (in_array($_GET['piece'], $valuesPieces) != false)){
 
       switch ($_GET['piece']) {
         case 'cadre':
@@ -56,11 +65,21 @@ class controleurStocks extends controleurSuper {
 
           if($_POST){
 
-            if(isset($_POST['type_piece']) && isset($_POST['titre'])
-            && isset($_POST['type_velo']) && isset($_POST['poids'])
-            && isset($_POST['quantite']) && isset($_POST['matiere'])
-            && isset($_POST['taille'])) {
-              $msg['error']['general'] = 'TEST';
+            if(isset($_POST['type_piece']) && (in_array($_POST['type_piece'], $valuesPieces) != false)
+            && isset($_POST['titre'])
+            && isset($_POST['type_velo']) && (in_array($_POST['type_velo'], $valuesType) != false)
+            && isset($_POST['poids'])
+            && isset($_POST['quantite']) && isset($_POST['description'])
+            //&& isset($_POST['img'])
+            && isset($_POST['matiere'])
+            && isset($_POST['taille']) && (in_array($_POST['taille'], $valuesTaille) != false)) {
+
+              $msg['error']['confirm'] = 'TEST';
+
+            } else {
+
+              $msg['error']['generale'] = self::ERREUR_POST;
+
             }
 
           }

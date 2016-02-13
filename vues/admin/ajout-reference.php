@@ -29,14 +29,14 @@ if($userConnectAdmin){
 
     <form class="large" action="#details_piece" method="post">
 
-      <input type="hidden" name="type_piece" value="<?php if(isset($_GET['type'])) echo $_GET['type']; ?>">
+      <input type="hidden" name="type_piece" value="<?php if(isset($_GET['piece'])) echo $_GET['piece']; ?>">
 
       <?= $formulaire->fieldsFormInput('Nom de la pièce', 'text', 'titre', 'Nom de la pièce', 'Indiquer le nom de la pièce', $msg); ?>
 
       <?php $valuesType = ['disabled' => 'Type de vélo de votre nouvelle pièce', 'route' => 'Route', 'vtt' => 'VTT'];
       echo $formulaire->fieldsFormSelect('Type de vélo', $valuesType, 'type_velo', 'Type de vélo pour votre nouvelle pièce', $msg); ?>
 
-      <?= $formulaire->fieldsFormInput('Poids de la pièce', 'number', 'poids', 'Poids de la pièce', 'Indiquer le poids de la pièce', $msg); ?>
+      <?= $formulaire->fieldsFormInput('Poids de la pièce', 'number', 'poids', 'Poids de la pièce', 'Indiquer le poids de la pièce en grammes', $msg); ?>
 
       <?= $formulaire->fieldsFormInput('Quantité', 'number', 'quantite', '00', 'Ajouter la quantité de la pièce disponible', $msg); ?>
 
@@ -45,7 +45,7 @@ if($userConnectAdmin){
         case 'cadre':
     ?>
 
-      <?php $valuesMat = ['disabled' => 'Matière du cadre', 'alluminium' => 'Alluminium', 'cabone' => 'Carbonne', 'metal' => 'Metal'];
+      <?php $valuesMat = ['disabled' => 'Matière du cadre', 'alluminium' => 'Alluminium', 'cabone' => 'Carbone', 'metal' => 'Metal'];
       echo $formulaire->fieldsFormSelect('Matière du cadre', $valuesMat, 'matiere', 'Matière du cadre', $msg); ?>
 
       <?php $valuesTaille = ['disabled' => 'Taille du cadre', '150-161' => '150/161 cm', '162-174' => '162/174 cm', '175-187' => '175/187 cm', '188-200' => '188/200 cm'];
