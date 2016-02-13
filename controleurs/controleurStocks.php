@@ -56,7 +56,12 @@ class controleurStocks extends controleurSuper {
 
           if($_POST){
 
-            $msg['error']['general'] = 'TEST';
+            if(isset($_POST['type_piece']) && isset($_POST['titre'])
+            && isset($_POST['type_velo']) && isset($_POST['poids'])
+            && isset($_POST['quantite']) && isset($_POST['matiere'])
+            && isset($_POST['taille'])) {
+              $msg['error']['general'] = 'TEST';
+            }
 
           }
 
