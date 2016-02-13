@@ -273,7 +273,8 @@ form .form-group {
   width: 98%;
   margin: 0 1%;
 }
-form .form-group:hover input {
+form .form-group:hover input,
+form .form-group:hover textarea {
   background: #ffffff;
 }
 form .form-group:hover em {
@@ -293,7 +294,8 @@ form .form-group em {
   transition: opacity 250ms ease;
   opacity: 0;
 }
-form .form-group input {
+form .form-group input,
+form .form-group textarea {
   transition: background-color 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
   margin: 0;
   font-size: 1em;
@@ -303,12 +305,14 @@ form .form-group input {
   padding: 10px;
   background: #eeeeee;
 }
-form .form-group input:focus {
+form .form-group input:focus,
+form .form-group textarea:focus {
   outline: none;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   background: #ffffff;
 }
-form .form-group input[type="submit"] {
+form .form-group input[type="submit"],
+form .form-group textarea[type="submit"] {
   background: #eeeeee;
   color: #21353e;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -316,14 +320,17 @@ form .form-group input[type="submit"] {
   margin: 50px 0;
   letter-spacing: 2px;
 }
-form .form-group input[type="submit"]:hover {
+form .form-group input[type="submit"]:hover,
+form .form-group textarea[type="submit"]:hover {
   background: #21353e;
   color: #ffffff;
 }
-form .form-group input[type="submit"]:active {
+form .form-group input[type="submit"]:active,
+form .form-group textarea[type="submit"]:active {
   border-color: #ffffff;
 }
-form .form-group.error-form input {
+form .form-group.error-form input,
+form .form-group.error-form textarea {
   border-color: #e53e1e;
 }
 form .form-group.checkbox input,
@@ -340,7 +347,7 @@ form .form-group.checkbox label {
 form .form-group select {
   width: 100%;
   border: 2px solid #21353e;
-  height: 52px;
+  height: 53px;
   font-size: 1em;
 }
 form .form-group.radio input[type="radio"] {

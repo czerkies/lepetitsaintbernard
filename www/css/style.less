@@ -291,7 +291,8 @@ form {
     width: 98%;
     margin: 0 1%;
     &:hover {
-      input {
+      input,
+      textarea {
         background: @hover;
       }
       em {
@@ -312,7 +313,8 @@ form {
       transition: opacity 250ms ease;
       opacity: 0;
     }
-    input {
+    input,
+    textarea {
       transition: background-color 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
       margin: 0;
       font-size: 1em;
@@ -343,7 +345,8 @@ form {
       }
     }
     &.error-form {
-      input {
+      input,
+      textarea {
         border-color: @error;
       }
     }
@@ -363,7 +366,7 @@ form {
     select {
       width: 100%;
       border: 2px solid @color1;
-      height: 52px;
+      height: 53px;
       font-size: 1em;
     }
     &.radio {
