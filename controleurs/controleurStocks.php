@@ -51,7 +51,15 @@ class controleurStocks extends controleurSuper {
 
       switch ($_GET['piece']) {
         case 'cadre':
+
           $dataGet['piece'] = 'cadre';
+
+          if($_POST){
+
+            $msg['error']['general'] = 'TEST';
+
+          }
+
           break;
 
         case 'roue':

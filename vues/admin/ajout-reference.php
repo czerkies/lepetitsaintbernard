@@ -8,8 +8,6 @@ if($userConnectAdmin){
 
   <h2 id="ajout">Ajouter une référence</h2>
 
-  <?php include '../vues/include/dialogue.php'; ?>
-
   <form class="middle" action="#ajout" method="get">
 
     <?php
@@ -25,7 +23,11 @@ if($userConnectAdmin){
 
   <?php if(isset($dataGet['piece'])){ ?>
 
-    <form class="large" action="" method="post">
+    <h2 id="details_piece">Détails de la pièce</h2>
+
+    <?php include '../vues/include/dialogue.php'; ?>
+
+    <form class="large" action="#details_piece" method="post">
 
       <?= $formulaire->fieldsFormInput('Nom de la pièce', 'text', 'nom', 'Nom de la pièce', 'Indiquer le nom de la pièce', $msg); ?>
 
@@ -62,11 +64,18 @@ if($userConnectAdmin){
 
     <?php } ?>
 
-    <div class="form-group w100 <?php if(isset($msg['error']['description'])) echo ' error-form'; ?>">
-      <label for="description">Description</label>
-      <textarea name="description" required><?php if(isset($_POST['description'])) echo $_POST['description']; ?></textarea>
-      <em>Entrez une description de la pièce (250 carractères max).</em>
-    </div>
+      <div class="form-group w100 <?php if(isset($msg['error']['description'])) echo ' error-form'; ?>">
+        <label for="description">Description</label>
+        <textarea name="description" required><?php if(isset($_POST['description'])) echo $_POST['description']; ?></textarea>
+        <em>Entrez une description de la pièce (250 carractères max).</em>
+      </div>
+
+      <?= $formulaire->fieldsFormInput('Photo de la pièce', 'file', 'img', '', 'Photo en .jpg uniquement', $msg, 'w100'); ?>
+
+      <div class="form-group submit">
+        <input type="submit" value="Ajouter la nouvelle pièce">
+      </div>
+
 
     </form>
 
