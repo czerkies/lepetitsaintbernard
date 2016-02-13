@@ -40,20 +40,10 @@
 
     <?= $formulaire->fieldsFormInput('Poids', 'number', 'poids', 'Poids', "Votre poids en kilogrammes", $msg, false, false, 'membre'); ?>
 
-    <div class="form-group <?php if(isset($msg['error']['type'])) echo 'error-form'; ?>">
-      <label for="type">Type de vélo</label>
-      <select name="type">
-        <option disabled>Choisissez votre type de vélo</option>
-        <option value="route">Route</option>
-        <option value="vtt"
-        <?php if(isset($_POST['type']) && $_POST['type'] === 'vtt') {echo 'selected';} elseif(isset($_SESSION['membre']['type']) && $_SESSION['membre']['type'] === 'vtt') {echo 'selected';} ?>
-        >VTT</option>
-        <option value="both"
-        <?php if(isset($_POST['type']) && $_POST['type'] === 'both') {echo 'selected';} elseif(isset($_SESSION['membre']['type']) && $_SESSION['membre']['type'] === 'both') {echo 'selected';} ?>
-        >Les deux</option>
-      </select>
-      <em>Choisissez votre type de vélo</em>
-    </div>
+    <?php
+    $values = ['route' => 'Route', 'vtt' => 'VTT', 'both' => 'Les deux'];
+    echo $formulaire->fieldsFormSelect('Type de vélo', $values, 'type', 'Choisissez votre type de vélo', $msg, false, false, 'membre');
+    ?>
 
     <?= $formulaire->fieldsFormInput('Prix maximum', 'number', 'budget', '0000', "Donnez nous votre budget maximum en euros", $msg, false, false, 'membre'); ?>
 

@@ -44,23 +44,25 @@ class controleurStocks extends controleurSuper {
     $msg['error'] = array();
     $formulaire = new controleurFonctions();
 
-    if(isset($_GET['type']) && !empty($_GET['type'])
-    && $_GET['type'] === 'cadre' || $_GET['type'] === 'roue'){
+    $dataGet = array();
 
-      switch ($_GET['type']) {
+    if(isset($_GET['piece']) && !empty($_GET['piece'])
+    && ($_GET['piece'] === 'cadre' || $_GET['piece'] === 'roue')){
+
+      switch ($_GET['piece']) {
         case 'cadre':
-          $meta['type'] = 'cadre';
+          $dataGet['piece'] = 'cadre';
           break;
 
         case 'roue':
-        $meta['type'] = 'roue';
+        $dataGet['piece'] = 'roue';
           break;
       }
 
     }
 
 
-    $this->Render('../vues/admin/ajout-reference.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'formulaire' => $formulaire));
+    $this->Render('../vues/admin/ajout-reference.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'formulaire' => $formulaire, 'dataGet' => $dataGet));
 
   }
 

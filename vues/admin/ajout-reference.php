@@ -6,46 +6,34 @@ if($userConnectAdmin){
 
   ?>
 
-  <h2>Ajouter une référence</h2>
+  <h2 id="ajout">Ajouter une référence</h2>
 
   <?php include '../vues/include/dialogue.php'; ?>
 
-  <form class="middle" action="" method="get">
+  <form class="middle" action="#ajout" method="get">
 
-    <div class="form-group <?php if(isset($msg['error']['type'])) echo 'error-form'; ?>">
-      <label for="type">Type de pièce</label>
-      <select name="type">
-        <option disabled>Choisissez votre type de pièce à ajouter</option>
-        <option value="cadre">Cadre</option>
-        <option value="roue"
-        <?php if(isset($_GET['type']) && $_GET['type'] === 'roue') echo "selected"; ?>
-        >Roue</option>
-        <option value="selle"
-        <?php if(isset($_GET['type']) && $_GET['type'] === 'selle') echo "selected"; ?>
-        >Selle</option>
-        <option value="Guidon"
-        <?php if(isset($_GET['type']) && $_GET['type'] === 'guidon') echo "selected"; ?>
-        >Guidon</option>
-        <option value="plateau"
-        <?php if(isset($_GET['type']) && $_GET['type'] === 'plateau') echo "selected"; ?>
-        >Plateau</option>
-      </select>
-      <em>Choisissez votre type de pièce à ajouter</em>
-    </div>
+    <?php
+    $valuesPieces = ['disabled' => 'Choisissez votre type de pièce à ajouter', 'cadre' => 'Cadre', 'roue' => 'Roue', 'selle' => 'Selle', 'guidon' => 'Guidon', 'guidon' => 'Guidon', 'plateau' => 'Plateau'];
+    echo $formulaire->fieldsFormSelect('Type de pièce', $valuesPieces, 'piece', 'Choisissez votre type de pièce à ajouter', $msg);
+    ?>
+
     <div class="form-group submit">
       <input type="submit" value="Sélectionner ce type de pièce">
     </div>
 
   </form>
 
-  <?php if(isset($meta['type'])){ ?>
+  <?php if(isset($dataGet['piece'])){ ?>
 
     <form class="large" action="" method="post">
+
+      <?php $values = ['route' => 'Test', 'vtt' => 'VTT'];
+      echo $formulaire->fieldsFormSelect('Type de vélo', $values, 'type', 'Choisissez votre type de vélo pour la nouvelle pièce', $msg); ?>
 
       <?= $formulaire->fieldsFormInput('Nom de la pièce', 'text', 'nom', 'Nom de la pièce', 'Indiquer le nom de la pièce', $msg); ?>
 
     <?php
-      switch ($meta['type']) {
+      switch ($dataGet['piece']) {
         case 'cadre':
     ?>
 

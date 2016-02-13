@@ -2,7 +2,6 @@
 
 class controleurFonctions extends controleurSuper {
 
-  // ********** Controle du formulaire de la création et modification profil de membre ********** //
   public function verifFormMembre($value, $id_membre = NULL){
 
     $msg = '';
@@ -153,6 +152,65 @@ class controleurFonctions extends controleurSuper {
     $field .= '</div>';
 
     return $field;
+
+  }
+
+  /**
+  * Permet de générer un champs de type "select"
+  *
+  * @param $label string
+  * @param $type string
+  * @param $name string
+  * @param $placeholder string
+  * @param $em string
+  * @param $msg array
+  * @param $class (option) string
+  * @param $input (option) string
+  *
+  * @return $field string
+  */
+  public function fieldsFormSelect($label, $array = array(), $name, $em, $msg, $class = FALSE, $input = FALSE, $sessionArray = FALSE){
+
+    $select = '<div class="form-group';
+    if($class) $select .= ' '.$class;
+    if(isset($msg['error'][$name])) $select .= ' error-form';
+    $select .= '">';
+    $select .= '<label for="'.$name.'">'.$label.'</label>';
+    $select .= '<select name="'.$name.'" id="'.$name.'"';
+
+    if($input) $select .= ' '.$input.' ';
+    $select .= '>';
+
+    foreach ($array as $key => $value) {
+
+      if($key != 'disabled') {
+
+        $select .= '<option value="'.$key.'"';
+        if(isset($_POST[$name])) {
+          if($_POST[$name] === $key) $select .= ' selected';
+        }elseif(isset($_GET[$name])) {
+          if($_GET[$name] === $key) $select .= 'selected';
+        }elseif(isset($_SESSION[$sessionArray][$name])) {
+          if($_SESSION[$sessionArray][$name] === $key) $select .= ' selected';
+        }elseif(isset($_COOKIE[$name]) && $_COOKIE[$name] === $key) {
+          $select .= ' selected';
+        }
+
+      } else {
+
+        $select .= '<option disabled';
+
+      }
+
+      $select .= '>'.$value.'</option>';
+
+    }
+
+    $select .= '</select>';
+    $select .= '<em>'.$em.'</em>';
+    $select .= '</div>';
+
+    return $select;
 
   }
 
