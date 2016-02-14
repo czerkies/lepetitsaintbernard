@@ -159,7 +159,7 @@ class controleurFonctions extends controleurSuper {
     $field .= '<em>'.$em.'</em>';
     $field .= '</div>';
 
-    return $field;
+    echo $field;
 
   }
 
@@ -195,12 +195,12 @@ class controleurFonctions extends controleurSuper {
 
         $select .= '<option value="'.$key.'"';
         if(isset($_POST[$name])) {
-          if($_POST[$name] === $key) $select .= ' selected';
+          if($_POST[$name] == $key) $select .= ' selected';
         }elseif(isset($_GET[$name])) {
-          if($_GET[$name] === $key) $select .= 'selected';
+          if($_GET[$name] == $key) $select .= 'selected';
         }elseif(isset($_SESSION[$sessionArray][$name])) {
-          if($_SESSION[$sessionArray][$name] === $key) $select .= ' selected';
-        }elseif(isset($_COOKIE[$name]) && $_COOKIE[$name] === $key) {
+          if($_SESSION[$sessionArray][$name] == $key) $select .= ' selected';
+        }elseif(isset($_COOKIE[$name]) && $_COOKIE[$name] == $key) {
           $select .= ' selected';
         }
 
@@ -218,7 +218,7 @@ class controleurFonctions extends controleurSuper {
     $select .= '<em>'.$em.'</em>';
     $select .= '</div>';
 
-    return $select;
+    echo $select;
 
   }
 

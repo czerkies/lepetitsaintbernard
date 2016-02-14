@@ -48,18 +48,18 @@ class controleurStocks extends controleurSuper {
     $dataGet = array();
 
     // Pièces
-    $valuesPieces = ['cadre', 'roue', 'selle', 'guidon', 'guidon', 'plateau'];
+    $select['piece'] = ['disabled' => 'Choisissez votre type de pièce à ajouter', 'cadre' => 'Cadre', 'roue' => 'Roue', 'selle' => 'Selle', 'guidon' => 'Guidon', 'guidon' => 'Guidon', 'plateau' => 'Plateau'];
     // Vélos
-    $valuesType = ['route', 'vtt'];
+    $select['type_velo'] = ['disabled' => 'Type de vélo de votre nouvelle pièce', 'route' => 'Route', 'vtt' => 'VTT'];
     // Tailles
-    $valuesTaille = ['150-161', '162-174', '175-187', '188-200'];
+    $select['taille'] = ['disabled' => 'Taille du cadre', 1 => '150/161 cm', 2 => '162/174 cm', 3 => '175/187 cm', 4 => '188/200 cm'];
     // Matiere
-    $valuesMatiere = ['alluminium', 'cabone', 'metal'];
+    $select['matiere'] = ['disabled' => 'Matière du cadre', 'alluminium' => 'Alluminium', 'cabone' => 'Carbone', 'metal' => 'Metal'];
     // Sexe
-    $valuesSexe = ['homme', 'femme'];
+    $select['sexe'] = ['disabled' => 'Cadre pour homme ou femme', 'homme' => 'Homme', 'femme' => 'Femme'];
 
     if(isset($_GET['piece']) && !empty($_GET['piece'])
-    && (in_array($_GET['piece'], $valuesPieces) != false)){
+    && (array_key_exists($_GET['piece'], $select['piece']) != false)){
 
       switch ($_GET['piece']) {
         case 'cadre':
@@ -68,14 +68,13 @@ class controleurStocks extends controleurSuper {
 
           if($_POST){
 
-            if(isset($_POST['type_piece']) && (in_array($_POST['type_piece'], $valuesPieces) != false)
-            && isset($_POST['type_velo']) && (in_array($_POST['type_velo'], $valuesType) != false)
+            if(isset($_POST['type_velo']) && (array_key_exists($_POST['type_velo'], $select['type_velo']) != false)
             && isset($_POST['titre']) && isset($_POST['quantite']) && isset($_POST['poids'])
             && isset($_POST['prix']) && isset($_POST['description']) && isset($_FILES['img'])
             // Controle Cadre
-            && isset($_POST['matiere']) && (in_array($_POST['matiere'], $valuesMatiere) != false)
-            && isset($_POST['sexe']) && (in_array($_POST['sexe'], $valuesSexe) != false)
-            && isset($_POST['taille']) && (in_array($_POST['taille'], $valuesTaille) != false)) {
+            && isset($_POST['matiere']) && (array_key_exists($_POST['matiere'], $select['matiere']) != false)
+            && isset($_POST['sexe']) && (array_key_exists($_POST['sexe'], $select['sexe']) != false)
+            && isset($_POST['id_taille']) && (array_key_exists($_POST['id_taille'], $select['taille']) != false)) {
 
               $msg = $formulaire->verifFormPiece($_POST, $dataGet['piece']);
 
@@ -89,7 +88,7 @@ class controleurStocks extends controleurSuper {
 
                 extract($_POST);
 
-                if($donneesStocks->insertPieceCadre($type_velo, $titre, $poids, $prix, $description, $imgBDD, $matiere, $sexe, $taille)){
+                if($donneesStocks->insertPieceCadre($titre, $type_velo, $poids, $prix, $quantite, $description, $imgBDD, $matiere, $sexe, $taille)){
 
                   $msg['error']['confirm'] = 'Votre nouvelle pièce de type "Cadre" a bien été ajouté dans nos stocks avec une quantité de '.$quantite.'.';
 
@@ -113,7 +112,7 @@ class controleurStocks extends controleurSuper {
     }
 
 
-    $this->Render('../vues/admin/ajout-reference.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'formulaire' => $formulaire, 'dataGet' => $dataGet));
+    $this->Render('../vues/admin/ajout-reference.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'formulaire' => $formulaire, 'dataGet' => $dataGet, 'select' => $select));
 
   }
 

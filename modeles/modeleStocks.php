@@ -12,19 +12,20 @@ class modeleStocks extends modeleSuper {
   * @param $type_velo, $titre, $poids, $prix, $description, $matiere, $sexe, $taille
   * @return $insertion (bool)
   */
-  public function insertPieceCadre($type_velo, $titre, $poids, $prix, $description, $img, $matiere, $sexe, $taille){
+  public function insertPieceCadre($titre, $type_velo, $poids, $prix, $quantite, $description, $img, $matiere, $sexe, $id_taille){
 
-    $insertion = $this->bdd()->prepare("INSERT INTO cadres(type_velo, titre, poids, prix, description, img, matiere, sexe, taille) VALUES(:type_velo, :titre, :poids, :prix, :description, :img, :matiere, :sexe, :taille)");
+    $insertion = $this->bdd()->prepare("INSERT INTO cadres(type_velo, titre, poids, prix, quantite, description, img, matiere, sexe, id_taille) VALUES(:type_velo, :titre, :poids, :prix, :quantite, :description, :img, :matiere, :sexe, :id_taille)");
 
     $insertion->bindValue(':type_velo', $type_velo, PDO::PARAM_STR);
     $insertion->bindValue(':titre', $titre, PDO::PARAM_STR);
     $insertion->bindValue(':poids', $poids, PDO::PARAM_INT);
     $insertion->bindValue(':prix', $prix, PDO::PARAM_INT);
+    $insertion->bindValue(':quantite', $quantite, PDO::PARAM_INT);
     $insertion->bindValue(':description', $description, PDO::PARAM_STR);
     $insertion->bindValue(':img', $img, PDO::PARAM_STR);
     $insertion->bindValue(':matiere', $matiere, PDO::PARAM_STR);
     $insertion->bindValue(':sexe', $sexe, PDO::PARAM_STR);
-    $insertion->bindValue(':taille', $taille, PDO::PARAM_INT);
+    $insertion->bindValue(':id_taille', $id_taille, PDO::PARAM_INT);
 
     $insertion->execute();
 
