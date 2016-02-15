@@ -1,10 +1,14 @@
-<?= $formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Il vous servira d'identifiant", $msg); ?>
+<?php
 
-<?= $formulaire->fieldsFormInput('Mot de passe', 'password', 'mdp', 'Mot de passe', "Doit contenir au moins une majuscule ou chiffre", $msg); ?>
+$formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Il vous servira d'identifiant", $msg);
 
-<?= $formulaire->fieldsFormInput('Nom', 'text', 'nom', 'Nom', "Votre Nom est obligatoire", $msg); ?>
+$formulaire->fieldsFormInput('Mot de passe', 'password', 'mdp', 'Mot de passe', "Doit contenir au moins une majuscule ou chiffre", $msg);
 
-<?= $formulaire->fieldsFormInput('Prénom', 'text', 'prenom', 'Prénom', "Votre Prénom est obligatoire", $msg); ?>
+$formulaire->fieldsFormInput('Nom', 'text', 'nom', 'Nom', "Votre Nom est obligatoire", $msg);
+
+$formulaire->fieldsFormInput('Prénom', 'text', 'prenom', 'Prénom', "Votre Prénom est obligatoire", $msg);
+
+?>
 
 <div class="form-group radio <?php if(isset($msg['error']['sexe'])) echo 'error-form'; ?>">
   <label>Sexe</label>
@@ -14,21 +18,22 @@
   <label for="femme">Femme</label>
 </div>
 
-<?= $formulaire->fieldsFormInput('Age', 'number', 'age', 'Age', "Votre age en année", $msg, false, 'min="16"'); ?>
-
-<?= $formulaire->fieldsFormInput('Taille', 'number', 'taille', '000', "Votre taille en centimètres", $msg, false, 'min="150"'); ?>
-
-<?= $formulaire->fieldsFormInput('Poids', 'number', 'poids', 'Poids', "Votre poids en kilogrammes", $msg, false, 'min="40"'); ?>
-
 <?php
-$values = ['route' => 'Route', 'vtt' => 'VTT', 'both' => 'Les deux'];
-echo $formulaire->fieldsFormSelect('Type de vélo', $values, 'type', 'Choisissez votre type de vélo', $msg);
-?>
 
-<?= $formulaire->fieldsFormInput('Prix maximum', 'number', 'budget', '0000', "Donnez nous votre budget maximum en euros", $msg, false, 'min="1"'); ?>
+$formulaire->fieldsFormInput('Age', 'number', 'age', 'Age', "Votre age en année", $msg, false, 'min="16"');
 
-<?= $formulaire->fieldsFormInput('Adresse', 'text', 'adresse', 'Adresse', "Entrez une adresse complète pour la livraison et facturation", $msg, 'w100'); ?>
+$formulaire->fieldsFormInput('Taille', 'number', 'taille', '000', "Votre taille en centimètres", $msg, false, 'min="150"');
 
-<?= $formulaire->fieldsFormInput('Code postal', 'text', 'cp', '00000', "Code postal en chiffre uniquement", $msg); ?>
+$formulaire->fieldsFormInput('Poids', 'number', 'poids', 'Poids', "Votre poids en kilogrammes", $msg, false, 'min="40"');
 
-<?= $formulaire->fieldsFormInput('Ville', 'text', 'ville', 'Ville', "Ville obligatoire", $msg); ?>
+$valuesType = ['route' => 'Route', 'vtt' => 'VTT', 'both' => 'Les deux'];
+echo $formulaire->fieldsFormSelect('Type de vélo', $valuesType, 'type', 'Choisissez votre type de vélo', $msg);
+
+
+$formulaire->fieldsFormInput('Prix maximum', 'number', 'budget', '0000', "Donnez nous votre budget maximum en euros", $msg, false, 'min="1"');
+
+$formulaire->fieldsFormInput('Adresse', 'text', 'adresse', 'Adresse', "Entrez une adresse complète pour la livraison et facturation", $msg, 'w100');
+
+$formulaire->fieldsFormInput('Code postal', 'text', 'cp', '00000', "Code postal en chiffre uniquement", $msg);
+
+$formulaire->fieldsFormInput('Ville', 'text', 'ville', 'Ville', "Ville obligatoire", $msg);

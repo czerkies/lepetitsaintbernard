@@ -27,7 +27,25 @@ class modeleMembres extends modeleSuper {
   */
   public function insertMembre($email, $mdp, $nom, $prenom, $sexe, $age, $taille, $poids, $type, $budget, $adresse, $cp, $ville, $statut = 0){
 
-    $insertion = $this->bdd()->prepare("INSERT INTO membres(email, mdp, nom, prenom, sexe, age, taille, poids, type, budget, adresse, cp, ville, statut) VALUES(:email, :mdp, :nom, :prenom, :sexe, :age, :taille, :poids, :type, :budget, :adresse, :cp, :ville, :statut)");
+    switch ($taille) {
+      case ($taille>=150 AND $taille<=161):
+        $id_taille = 1;
+        break;
+      case ($taille>=162 AND $taille<=174):
+        $id_taille = 2;
+        break;
+      case ($taille>=175 AND $taille<=187):
+        $id_taille = 3;
+        break;
+      case ($taille>=188 AND $taille<=200):
+        $id_taille = 4;
+        break;
+      default:
+        $id_taille = 0;
+        break;
+    }
+
+    $insertion = $this->bdd()->prepare("INSERT INTO membres(email, mdp, nom, prenom, sexe, age, taille, id_taille, poids, type, budget, adresse, cp, ville, statut) VALUES(:email, :mdp, :nom, :prenom, :sexe, :age, :taille, :id_taille, :poids, :type, :budget, :adresse, :cp, :ville, :statut)");
 
     $insertion->bindValue(':email', $email, PDO::PARAM_STR);
     $insertion->bindValue(':mdp', $mdp, PDO::PARAM_STR);
@@ -36,6 +54,7 @@ class modeleMembres extends modeleSuper {
     $insertion->bindValue(':sexe', $sexe, PDO::PARAM_STR);
     $insertion->bindValue(':age', $age, PDO::PARAM_INT);
     $insertion->bindValue(':taille', $taille, PDO::PARAM_INT);
+    $insertion->bindValue(':id_taille', $id_taille, PDO::PARAM_INT);
     $insertion->bindValue(':poids', $poids, PDO::PARAM_INT);
     $insertion->bindValue(':type', $type, PDO::PARAM_STR);
     $insertion->bindValue(':budget', $budget, PDO::PARAM_INT);
@@ -58,13 +77,31 @@ class modeleMembres extends modeleSuper {
   */
   public function updateMembre($email, $mdp = NULL, $nom, $prenom, $sexe, $age, $taille, $poids, $type, $budget, $adresse, $cp, $ville, $idMembre){
 
+    switch ($taille) {
+      case ($taille>=150 AND $taille<=161):
+        $id_taille = 1;
+        break;
+      case ($taille>=162 AND $taille<=174):
+        $id_taille = 2;
+        break;
+      case ($taille>=175 AND $taille<=187):
+        $id_taille = 3;
+        break;
+      case ($taille>=188 AND $taille<=200):
+        $id_taille = 4;
+        break;
+      default:
+        $id_taille = 0;
+        break;
+    }
+
     if(!$mdp){
 
-      $req = "UPDATE membres SET email = :email, nom = :nom, prenom = :prenom, sexe = :sexe, age = :age, taille = :taille, poids = :poids, type = :type, budget = :budget, adresse = :adresse, cp = :cp, ville = :ville WHERE id_membre = '$idMembre'";
+      $req = "UPDATE membres SET email = :email, nom = :nom, prenom = :prenom, sexe = :sexe, age = :age, taille = :taille, id_taille = :id_taille, poids = :poids, type = :type, budget = :budget, adresse = :adresse, cp = :cp, ville = :ville WHERE id_membre = '$idMembre'";
 
     } else {
 
-      $req = "UPDATE membres SET email = :email, mdp = :mdp, nom = :nom, prenom = :prenom, sexe = :sexe, age = :age, taille = :taille, poids = :poids, type = :type, budget = :budget, adresse = :adresse, cp = :cp, ville = :ville WHERE id_membre = '$idMembre'";
+      $req = "UPDATE membres SET email = :email, mdp = :mdp, nom = :nom, prenom = :prenom, sexe = :sexe, age = :age, taille = :taille, id_taille = :id_taille, poids = :poids, type = :type, budget = :budget, adresse = :adresse, cp = :cp, ville = :ville WHERE id_membre = '$idMembre'";
 
     }
 
@@ -76,6 +113,7 @@ class modeleMembres extends modeleSuper {
     $insertion->bindValue(':sexe', $sexe, PDO::PARAM_STR);
     $insertion->bindValue(':age', $age, PDO::PARAM_INT);
     $insertion->bindValue(':taille', $taille, PDO::PARAM_INT);
+    $insertion->bindValue(':id_taille', $id_taille, PDO::PARAM_INT);
     $insertion->bindValue(':poids', $poids, PDO::PARAM_INT);
     $insertion->bindValue(':type', $type, PDO::PARAM_STR);
     $insertion->bindValue(':budget', $budget, PDO::PARAM_INT);
