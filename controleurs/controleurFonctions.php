@@ -74,8 +74,8 @@ class controleurFonctions extends controleurSuper {
       $msg['error']['taille'] = "Veuillez saisir votre <b>Taille</b>.";
     } elseif(!is_numeric($_POST['taille'])) {
       $msg['error']['taille'] = "Veuillez saisir votre <b>Taille</b> en chiffres.";
-    } elseif($_POST['taille'] < 100 || $_POST['taille'] > 250){
-      $msg['error']['taille'] = "Veuillez saisir une <b>Taille</b> convenable.";
+    } elseif($_POST['taille'] < 150 || $_POST['taille'] > 200){
+      $msg['error']['taille'] = "Veuillez saisir une <b>Taille</b> entre 150cm et 200cm.";
     }
 
     if(empty($value['poids'])){
