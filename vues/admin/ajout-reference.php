@@ -57,6 +57,8 @@ if($userConnectAdmin){
       break;
       case 'selle':
 
+        $formulaire->fieldsFormSelect('Matière de la selle', $select['matiere'], 'matiere', 'Matière de la selle', $msg);
+
         $formulaire->fieldsFormSelect('Selle pour homme ou femme', $select['sexe'], 'sexe', 'Votre selle est pour homme ou femme', $msg);
 
       break;
@@ -73,7 +75,7 @@ if($userConnectAdmin){
 
         $formulaire->fieldsFormSelect('Dents grand Pignon', $select['pignon'], 'pignon', 'Chosissez le nombre de dents sur le grand pignon', $msg);
 
-        $formulaire->fieldsFormSelect('Dents grand Plateau', $select['plateau'], 'plateay', 'Chosissez le nombre de dents sur le grand plateau', $msg);
+        $formulaire->fieldsFormSelect('Dents grand Plateau', $select['plateau'], 'plateau', 'Chosissez le nombre de dents sur le grand plateau', $msg);
 
       break;
 

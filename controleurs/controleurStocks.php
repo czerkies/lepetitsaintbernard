@@ -92,7 +92,7 @@ class controleurStocks extends controleurSuper {
 
                 extract($_POST);
 
-                if($donneesStocks->insertPieceCadre($titre, $type_velo, $poids, $prix, $quantite, $description, $imgBDD, $matiere, $sexe, $taille)){
+                if($donneesStocks->insertPieceCadre($titre, $type_velo, $poids, $prix, $quantite, $description, $imgBDD, $matiere, $sexe, $id_taille)){
 
                   $msg['error']['confirm'] = 'Votre nouvelle pièce de type "Cadre" a bien été ajouté dans nos stocks avec une quantité de '.$quantite.'.';
 
@@ -115,7 +115,85 @@ class controleurStocks extends controleurSuper {
             if(isset($_POST['type_velo']) && (array_key_exists($_POST['type_velo'], $select['type_velo']) != false)
             && isset($_POST['titre']) && isset($_POST['quantite']) && isset($_POST['poids'])
             && isset($_POST['prix']) && isset($_POST['description']) && isset($_FILES['img'])
-            // Controle Cadre
+            // Controle Roue
+            && isset($_POST['matiere']) && (array_key_exists($_POST['matiere'], $select['matiere']) != false)
+            && isset($_POST['id_taille']) && (array_key_exists($_POST['id_taille'], $select['taille']) != false)) {
+
+              $msg = $formulaire->verifFormPiece($_POST, $dataGet['piece']);
+
+              if(empty($msg['error'])){
+
+                $imgBDD = $formulaire->insertPhoto($dataGet['piece']);
+
+                foreach ($_POST as $key => $value){
+                  $_POST[$key] = htmlspecialchars($value, ENT_QUOTES);
+                }
+
+                extract($_POST);
+
+                if($donneesStocks->insertPieceRoue($titre, $type_velo, $poids, $prix, $quantite, $description, $imgBDD, $matiere, $id_taille)){
+
+                  $msg['error']['confirm'] = 'Votre nouvelle pièce de type "Roue" a bien été ajouté dans nos stocks avec une quantité de '.$quantite.'.';
+
+                }
+              }
+            } else {
+
+              $msg['error']['generale'] = self::ERREUR_POST;
+
+            }
+          }
+
+        break;
+        case 'selle':
+
+          $dataGet['piece'] = 'selle';
+
+          if($_POST){
+
+            if(isset($_POST['type_velo']) && (array_key_exists($_POST['type_velo'], $select['type_velo']) != false)
+            && isset($_POST['titre']) && isset($_POST['quantite']) && isset($_POST['poids'])
+            && isset($_POST['prix']) && isset($_POST['description']) && isset($_FILES['img'])
+            // Controle Selle
+            && isset($_POST['matiere']) && (array_key_exists($_POST['matiere'], $select['matiere']) != false)
+            && isset($_POST['sexe']) && (array_key_exists($_POST['sexe'], $select['sexe']) != false)) {
+
+              $msg = $formulaire->verifFormPiece($_POST, $dataGet['piece']);
+
+              if(empty($msg['error'])){
+
+                $imgBDD = $formulaire->insertPhoto($dataGet['piece']);
+
+                foreach ($_POST as $key => $value){
+                  $_POST[$key] = htmlspecialchars($value, ENT_QUOTES);
+                }
+
+                extract($_POST);
+
+                if($donneesStocks->insertPieceSelle($titre, $type_velo, $poids, $prix, $quantite, $description, $imgBDD, $matiere, $sexe)){
+
+                  $msg['error']['confirm'] = 'Votre nouvelle pièce de type "Selle" a bien été ajouté dans nos stocks avec une quantité de '.$quantite.'.';
+
+                }
+              }
+            } else {
+
+              $msg['error']['generale'] = self::ERREUR_POST;
+
+            }
+          }
+
+        break;
+        case 'guidon':
+
+          $dataGet['piece'] = 'guidon';
+
+          if($_POST){
+
+            if(isset($_POST['type_velo']) && (array_key_exists($_POST['type_velo'], $select['type_velo']) != false)
+            && isset($_POST['titre']) && isset($_POST['quantite']) && isset($_POST['poids'])
+            && isset($_POST['prix']) && isset($_POST['description']) && isset($_FILES['img'])
+            // Controle Guidon
             && isset($_POST['matiere']) && (array_key_exists($_POST['matiere'], $select['matiere']) != false)
             && isset($_POST['sexe']) && (array_key_exists($_POST['sexe'], $select['sexe']) != false)
             && isset($_POST['id_taille']) && (array_key_exists($_POST['id_taille'], $select['taille']) != false)) {
@@ -132,9 +210,9 @@ class controleurStocks extends controleurSuper {
 
                 extract($_POST);
 
-                if($donneesStocks->insertPieceCadre($titre, $type_velo, $poids, $prix, $quantite, $description, $imgBDD, $matiere, $sexe, $taille)){
+                if($donneesStocks->insertPieceGuidon($titre, $type_velo, $poids, $prix, $quantite, $description, $imgBDD, $matiere, $sexe, $id_taille)){
 
-                  $msg['error']['confirm'] = 'Votre nouvelle pièce de type "Cadre" a bien été ajouté dans nos stocks avec une quantité de '.$quantite.'.';
+                  $msg['error']['confirm'] = 'Votre nouvelle pièce de type "Guidon" a bien été ajouté dans nos stocks avec une quantité de '.$quantite.'.';
 
                 }
               }
@@ -146,19 +224,43 @@ class controleurStocks extends controleurSuper {
           }
 
         break;
-        case 'selle':
-
-          $dataGet['piece'] = 'selle';
-
-        break;
-        case 'guidon':
-
-          $dataGet['piece'] = 'guidon';
-
-        break;
         case 'groupe':
 
           $dataGet['piece'] = 'groupe';
+
+          if($_POST){
+
+            if(isset($_POST['type_velo']) && (array_key_exists($_POST['type_velo'], $select['type_velo']) != false)
+            && isset($_POST['titre']) && isset($_POST['quantite']) && isset($_POST['poids'])
+            && isset($_POST['prix']) && isset($_POST['description']) && isset($_FILES['img'])
+            // Controle Groupe
+            && isset($_POST['pignon']) && (array_key_exists($_POST['pignon'], $select['pignon']) != false)
+            && isset($_POST['plateau']) && (array_key_exists($_POST['plateau'], $select['plateau']) != false)) {
+
+              $msg = $formulaire->verifFormPiece($_POST, $dataGet['piece']);
+
+              if(empty($msg['error'])){
+
+                $imgBDD = $formulaire->insertPhoto($dataGet['piece']);
+
+                foreach ($_POST as $key => $value){
+                  $_POST[$key] = htmlspecialchars($value, ENT_QUOTES);
+                }
+
+                extract($_POST);
+
+                if($donneesStocks->insertPieceGroupe($titre, $type_velo, $poids, $prix, $quantite, $description, $imgBDD, $pignon, $plateau)){
+
+                  $msg['error']['confirm'] = 'Votre nouvelle pièce de type "Groupe" a bien été ajouté dans nos stocks avec une quantité de '.$quantite.'.';
+
+                }
+              }
+            } else {
+
+              $msg['error']['generale'] = self::ERREUR_POST;
+
+            }
+          }
 
         break;
       }
