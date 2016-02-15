@@ -48,7 +48,7 @@ class controleurStocks extends controleurSuper {
     $dataGet = array();
 
     // Pièces
-    $select['piece'] = ['disabled' => 'Choisissez votre type de pièce à ajouter', 'cadre' => 'Cadre', 'roue' => 'Roue', 'selle' => 'Selle', 'guidon' => 'Guidon', 'guidon' => 'Guidon', 'plateau' => 'Plateau'];
+    $select['piece'] = ['disabled' => 'Choisissez votre type de pièce à ajouter', 'cadre' => 'Cadre', 'roue' => 'Roue', 'selle' => 'Selle', 'guidon' => 'Guidon', 'groupe' => 'Groupe'];
     // Vélos
     $select['type_velo'] = ['disabled' => 'Type de vélo de votre nouvelle pièce', 'route' => 'Route', 'vtt' => 'VTT'];
     // Tailles
@@ -57,6 +57,10 @@ class controleurStocks extends controleurSuper {
     $select['matiere'] = ['disabled' => 'Matière du cadre', 'alluminium' => 'Alluminium', 'cabone' => 'Carbone', 'metal' => 'Metal'];
     // Sexe
     $select['sexe'] = ['disabled' => 'Cadre pour homme ou femme', 'homme' => 'Homme', 'femme' => 'Femme'];
+    // Pignon
+    $select['pignon'] = ['disabled' => 'Dents du grand Pignon', 16 => '16', 24 => '24', 32 => '32'];
+    // Plateau
+    $select['plateau'] = ['disabled' => 'Dents du grand Plateau', 56 => '56', 76 => '76'];
 
     if(isset($_GET['piece']) && !empty($_GET['piece'])
     && (array_key_exists($_GET['piece'], $select['piece']) != false)){
@@ -104,7 +108,57 @@ class controleurStocks extends controleurSuper {
         break;
         case 'roue':
 
-        $dataGet['piece'] = 'roue';
+          $dataGet['piece'] = 'roue';
+
+          if($_POST){
+
+            if(isset($_POST['type_velo']) && (array_key_exists($_POST['type_velo'], $select['type_velo']) != false)
+            && isset($_POST['titre']) && isset($_POST['quantite']) && isset($_POST['poids'])
+            && isset($_POST['prix']) && isset($_POST['description']) && isset($_FILES['img'])
+            // Controle Cadre
+            && isset($_POST['matiere']) && (array_key_exists($_POST['matiere'], $select['matiere']) != false)
+            && isset($_POST['sexe']) && (array_key_exists($_POST['sexe'], $select['sexe']) != false)
+            && isset($_POST['id_taille']) && (array_key_exists($_POST['id_taille'], $select['taille']) != false)) {
+
+              $msg = $formulaire->verifFormPiece($_POST, $dataGet['piece']);
+
+              if(empty($msg['error'])){
+
+                $imgBDD = $formulaire->insertPhoto($dataGet['piece']);
+
+                foreach ($_POST as $key => $value){
+                  $_POST[$key] = htmlspecialchars($value, ENT_QUOTES);
+                }
+
+                extract($_POST);
+
+                if($donneesStocks->insertPieceCadre($titre, $type_velo, $poids, $prix, $quantite, $description, $imgBDD, $matiere, $sexe, $taille)){
+
+                  $msg['error']['confirm'] = 'Votre nouvelle pièce de type "Cadre" a bien été ajouté dans nos stocks avec une quantité de '.$quantite.'.';
+
+                }
+              }
+            } else {
+
+              $msg['error']['generale'] = self::ERREUR_POST;
+
+            }
+          }
+
+        break;
+        case 'selle':
+
+          $dataGet['piece'] = 'selle';
+
+        break;
+        case 'guidon':
+
+          $dataGet['piece'] = 'guidon';
+
+        break;
+        case 'groupe':
+
+          $dataGet['piece'] = 'groupe';
 
         break;
       }

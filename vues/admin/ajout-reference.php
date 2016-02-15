@@ -52,7 +52,28 @@ if($userConnectAdmin){
 
         $formulaire->fieldsFormSelect('Matière de la roue', $select['matiere'], 'matiere', 'Matière de la roue', $msg);
 
-        $formulaire->fieldsFormSelect('Quelle taille de cadre', $select['taille'], 'id_taille', 'Pour quel cadre la roue doit s\'adapter', $msg);
+        $formulaire->fieldsFormSelect('Quelle taille de cadre pour les roues', $select['taille'], 'id_taille', 'Pour quel cadre les roue doivent s\'adapter', $msg);
+
+      break;
+      case 'selle':
+
+        $formulaire->fieldsFormSelect('Selle pour homme ou femme', $select['sexe'], 'sexe', 'Votre selle est pour homme ou femme', $msg);
+
+      break;
+      case 'guidon':
+
+        $formulaire->fieldsFormSelect('Matière du guidon', $select['matiere'], 'matiere', 'Matière du guidon', $msg);
+
+        $formulaire->fieldsFormSelect('Guidon pour homme ou femme', $select['sexe'], 'sexe', 'Votre guidon est pour homme ou femme', $msg);
+
+        $formulaire->fieldsFormSelect('Taille du cadre pour le guidon', $select['taille'], 'id_taille', 'Pour quel cadre le guidon doit s\'adapter', $msg);
+
+      break;
+      case 'groupe':
+
+        $formulaire->fieldsFormSelect('Dents grand Pignon', $select['pignon'], 'pignon', 'Chosissez le nombre de dents sur le grand pignon', $msg);
+
+        $formulaire->fieldsFormSelect('Dents grand Plateau', $select['plateau'], 'plateay', 'Chosissez le nombre de dents sur le grand plateau', $msg);
 
       break;
 
