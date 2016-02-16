@@ -12,9 +12,9 @@ class modeleStocks extends modeleSuper {
   * @return $donnees
   *
   */
-  public function recupPiecesCadres(){
+  public function recupPieces($type_piece){
 
-    $req = "SELECT * FROM cadres";
+    $req = "SELECT * FROM pieces WHERE type_piece = '$type_piece'";
 
     $donnees = $this->bdd()->query($req);
 
@@ -23,15 +23,16 @@ class modeleStocks extends modeleSuper {
   }
 
   /**
-  * Insertion d'une piece de type cadre dans la bdd
+  * Insertion d'une piece dans la bdd
   *
-  * @param $titre, $type_velo, $poids, $prix, $quantite, $description, $img, $matiere, $sexe, $id_taille
+  * @param $type_piece, $type_velo, $titre, $poids, $prix, $quantite, $description, $img, $matiere = NULL, $sexe = NULL, $id_taille = NULL, $pignon = NULL, $plateau = NULL
   * @return $insertion (bool)
   */
-  public function insertPieceCadre($titre, $type_velo, $poids, $prix, $quantite, $description, $img, $matiere, $sexe, $id_taille){
+  public function insertPieces($type_piece, $type_velo, $titre, $poids, $prix, $quantite, $description, $img, $matiere = NULL, $sexe = NULL, $id_taille = NULL, $pignon = NULL, $plateau = NULL){
 
-    $insertion = $this->bdd()->prepare("INSERT INTO cadres(type_velo, titre, poids, prix, quantite, description, img, matiere, sexe, id_taille) VALUES(:type_velo, :titre, :poids, :prix, :quantite, :description, :img, :matiere, :sexe, :id_taille)");
+    $insertion = $this->bdd()->prepare("INSERT INTO pieces(type_piece, type_velo, titre, poids, prix, quantite, description, img, matiere, sexe, id_taille, pignon, plateau) VALUES(:type_piece, :type_velo, :titre, :poids, :prix, :quantite, :description, :img, :matiere, :sexe, :id_taille, :pignon, :plateau)");
 
+    $insertion->bindValue(':type_piece', $type_piece, PDO::PARAM_STR);
     $insertion->bindValue(':type_velo', $type_velo, PDO::PARAM_STR);
     $insertion->bindValue(':titre', $titre, PDO::PARAM_STR);
     $insertion->bindValue(':poids', $poids, PDO::PARAM_INT);
@@ -41,116 +42,13 @@ class modeleStocks extends modeleSuper {
     $insertion->bindValue(':img', $img, PDO::PARAM_STR);
     $insertion->bindValue(':matiere', $matiere, PDO::PARAM_STR);
     $insertion->bindValue(':sexe', $sexe, PDO::PARAM_STR);
-    $insertion->bindValue(':id_taille', $id_taille, PDO::PARAM_INT);
+    $insertion->bindValue(':id_taille', $id_taille, PDO::PARAM_STR);
+    $insertion->bindValue(':pignon', $pignon, PDO::PARAM_INT);
+    $insertion->bindValue(':plateau', $plateau, PDO::PARAM_INT);
 
-    $insertion->execute();
+    $result = $insertion->execute();
 
-    return $insertion;
-
-  }
-
-  /**
-  * Insertion d'une piece de type roue dans la bdd
-  *
-  * @param $type_velo, $titre, $poids, $prix, $description, $matiere, $taille
-  * @return $insertion (bool)
-  */
-  public function insertPieceRoue($titre, $type_velo, $poids, $prix, $quantite, $description, $img, $matiere, $id_taille){
-
-    $insertion = $this->bdd()->prepare("INSERT INTO roues(type_velo, titre, poids, prix, quantite, description, img, matiere, id_taille) VALUES(:type_velo, :titre, :poids, :prix, :quantite, :description, :img, :matiere, :id_taille)");
-
-    $insertion->bindValue(':type_velo', $type_velo, PDO::PARAM_STR);
-    $insertion->bindValue(':titre', $titre, PDO::PARAM_STR);
-    $insertion->bindValue(':poids', $poids, PDO::PARAM_INT);
-    $insertion->bindValue(':prix', $prix, PDO::PARAM_INT);
-    $insertion->bindValue(':quantite', $quantite, PDO::PARAM_INT);
-    $insertion->bindValue(':description', $description, PDO::PARAM_STR);
-    $insertion->bindValue(':img', $img, PDO::PARAM_STR);
-    $insertion->bindValue(':matiere', $matiere, PDO::PARAM_STR);
-    $insertion->bindValue(':id_taille', $id_taille, PDO::PARAM_INT);
-
-    $insertion->execute();
-
-    return $insertion;
-
-  }
-
-  /**
-  * Insertion d'une piece de type selle dans la bdd
-  *
-  * @param $titre, $type_velo, $poids, $prix, $quantite, $description, $img, $matiere, $sexe
-  * @return $insertion (bool)
-  */
-  public function insertPieceSelle($titre, $type_velo, $poids, $prix, $quantite, $description, $img, $matiere, $sexe){
-
-    $insertion = $this->bdd()->prepare("INSERT INTO selles(type_velo, titre, poids, prix, quantite, description, img, matiere, sexe) VALUES(:type_velo, :titre, :poids, :prix, :quantite, :description, :img, :matiere, :sexe)");
-
-    $insertion->bindValue(':type_velo', $type_velo, PDO::PARAM_STR);
-    $insertion->bindValue(':titre', $titre, PDO::PARAM_STR);
-    $insertion->bindValue(':poids', $poids, PDO::PARAM_INT);
-    $insertion->bindValue(':prix', $prix, PDO::PARAM_INT);
-    $insertion->bindValue(':quantite', $quantite, PDO::PARAM_INT);
-    $insertion->bindValue(':description', $description, PDO::PARAM_STR);
-    $insertion->bindValue(':img', $img, PDO::PARAM_STR);
-    $insertion->bindValue(':matiere', $matiere, PDO::PARAM_STR);
-    $insertion->bindValue(':sexe', $sexe, PDO::PARAM_STR);
-
-    $insertion->execute();
-
-    return $insertion;
-
-  }
-
-  /**
-  * Insertion d'une piece de type guidon dans la bdd
-  *
-  * @param $titre, $type_velo, $poids, $prix, $quantite, $description, $img, $matiere, $sexe, $id_taille
-  * @return $insertion (bool)
-  */
-  public function insertPieceGuidon($titre, $type_velo, $poids, $prix, $quantite, $description, $img, $matiere, $sexe, $id_taille){
-
-    $insertion = $this->bdd()->prepare("INSERT INTO guidons(type_velo, titre, poids, prix, quantite, description, img, matiere, sexe, id_taille) VALUES(:type_velo, :titre, :poids, :prix, :quantite, :description, :img, :matiere, :sexe, :id_taille)");
-
-    $insertion->bindValue(':type_velo', $type_velo, PDO::PARAM_STR);
-    $insertion->bindValue(':titre', $titre, PDO::PARAM_STR);
-    $insertion->bindValue(':poids', $poids, PDO::PARAM_INT);
-    $insertion->bindValue(':prix', $prix, PDO::PARAM_INT);
-    $insertion->bindValue(':quantite', $quantite, PDO::PARAM_INT);
-    $insertion->bindValue(':description', $description, PDO::PARAM_STR);
-    $insertion->bindValue(':img', $img, PDO::PARAM_STR);
-    $insertion->bindValue(':matiere', $matiere, PDO::PARAM_STR);
-    $insertion->bindValue(':sexe', $sexe, PDO::PARAM_STR);
-    $insertion->bindValue(':id_taille', $id_taille, PDO::PARAM_INT);
-
-    $insertion->execute();
-
-    return $insertion;
-
-  }
-
-  /**
-  * Insertion d'une piece de type groupe dans la bdd
-  *
-  * @param $titre, $type_velo, $poids, $prix, $quantite, $description, $img, $pignon, $plateau
-  * @return $insertion (bool)
-  */
-  public function insertPieceGroupe($titre, $type_velo, $poids, $prix, $quantite, $description, $img, $pignon, $plateau){
-
-    $insertion = $this->bdd()->prepare("INSERT INTO groupes(type_velo, titre, poids, prix, quantite, description, img, pignon, plateau) VALUES(:type_velo, :titre, :poids, :prix, :quantite, :description, :img, :pignon, :plateau)");
-
-    $insertion->bindValue(':type_velo', $type_velo, PDO::PARAM_STR);
-    $insertion->bindValue(':titre', $titre, PDO::PARAM_STR);
-    $insertion->bindValue(':poids', $poids, PDO::PARAM_INT);
-    $insertion->bindValue(':prix', $prix, PDO::PARAM_INT);
-    $insertion->bindValue(':quantite', $quantite, PDO::PARAM_INT);
-    $insertion->bindValue(':description', $description, PDO::PARAM_STR);
-    $insertion->bindValue(':img', $img, PDO::PARAM_STR);
-    $insertion->bindValue(':pignon', $pignon, PDO::PARAM_STR);
-    $insertion->bindValue(':plateau', $plateau, PDO::PARAM_STR);
-
-    $insertion->execute();
-
-    return $insertion;
+    return $result;
 
   }
 

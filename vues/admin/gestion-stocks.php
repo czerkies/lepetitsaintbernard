@@ -5,7 +5,6 @@
 ?>
 <h2 id="cadres">Les Cadres</h2>
 <?php if($cadres){ ?>
-  <?php var_dump($_POST); ?>
   <div class="tableau">
     <div class="head">
       <div class="cel w5">Réf.</div>
@@ -18,14 +17,14 @@
     <ul class="body">
       <?php foreach($cadres as $value) { ?>
         <li>
-          <span class="w5"><?= $value['id_cadre']; ?></span>
+          <span class="w5"><?= $value['id_piece']; ?></span>
           <span class="w20"><?= $value['titre']; ?></span>
           <span class="w20"><?= $value['type_velo']; ?></span>
-          <span class="w20"><?= $value['stock']; ?></span>
+          <span class="w20"><?= $value['quantite']; ?></span>
           <span class="w20">
             <form action="#cadres" method="post">
               <input name="id_cadre" type="hidden" value="<?= $value['id_cadre']; ?>" required>
-              <input name="quantite" type="number" min="-<?= $value['stock']; ?>" placeholder="00" required><input type="submit" value="Ok">
+              <input name="quantite" type="number" min="-<?= $value['quantite']; ?>" placeholder="00" required><input type="submit" value="Ok">
             </form>
           </span>
           <span class="w5"><a href="<?= RACINE_SITE; ?>admin/gestion-membres/suppression/<?= $value['id_cadre']; ?>"> | </a></span>

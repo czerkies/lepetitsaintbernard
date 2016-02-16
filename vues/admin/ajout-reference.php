@@ -10,7 +10,7 @@ if($userConnectAdmin){
 
   <form class="middle" action="#ajout" method="get">
 
-    <?php $formulaire->fieldsFormSelect('Type de pièce', $select['piece'], 'piece', 'Choisissez votre type de pièce à ajouter', $msg); ?>
+    <?php $formulaire->fieldsFormSelect('Type de pièce', $select['type_piece'], 'piece', 'Choisissez votre type de pièce à ajouter', $msg); ?>
 
     <div class="form-group submit">
       <input type="submit" value="Sélectionner ce type de pièce">
@@ -25,6 +25,8 @@ if($userConnectAdmin){
     <?php include '../vues/include/dialogue.php'; ?>
 
     <form class="large" action="#details_piece" enctype="multipart/form-data" method="post">
+
+      <input type="hidden" name="type_piece" value="<?= $dataGet['piece']; ?>" required>
 
     <?php
 
