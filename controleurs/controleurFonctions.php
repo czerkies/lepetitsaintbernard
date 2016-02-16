@@ -326,10 +326,10 @@ class controleurFonctions extends controleurSuper {
   }
 
   /**
-  * Fonction pour insérer la photo et lien de stockage.
+  * Fonction pour insérer la photo et lien de stockage en BDD.
   *
-  * @param
-  * @return
+  * @param $img ($_FILES)
+  * @return $photoBDD (string)
   */
   public function insertPhoto($img){
 
@@ -342,7 +342,9 @@ class controleurFonctions extends controleurSuper {
 
     copy($_FILES['img']['tmp_name'], $photoDossier);
 
-    return $photoDossier;
+    $photoBDD = "img/pieces/$nomPhoto";
+
+    return $photoBDD;
 
   }
 

@@ -67,7 +67,7 @@ class modeleStocks extends modeleSuper {
   */
   public function insertPieceSelle($titre, $type_velo, $poids, $prix, $quantite, $description, $img, $matiere, $sexe){
 
-    $insertion = $this->bdd()->prepare("INSERT INTO selles(type_velo, titre, poids, prix, quantite, description, img, matiere, sexe, id_taille) VALUES(:type_velo, :titre, :poids, :prix, :quantite, :description, :img, :matiere, :sexe)");
+    $insertion = $this->bdd()->prepare("INSERT INTO selles(type_velo, titre, poids, prix, quantite, description, img, matiere, sexe) VALUES(:type_velo, :titre, :poids, :prix, :quantite, :description, :img, :matiere, :sexe)");
 
     $insertion->bindValue(':type_velo', $type_velo, PDO::PARAM_STR);
     $insertion->bindValue(':titre', $titre, PDO::PARAM_STR);
