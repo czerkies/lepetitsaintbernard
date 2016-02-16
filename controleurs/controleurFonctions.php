@@ -247,7 +247,7 @@ class controleurFonctions extends controleurSuper {
   *
   * @return $msg (array)
   */
-  public function verifFormPiece($value, $typePiece){
+  public function verifFormPiece($value, $typePiece = ''){
 
     $msg = '';
 
@@ -293,12 +293,6 @@ class controleurFonctions extends controleurSuper {
       $msg['error']['img'] = "Veuillez envoyer une <b>Image</b> au format .jpg.";
     }
 
-    switch ($typePiece) {
-      case 'cadre':
-
-        break;
-    }
-
     return $msg;
 
   }
@@ -318,10 +312,6 @@ class controleurFonctions extends controleurSuper {
     $extension_valide = array("jpg", "jpeg");
 
     return in_array($extension, $extension_valide);
-
-    //var_dump($verificationPhoto);
-
-    //return $verificationPhoto;
 
   }
 

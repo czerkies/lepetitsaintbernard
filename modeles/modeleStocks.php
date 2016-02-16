@@ -7,6 +7,22 @@
 class modeleStocks extends modeleSuper {
 
   /**
+  * Récupération des données de la table 'cadres'.
+  *
+  * @return $donnees
+  *
+  */
+  public function recupPiecesCadres(){
+
+    $req = "SELECT * FROM cadres";
+
+    $donnees = $this->bdd()->query($req);
+
+    return $donnees->fetchAll(PDO::FETCH_ASSOC);
+
+  }
+
+  /**
   * Insertion d'une piece de type cadre dans la bdd
   *
   * @param $titre, $type_velo, $poids, $prix, $quantite, $description, $img, $matiere, $sexe, $id_taille

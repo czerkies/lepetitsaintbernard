@@ -22,9 +22,17 @@ class controleurStocks extends controleurSuper {
 
     $msg['error'] = array();
 
+    $donneesStocks = new modeleStocks();
 
+    $cadres = $donneesStocks->recupPiecesCadres();
 
-    $this->Render('../vues/admin/gestion-stocks.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
+    if($_POST){
+
+      if(isset($_POST['id_cadre']) && isset($))
+
+    }
+
+    $this->Render('../vues/admin/gestion-stocks.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'cadres' => $cadres));
 
   }
 
