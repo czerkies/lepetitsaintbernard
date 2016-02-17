@@ -7,23 +7,21 @@
 class modeleStocks extends modeleSuper {
 
   /**
-  * Récupération des données de la table 'cadres'.
+  * Récupération des données de la table 'pieces'.
   *
   * @return $donnees
   *
   */
   public function recupPieces($type_piece){
 
-    $req = "SELECT * FROM pieces WHERE type_piece = '$type_piece'";
-
-    $donnees = $this->bdd()->query($req);
+    $donnees = $this->bdd()->query("SELECT * FROM pieces WHERE type_piece = '$type_piece'");
 
     return $donnees->fetchAll(PDO::FETCH_ASSOC);
 
   }
 
   /**
-  * Insertion d'une piece dans la bdd
+  * Insertion d'une 'piece' dans la bdd
   *
   * @param $type_piece, $type_velo, $titre, $poids, $prix, $quantite, $description, $img, $matiere = NULL, $sexe = NULL, $id_taille = NULL, $pignon = NULL, $plateau = NULL
   * @return $insertion (bool)
@@ -53,8 +51,6 @@ class modeleStocks extends modeleSuper {
   }
 
   public function updateQuantitePiece($quantite, $id_piece){
-
-    // Controler la quantité avant de lancer la requete de modification
 
     $insertion = $this->bdd()->prepare("UPDATE pieces SET quantite = quantite + :quantite WHERE id_piece = $id_piece");
 

@@ -405,7 +405,13 @@ form .form-group.radio label[for="femme"] {
 .tableau .w5 {
   width: 5%;
 }
+.tableau .w10 {
+  width: 5%;
+}
 .tableau .w20 {
+  width: 20%;
+}
+.tableau .w25 {
   width: 20%;
 }
 .tableau .head {
