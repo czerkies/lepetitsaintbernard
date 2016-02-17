@@ -21,17 +21,28 @@ class controleurStocks extends controleurSuper {
     $userConnectAdmin = $this->userConnectAdmin();
 
     $msg['error'] = array();
+    $donneesParPiece = array();
 
     $donneesStocks = new modeleStocks();
 
     if($_POST){
 
-      if(isset($_POST['quantite']) && !empty($_POST['quantite'] && is_numeric($_POST['quantite']))
-      && isset($_POST['id_piece']) && !empty($_POST['id_piece']) && is_numeric($_POST['id_piece'])){
+      if(isset($_POST['quantite']) && isset($_POST['id_piece'])
+      && !empty($_POST['id_piece']) && is_numeric($_POST['id_piece'])) {
 
-        $donneesStocks->updateQuantitePiece($_POST['quantite'], $_POST['id_piece']);
+        if(empty($_POST['quantite']) && !is_numeric($_POST['quantite'])) {
 
-        $msg['error']['confirm'] = 'Une quantité de '.$_POST['quantite'].' a été ajouté à la piece '.$_POST['id_piece'].'.';
+          $msg['error']['quantite'] = 'Veuillez saisir une <b>quantité</b>.';
+
+        }
+
+        if(empty($msg['error'])){
+
+          $donneesStocks->updateQuantitePiece($_POST['quantite'], $_POST['id_piece']);
+
+          $msg['error']['confirm'] = 'Une quantité de <b>'.$_POST['quantite'].'</b> a été ajouté à la piece <b>'.$_POST['id_piece'].'</b>.';
+
+        }
 
       } else {
 
@@ -41,13 +52,13 @@ class controleurStocks extends controleurSuper {
 
     }
 
-    $donnesParPiece['cadres'] = $donneesStocks->recupPieces('cadre');
-    $donnesParPiece['roues'] = $donneesStocks->recupPieces('roue');
-    $donnesParPiece['selle'] = $donneesStocks->recupPieces('selle');
-    $donnesParPiece['guidon'] = $donneesStocks->recupPieces('guidon');
-    $donnesParPiece['groupe'] = $donneesStocks->recupPieces('groupe');
+    $donneesParPiece['cadre'] = $donneesStocks->recupPieces('cadre');
+    $donneesParPiece['roue'] = $donneesStocks->recupPieces('roue');
+    $donneesParPiece['selle'] = $donneesStocks->recupPieces('selle');
+    $donneesParPiece['guidon'] = $donneesStocks->recupPieces('guidon');
+    $donneesParPiece['groupe'] = $donneesStocks->recupPieces('groupe');
 
-    $this->Render('../vues/admin/gestion-stocks.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'donnesParPiece' => $donnesParPiece));
+    $this->Render('../vues/admin/gestion-stocks.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'donneesParPiece' => $donneesParPiece));
 
   }
 

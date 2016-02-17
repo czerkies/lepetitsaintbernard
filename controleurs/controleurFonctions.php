@@ -133,7 +133,7 @@ class controleurFonctions extends controleurSuper {
   *
   * @return $field string
   */
-  public function fieldsFormInput($label, $type, $name, $placeholder, $em, $msg, $class = FALSE, $input = FALSE, $sessionArray = FALSE){
+  public function fieldsFormInput($label, $type, $name, $placeholder, $em, $msg, $bdd = FALSE, $class = FALSE, $input = FALSE, $sessionArray = FALSE){
 
     $field = '<div class="form-group';
     if($class) $field .= ' '.$class;
@@ -146,6 +146,8 @@ class controleurFonctions extends controleurSuper {
 
       if(isset($_POST[$name])) {
         $field .= 'value="'.$_POST[$name].'"';
+      } elseif(isset($bdd[$name])) {
+        $field .= 'value="'.$bdd[$name].'"';
       } elseif(isset($_SESSION[$sessionArray][$name])) {
         $field .= 'value="'.$_SESSION[$sessionArray][$name].'"';
       } elseif(isset($_COOKIE[$name])) {
@@ -177,7 +179,7 @@ class controleurFonctions extends controleurSuper {
   *
   * @return $field string
   */
-  public function fieldsFormSelect($label, $array = array(), $name, $em, $msg, $class = FALSE, $input = FALSE, $sessionArray = FALSE){
+  public function fieldsFormSelect($label, $array = array(), $name, $em, $msg, $bdd = FALSE, $class = FALSE, $input = FALSE, $sessionArray = FALSE){
 
     $select = '<div class="form-group';
     if($class) $select .= ' '.$class;
@@ -196,6 +198,8 @@ class controleurFonctions extends controleurSuper {
         $select .= '<option value="'.$key.'"';
         if(isset($_POST[$name])) {
           if($_POST[$name] == $key) $select .= ' selected';
+        } elseif(isset($bdd[$name])) {
+          if($bdd[$name] == $key) $select .= ' selected';
         }elseif(isset($_GET[$name])) {
           if($_GET[$name] == $key) $select .= 'selected';
         }elseif(isset($_SESSION[$sessionArray][$name])) {

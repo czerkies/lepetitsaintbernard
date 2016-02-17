@@ -4,12 +4,13 @@
 
   include '../vues/include/dialogue.php';
 
+  if(!$modifPiece) {
+
 ?>
+<?php foreach ($donneesParPiece as $key => $piece) { ?>
 
-<?php foreach ($donnesParPiece as $piece) { ?>
-
-  <h2 id="<?= $piece; ?>">Les <?= ucfirst($piece); ?></h2>
-  <?php if($donnesParPiece[$piece]){ ?>
+  <h2 id="<?= $key; ?>">Les <?= ucfirst($key); ?>s</h2>
+  <?php if($donneesParPiece[$key]){ ?>
     <div class="tableau">
       <div class="head">
         <div class="cel w5">Réf.</div>
@@ -21,7 +22,7 @@
         <div class="cel w10"></div>
       </div>
       <ul class="body">
-        <?php foreach($donnesParPiece[$piece] as $value) { ?>
+        <?php foreach($donneesParPiece[$key] as $value) { ?>
           <li>
             <span class="w5"><?= $value['id_piece']; ?></span>
             <span class="w20"><?= $value['titre']; ?></span>
@@ -29,7 +30,7 @@
             <span class="w5"><?= $value['id_taille']; ?></span>
             <span class="w5"><?= $value['quantite']; ?></span>
             <span class="w20">
-              <form action="#<?= $piece; ?>" method="post">
+              <form action="#<?= $key; ?>" method="post">
                 <input name="id_piece" type="hidden" value="<?= $value['id_piece']; ?>" required>
                 <input name="quantite" type="number" min="-<?= $value['quantite']; ?>" placeholder="00" required><input type="submit" value="Ok">
               </form>
@@ -39,14 +40,18 @@
           </li>
         <?php } ?>
       </ul>
-
     </div>
   <?php } else { ?>
-    <p>Il n'y a aucun <?= ucfirst($piece); ?>.</p>
-    <div class="callto">
-      <a class="button w100 d50" href="<?= RACINE_SITE; ?>admin/ajouter-reference/?piece=<?= $piece; ?>#ajout">Ajouter un <?= ucfirst($piece); ?></a>
-    </div>
+    <p>Il n'y a aucun <?= ucfirst($key); ?>.</p>
   <?php } ?>
+  <div class="callto">
+    <a class="button w100 d50" href="<?= RACINE_SITE; ?>admin/ajouter-reference/?piece=<?= $key; ?>#ajout">Ajouter <?= ucfirst($key); ?></a>
+  </div>
+<?php } ?>
+
+<?php } else { ?>
+
+  <h2>Modification d'une pièce</h2>
 
 <?php } ?>
 

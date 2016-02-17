@@ -1,5 +1,5 @@
 <?php if($userConnect){ ?>
-  
+
   <h2>Vos commandes</h2>
   <p>
     Vous n'avez encore passé aucune commande !<br>
@@ -24,13 +24,13 @@
 
     <?php
 
-    $formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Il vous servira d'identifiant", $msg, false, false, 'membre');
+    $formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Il vous servira d'identifiant", $msg, false, false, false, 'membre');
 
-    $formulaire->fieldsFormInput('Mot de passe', 'password', 'mdp', 'Mot de passe', "Doit contenir au moins une majuscule ou chiffre", $msg, false, false, 'membre');
+    $formulaire->fieldsFormInput('Mot de passe', 'password', 'mdp', 'Mot de passe', "Doit contenir au moins une majuscule ou chiffre", $msg, false, false, false, 'membre');
 
-    $formulaire->fieldsFormInput('Nom', 'text', 'nom', 'Nom', "Votre Nom est obligatoire", $msg, false, false, 'membre');
+    $formulaire->fieldsFormInput('Nom', 'text', 'nom', 'Nom', "Votre Nom est obligatoire", $msg, false, false, false, 'membre');
 
-    $formulaire->fieldsFormInput('Prénom', 'text', 'prenom', 'Prénom', "Votre Prénom est obligatoire", $msg, false, false, 'membre');
+    $formulaire->fieldsFormInput('Prénom', 'text', 'prenom', 'Prénom', "Votre Prénom est obligatoire", $msg, false, false, false, 'membre');
 
     ?>
 
@@ -44,22 +44,22 @@
 
     <?php
 
-    $formulaire->fieldsFormInput('Age', 'number', 'age', 'Age', "Votre age en année", $msg, false, false, 'membre');
+    $formulaire->fieldsFormInput('Age', 'number', 'age', 'Age', "Votre age en année", $msg, false, false, false, 'membre');
 
-    $formulaire->fieldsFormInput('Taille', 'number', 'taille', '000', "Votre taille en centimètres", $msg, false, false, 'membre');
+    $formulaire->fieldsFormInput('Taille', 'number', 'taille', '000', "Votre taille en centimètres", $msg, false, false, false, 'membre');
 
-    $formulaire->fieldsFormInput('Poids', 'number', 'poids', 'Poids', "Votre poids en kilogrammes", $msg, false, false, 'membre');
+    $formulaire->fieldsFormInput('Poids', 'number', 'poids', 'Poids', "Votre poids en kilogrammes", $msg, false, false, false, 'membre');
 
     $valuesType = ['route' => 'Route', 'vtt' => 'VTT', 'both' => 'Les deux'];
-    echo $formulaire->fieldsFormSelect('Type de vélo', $valuesType, 'type', 'Choisissez votre type de vélo', $msg, false, false, 'membre');
+    echo $formulaire->fieldsFormSelect('Type de vélo', $valuesType, 'type', 'Choisissez votre type de vélo', $msg, false, false, false, 'membre');
 
-    $formulaire->fieldsFormInput('Prix maximum', 'number', 'budget', '0000', "Donnez nous votre budget maximum en euros", $msg, false, false, 'membre');
+    $formulaire->fieldsFormInput('Prix maximum', 'number', 'budget', '0000', "Donnez nous votre budget maximum en euros", $msg, false, false, false, 'membre');
 
-    $formulaire->fieldsFormInput('Adresse', 'text', 'adresse', 'Adresse', "Entrez une adresse complète pour la livraison et facturation", $msg, 'w100', false, 'membre');
+    $formulaire->fieldsFormInput('Adresse', 'text', 'adresse', 'Adresse', "Entrez une adresse complète pour la livraison et facturation", $msg, false, 'w100', false, 'membre');
 
-    $formulaire->fieldsFormInput('Code postal', 'text', 'cp', '00000', "Code postal en chiffre uniquement", $msg, false, false, 'membre');
+    $formulaire->fieldsFormInput('Code postal', 'text', 'cp', '00000', "Code postal en chiffre uniquement", $msg, false, false, false, 'membre');
 
-    $formulaire->fieldsFormInput('Ville', 'text', 'ville', 'Ville', "Ville obligatoire", $msg, false, false, 'membre');
+    $formulaire->fieldsFormInput('Ville', 'text', 'ville', 'Ville', "Ville obligatoire", $msg, false, false, false, 'membre');
 
     ?>
 
