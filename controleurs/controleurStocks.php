@@ -22,8 +22,10 @@ class controleurStocks extends controleurSuper {
 
     $msg['error'] = array();
     $donneesParPiece = array();
+    $modifPiece = array();
 
     $donneesStocks = new modeleStocks();
+    $formulaire = new controleurFonctions();
 
     if($_POST){
 
@@ -52,13 +54,15 @@ class controleurStocks extends controleurSuper {
 
     }
 
+    $modifPiece = $donneesStocks->recupPieceID(8);
+
     $donneesParPiece['cadre'] = $donneesStocks->recupPieces('cadre');
     $donneesParPiece['roue'] = $donneesStocks->recupPieces('roue');
     $donneesParPiece['selle'] = $donneesStocks->recupPieces('selle');
     $donneesParPiece['guidon'] = $donneesStocks->recupPieces('guidon');
     $donneesParPiece['groupe'] = $donneesStocks->recupPieces('groupe');
 
-    $this->Render('../vues/admin/gestion-stocks.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'donneesParPiece' => $donneesParPiece));
+    $this->Render('../vues/admin/gestion-stocks.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'donneesParPiece' => $donneesParPiece, 'modifPiece' => $modifPiece, 'formulaire' => $formulaire));
 
   }
 

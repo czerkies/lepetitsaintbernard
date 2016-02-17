@@ -9,7 +9,8 @@ class modeleStocks extends modeleSuper {
   /**
   * Récupération des données de la table 'pieces'.
   *
-  * @return $donnees
+  * @param $type_piece (string)
+  * @return $donneesParPiece (array)
   *
   */
   public function recupPieces($type_piece){
@@ -59,6 +60,21 @@ class modeleStocks extends modeleSuper {
     $result = $insertion->execute();
 
     return $result;
+
+  }
+
+  /**
+  * Récupération des données d'une 'pieces'.
+  *
+  * @param $id_piece (int)
+  * @return $donneesPiece (array)
+  *
+  */
+  public function recupPieceID($id_piece){
+
+    $donnees = $this->bdd()->query("SELECT * FROM pieces WHERE id_piece = '$id_piece'");
+
+    return $donneesPiece = $donnees->fetch(PDO::FETCH_ASSOC);
 
   }
 
