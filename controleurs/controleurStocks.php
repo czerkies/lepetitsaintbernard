@@ -24,13 +24,18 @@ class controleurStocks extends controleurSuper {
 
     $donneesStocks = new modeleStocks();
 
-    $cadres = $donneesStocks->recupPieces('cadre');
-
     if($_POST){
+
+      $donneesStocks->updateQuantitePiece($_POST['quantite'], $_POST['id_piece']);
+
+      $msg['error']['confirm'] = 'Une quantité de '.$_POST['quantite'].' a été ajouté à la piece '.$_POST['id_piece'].'.';
 
     }
 
-    $this->Render('../vues/admin/gestion-stocks.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'cadres' => $cadres));
+    $donnesParPiece['cadres'] = $donneesStocks->recupPieces('cadre');
+    $donnesParPiece['roues'] = $donneesStocks->recupPieces('roue');
+
+    $this->Render('../vues/admin/gestion-stocks.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'donnesParPiece' => $donnesParPiece));
 
   }
 
@@ -94,17 +99,7 @@ class controleurStocks extends controleurSuper {
         if(isset($_POST['type_piece']) && (array_key_exists($_POST['type_piece'], $select['type_piece']) != false)
         && isset($_POST['type_velo']) && (array_key_exists($_POST['type_velo'], $select['type_velo']) != false)
         && isset($_POST['titre']) && isset($_POST['quantite']) && isset($_POST['poids'])
-        && isset($_POST['prix']) && isset($_POST['description']) && isset($_FILES['img'])
-        && ((isset($_POST['matiere']) && (array_key_exists($_POST['matiere'], $select['matiere']) != false))
-        || !isset($_POST['matiere']))
-        && ((isset($_POST['sexe']) && (array_key_exists($_POST['sexe'], $select['sexe']) != false))
-        || !isset($_POST['sexe']))
-        && ((isset($_POST['id_taille']) && (array_key_exists($_POST['id_taille'], $select['taille']) != false))
-        || !isset($_POST['id_taille']))
-        && ((isset($_POST['pignon']) && (array_key_exists($_POST['pignon'], $select['pignon']) != false))
-        || !isset($_POST['pignon']))
-        && ((isset($_POST['plateau']) && (array_key_exists($_POST['plateau'], $select['plateau']) != false))
-        || !isset($_POST['plateau']))) {
+        && isset($_POST['prix']) && isset($_POST['description']) && isset($_FILES['img'])){
 
           $msg = $formulaire->verifFormPiece($_POST, $dataGet['piece']);
 
@@ -120,19 +115,53 @@ class controleurStocks extends controleurSuper {
 
             switch ($dataGet['piece']) {
               case 'cadre':
-                $insert = $donneesStocks->insertPieces($type_piece, $type_velo, $titre, $poids, $prix, $quantite, $description, $imgBDD, $matiere, $sexe, $id_taille);
+              case 'guidon':
+
+                if(isset($_POST['matiere']) && (array_key_exists($_POST['matiere'], $select['matiere']) != false)
+                && isset($_POST['sexe']) && (array_key_exists($_POST['sexe'], $select['sexe']) != false)
+                && isset($_POST['id_taille']) && (array_key_exists($_POST['id_taille'], $select['taille']) != false)){
+
+                  $insert = $donneesStocks->insertPieces($type_piece, $type_velo, $titre, $poids, $prix, $quantite, $description, $imgBDD, $matiere, $sexe, $id_taille);
+
+                } else {
+                  $msg['error']['generale'] = self::ERREUR_POST;
+                }
+
               break;
               case 'roue':
-                $insert = $donneesStocks->insertPieces($type_piece, $type_velo, $titre, $poids, $prix, $quantite, $description, $imgBDD, $matiere, NULL, $id_taille);
+
+                if(isset($_POST['matiere']) && (array_key_exists($_POST['matiere'], $select['matiere']) != false)
+                && isset($_POST['id_taille']) && (array_key_exists($_POST['id_taille'], $select['taille']) != false)){
+
+                  $insert = $donneesStocks->insertPieces($type_piece, $type_velo, $titre, $poids, $prix, $quantite, $description, $imgBDD, $matiere, NULL, $id_taille);
+
+                } else {
+                  $msg['error']['generale'] = self::ERREUR_POST;
+                }
+
               break;
               case 'selle':
-                $insert = $donneesStocks->insertPieces($type_piece, $type_velo, $titre, $poids, $prix, $quantite, $description, $imgBDD, NULL, $sexe, $id_taille);
-              break;
-              case 'guidon':
-                $insert = $donneesStocks->insertPieces($type_piece, $type_velo, $titre, $poids, $prix, $quantite, $description, $imgBDD, $matiere, $sexe, $id_taille);
+
+              if(isset($_POST['sexe']) && (array_key_exists($_POST['sexe'], $select['sexe']) != false)
+              && isset($_POST['matiere']) && (array_key_exists($_POST['matiere'], $select['matiere']) != false)){
+
+                $insert = $donneesStocks->insertPieces($type_piece, $type_velo, $titre, $poids, $prix, $quantite, $description, $imgBDD, $matiere, $sexe);
+
+              } else {
+                $msg['error']['generale'] = self::ERREUR_POST;
+              }
+
               break;
               case 'groupe':
+
+              if(isset($_POST['pignon']) && (array_key_exists($_POST['pignon'], $select['pignon']) != false)
+              && isset($_POST['plateau']) && (array_key_exists($_POST['plateau'], $select['plateau']) != false)){
+
                 $insert = $donneesStocks->insertPieces($type_piece, $type_velo, $titre, $poids, $prix, $quantite, $description, $imgBDD, NULL, NULL, NULL, $pignon, $plateau);
+
+              } else {
+                $msg['error']['generale'] = self::ERREUR_POST;
+              }
               break;
             }
             if($insert){

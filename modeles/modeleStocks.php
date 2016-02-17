@@ -52,6 +52,20 @@ class modeleStocks extends modeleSuper {
 
   }
 
+  public function updateQuantitePiece($quantite, $id_piece){
+
+    // Controler la quantité avant de lancer la requete de modification
+
+    $insertion = $this->bdd()->prepare("UPDATE pieces SET quantite = quantite + :quantite WHERE id_piece = $id_piece");
+
+    $insertion->bindValue(':quantite', $quantite, PDO::PARAM_INT);
+
+    $result = $insertion->execute();
+
+    return $result;
+
+  }
+
   /**
   * MAJ des information d'un membre dans la bdd
   *
