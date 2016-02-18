@@ -87,6 +87,38 @@ class controleurStocks extends controleurSuper {
 
         $modifPiece = $donneesStocks->recupPieceID($_GET['idPiece']);
 
+        if($_POST){
+
+          if(isset($_POST['type_piece']) && (array_key_exists($_POST['type_piece'], $select['type_piece']) != false)
+          && isset($_POST['type_velo']) && (array_key_exists($_POST['type_velo'], $select['type_velo']) != false)
+          && isset($_POST['titre']) && isset($_POST['quantite']) && isset($_POST['poids'])
+          && isset($_POST['prix']) && isset($_POST['description']) && isset($_FILES['img'])){
+
+            $msg = $this->verifFormPiece($_POST, $modifPiece['type_piece']);
+
+            if(empty($msg['error'])){
+
+              $imgBDD = $this->insertPhoto($modifPiece['type_piece']);
+
+              foreach ($_POST as $key => $value){
+                $_POST[$key] = htmlspecialchars($value, ENT_QUOTES);
+              }
+
+              extract($_POST);
+
+              $this->verifInsertPieces($dataGet, $formulaire);
+
+              if($insert){
+                $msg['error']['confirm'] = 'Votre nouvelle pièce de type "'.ucfirst($dataGet['piece']).'" a bien été ajouté dans nos stocks avec une quantité de '.$quantite.'.';
+              }
+            }
+          } else {
+
+            $msg['error']['generale'] = self::ERREUR_POST;
+
+          }
+        }
+
       } else {
 
         $msg['error']['generale'] = self::ERREUR_POST;
@@ -285,7 +317,7 @@ class controleurStocks extends controleurSuper {
   }
 
   /**
-  *
+  * Fonction controlant l'insertion d'une piece
   *
   * @param $dataGet, $donneesStocks (array)
   * @return $msg (array)
