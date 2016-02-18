@@ -20,19 +20,19 @@ $formulaire->fieldsFormInput('Prénom', 'text', 'prenom', 'Prénom', "Votre Pré
 
 <?php
 
-$formulaire->fieldsFormInput('Age', 'number', 'age', 'Age', "Votre age en année", $msg, false, false, 'min="16"');
+$formulaire->fieldsFormInput('Age', 'number', 'age', 'Age', "Votre age en année", $msg, null, null, 'min="16"');
 
-$formulaire->fieldsFormInput('Taille', 'number', 'taille', '000', "Votre taille en centimètres", $msg, false, false, 'min="150"');
+$formulaire->fieldsFormInput('Taille', 'number', 'taille', '000', "Votre taille en centimètres", $msg, null, null, 'min="150"');
 
-$formulaire->fieldsFormInput('Poids', 'number', 'poids', 'Poids', "Votre poids en kilogrammes", $msg, false, false, 'min="40"');
+$formulaire->fieldsFormInput('Poids', 'number', 'poids', 'Poids', "Votre poids en kilogrammes", $msg, null, null, 'min="40"');
 
 $valuesType = ['route' => 'Route', 'vtt' => 'VTT', 'both' => 'Les deux'];
 echo $formulaire->fieldsFormSelect('Type de vélo', $valuesType, 'type', 'Choisissez votre type de vélo', $msg);
 
 
-$formulaire->fieldsFormInput('Prix maximum', 'number', 'budget', '0000', "Donnez nous votre budget maximum en euros", $msg, false, false, 'min="1"');
+$formulaire->fieldsFormInput('Prix maximum', 'number', 'budget', '0000', "Donnez nous votre budget maximum en euros", $msg, null, null, 'min="1"');
 
-$formulaire->fieldsFormInput('Adresse', 'text', 'adresse', 'Adresse', "Entrez une adresse complète pour la livraison et facturation", $msg, false, 'w100');
+$formulaire->fieldsFormInput('Adresse', 'text', 'adresse', 'Adresse', "Entrez une adresse complète pour la livraison et facturation", $msg, null, 'w100');
 
 $formulaire->fieldsFormInput('Code postal', 'text', 'cp', '00000', "Code postal en chiffre uniquement", $msg);
 

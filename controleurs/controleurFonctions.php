@@ -133,7 +133,7 @@ class controleurFonctions extends controleurSuper {
   *
   * @return $field string
   */
-  public function fieldsFormInput($label, $type, $name, $placeholder, $em, $msg, $bdd = FALSE, $class = FALSE, $input = FALSE, $sessionArray = FALSE){
+  public function fieldsFormInput($label, $type, $name, $placeholder, $em, $msg, $bdd = null, $class = null, $input = null, $sessionArray = null){
 
     $field = '<div class="form-group';
     if($class) $field .= ' '.$class;
@@ -179,7 +179,7 @@ class controleurFonctions extends controleurSuper {
   *
   * @return $field string
   */
-  public function fieldsFormSelect($label, $array = array(), $name, $em, $msg, $bdd = FALSE, $class = FALSE, $input = FALSE, $sessionArray = FALSE){
+  public function fieldsFormSelect($label, $array = array(), $name, $em, $msg, $bdd = null, $class = null, $input = null, $sessionArray = null){
 
     $select = '<div class="form-group';
     if($class) $select .= ' '.$class;
