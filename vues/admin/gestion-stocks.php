@@ -32,7 +32,7 @@
             <span class="w20">
               <form action="#<?= $key; ?>" method="post">
                 <input name="id_piece" type="hidden" value="<?= $value['id_piece']; ?>" required>
-                <input name="quantite" type="number" min="-<?= $value['quantite']; ?>" placeholder="00" required><input type="submit" value="Ok">
+                <input name="quantite" type="number" min="-<?= $value['quantite']; ?>" placeholder="00" required><input type="submit" name="upadateQuantite" value="Ok">
               </form>
             </span>
             <span class="w5"><a href="<?= RACINE_SITE; ?>admin/gestion-stocks/modification/<?= $value['id_piece']; ?>"> | </a></span>
@@ -51,14 +51,16 @@
 
 <?php } else { ?>
 
-  <h2>Modification de la pièce <b>Ref.<?= $modifPiece['id_piece']; ?></b></h2>
+  <h2 id="modification">Modification de la pièce <b>Ref.<?= $modifPiece['id_piece']; ?></b></h2>
 
-  <form class="large" action="" method="post">
+  <form class="large" action="#modification" enctype="multipart/form-data" method="post">
+
+    <input type="hidden" name="id_piece" value="<?= $modifPiece['id_piece']; ?>" required>
 
     <?php include '../vues/include/formulaire-stock.php'; ?>
 
     <div class="form-group submit">
-      <input type="submit" value="Modifier la pièce">
+      <input type="submit" name="update" value="Modifier la pièce">
     </div>
 
   </form>

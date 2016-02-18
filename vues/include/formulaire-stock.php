@@ -1,14 +1,14 @@
 <?php
 
-  if(isset($dataGet['piece'])) {
-    $typePieceForm = $dataGet['piece'];
+  if(isset($dataGet['type_piece'])) {
+    $typePieceForm = $dataGet['type_piece'];
   } elseif(isset($modifPiece['type_piece'])) {
     $typePieceForm = $modifPiece['type_piece'];
   }
 
 ?>
 
-<input type="hidden" name="type_piece" value="<?= $typePieceForm; ?>" required>
+<input type="hidden" name="type_piece" value="<?= $typePieceForm; ?>">
 
 <?php
 
@@ -72,7 +72,7 @@ break;
   } elseif(isset($modifPiece['description'])) {
     echo $modifPiece['description'];
   } ?></textarea>
-  <em>Entrez une description de la pièce (250 carractères max).</em>
+  <em>Entrez une description de la pièce (250 carractères max)</em>
 </div>
 
 <?php $formulaire->fieldsFormInput('Photo de la pièce', 'file', 'img', '', 'Photo au format ".jpg" uniquement', $msg, null, 'w100', 'accept="image/jpeg"'); ?>

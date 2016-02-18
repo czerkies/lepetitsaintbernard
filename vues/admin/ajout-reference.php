@@ -18,13 +18,15 @@ if($userConnectAdmin){
 
   </form>
 
-  <?php if(isset($dataGet['piece'])){ ?>
+  <?php if(isset($dataGet['type_piece'])){ ?>
 
     <h2 id="details_piece">Détails de la pièce</h2>
 
     <?php include '../vues/include/dialogue.php'; ?>
 
     <form class="large" action="#details_piece" enctype="multipart/form-data" method="post">
+
+      <input type="hidden" name="type_piece" value="<?= $dataGet['type_piece']; ?>" required>
 
       <?php include '../vues/include/formulaire-stock.php'; ?>
 
