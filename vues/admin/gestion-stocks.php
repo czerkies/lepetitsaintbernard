@@ -53,9 +53,13 @@
 
   <h2>Modification d'une pièce</h2>
 
-  <form class="" action="" method="post">
+  <form class="large" action="" method="post">
 
-  <?php include '../vues/include/formulaire-stock.php'; ?>
+    <?php include '../vues/include/formulaire-stock.php'; ?>
+
+    <div class="form-group submit">
+      <input type="submit" value="Modifier la pièce">
+    </div>
 
   </form>
 

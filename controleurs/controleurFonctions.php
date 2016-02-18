@@ -1,5 +1,9 @@
 <?php
 
+/**
+* La class controleurFonctions gère les fonctions du site.
+*
+*/
 class controleurFonctions extends controleurSuper {
 
   /**
@@ -240,105 +244,6 @@ class controleurFonctions extends controleurSuper {
     $userConnectAdmin = $this->userConnectAdmin();
 
     $this->Render('../vues/single/page-introuvable.php', array('meta' => $meta, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
-
-  }
-
-  /**
-  * Fonction de controle de pieces (modif, ajout)
-  *
-  * @param $value (array)
-  * @param $typePiece (string)
-  *
-  * @return $msg (array)
-  */
-  public function verifFormPiece($value, $typePiece = ''){
-
-    $msg = '';
-
-    if(empty($value['titre'])){
-      $msg['error']['titre'] = "Veuillez saisir un <b>Titre</b>.";
-    } elseif(strlen($value['titre']) > 30 ){
-      $msg['error']['titre'] = "Votre <b>Titre</b> ne doit pas dépasser 30 carractères.";
-    }
-
-    if(empty($value['poids'])){
-      $msg['error']['poids'] = "Veuillez saisir votre <b>Poids</b>.";
-    } elseif(!is_numeric($_POST['poids'])) {
-      $msg['error']['poids'] = "Veuillez saisir votre <b>Poids</b> en chiffres.";
-    } elseif($_POST['poids'] < 10 || $_POST['poids'] > 15000){
-      $msg['error']['poids'] = "Veuillez saisir un <b>Poids</b> convenable.";
-    }
-
-    if(empty($value['prix'])){
-      $msg['error']['prix'] = "Veuillez saisir un <b>Prix</b>.";
-    } elseif(!is_numeric($_POST['prix'])) {
-      $msg['error']['prix'] = "Veuillez saisir un <b>Prix</b> en chiffres.";
-    } elseif($_POST['prix'] < 1 || $_POST['prix'] > 20000){
-      $msg['error']['prix'] = "Veuillez saisir un <b>Prix</b> convenable.";
-    }
-
-    if(empty($value['quantite'])){
-      $msg['error']['quantite'] = "Veuillez saisir votre <b>Quantite</b>.";
-    } elseif(!is_numeric($_POST['quantite'])) {
-      $msg['error']['quantite'] = "Veuillez saisir votre <b>Quantite</b> en chiffres.";
-    } elseif($_POST['quantite'] < 1 || $_POST['quantite'] > 5000){
-      $msg['error']['quantite'] = "Veuillez saisir une <b>Quantite</b> convenable.";
-    }
-
-    if(empty($value['description'])){
-      $msg['error']['description'] = "Veuillez saisir une <b>Description</b>.";
-    } elseif(strlen($value['description']) > 250){
-      $msg['error']['description'] = "Votre <b>Description</b> ne doit pas dépasser 250 carractères.";
-    }
-
-    if(empty($_FILES['img']['name'])){
-      $msg['error']['img'] = "Veuillez saisir une <b>Image</b>.";
-    }elseif(!$this->verificationPhoto()){
-      $msg['error']['img'] = "Veuillez envoyer une <b>Image</b> au format .jpg.";
-    }
-
-    return $msg;
-
-  }
-
-  /**
-  * Fonction pour controler l'envoie d'une image de piece.
-  *
-  *
-  * @return $verif_extension (bool)
-  */
-  public function verificationPhoto(){
-
-    $extension = strrchr($_FILES['img']['name'], '.');
-
-    $extension = strtolower(substr($extension, 1));
-
-    $extension_valide = array("jpg", "jpeg");
-
-    return in_array($extension, $extension_valide);
-
-  }
-
-  /**
-  * Fonction pour insérer la photo et lien de stockage en BDD.
-  *
-  * @param $img ($_FILES)
-  * @return $photoBDD (string)
-  */
-  public function insertPhoto($img){
-
-    define('RACINE_SITE_IMG', '/lepetitsaintbernard/www/');
-    define('RACINE_SERVER_IMG', $_SERVER['DOCUMENT_ROOT']);
-
-    $nomPhoto = $img.'_'.uniqid().'.jpg';
-
-    $photoDossier = RACINE_SERVER_IMG . RACINE_SITE_IMG . "img/pieces/$nomPhoto";
-
-    copy($_FILES['img']['tmp_name'], $photoDossier);
-
-    $photoBDD = "img/pieces/$nomPhoto";
-
-    return $photoBDD;
 
   }
 

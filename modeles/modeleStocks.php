@@ -16,7 +16,7 @@ class modeleStocks extends modeleSuper {
   public function recupPieces($type_piece){
 
     $donnees = $this->bdd()->query("SELECT * FROM pieces WHERE type_piece = '$type_piece'");
-
+    
     return $donneesParPiece = $donnees->fetchAll(PDO::FETCH_ASSOC);
 
   }
