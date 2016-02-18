@@ -51,7 +51,7 @@
 
 <?php } else { ?>
 
-  <h2>Modification d'une pièce</h2>
+  <h2>Modification de la pièce <b>Ref.<?= $modifPiece['id_piece']; ?></b></h2>
 
   <form class="large" action="" method="post">
 
