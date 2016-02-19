@@ -462,7 +462,7 @@ form {
       border: 2px solid @color1;
       border-radius: @radius;
       background: @fond;
-      padding: 10px 0;
+      padding: 0;
       margin: 10px 0;
       transition: background-color 250ms ease, box-shadow 250ms ease;
       &:hover {
@@ -470,8 +470,31 @@ form {
         box-shadow: @boxshadow;
       }
       span {
+        padding: 10px 0;
         float: left;
         display: block;
+        &.input {
+          padding: 0;
+          input[type="number"] {
+            margin: 0;
+            font-size: 1em;
+            width: 50%;
+            background: transparent;
+            height: 39px;
+            padding:10px;
+            border: none;
+            &:focus {
+              outline: none;
+              background: @hover;
+            }
+          }
+          input[type="submit"] {
+            border: none;
+            background: transparent;
+            font-size: 1em;
+            cursor: pointer;
+          }
+        }
       }
     }
   }

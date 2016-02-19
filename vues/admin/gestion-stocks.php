@@ -29,10 +29,11 @@
             <span class="w20"><?= $value['type_velo']; ?></span>
             <span class="w5"><?= $value['id_taille']; ?></span>
             <span class="w5"><?= $value['quantite']; ?></span>
-            <span class="w20">
+            <span class="w20 input">
               <form action="#<?= $key; ?>" method="post">
                 <input name="id_piece" type="hidden" value="<?= $value['id_piece']; ?>" required>
-                <input name="quantite" type="number" min="-<?= $value['quantite']; ?>" placeholder="00" required><input type="submit" name="upadateQuantite" value="Ok">
+                <input name="quantite" type="number" min="-<?= ($value['quantite'] - 1); ?>" title="Rentrer la quantité à modifier" placeholder="00" required>
+                <input type="submit" name="upadateQuantite" title="Valider la quantité" value="Ok">
               </form>
             </span>
             <span class="w5"><a href="<?= RACINE_SITE; ?>admin/gestion-stocks/modification/<?= $value['id_piece']; ?>"> | </a></span>

@@ -438,7 +438,7 @@ form .form-group.radio label[for="femme"] {
   border: 2px solid #21353e;
   border-radius: 2px;
   background: #eeeeee;
-  padding: 10px 0;
+  padding: 0;
   margin: 10px 0;
   transition: background-color 250ms ease, box-shadow 250ms ease;
 }
@@ -447,8 +447,31 @@ form .form-group.radio label[for="femme"] {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 .tableau .body li span {
+  padding: 10px 0;
   float: left;
   display: block;
+}
+.tableau .body li span.input {
+  padding: 0;
+}
+.tableau .body li span.input input[type="number"] {
+  margin: 0;
+  font-size: 1em;
+  width: 50%;
+  background: transparent;
+  height: 39px;
+  padding: 10px;
+  border: none;
+}
+.tableau .body li span.input input[type="number"]:focus {
+  outline: none;
+  background: #ffffff;
+}
+.tableau .body li span.input input[type="submit"] {
+  border: none;
+  background: transparent;
+  font-size: 1em;
+  cursor: pointer;
 }
 /********** Responsive **********/
 @media screen and (min-width: 600px) {
