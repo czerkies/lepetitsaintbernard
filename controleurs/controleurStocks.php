@@ -54,6 +54,7 @@ class controleurStocks extends controleurSuper {
     $formulaire = new controleurFonctions();
     $select = $this->listeDetailsPieces();
 
+    // Gestion de la mise à jour de la quantité d'une pièce
     if(isset($_POST['upadateQuantite'])){
 
       if(isset($_POST['quantite']) && isset($_POST['id_piece'])
@@ -74,16 +75,14 @@ class controleurStocks extends controleurSuper {
         }
 
       } else {
-
         $msg['error']['generale'] = self::ERREUR_POST;
-
       }
-
     }
 
-    if(isset($_GET['idPiece']) && !empty($_GET['idPiece']) && is_numeric($_GET['idPiece'])){
+    // Gestion de la mise à jour d'une pièce
+    if(isset($_GET['update']) && !empty($_GET['update']) && is_numeric($_GET['update'])){
 
-      if($donneesStocks->recupPieceID($_GET['idPiece'])) {
+      if($donneesStocks->recupPieceID($_GET['update'])) {
 
         if(isset($_POST['update'])){
 
@@ -115,14 +114,25 @@ class controleurStocks extends controleurSuper {
           }
         }
 
-        $modifPiece = $donneesStocks->recupPieceID($_GET['idPiece']);
+        $modifPiece = $donneesStocks->recupPieceID($_GET['update']);
 
       } else {
-
         $msg['error']['generale'] = self::ERREUR_POST;
-
       }
+    }
 
+    // Gestion de la suppresion d'une pièce
+    if(isset($_GET['delete']) && !empty($_GET['delete']) && is_numeric($_GET['delete'])){
+
+      if($donneesStocks->recupPieceID($_GET['delete'])){
+
+        $donneesStocks->deletePieceID($_GET['delete']);
+
+        $msg['error']['confirm'] = "Votre pièce ref.".$_GET['delete']." à bien été supprimé.";
+
+      } else {
+        $msg['error']['generale'] = self::ERREUR_POST;
+      }
     }
 
     $donneesParPiece['cadre'] = $donneesStocks->recupPieces('cadre');
