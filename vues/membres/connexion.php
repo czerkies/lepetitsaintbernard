@@ -3,9 +3,9 @@
 
   <?php include '../vues/include/dialogue.php'; ?>
 
-  <?= $formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Votre Email personnel", $msg); ?>
+  <?= $formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Votre Email personnel", $msg, 'required'); ?>
 
-  <?= $formulaire->fieldsFormInput('Mot de passe', 'password', 'mdp', 'Mot de passe', "Mot de passe personnel", $msg); ?>
+  <?= $formulaire->fieldsFormInput('Mot de passe', 'password', 'mdp', 'Mot de passe', "Mot de passe personnel", $msg, 'required'); ?>
 
   <div class="form-group checkbox">
     <input name="remember" id="remember" type="checkbox"><label for="remember">Se souvenir de moi</label>

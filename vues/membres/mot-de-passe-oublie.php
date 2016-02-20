@@ -4,7 +4,7 @@
 
   <?php include '../vues/include/dialogue.php'; ?>
 
-  <?= $formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Entrez l'adresse mail utilisé pour votre compte", $msg); ?>
+  <?= $formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Entrez l'adresse mail utilisé pour votre compte", $msg, 'required'); ?>
 
   <div class="form-group submit">
     <input type="submit" value="Recevoir un mot de passe">

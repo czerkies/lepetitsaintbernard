@@ -137,7 +137,7 @@ class controleurFonctions extends controleurSuper {
   *
   * @return $field string
   */
-  public function fieldsFormInput($label, $type, $name, $placeholder, $em, $msg, $bdd = null, $class = null, $input = null, $sessionArray = null){
+  public function fieldsFormInput($label, $type, $name, $placeholder, $em, $msg, $input = null, $class = null, $bdd = null, $sessionArray = null){
 
     $field = '<div class="form-group';
     if($class) $field .= ' '.$class;
@@ -161,7 +161,7 @@ class controleurFonctions extends controleurSuper {
     }
 
     if($input) $field .= ' '.$input.' ';
-    $field .= ' required>';
+    $field .= ' >';
     $field .= '<em>'.$em.'</em>';
     $field .= '</div>';
 
@@ -183,7 +183,7 @@ class controleurFonctions extends controleurSuper {
   *
   * @return $field string
   */
-  public function fieldsFormSelect($label, $array = array(), $name, $em, $msg, $bdd = null, $class = null, $input = null, $sessionArray = null){
+  public function fieldsFormSelect($label, $array = array(), $name, $em, $msg, $input = null, $class = null, $bdd = null, $sessionArray = null){
 
     $select = '<div class="form-group';
     if($class) $select .= ' '.$class;
