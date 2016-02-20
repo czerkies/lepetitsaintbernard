@@ -26,8 +26,6 @@ if($userConnectAdmin){
 
     <form class="large" action="#details_piece" enctype="multipart/form-data" method="post">
 
-      <input type="hidden" name="type_piece" value="<?= $dataGet['type_piece']; ?>" required>
-
       <?php include '../vues/include/formulaire-stock.php'; ?>
 
       <div class="form-group submit">

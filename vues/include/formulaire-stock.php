@@ -12,7 +12,7 @@
 
 <?php
 
-//$formulaire->fieldsFormInput('Nom de la pièce', 'text', 'titre', 'Nom de la pièce', 'Indiquer le nom de la pièce (30 carractères max.)', $msg, 'required', null, $bdd = (isset($modifPiece)) ? $modifPiece : null);
+$formulaire->fieldsFormInput('Nom de la pièce', 'text', 'titre', 'Nom de la pièce', 'Indiquer le nom de la pièce (30 carractères max.)', $msg, 'required', null, $bdd = (isset($modifPiece)) ? $modifPiece : null);
 
 $formulaire->fieldsFormSelect('Type de vélo', $select['type_velo'], 'type_velo', 'Type de vélo pour votre nouvelle pièce', $msg, null, null, $bdd = (isset($modifPiece)) ? $modifPiece : null);
 
