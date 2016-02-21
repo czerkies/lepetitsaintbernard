@@ -1,5 +1,7 @@
 RewriteEngine On
 
+#MEMBRE
+
 RewriteRule ^connexion/deconnexion/ index.php?controleur=membres&action=connexionMembre&deconnexion=true [L]
 RewriteRule ^connexion/ index.php?controleur=membres&action=connexionMembre [L]
 RewriteRule ^creation-compte/ index.php?controleur=membres&action=creationCompte [L]
@@ -18,6 +20,10 @@ RewriteRule ^admin/gestion-stocks/modification/(.*)$ index.php?controleur=stocks
 RewriteRule ^admin/gestion-stocks/suppression/(.*)$ index.php?controleur=stocks&action=gestionStocks&delete=$1 [L]
 RewriteRule ^admin/gestion-stocks/ index.php?controleur=stocks&action=gestionStocks [L]
 RewriteRule ^admin/ajouter-reference/ index.php?controleur=stocks&action=ajoutReference [QSA,L]
+
+#VELO
+
+RewriteRule ^votre-velo/ index.php?controleur=assemblage&action=veloPerso [L]
 
 ErrorDocument 401 /lepetitsaintbernard/www/page-introuvable/
 ErrorDocument 403 /lepetitsaintbernard/www/page-introuvable/

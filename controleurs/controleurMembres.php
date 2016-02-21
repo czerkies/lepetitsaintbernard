@@ -41,10 +41,11 @@ class controleurMembres extends controleurSuper {
           $email = htmlspecialchars($_POST['email'], ENT_QUOTES);
           $mdp = htmlspecialchars($_POST['mdp'], ENT_QUOTES);
 
-          $donnes = $connexion->connexionMembre($email, $mdp);
+          $donnees = $connexion->connexionMembre($email, $mdp);
 
-          if($donnes['email'] === $email && $donnes['mdp'] === $mdp){
-            foreach ($donnes as $key => $value) {
+          if($donnees['email'] === $email && $donnees['mdp'] === $mdp){
+
+            foreach ($donnees as $key => $value) {
               if($key != 'mdp'){
                 $_SESSION['membre'][$key] = $value;
               }
@@ -117,13 +118,15 @@ class controleurMembres extends controleurSuper {
 
           if($donneesMembre->insertMembre($email, $mdp, $nom, $prenom, $sexe, $age, $taille, $poids, $type, $budget, $adresse, $cp, $ville)){
 
-            foreach ($_POST as $key => $value) {
+            $donneesBddSession = $donneesMembre->recupToutesDonnees($email);
+
+            foreach ($donneesBddSession as $key => $value) {
               if($key != 'mdp'){
                 $_SESSION['membre'][$key] = $value;
               }
             }
 
-            $_SESSION['membre']['statut'] = 0;
+            //$_SESSION['membre']['statut'] = 0;
 
             $userConnect = TRUE;
 
@@ -191,7 +194,9 @@ class controleurMembres extends controleurSuper {
 
           if($donneesMembre->updateMembre($email, $mdp, $nom, $prenom, $sexe, $age, $taille, $poids, $type, $budget, $adresse, $cp, $ville, $idMembre)){
 
-            foreach ($_POST as $key => $value) {
+            $donneesBddSession = $donneesMembre->recupToutesDonnees($email);
+
+            foreach ($donneesBddSession as $key => $value) {
               if($key != 'mdp'){
                 $_SESSION['membre'][$key] = $value;
               }

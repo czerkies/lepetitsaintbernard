@@ -51,7 +51,7 @@
     $formulaire->fieldsFormInput('Poids', 'number', 'poids', 'Poids', "Votre poids en kilogrammes", $msg, false, false, false, 'membre');
 
     $valuesType = ['route' => 'Route', 'vtt' => 'VTT', 'both' => 'Les deux'];
-    echo $formulaire->fieldsFormSelect('Type de vélo', $valuesType, 'type', 'Choisissez votre type de vélo', $msg, false, false, false, 'membre');
+    $formulaire->fieldsFormSelect('Type de vélo', $valuesType, 'type', 'Choisissez votre type de vélo', $msg, false, false, false, 'membre');
 
     $formulaire->fieldsFormInput('Prix maximum', 'number', 'budget', '0000', "Donnez nous votre budget maximum en euros", $msg, false, false, false, 'membre');
 

@@ -204,4 +204,18 @@ class modeleMembres extends modeleSuper {
 
   }
 
+  /**
+  * Récupération de toutes les données d'un membre
+  *
+  * @param (int) $Email
+  * @return (array) $donnees
+  */
+  public function recupToutesDonnees($email){
+
+    $membre = $this->bdd()->query("SELECT * FROM membres WHERE email = '$email'");
+
+    return $donnees = $membre->fetch(PDO::FETCH_ASSOC);
+
+  }
+
 }

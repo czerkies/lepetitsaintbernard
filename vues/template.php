@@ -13,7 +13,7 @@
         <nav <?php if($userConnectAdmin) echo 'class="menu_admin"';?>>
           <ul>
             <li>
-              <a href="#">Votre Vélo</a>
+              <a href="<?= RACINE_SITE; ?>votre-velo/">Votre Vélo</a>
             </li>
             <li>
               <a href="#">Route</a>
