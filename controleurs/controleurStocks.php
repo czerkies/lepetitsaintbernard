@@ -28,7 +28,7 @@ class controleurStocks extends controleurSuper {
     // Pignon
     $select['pignon'] = ['disabled' => 'Dents du grand Pignon', 16 => '16', 24 => '24', 32 => '32'];
     // Plateau
-    $select['plateau'] = ['disabled' => 'Dents du grand Plateau', 56 => '56', 76 => '76'];
+    $select['plateau'] = ['disabled' => 'Dents du grand Plateau', 76 => '76', 56 => '56'];
 
     return $select;
 
@@ -242,7 +242,7 @@ class controleurStocks extends controleurSuper {
       $msg['error']['poids'] = "Veuillez saisir votre <b>Poids</b>.";
     } elseif(!is_numeric($_POST['poids'])) {
       $msg['error']['poids'] = "Veuillez saisir votre <b>Poids</b> en chiffres.";
-    } elseif($_POST['poids'] < 10 || $_POST['poids'] > 15000){
+    } elseif($_POST['poids'] <= 0 || $_POST['poids'] > 20){
       $msg['error']['poids'] = "Veuillez saisir un <b>Poids</b> convenable.";
     }
 

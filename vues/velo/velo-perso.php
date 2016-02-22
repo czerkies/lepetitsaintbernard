@@ -1,5 +1,4 @@
 <?php
-
 if($userConnect){
 
 ?>
@@ -8,16 +7,27 @@ if($userConnect){
 
 <p>Hello</p>
 
-<?php var_dump($_SESSION); ?>
+<?php foreach ($veloPerso as $key => $typeVelo) { ?>
+  <h2><?= ucfirst($key); ?></h2>
 
-<?php
-foreach ($veloPerso as $key => $value) {
+  <?php
+  $prix[$key] = 0;
+  $poids[$key] = 0;
+  foreach ($typeVelo as $donnees) { ?>
 
-  foreach ($value as $donnees) {
-    echo $donnees['titre'].' - '.$donnees['id_piece'].'<br>';
+    <?= $donnees['titre'].' - '.$donnees['id_piece']; ?><br>
+
+  <?php
+    $prix[$key] += $donnees['prix'];
+    $poids[$key] += $donnees['poids'];
   }
+  ?>
 
-}
-?>
+  Prix du vélo : <?= $prix[$key]; ?> €.
+  Poids du vélo : <?= $poids[$key]; ?> Kilos.
 
 <?php } ?>
+
+<?php
+}
+?>

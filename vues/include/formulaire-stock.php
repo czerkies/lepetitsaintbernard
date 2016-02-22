@@ -16,7 +16,7 @@ $formulaire->fieldsFormInput('Nom de la pièce', 'text', 'titre', 'Nom de la pi�
 
 $formulaire->fieldsFormSelect('Type de vélo', $select['type_velo'], 'type_velo', 'Type de vélo pour votre nouvelle pièce', $msg, null, null, $bdd = (isset($modifPiece)) ? $modifPiece : null);
 
-$formulaire->fieldsFormInput('Poids de la pièce', 'number', 'poids', 'Poids de la pièce', 'Indiquer le poids de la pièce en grammes', $msg, 'min="1" required', null, $bdd = (isset($modifPiece)) ? $modifPiece : null);
+$formulaire->fieldsFormInput('Poids de la pièce', 'number', 'poids', '00,0', 'Indiquer le poids de la pièce en Kilos', $msg, 'min="0" required', null, $bdd = (isset($modifPiece)) ? $modifPiece : null);
 
 $formulaire->fieldsFormInput('Prix', 'number', 'prix', '0000', 'Indiquer un prix en Euros', $msg, 'min="1" required', null, $bdd = (isset($modifPiece)) ? $modifPiece : null);
 
