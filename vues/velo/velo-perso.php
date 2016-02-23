@@ -9,14 +9,14 @@ if($userConnect){
 
 <?php foreach ($veloPerso as $key => $typeVelo) { ?>
   <h2><?= ucfirst($key); ?></h2>
-
   <?php
   $prix[$key] = 0;
   $poids[$key] = 0;
   foreach ($typeVelo as $donnees) { ?>
-
-    <?= $donnees['titre'].' - '.$donnees['id_piece']; ?><br>
-
+    <div class="bloc_piece">
+      <?= $donnees['titre'].' - '.$donnees['id_piece']; ?><br>
+      <img src="<?= RACINE_SITE.$donnees['img']; ?>" alt="<?= $donnees['titre']; ?>">
+    </div>
   <?php
     $prix[$key] += $donnees['prix'];
     $poids[$key] += $donnees['poids'];
