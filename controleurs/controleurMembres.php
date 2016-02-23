@@ -126,19 +126,12 @@ class controleurMembres extends controleurSuper {
               }
             }
 
-            //$_SESSION['membre']['statut'] = 0;
-
             $userConnect = TRUE;
 
-            $headers = 'Content-Type: text/html; charset=\"UTF-8\";' . "\r\n";
-            $headers .= 'FROM: LokiSalle <contact@lokisalle.fr>' . "\r\n";
+            $message = "Merci de votre inscription ".ucfirst($prenom).",<br>
+            Vous pouvez désormais voir votre vélo à la page suivante : <a href=\"http://lepetitstbernard.romanczerkies.fr/votre-velo/\">Nos Salles</a>";
 
-            $sujet = "Bienvenue chez LokiSalle ".ucfirst($nom)." ".$prenom.".";
-
-            $message = "Bienvenue chez Lokisalle.<br>
-            Vous pouvez désormais commander vos salle dans notre catalogue à la page suivante : <a href=\"http://loki-salle.romanczerkies.fr/nos-salles/\">Nos Salles</a>";
-
-            //mail($email, $sujet, $message, $headers);
+            $formulaire->sendMail($email, 'Bienvenue chez Le petit St Bernard', $message);
 
           }
 

@@ -247,4 +247,24 @@ class controleurFonctions extends controleurSuper {
 
   }
 
+  /**
+  * Fonction d'envoie de mail
+  *
+  * @param (string) $to
+  * @param (string) $subject
+  * @param (string) $content
+  * @param (string) $from (option)
+  *
+  */
+  public function sendMail($to, $subject, $content, $from = 'contact@lepetitstbernard.fr'){
+
+    $headers = 'Content-Type: text/html; charset=\"UTF-8\";' . "\r\n";
+    $headers .= 'FROM: Le petit St Bernard <'.$from.'>' . "\r\n";
+
+    $subjectFormat = "Le petit St bernard - ".$subject;
+
+    mail($to, $subjectFormat, $content, $headers);
+
+  }
+
 }
