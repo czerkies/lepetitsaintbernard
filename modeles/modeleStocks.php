@@ -138,7 +138,7 @@ class modeleStocks extends modeleSuper {
   */
   public function imagePath($id_piece){
 
-    $donnees = $this->bdd()->prepare("SELECT image FROM pieces WHERE id_piece = $id_piece");
+    $donnees = $this->bdd()->query("SELECT img FROM pieces WHERE id_piece = $id_piece");
 
     return $path = $donnees->fetch(PDO::FETCH_ASSOC);
 

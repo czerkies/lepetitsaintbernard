@@ -360,6 +360,9 @@ form .form-group.radio label[for="femme"] {
   width: 87%;
   padding: 12px;
 }
+form .img-form {
+  width: 100%;
+}
 .error {
   animation: msgbounce 500ms ease;
   display: inline-block;
@@ -607,6 +610,10 @@ form .form-group.radio label[for="femme"] {
   form .form-group.radio label[for="femme"] {
     width: 37%;
     padding: 12px;
+  }
+  form .img-form {
+    width: 50%;
+    margin: 0 25%;
   }
   .bloc {
     float: left;

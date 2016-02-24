@@ -6,8 +6,6 @@
 */
 class controleurStocks extends controleurSuper {
 
-  public $pathServerImg = $_SERVER['DOCUMENT_ROOT']'/lepetitsaintbernard/www/img/pieces/';
-
   const ERREUR_POST = 'Une erreur est survenue lors de votre demande.';
 
   /**
@@ -101,18 +99,23 @@ class controleurStocks extends controleurSuper {
                 $_POST[$key] = htmlspecialchars($value, ENT_QUOTES);
               }
 
+              if(!empty($_FILES['img']['name'])){
+
+                $imgSuppModif = $donneesStocks->imagePath($_POST['id_piece']);
+
+                var_dump($imgSuppModif);
+
+                $imagePathSupp = $_SERVER['DOCUMENT_ROOT'].'/lepetitsaintbernard/www/'.$imgSuppModif['img'];
+
+                var_dump($imagePathSupp);
+
+                if(!empty($imgSuppModif['img']) && file_exists($imagePathSupp)) unlink($imagePathSupp);
+
+              }
+
               extract($_POST);
 
               if($this->verifInsertPieces($_POST, $select, true)){
-
-                if(!empty($_FILES['img']['name'])){
-
-                  $imgSuppModif = $donneesStocks->imagePath($id_piece);
-                  $imagePath = $this->$pathServerImg.$imgSuppModif['img'];
-
-                  if(!empty($imgSuppModif['img']) && file_exists($imagePath)) unlink($imagePath);
-
-                }
 
                 $msg['error']['confirm'] = "Votre pièce ref.".$_POST['id_piece']." à bien été modifié.";
 
@@ -327,11 +330,11 @@ class controleurStocks extends controleurSuper {
 
     $nomPhoto = $img.'_'.uniqid().'.jpg';
 
-    $photoDossier = $this->$pathServerImg.$nomPhoto";
+    $photoDossier = $_SERVER['DOCUMENT_ROOT']."/lepetitsaintbernard/www/img/pieces/$nomPhoto";
 
     copy($_FILES['img']['tmp_name'], $photoDossier);
 
-    $photoBDD = "img/pieces/$nomPhoto";
+    $photoBDD = 'img/pieces/'.$nomPhoto;
 
     return $photoBDD;
 

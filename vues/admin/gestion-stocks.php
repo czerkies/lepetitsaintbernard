@@ -60,6 +60,8 @@
 
     <?php include '../vues/include/formulaire-stock.php'; ?>
 
+    <img class="img-form" src="<?= RACINE_SITE.$modifPiece['img']; ?>" alt="Image - <?= $modifPiece['titre']; ?>">
+
     <div class="form-group submit">
       <input type="submit" name="update" value="Modifier la pièce">
     </div>
@@ -68,4 +70,5 @@
 
 <?php } ?>
 
-<?php }
+<?php
+}
