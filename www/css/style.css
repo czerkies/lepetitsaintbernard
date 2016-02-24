@@ -362,6 +362,8 @@ form .form-group.radio label[for="femme"] {
 }
 form .img-form {
   width: 100%;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 .error {
   animation: msgbounce 500ms ease;
@@ -475,6 +477,12 @@ form .img-form {
   background: transparent;
   font-size: 1em;
   cursor: pointer;
+}
+.blocpiece {
+  border: 2px solid #21353e;
+  border-radius: 2px;
+  width: 98%;
+  margin: 25px 1%;
 }
 /********** Responsive **********/
 @media screen and (min-width: 600px) {
@@ -636,5 +644,14 @@ form .img-form {
     float: left;
     width: 25%;
     font-size: 1em;
+  }
+  /* Piece de 'votre-velo'*/
+  .blocpiece {
+    border: 2px solid #21353e;
+    border-radius: 2px;
+    width: 31.3%;
+    margin: 25px 1%;
+    height: 350px;
+    float: left;
   }
 }

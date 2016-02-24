@@ -13,9 +13,9 @@ if($userConnect){
   $prix[$key] = 0;
   $poids[$key] = 0;
   foreach ($typeVelo as $donnees) { ?>
-    <div class="bloc_piece">
-      <?= $donnees['titre'].' - '.$donnees['id_piece']; ?><br>
+    <div class="blocpiece">
       <img src="<?= RACINE_SITE.$donnees['img']; ?>" alt="<?= $donnees['titre']; ?>">
+      <?= $donnees['titre'].' - '.$donnees['id_piece']; ?><br>
     </div>
   <?php
     $prix[$key] += $donnees['prix'];
