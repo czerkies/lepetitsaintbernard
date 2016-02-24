@@ -6,6 +6,8 @@
 */
 class controleurStocks extends controleurSuper {
 
+  public $pathServerImg = $_SERVER['DOCUMENT_ROOT']'/lepetitsaintbernard/www/img/pieces/';
+
   const ERREUR_POST = 'Une erreur est survenue lors de votre demande.';
 
   /**
@@ -102,6 +104,15 @@ class controleurStocks extends controleurSuper {
               extract($_POST);
 
               if($this->verifInsertPieces($_POST, $select, true)){
+
+                if(!empty($_FILES['img']['name'])){
+
+                  $imgSuppModif = $donneesStocks->imagePath($id_piece);
+                  $imagePath = $this->$pathServerImg.$imgSuppModif['img'];
+
+                  if(!empty($imgSuppModif['img']) && file_exists($imagePath)) unlink($imagePath);
+
+                }
 
                 $msg['error']['confirm'] = "Votre pièce ref.".$_POST['id_piece']." à bien été modifié.";
 
@@ -316,7 +327,7 @@ class controleurStocks extends controleurSuper {
 
     $nomPhoto = $img.'_'.uniqid().'.jpg';
 
-    $photoDossier = $_SERVER['DOCUMENT_ROOT']."/lepetitsaintbernard/www/img/pieces/$nomPhoto";
+    $photoDossier = $this->$pathServerImg.$nomPhoto";
 
     copy($_FILES['img']['tmp_name'], $photoDossier);
 

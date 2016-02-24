@@ -116,11 +116,31 @@ class modeleStocks extends modeleSuper {
 
   }
 
+  /**
+  * Suppression d'une pièce
+  *
+  * @param (int) $id_piece
+  */
   public function deletePieceID($id_piece){
 
     $delete = $this->bdd()->prepare("DELETE FROM pieces WHERE id_piece = $id_piece");
 
     $delete->execute();
+
+  }
+
+  /**
+  * Chemin de l'image de piece avant modif
+  *
+  * @param (int) $id_piece
+  *
+  * @return (int) $path
+  */
+  public function imagePath($id_piece){
+
+    $donnees = $this->bdd()->prepare("SELECT image FROM pieces WHERE id_piece = $id_piece");
+
+    return $path = $donnees->fetch(PDO::FETCH_ASSOC);
 
   }
 
