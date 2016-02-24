@@ -99,15 +99,12 @@ class controleurStocks extends controleurSuper {
                 $_POST[$key] = htmlspecialchars($value, ENT_QUOTES);
               }
 
+              // Si modification image alors suppréssion de l'ancienne
               if(!empty($_FILES['img']['name'])){
 
                 $imgSuppModif = $donneesStocks->imagePath($_POST['id_piece']);
 
-                var_dump($imgSuppModif);
-
                 $imagePathSupp = $_SERVER['DOCUMENT_ROOT'].'/lepetitsaintbernard/www/'.$imgSuppModif['img'];
-
-                var_dump($imagePathSupp);
 
                 if(!empty($imgSuppModif['img']) && file_exists($imagePathSupp)) unlink($imagePathSupp);
 
