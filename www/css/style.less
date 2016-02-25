@@ -511,24 +511,25 @@ form {
   margin: 25px 1%;
   .img_titre_piece {
     position: relative;
-    .titre_piece {
-      margin: 0;
-      padding: 10px;
-      position: absolute;
-      z-index: 200;
-      color: #000;
-      text-shadow: 0 0 8px rgba(0, 0, 0, .75);
-      font-size: 2em;
-    }
     width: 100%;
     height: auto;
     overflow: hidden;
     img {
       width: 100%;
     }
+    .titre_piece {
+      margin: 0;
+      padding: 5px;
+      position: absolute;
+      z-index: 200;
+      color: #000;
+      text-shadow: 0 0 8px rgba(0, 0, 0, .75);
+      font-size: 2em;
+    }
   }
   .description_piece {
     display: inline-block;
+    padding: 5px;
     p {
       margin: 0;
     }
@@ -722,5 +723,11 @@ form {
     margin: 25px 1%;
     height: 350px;
     float: left;
+    .img_titre_piece {
+      height: 175px;
+    }
+    .description_piece p:first-child {
+      height: 90px;
+    }
   }
 }

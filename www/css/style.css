@@ -490,20 +490,21 @@ form .img-form {
   height: auto;
   overflow: hidden;
 }
+.blocpiece .img_titre_piece img {
+  width: 100%;
+}
 .blocpiece .img_titre_piece .titre_piece {
   margin: 0;
-  padding: 10px;
+  padding: 5px;
   position: absolute;
   z-index: 200;
   color: #000;
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
   font-size: 2em;
 }
-.blocpiece .img_titre_piece img {
-  width: 100%;
-}
 .blocpiece .description_piece {
   display: inline-block;
+  padding: 5px;
 }
 .blocpiece .description_piece p {
   margin: 0;
@@ -677,5 +678,11 @@ form .img-form {
     margin: 25px 1%;
     height: 350px;
     float: left;
+  }
+  .blocpiece .img_titre_piece {
+    height: 175px;
+  }
+  .blocpiece .description_piece p:first-child {
+    height: 90px;
   }
 }

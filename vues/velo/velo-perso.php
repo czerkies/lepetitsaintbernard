@@ -20,12 +20,12 @@ if($userConnect){
       </div>
       <div class="description_piece">
         <p><?= $donnees['description']; ?></p>
-        <p>Poids : <?= $donnees['poids']; ?> Kilos</p>
-        <p>Prix : <?= $donnees['prix']; ?> €</p>
+        <p><b>Poids</b> : <?= $donnees['poids']; ?> Kilos</p>
+        <p><b>Prix</b> : <?= $donnees['prix']; ?> €</p>
         <?php if(($donnees['pignon'] && $donnees['plateau']) == null) { ?>
-          <p>Matière : <?= $donnees['matiere']; ?></p>
+          <p><b>Matière</b> : <?= $donnees['matiere']; ?></p>
         <?php } else { ?>
-          <p>Groupe : <?= $donnees['plateau'].'/'.$donnees['pignon']; ?></p>
+          <p><b>Groupe</b> : <?= $donnees['plateau'].'/'.$donnees['pignon']; ?></p>
         <?php } ?>
       </div>
     </div>
@@ -34,9 +34,12 @@ if($userConnect){
     $poids[$key] += $donnees['poids'];
   }
   ?>
-
-  Prix du vélo : <?= $prix[$key]; ?> €.
-  Poids du vélo : <?= $poids[$key]; ?> Kilos.
+  <div class="blocpiece">
+    <div class="description_piece">
+      <p><b>Prix du vélo</b> : <?= $prix[$key]; ?> €.</p>
+      <p><b>Poids du vélo</b> : <?= $poids[$key]; ?> Kilos.</p>
+    </div>
+  </div>
 
 <?php } ?>
 
