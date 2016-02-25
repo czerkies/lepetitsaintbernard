@@ -14,8 +14,20 @@ if($userConnect){
   $poids[$key] = 0;
   foreach ($typeVelo as $donnees) { ?>
     <div class="blocpiece">
-      <img src="<?= RACINE_SITE.$donnees['img']; ?>" alt="<?= $donnees['titre']; ?>">
-      <?= $donnees['titre'].' - '.$donnees['id_piece']; ?><br>
+      <div class="img_titre_piece">
+        <p class="titre_piece"><?= $donnees['titre']; ?></p>
+        <img src="<?= RACINE_SITE.$donnees['img']; ?>" alt="<?= $donnees['titre']; ?>">
+      </div>
+      <div class="description_piece">
+        <p><?= $donnees['description']; ?></p>
+        <p>Poids : <?= $donnees['poids']; ?> Kilos</p>
+        <p>Prix : <?= $donnees['prix']; ?> €</p>
+        <?php if(($donnees['pignon'] && $donnees['plateau']) == null) { ?>
+          <p>Matière : <?= $donnees['matiere']; ?></p>
+        <?php } else { ?>
+          <p>Groupe : <?= $donnees['plateau'].'/'.$donnees['pignon']; ?></p>
+        <?php } ?>
+      </div>
     </div>
   <?php
     $prix[$key] += $donnees['prix'];

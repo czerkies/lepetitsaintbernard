@@ -509,6 +509,30 @@ form {
   border-radius: @radius;
   width: 98%;
   margin: 25px 1%;
+  .img_titre_piece {
+    position: relative;
+    .titre_piece {
+      margin: 0;
+      padding: 10px;
+      position: absolute;
+      z-index: 200;
+      color: #000;
+      text-shadow: 0 0 8px rgba(0, 0, 0, .75);
+      font-size: 2em;
+    }
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+  .description_piece {
+    display: inline-block;
+    p {
+      margin: 0;
+    }
+  }
 }
 
 /********** Responsive **********/

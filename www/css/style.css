@@ -484,6 +484,30 @@ form .img-form {
   width: 98%;
   margin: 25px 1%;
 }
+.blocpiece .img_titre_piece {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.blocpiece .img_titre_piece .titre_piece {
+  margin: 0;
+  padding: 10px;
+  position: absolute;
+  z-index: 200;
+  color: #000;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
+  font-size: 2em;
+}
+.blocpiece .img_titre_piece img {
+  width: 100%;
+}
+.blocpiece .description_piece {
+  display: inline-block;
+}
+.blocpiece .description_piece p {
+  margin: 0;
+}
 /********** Responsive **********/
 @media screen and (min-width: 600px) {
   #bouton_menu {
