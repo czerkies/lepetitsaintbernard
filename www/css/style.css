@@ -479,35 +479,43 @@ form .img-form {
   cursor: pointer;
 }
 .blocpiece {
+  transition: box-shadow 250ms ease;
+  background: #fff;
   border: 2px solid #21353e;
   border-radius: 2px;
   width: 98%;
   margin: 25px 1%;
 }
-.blocpiece .img_titre_piece {
+.blocpiece .img_piece {
   position: relative;
   width: 100%;
   height: auto;
   overflow: hidden;
 }
-.blocpiece .img_titre_piece img {
+.blocpiece .img_piece img {
   width: 100%;
 }
-.blocpiece .img_titre_piece .titre_piece {
+.blocpiece .img_piece .type_piece {
   margin: 0;
   padding: 5px;
   position: absolute;
   z-index: 200;
   color: #000;
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
-  font-size: 2em;
+  font-size: 1.5em;
 }
-.blocpiece .description_piece {
+.blocpiece .details_piece {
   display: inline-block;
   padding: 5px;
 }
-.blocpiece .description_piece p {
+.blocpiece .details_piece p {
   margin: 0;
+}
+.blocpiece .details_piece p.titre {
+  font-weight: 800;
+}
+.blocpiece:hover {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 /********** Responsive **********/
 @media screen and (min-width: 600px) {
@@ -676,13 +684,13 @@ form .img-form {
     border-radius: 2px;
     width: 31.3%;
     margin: 25px 1%;
-    height: 350px;
+    height: 375px;
     float: left;
   }
-  .blocpiece .img_titre_piece {
+  .blocpiece .img_piece {
     height: 175px;
   }
-  .blocpiece .description_piece p:first-child {
+  .blocpiece .details_piece .description {
     height: 90px;
   }
 }

@@ -505,11 +505,13 @@ form {
   }
 }
 .blocpiece {
+  transition: box-shadow 250ms ease;
+  background: #fff;
   border: 2px solid @color1;
   border-radius: @radius;
   width: 98%;
   margin: 25px 1%;
-  .img_titre_piece {
+  .img_piece {
     position: relative;
     width: 100%;
     height: auto;
@@ -517,22 +519,28 @@ form {
     img {
       width: 100%;
     }
-    .titre_piece {
+    .type_piece {
       margin: 0;
       padding: 5px;
       position: absolute;
       z-index: 200;
       color: #000;
       text-shadow: 0 0 8px rgba(0, 0, 0, .75);
-      font-size: 2em;
+      font-size: 1.5em;
     }
   }
-  .description_piece {
+  .details_piece {
     display: inline-block;
     padding: 5px;
     p {
       margin: 0;
+      &.titre {
+        font-weight: 800;
+      }
     }
+  }
+  &:hover {
+    box-shadow: @boxshadow;
   }
 }
 
@@ -721,13 +729,15 @@ form {
     border-radius: @radius;
     width: 31.3%;
     margin: 25px 1%;
-    height: 350px;
+    height: 375px;
     float: left;
-    .img_titre_piece {
+    .img_piece {
       height: 175px;
     }
-    .description_piece p:first-child {
-      height: 90px;
+    .details_piece {
+      .description {
+        height: 90px;
+      }
     }
   }
 }
