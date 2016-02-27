@@ -73,4 +73,18 @@ class modeleAssemblage extends modeleSuper {
     return $veloAssemble;
 
   }
+
+  /**
+  * Vérification existe piece dans BDD
+  *
+  * @param $id_piece (int)
+  * @return $exist (int)
+  */
+  public function siExistePieceType($id_piece, $type_piece){
+
+    $donnees = $this->bdd()->query("SELECT * FROM pieces WHERE id_piece = $id_piece AND type_piece = '$type_piece'");
+
+    return $exist = $donnees->fetch(PDO::FETCH_ASSOC);
+
+  }
 }

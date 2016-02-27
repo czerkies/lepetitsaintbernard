@@ -27,7 +27,7 @@ if($userConnect){
           <p><b>Matière</b> : <?= ucfirst($donnees['matiere']); ?></p>
           <?php } else { ?>
             <p><b>Groupe</b> : <?= $donnees['plateau'].'/'.$donnees['pignon']; ?></p>
-            <?php } ?>
+          <?php } ?>
         <p><b>Poids</b> : <?= $donnees['poids']; ?> Kilos</p>
         <p><b>Prix</b> : <?= $donnees['prix']; ?> €</p>
       </div>
@@ -53,7 +53,7 @@ if($userConnect){
     <div class="blocpiece">
       <div class="img_piece">
         <p class="type_piece"><?= ucfirst($key); ?></p>
-        <img src="<?= RACINE_SITE.$donnees['type_velo']; ?>" alt="<?= $donnees['type_velo']; ?>">
+        <img class="heightmax" src="<?= RACINE_SITE; ?>img/logo_lpsb.png" alt="Le petit St.Bernard">
       </div>
       <div class="details_piece">
         <p class="titre">Récapitulatif</p>
@@ -66,9 +66,8 @@ if($userConnect){
       </div>
     </div>
     <div class="callto">
-      <a class="button w100 d50" href="?<?= $getUrl; ?>">Ajouter au panier</a>
+      <a class="button w100 d50" href="<?= RACINE_SITE; ?>panier/?<?= $getUrl; ?>">Ajouter au panier</a>
     </div>
-    <?php var_dump($_GET); ?>
     <?php } ?>
 
 <?php } ?>

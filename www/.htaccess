@@ -23,7 +23,9 @@ RewriteRule ^admin/ajouter-reference/ index.php?controleur=stocks&action=ajoutRe
 
 #VELO
 
-RewriteRule ^votre-velo/ index.php?controleur=assemblage&action=veloPerso [QSA,L]
+RewriteRule ^votre-velo/ index.php?controleur=assemblage&action=veloPerso [L]
+
+RewriteRule ^panier/ index.php?controleur=panier&action=affichagePanier [QSA,L]
 
 ErrorDocument 401 /lepetitsaintbernard/www/page-introuvable/
 ErrorDocument 403 /lepetitsaintbernard/www/page-introuvable/
