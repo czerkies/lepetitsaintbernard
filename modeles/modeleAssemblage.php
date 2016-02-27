@@ -87,4 +87,24 @@ class modeleAssemblage extends modeleSuper {
     return $exist = $donnees->fetch(PDO::FETCH_ASSOC);
 
   }
+
+  /**
+  * Vérification quantité piece pour mise à jour quantité panier
+  *
+  * @param $id_piece (string)
+  * @return bool
+  *
+  */
+  public function verifQuantiteMaj($id_piece, $quantite){
+
+    $donnees = $this->bdd()->query("SELECT quantite FROM pieces WHERE id_piece = $id_piece");
+
+    $dispo = $donnees->fetch(PDO::FETCH_ASSOC);
+
+    echo $dispo;
+
+    return $quantite = (($dispo - $quantite) <= 0) ? false : true;
+
+  }
+
 }

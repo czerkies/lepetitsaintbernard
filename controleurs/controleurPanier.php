@@ -21,6 +21,7 @@ class controleurPanier extends controleurSuper {
 
     $msg['error'] = array();
 
+    // Si l'ajout d'un vélo est lancé
     if(isset($_GET['cadre']) && !empty($_GET['cadre']) && is_numeric($_GET['cadre'])
     && isset($_GET['roue']) && !empty($_GET['roue']) && is_numeric($_GET['roue'])
     && isset($_GET['selle']) && !empty($_GET['selle']) && is_numeric($_GET['selle'])
@@ -65,13 +66,18 @@ class controleurPanier extends controleurSuper {
           if(!isset($_SESSION['panier'][$idVelo])){
 
             $_SESSION['panier'][$idVelo] = array();
-            $_SESSION['panier'][$idVelo]['titre'] = $idVelo;
             $_SESSION['panier'][$idVelo]['type_velo'] = $isExist['cadre']['type_velo'];
             $_SESSION['panier'][$idVelo]['sexe'] = $isExist['cadre']['sexe'];
             $_SESSION['panier'][$idVelo]['taille'] = $isExist['cadre']['id_taille'];
             $_SESSION['panier'][$idVelo]['poids'] = $poidsVelo;
             $_SESSION['panier'][$idVelo]['quantite'] = 1;
             $_SESSION['panier'][$idVelo]['prix'] = $prixVelo;
+
+            foreach ($donneesForSession as $key => $value) {
+
+                $_SESSION['panier'][$idVelo]['pieces'][$key] = $value;
+
+            }
 
           } else {
 
@@ -81,18 +87,37 @@ class controleurPanier extends controleurSuper {
           }
         }
 
-        //$donneesPanier = new modeleStocks();
-
-        //foreach ($donneesForSession as $key => $value) {
-
-          //$_SESSION['panier'][$idVelo][$key] = $donneesPanier->recupPieceID($value);
-          //$_SESSION['panier'][$idVelo][$key]['ref_velo'] = $idVelo;
-
-        //}
-
       } else {
         echo 'erreur';
       }
+
+    }
+
+    // Si suppresion panier ou vélo
+    if(isset($_SESSION['panier']) && isset($_GET['supp_velo']) && !empty($_GET['supp_velo'])){
+
+      if($_GET['supp_velo'] === 'panier'){
+
+        unset($_SESSION['panier']);
+
+      } elseif(is_numeric($_GET['supp_velo'])) {
+
+        if(array_key_exists($_GET['supp_velo'], $_SESSION['panier'])) unset($_SESSION['panier'][$_GET['supp_velo']]);
+
+      }
+    }
+
+    // Modification de la quantité
+    if(isset($_POST['update_quantite'])){
+
+      foreach ($_SESSION['panier'][$_POST['id_velo']]['pieces'] as $key => $value) {
+        $verifQuantite[$key] = $assemblage->verifQuantiteMaj($value, $_POST['quantite']);
+      }
+
+      var_dump($verifQuantite);
+
+      $_SESSION['panier'][$_POST['id_velo']]['quantite'] = $_POST['quantite'];
+      $_SESSION['panier'][$_POST['id_velo']]['prix'] = $prixVelo * $_SESSION['panier'][$_POST['id_velo']]['quantite'];
 
     }
 
