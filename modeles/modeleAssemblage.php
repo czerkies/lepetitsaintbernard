@@ -101,9 +101,7 @@ class modeleAssemblage extends modeleSuper {
 
     $dispo = $donnees->fetch(PDO::FETCH_ASSOC);
 
-    echo $dispo;
-
-    return $quantite = (($dispo - $quantite) <= 0) ? false : true;
+    return $resultat = (($dispo['quantite'] -  $quantite) < 0) ? false : true;
 
   }
 

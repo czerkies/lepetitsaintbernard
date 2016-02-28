@@ -21,6 +21,8 @@ class controleurPanier extends controleurSuper {
 
     $msg['error'] = array();
 
+    $assemblage = new modeleAssemblage();
+
     // Si l'ajout d'un vélo est lancé
     if(isset($_GET['cadre']) && !empty($_GET['cadre']) && is_numeric($_GET['cadre'])
     && isset($_GET['roue']) && !empty($_GET['roue']) && is_numeric($_GET['roue'])
@@ -35,8 +37,6 @@ class controleurPanier extends controleurSuper {
         'guidon' => $_GET['guidon'],
         'groupe' => $_GET['groupe'],
       ];
-
-      $assemblage = new modeleAssemblage();
 
       $idVelo = '';
       foreach ($donneesForSession as $key => $value) {
@@ -111,13 +111,15 @@ class controleurPanier extends controleurSuper {
     if(isset($_POST['update_quantite'])){
 
       foreach ($_SESSION['panier'][$_POST['id_velo']]['pieces'] as $key => $value) {
-        $verifQuantite[$key] = $assemblage->verifQuantiteMaj($value, $_POST['quantite']);
+        $verifQuantite[] = $assemblage->verifQuantiteMaj($value, $_POST['quantite']);
       }
 
-      var_dump($verifQuantite);
+      if(!array_search(false, $verifQuantite)){
 
-      $_SESSION['panier'][$_POST['id_velo']]['quantite'] = $_POST['quantite'];
-      $_SESSION['panier'][$_POST['id_velo']]['prix'] = $prixVelo * $_SESSION['panier'][$_POST['id_velo']]['quantite'];
+        $_SESSION['panier'][$_POST['id_velo']]['quantite'] = $_POST['quantite'];
+        $_SESSION['panier'][$_POST['id_velo']]['prix'] = $_SESSION['panier'][$_POST['id_velo']]['prix'] * $_SESSION['panier'][$_POST['id_velo']]['quantite'];
+
+      }
 
     }
 
