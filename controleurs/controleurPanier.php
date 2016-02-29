@@ -65,16 +65,13 @@ class controleurPanier extends controleurSuper {
 
           if(!isset($_SESSION['panier'][$idVelo])){
 
-            //$_SESSION['panier'] = [];
-
-            if($this->verifQuantiteAvantMaj($idVelo)){
-
               $_SESSION['panier'][$idVelo] = [];
               $_SESSION['panier'][$idVelo]['type_velo'] = $isExist['cadre']['type_velo'];
               $_SESSION['panier'][$idVelo]['sexe'] = $isExist['cadre']['sexe'];
               $_SESSION['panier'][$idVelo]['taille'] = $isExist['cadre']['id_taille'];
               $_SESSION['panier'][$idVelo]['poids'] = $poidsVelo;
-              $_SESSION['panier'][$idVelo]['quantite'] = 1;
+              $_SESSION['panier'][$idVelo]['quantite'] = 0;
+              $_SESSION['panier'][$idVelo]['quantite'] = ($this->verifQuantiteAvantMaj($idVelo)) ? 1 : 0;
               $_SESSION['panier'][$idVelo]['prix'] = $prixVelo;
 
               foreach ($donneesForSession as $key => $value) {
@@ -82,7 +79,9 @@ class controleurPanier extends controleurSuper {
                   $_SESSION['panier'][$idVelo]['pieces'][$key] = $value;
 
               }
-            }
+
+              //if(!$this->verifQuantiteAvantMaj($idVelo)) unset($_SESSION['panier'][$idVelo]);
+
           } else {
 
             $this->verifQuantiteAvantMaj($idVelo);
@@ -114,7 +113,7 @@ class controleurPanier extends controleurSuper {
     if(isset($_POST['update_quantite'])){
 
 
-      // Controle FORM
+      // @todo Controle FORM
 
       $id_velo = htmlentities($_POST['id_velo']);
       $quantite = htmlentities($_POST['quantite']);
@@ -138,7 +137,7 @@ class controleurPanier extends controleurSuper {
 
     $assemblage = new modeleAssemblage();
 
-    $newQuantite = (!$quantite) ? 1 : $_SESSION['panier'][$id_velo]['quantite'] - $quantite;
+    $newQuantite = (!$quantite) ? 1 : $quantite - $_SESSION['panier'][$id_velo]['quantite'];
 
     var_dump($newQuantite);
 
@@ -154,7 +153,7 @@ class controleurPanier extends controleurSuper {
           $piecesQuantite[$piecesValue] = (int) $_SESSION['panier'][$key]['quantite'];
         }
 
-        if($quantite != null && $key == $id_velo) $piecesQuantite[$piecesValue] += $newQuantite;
+        if(/*$quantite != null && */$key == $id_velo) $piecesQuantite[$piecesValue] += $newQuantite;
 
       }
     }
@@ -162,13 +161,13 @@ class controleurPanier extends controleurSuper {
     var_dump($piecesQuantite);
 
     foreach ($piecesQuantite as $key => $value) {
-      $verifQuantite[] = ($assemblage->verifQuantiteMaj($key) >= $value) ? $value : 0;
+      $verifQuantite[] = ($assemblage->verifQuantiteMaj($key) < $value) ? null : $key;
     }
 
     echo '<br>';
-    var_dump($verifQuantite);
+    var_dump(array_search(null, $verifQuantite));
 
-    if(!array_search(0, $verifQuantite)){
+    if(array_search(null, $verifQuantite) === false){
 
       $_SESSION['panier'][$id_velo]['quantite'] += $newQuantite;
 
@@ -176,7 +175,7 @@ class controleurPanier extends controleurSuper {
 
     } else {
 
-      return true;
+      return false;
 
     }
 
