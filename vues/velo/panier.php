@@ -3,10 +3,12 @@
 echo '<pre>';
 var_dump($_SESSION['panier']);
 echo '</pre>';
-
+$prixVelo = 0;
 foreach ($_SESSION['panier'] as $key => $value) {
   echo $key.' - '.$value['type_velo'].' - '.$value['prix'].' - '.$value['quantite'].'<br>';
   echo '<a href="'.RACINE_SITE.'panier/?supp_velo='.$key.'">X</a>';
+  $prixVelo = $value['quantite'] * $value['prix'];
+  echo $prixVelo;
   ?>
     <form class="" action="<?= RACINE_SITE; ?>panier/" method="post">
       <input type="hidden" name="id_velo" value="<?= $key; ?>">

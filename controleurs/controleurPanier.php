@@ -44,6 +44,8 @@ class controleurPanier extends controleurSuper {
         $isExist[$key] = $assemblage->siExistePieceType($value, $key);
       }
 
+
+
       if(!array_search(0, $isExist)){
 
         $poidsVelo = 0;
@@ -70,7 +72,7 @@ class controleurPanier extends controleurSuper {
             $_SESSION['panier'][$idVelo]['sexe'] = $isExist['cadre']['sexe'];
             $_SESSION['panier'][$idVelo]['taille'] = $isExist['cadre']['id_taille'];
             $_SESSION['panier'][$idVelo]['poids'] = $poidsVelo;
-            $_SESSION['panier'][$idVelo]['quantite'] = 1;
+            $_SESSION['panier'][$idVelo]['quantite'] = 0;
             $_SESSION['panier'][$idVelo]['prix'] = $prixVelo;
 
             foreach ($donneesForSession as $key => $value) {
@@ -79,10 +81,11 @@ class controleurPanier extends controleurSuper {
 
             }
 
+            $this->verifQuantiteAvantMaj($idVelo);
+
           } else {
 
-            $_SESSION['panier'][$idVelo]['quantite'] += 1;
-            $_SESSION['panier'][$idVelo]['prix'] = $prixVelo * $_SESSION['panier'][$idVelo]['quantite'];
+            $this->verifQuantiteAvantMaj($idVelo);
 
           }
         }
@@ -110,20 +113,60 @@ class controleurPanier extends controleurSuper {
     // Modification de la quantité
     if(isset($_POST['update_quantite'])){
 
-      foreach ($_SESSION['panier'][$_POST['id_velo']]['pieces'] as $key => $value) {
-        $verifQuantite[] = $assemblage->verifQuantiteMaj($value, $_POST['quantite']);
-      }
 
-      if(!array_search(false, $verifQuantite)){
+      // Controle FORM
 
-        $_SESSION['panier'][$_POST['id_velo']]['quantite'] = $_POST['quantite'];
-        $_SESSION['panier'][$_POST['id_velo']]['prix'] = $_SESSION['panier'][$_POST['id_velo']]['prix'] * $_SESSION['panier'][$_POST['id_velo']]['quantite'];
+      $id_velo = htmlentities($_POST['id_velo']);
+      $quantite = htmlentities($_POST['quantite']);
 
-      }
+      if($quantite > 0) $this->verifQuantiteAvantMaj($id_velo, $quantite);
 
     }
 
     $this->Render('../vues/velo/panier.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
+
+  }
+
+  /**
+  * Vérificatin de stock modif quantite
+  *
+  * @param (int) $id_velo
+  * @param (int) $quantite
+  * @return bool
+  */
+  public function verifQuantiteAvantMaj($id_velo, $quantite = null){
+
+    $assemblage = new modeleAssemblage();
+
+    $newQuantite = (!$quantite) ? 1 : $quantite - $_SESSION['panier'][$id_velo]['quantite'];
+
+    $piecesQuantite = [];
+
+    foreach ($_SESSION['panier'] as $key => $value) {
+      foreach ($_SESSION['panier'][$key]['pieces'] as $piecesKey => $piecesValue) {
+
+        if(array_key_exists($piecesValue, $piecesQuantite)){
+          $piecesQuantite[$piecesValue] += (int) $_SESSION['panier'][$key]['quantite'];
+        } else {
+          $piecesQuantite[$piecesValue] = (int) $_SESSION['panier'][$key]['quantite'];
+        }
+
+        if($quantite != null && $key == $id_velo) $piecesQuantite[$piecesValue] += $newQuantite;
+
+      }
+    }
+
+    var_dump($piecesQuantite);
+
+    foreach ($piecesQuantite as $key => $value) {
+      $verifQuantite[] = $assemblage->verifQuantiteMaj($key, $value);
+    }
+
+    if(!array_search(false, $verifQuantite)){
+
+      $_SESSION['panier'][$id_velo]['quantite'] += $newQuantite;
+
+    }
 
   }
 
