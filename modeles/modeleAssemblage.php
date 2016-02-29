@@ -95,13 +95,13 @@ class modeleAssemblage extends modeleSuper {
   * @return bool
   *
   */
-  public function verifQuantiteMaj($id_piece, $quantite){
+  public function verifQuantiteMaj($id_piece){
 
     $donnees = $this->bdd()->query("SELECT quantite FROM pieces WHERE id_piece = $id_piece");
 
     $dispo = $donnees->fetch(PDO::FETCH_ASSOC);
 
-    return $resultat = (($dispo['quantite'] - $quantite) < 0) ? false : true;
+    return $dispo['quantite'];
 
   }
 

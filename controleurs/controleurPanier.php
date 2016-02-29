@@ -44,8 +44,6 @@ class controleurPanier extends controleurSuper {
         $isExist[$key] = $assemblage->siExistePieceType($value, $key);
       }
 
-
-
       if(!array_search(0, $isExist)){
 
         $poidsVelo = 0;
@@ -67,22 +65,24 @@ class controleurPanier extends controleurSuper {
 
           if(!isset($_SESSION['panier'][$idVelo])){
 
-            $_SESSION['panier'][$idVelo] = array();
-            $_SESSION['panier'][$idVelo]['type_velo'] = $isExist['cadre']['type_velo'];
-            $_SESSION['panier'][$idVelo]['sexe'] = $isExist['cadre']['sexe'];
-            $_SESSION['panier'][$idVelo]['taille'] = $isExist['cadre']['id_taille'];
-            $_SESSION['panier'][$idVelo]['poids'] = $poidsVelo;
-            $_SESSION['panier'][$idVelo]['quantite'] = 0;
-            $_SESSION['panier'][$idVelo]['prix'] = $prixVelo;
+            //$_SESSION['panier'] = [];
 
-            foreach ($donneesForSession as $key => $value) {
+            if($this->verifQuantiteAvantMaj($idVelo)){
 
-                $_SESSION['panier'][$idVelo]['pieces'][$key] = $value;
+              $_SESSION['panier'][$idVelo] = [];
+              $_SESSION['panier'][$idVelo]['type_velo'] = $isExist['cadre']['type_velo'];
+              $_SESSION['panier'][$idVelo]['sexe'] = $isExist['cadre']['sexe'];
+              $_SESSION['panier'][$idVelo]['taille'] = $isExist['cadre']['id_taille'];
+              $_SESSION['panier'][$idVelo]['poids'] = $poidsVelo;
+              $_SESSION['panier'][$idVelo]['quantite'] = 1;
+              $_SESSION['panier'][$idVelo]['prix'] = $prixVelo;
 
+              foreach ($donneesForSession as $key => $value) {
+
+                  $_SESSION['panier'][$idVelo]['pieces'][$key] = $value;
+
+              }
             }
-
-            $this->verifQuantiteAvantMaj($idVelo);
-
           } else {
 
             $this->verifQuantiteAvantMaj($idVelo);
@@ -138,9 +138,12 @@ class controleurPanier extends controleurSuper {
 
     $assemblage = new modeleAssemblage();
 
-    $newQuantite = (!$quantite) ? 1 : $quantite - $_SESSION['panier'][$id_velo]['quantite'];
+    $newQuantite = (!$quantite) ? 1 : $_SESSION['panier'][$id_velo]['quantite'] - $quantite;
+
+    var_dump($newQuantite);
 
     $piecesQuantite = [];
+    $verifQuantite = [];
 
     foreach ($_SESSION['panier'] as $key => $value) {
       foreach ($_SESSION['panier'][$key]['pieces'] as $piecesKey => $piecesValue) {
@@ -159,12 +162,21 @@ class controleurPanier extends controleurSuper {
     var_dump($piecesQuantite);
 
     foreach ($piecesQuantite as $key => $value) {
-      $verifQuantite[] = $assemblage->verifQuantiteMaj($key, $value);
+      $verifQuantite[] = ($assemblage->verifQuantiteMaj($key) >= $value) ? $value : 0;
     }
 
-    if(!array_search(false, $verifQuantite)){
+    echo '<br>';
+    var_dump($verifQuantite);
+
+    if(!array_search(0, $verifQuantite)){
 
       $_SESSION['panier'][$id_velo]['quantite'] += $newQuantite;
+
+      return true;
+
+    } else {
+
+      return true;
 
     }
 
