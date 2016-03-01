@@ -71,7 +71,6 @@ class controleurPanier extends controleurSuper {
               $_SESSION['panier'][$idVelo]['taille'] = $isExist['cadre']['id_taille'];
               $_SESSION['panier'][$idVelo]['poids'] = $poidsVelo;
               $_SESSION['panier'][$idVelo]['quantite'] = 0;
-              $_SESSION['panier'][$idVelo]['quantite'] = ($this->verifQuantiteAvantMaj($idVelo)) ? 1 : 0;
               $_SESSION['panier'][$idVelo]['prix'] = $prixVelo;
 
               foreach ($donneesForSession as $key => $value) {
@@ -79,6 +78,8 @@ class controleurPanier extends controleurSuper {
                   $_SESSION['panier'][$idVelo]['pieces'][$key] = $value;
 
               }
+
+              $_SESSION['panier'][$idVelo]['quantite'] = ($this->verifQuantiteAvantMaj($idVelo)) ? 1 : 0;
 
               //if(!$this->verifQuantiteAvantMaj($idVelo)) unset($_SESSION['panier'][$idVelo]);
 
