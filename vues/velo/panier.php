@@ -1,4 +1,5 @@
 <?php
+include '../vues/include/dialogue.php';
 
 echo '<pre>';
 var_dump($_SESSION['panier']);

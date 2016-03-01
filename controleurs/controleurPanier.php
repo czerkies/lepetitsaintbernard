@@ -81,8 +81,6 @@ class controleurPanier extends controleurSuper {
 
               $_SESSION['panier'][$idVelo]['quantite'] = ($this->verifQuantiteAvantMaj($idVelo)) ? 1 : 0;
 
-              //if(!$this->verifQuantiteAvantMaj($idVelo)) unset($_SESSION['panier'][$idVelo]);
-
           } else {
 
             $this->verifQuantiteAvantMaj($idVelo);
@@ -91,7 +89,7 @@ class controleurPanier extends controleurSuper {
         }
 
       } else {
-        echo 'erreur';
+        $msg['error']['confirm'] = 'Certains éléments ne correspondent pas pour ajouter votre vélo dans le panier.';
       }
 
     }
@@ -113,13 +111,24 @@ class controleurPanier extends controleurSuper {
     // Modification de la quantité
     if(isset($_POST['update_quantite'])){
 
+      if(isset($_POST['id_velo']) && !empty($_POST['id_velo']) && is_numeric($_POST['id_velo'])
+      && isset($_POST['quantite']) && !empty($_POST['quantite']) && is_numeric($_POST['quantite'])
+      && $_POST['quantite'] >= 0){
 
-      // @todo Controle FORM
+        $id_velo = htmlentities($_POST['id_velo']);
+        $quantite = htmlentities($_POST['quantite']);
 
-      $id_velo = htmlentities($_POST['id_velo']);
-      $quantite = htmlentities($_POST['quantite']);
+        if($this->verifQuantiteAvantMaj($id_velo, $quantite)){
 
-      if($quantite > 0) $this->verifQuantiteAvantMaj($id_velo, $quantite);
+          $msg['error']['confirm'] = 'Votre quantité a bien été modifié.';
+
+        } else {
+
+          $msg['error']['stock'] = "Votre quantité n'a pas pu été modifier car il n'y a pas assez de stock.";
+
+        }
+
+      }
 
     }
 
@@ -140,8 +149,6 @@ class controleurPanier extends controleurSuper {
 
     $newQuantite = (!$quantite) ? 1 : $quantite - $_SESSION['panier'][$id_velo]['quantite'];
 
-    var_dump($newQuantite);
-
     $piecesQuantite = [];
     $verifQuantite = [];
 
@@ -154,19 +161,14 @@ class controleurPanier extends controleurSuper {
           $piecesQuantite[$piecesValue] = (int) $_SESSION['panier'][$key]['quantite'];
         }
 
-        if(/*$quantite != null && */$key == $id_velo) $piecesQuantite[$piecesValue] += $newQuantite;
+        if($key == $id_velo) $piecesQuantite[$piecesValue] += $newQuantite;
 
       }
     }
 
-    var_dump($piecesQuantite);
-
     foreach ($piecesQuantite as $key => $value) {
       $verifQuantite[] = ($assemblage->verifQuantiteMaj($key) < $value) ? null : $key;
     }
-
-    echo '<br>';
-    var_dump(array_search(null, $verifQuantite));
 
     if(array_search(null, $verifQuantite) === false){
 
