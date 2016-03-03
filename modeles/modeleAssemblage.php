@@ -108,11 +108,14 @@ class modeleAssemblage extends modeleSuper {
   /**
   * Recherche des données pour le tunnel d'achat
   *
-  * @param
+  * @param (string) $type_velo
+  * @param (string) $type_piece
+  * @param (string) $sexe Option
+  * @param (int) $id_taille Option
   *
-  * @return
+  * @return (array) $pieces
   */
-  public function donneesParTypePiece($type_velo, $sexe = null, $type_piece, $id_taille = null){
+  public function donneesParTypePiece($type_velo, $type_piece, $sexe = null, $id_taille = null){
 
     $req = "SELECT * FROM pieces WHERE type_velo = '$type_velo'
       AND type_piece = '$type_piece'
@@ -133,6 +136,37 @@ class modeleAssemblage extends modeleSuper {
     $donnees = $this->bdd()->query($req);
 
     return $pieces = $donnees->fetchAll(PDO::FETCH_ASSOC);
+
+  }
+
+  /**
+  * Concordance des pieces et récupération des informations.
+  *
+  * @param (string) $type_piece
+  * @param (int) $id_piece
+  * @param (string) $type_velo
+  * @param (string) $sexe Option
+  * @param (string) $id_taille Option
+  *
+  * @return (array) $donneesVerif
+  */
+  public function concordancePieceTypeDonnees($type_piece, $id_piece, $type_velo, $sexe = null, $id_taille = null){
+
+    $req = "SELECT prix, poids, id_taille FROM pieces WHERE type_piece = '$type_piece'
+    AND id_piece = $id_piece
+    AND type_velo = '$type_velo' ";
+
+    if($sexe){
+      $req .= "AND sexe = '$sexe' ";
+    }
+
+    if($id_taille){
+      $req .= "AND id_taille = $id_taille ";
+    }
+
+    $donnees = $this->bdd()->query($req);
+
+    return $pieces = $donnees->fetch(PDO::FETCH_ASSOC);
 
   }
 

@@ -31,16 +31,27 @@
     case 'cadre':
     ?>
 
-      <h2>Choisissez votre cadre</h2>
+      <h2>Choisissez votre Cadre</h2>
       <p>Votre cadre sera la pièce maitresse de votre vélo, tout les autres éléments en découlent.</p>
+
     <?php
     break;
     case 'roue':
     ?>
 
-    <h2>Choisissez votre roue</h2>
-    <p>Votre cadre sera la pièce maitresse de votre vélo, tout les autres éléments en découlent.</p>
-    <input type="hidden" name="cadre" value="<?= $_GET['cadre']; ?>" required>
+      <h2>Choisissez votre Roue</h2>
+      <p>Votre cadre sera la pièce maitresse de votre vélo, tout les autres éléments en découlent.</p>
+      <input type="hidden" name="cadre" value="<?= $_GET['cadre']; ?>" required>
+
+    <?php
+    break;
+    case 'selle':
+    ?>
+
+      <h2>Choisissez votre Selle</h2>
+      <p>Votre selle sera la pièce maitresse de votre vélo, tout les autres éléments en découlent.</p>
+      <input type="hidden" name="cadre" value="<?= $_GET['cadre']; ?>" required>
+      <input type="hidden" name="roue" value="<?= $_GET['roue']; ?>" required>
 
     <?php
     default:
@@ -56,5 +67,8 @@
 
     <input type="submit" value="Valider">
   </form>
+
+  <p>Poids : <?= $poids; ?> Kilos.</p>
+  <p>Prix : <?= $prix; ?> €.</p>
 
 <?php } ?>

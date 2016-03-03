@@ -45,6 +45,9 @@ class controleurAssemblage extends controleurSuper {
     $msg['error'] = array();
     $donneesPieces = array();
     $etape = null;
+    $poids = 0;
+    $prix = 0;
+
     $pieces = new modeleAssemblage();
 
     // Type de vélo
@@ -63,17 +66,41 @@ class controleurAssemblage extends controleurSuper {
         $meta['sexe'] = false;
         $etape = 'cadre';
 
-        $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $_GET['sexe'], 'cadre');
+        $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, $_GET['sexe']);
 
         if(isset($_GET['cadre']) && !empty($_GET['cadre'])
         && is_numeric($_GET['cadre'])){
 
-          // Controle (type concordance id_piece) et récupération données (id_taille, prix, poids).
+          $donneesCadre = $pieces->concordancePieceTypeDonnees('cadre', $_GET['cadre'], $_GET['type']);
 
-          $meta['title'] = 'Roue - Configurer votre vélo de Route';
-          $etape = 'roue';
+          if($donneesCadre){
 
-          $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], null, 'roue', 3);
+            $meta['title'] = 'Roue - Configurer votre vélo de Route';
+            $etape = 'roue';
+            $poids += $donneesCadre['poids'];
+            $prix += $donneesCadre['prix'];
+
+            $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, null, $donneesCadre['id_taille']);
+
+            if(isset($_GET['roue']) && !empty($_GET['roue'])
+            && is_numeric($_GET['roue'])){
+
+              $donneesRoue = $pieces->concordancePieceTypeDonnees('roue', $_GET['roue'], $_GET['type']);
+
+              if($donneesRoue){
+
+                $meta['title'] = 'Selle - Configurer votre vélo de Route';
+                $etape = 'selle';
+                $poids += $donneesRoue['poids'];
+                $prix += $donneesRoue['prix'];
+
+                $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, $_GET['sexe']);
+
+              }
+
+            }
+
+          }
 
         }
 
@@ -82,7 +109,7 @@ class controleurAssemblage extends controleurSuper {
     }
 
 
-    $this->Render('../vues/velo/configuration-velo.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'donneesPieces' => $donneesPieces, 'etape' => $etape));
+    $this->Render('../vues/velo/configuration-velo.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'donneesPieces' => $donneesPieces, 'etape' => $etape, 'poids' => $poids, 'prix' => $prix));
 
   }
 
