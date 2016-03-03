@@ -65,6 +65,18 @@ class controleurAssemblage extends controleurSuper {
 
         $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $_GET['sexe'], 'cadre');
 
+        if(isset($_GET['cadre']) && !empty($_GET['cadre'])
+        && is_numeric($_GET['cadre'])){
+
+          // Controle (type concordance id_piece) et récupération données (id_taille, prix, poids).
+
+          $meta['title'] = 'Roue - Configurer votre vélo de Route';
+          $etape = 'roue';
+
+          $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], null, 'roue', 3);
+
+        }
+
       }
 
     }

@@ -23,30 +23,38 @@
       <a class="button w100 d100" href="<?= RACINE_SITE; ?>configuration-<?= $_GET['type']; ?>/homme/">Vélo Homme</a>
     </div>
   </div>
-<?php } if($etape != 'sexe') {
+<?php } if($etape != 'sexe') { ?>
 
-  switch ($etape) {
+  <form class="" action="<?= RACINE_SITE.'configuration-'.$_GET['type'].'/'.$_GET['sexe']; ?>/" method="get">
+
+  <?php switch ($etape) {
     case 'cadre':
     ?>
 
       <h2>Choisissez votre cadre</h2>
       <p>Votre cadre sera la pièce maitresse de votre vélo, tout les autres éléments en découlent.</p>
-
     <?php
     break;
     case 'roue':
     ?>
+
+    <h2>Choisissez votre roue</h2>
+    <p>Votre cadre sera la pièce maitresse de votre vélo, tout les autres éléments en découlent.</p>
+    <input type="hidden" name="cadre" value="<?= $_GET['cadre']; ?>" required>
 
     <?php
     default:
       # code...
       break;
     ?>
-    
-  <?php } ?>
 
-  <?php foreach ($donneesPieces as $key => $value) {
-    echo $value['titre'].'<br>';
-  } ?>
+  <?php } ?>
+    <?php foreach ($donneesPieces as $key => $value) { ?>
+      <input type="radio" id="<?= $value['id_piece']; ?>" name="<?= $etape; ?>" value="<?= $value['id_piece']; ?>">
+      <label for="<?= $value['id_piece']; ?>"><?= $value['titre'].'<br>'; ?>
+    <?php } ?>
+
+    <input type="submit" value="Valider">
+  </form>
 
 <?php } ?>

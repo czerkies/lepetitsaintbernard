@@ -112,16 +112,21 @@ class modeleAssemblage extends modeleSuper {
   *
   * @return
   */
-  public function donneesParTypePiece($type_velo, $sexe ,$type_piece){
+  public function donneesParTypePiece($type_velo, $sexe = null, $type_piece, $id_taille = null){
 
     $req = "SELECT * FROM pieces WHERE type_velo = '$type_velo'
-      AND sexe = '$sexe'
       AND type_piece = '$type_piece'
-      AND quantite > 0";
+      AND quantite > 0 ";
+
+    if($sexe){
+
+      $req .= "AND sexe = '$sexe'";
+
+    }
 
     if($type_piece == 'roue'){
 
-      $req .= "AND id_taille = '$id_taille'";
+      $req .= "AND id_taille = $id_taille";
 
     }
 
