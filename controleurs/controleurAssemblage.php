@@ -114,9 +114,12 @@ class controleurAssemblage extends controleurSuper {
   }
 
   /**
+  * Vérification de l'état $_GET et concordance piece/type
   *
+  * @param (string) $etapeVerif
   *
-  *
+  * @return (array) $donnees
+  * @return (bool) false
   */
   public function verifEtapeSuivante($etapeVerif) {
 
