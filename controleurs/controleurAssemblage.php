@@ -47,6 +47,7 @@ class controleurAssemblage extends controleurSuper {
     $etape = null;
     $poids = 0;
     $prix = 0;
+    $urlPanier = '';
 
     $pieces = new modeleAssemblage();
 
@@ -98,6 +99,30 @@ class controleurAssemblage extends controleurSuper {
 
               $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, $_GET['sexe'], $donneesCadre['id_taille']);
 
+              // Etape Groupe
+              if($donneesGuidon = $this->verifEtapeSuivante('guidon')){
+
+                $meta['title'] = 'Groupe - Configurer votre vélo de Route';
+                $etape = 'groupe';
+                $poids += $donneesGuidon['poids'];
+                $prix += $donneesGuidon['prix'];
+
+                $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape);
+
+                // Validation de la configuration
+                if($donneesGroupe = $this->verifEtapeSuivante('groupe')){
+
+                  $meta['title'] = 'Votre vélo - Configurer votre vélo de Route';
+                  $etape = 'confirmation';
+                  $poids += $donneesGroupe['poids'];
+                  $prix += $donneesGroupe['prix'];
+
+                  $urlPanier = 'cadre='.$_GET['cadre'].'&roue='.$_GET['roue'].'&selle='.$_GET['selle'].'&guidon='.$_GET['guidon'].'&groupe='.$_GET['groupe'];
+
+                }
+
+              }
+
             }
 
           }
@@ -109,7 +134,7 @@ class controleurAssemblage extends controleurSuper {
     }
 
 
-    $this->Render('../vues/velo/configuration-velo.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'donneesPieces' => $donneesPieces, 'etape' => $etape, 'poids' => $poids, 'prix' => $prix));
+    $this->Render('../vues/velo/configuration-velo.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'donneesPieces' => $donneesPieces, 'etape' => $etape, 'poids' => $poids, 'prix' => $prix, 'urlPanier' => $urlPanier));
 
   }
 

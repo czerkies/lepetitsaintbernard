@@ -66,9 +66,30 @@
 
     <?php
     break;
-    default:
-      # code...
-      break;
+    case 'groupe':
+    ?>
+
+      <h2>Choisissez votre Groupe</h2>
+      <p>Votre groupe" sera la pièce maitresse de votre vélo, tout les autres éléments en découlent.</p>
+      <input type="hidden" name="cadre" value="<?= $_GET['cadre']; ?>" required>
+      <input type="hidden" name="roue" value="<?= $_GET['roue']; ?>" required>
+      <input type="hidden" name="selle" value="<?= $_GET['selle']; ?>" required>
+      <input type="hidden" name="guidon" value="<?= $_GET['guidon']; ?>" required>
+
+    <?php
+    break;
+    case 'confirmation':
+    ?>
+
+      <h2>Choisissez votre Groupe</h2>
+      <p>Votre groupe" sera la pièce maitresse de votre vélo, tout les autres éléments en découlent.</p>
+
+      <div class="callto">
+        <a class="button w100 d50" href="<?= RACINE_SITE; ?>panier/?<?= $urlPanier; ?>">Ajouter au panier</a>
+      </div>
+
+    <?php
+    break;
     ?>
 
   <?php } ?>
