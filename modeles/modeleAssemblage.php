@@ -121,17 +121,9 @@ class modeleAssemblage extends modeleSuper {
       AND type_piece = '$type_piece'
       AND quantite > 0 ";
 
-    if($sexe){
+    if($sexe) $req .= "AND sexe = '$sexe'";
 
-      $req .= "AND sexe = '$sexe'";
-
-    }
-
-    if($id_taille){
-
-      $req .= "AND id_taille = $id_taille";
-
-    }
+    if($id_taille) $req .= "AND id_taille = $id_taille";
 
     $donnees = $this->bdd()->query($req);
 
@@ -156,13 +148,9 @@ class modeleAssemblage extends modeleSuper {
     AND id_piece = $id_piece
     AND type_velo = '$type_velo' ";
 
-    if($sexe){
-      $req .= "AND sexe = '$sexe' ";
-    }
+    if($sexe) $req .= "AND sexe = '$sexe' ";
 
-    if($id_taille){
-      $req .= "AND id_taille = $id_taille ";
-    }
+    if($id_taille) $req .= "AND id_taille = $id_taille ";
 
     $donnees = $this->bdd()->query($req);
 
