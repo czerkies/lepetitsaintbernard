@@ -68,35 +68,35 @@ class controleurAssemblage extends controleurSuper {
 
         $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, $_GET['sexe']);
 
-        if(isset($_GET['cadre']) && !empty($_GET['cadre'])
-        && is_numeric($_GET['cadre'])){
+        // Etape Roue
+        if($donneesCadre = $this->verifEtapeSuivante('cadre')){
 
-          $donneesCadre = $pieces->concordancePieceTypeDonnees('cadre', $_GET['cadre'], $_GET['type']);
+          $meta['title'] = 'Roue - Configurer votre vélo de Route';
+          $etape = 'roue';
+          $poids += $donneesCadre['poids'];
+          $prix += $donneesCadre['prix'];
 
-          if($donneesCadre){
+          $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, null, $donneesCadre['id_taille']);
 
-            $meta['title'] = 'Roue - Configurer votre vélo de Route';
-            $etape = 'roue';
-            $poids += $donneesCadre['poids'];
-            $prix += $donneesCadre['prix'];
+          // Etape Selle
+          if($donneesRoue = $this->verifEtapeSuivante('roue')){
 
-            $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, null, $donneesCadre['id_taille']);
+            $meta['title'] = 'Selle - Configurer votre vélo de Route';
+            $etape = 'selle';
+            $poids += $donneesRoue['poids'];
+            $prix += $donneesRoue['prix'];
 
-            if(isset($_GET['roue']) && !empty($_GET['roue'])
-            && is_numeric($_GET['roue'])){
+            $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, $_GET['sexe']);
 
-              $donneesRoue = $pieces->concordancePieceTypeDonnees('roue', $_GET['roue'], $_GET['type']);
+            // Etape Guidon
+            if($donneesSelle = $this->verifEtapeSuivante('selle')){
 
-              if($donneesRoue){
+              $meta['title'] = 'Guidon - Configurer votre vélo de Route';
+              $etape = 'guidon';
+              $poids += $donneesSelle['poids'];
+              $prix += $donneesSelle['prix'];
 
-                $meta['title'] = 'Selle - Configurer votre vélo de Route';
-                $etape = 'selle';
-                $poids += $donneesRoue['poids'];
-                $prix += $donneesRoue['prix'];
-
-                $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, $_GET['sexe']);
-
-              }
+              $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, $_GET['sexe'], $donneesCadre['id_taille']);
 
             }
 
@@ -110,6 +110,31 @@ class controleurAssemblage extends controleurSuper {
 
 
     $this->Render('../vues/velo/configuration-velo.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'donneesPieces' => $donneesPieces, 'etape' => $etape, 'poids' => $poids, 'prix' => $prix));
+
+  }
+
+  /**
+  *
+  *
+  *
+  */
+  public function verifEtapeSuivante($etapeVerif) {
+
+    $pieces = new modeleAssemblage();
+
+    if(isset($_GET[$etapeVerif])
+    && !empty($_GET[$etapeVerif])
+    && is_numeric($_GET[$etapeVerif])){
+
+      $donnees = $pieces->concordancePieceTypeDonnees($etapeVerif, $_GET[$etapeVerif], $_GET['type']);
+
+      return $donnees;
+
+    } else {
+
+      return false;
+
+    }
 
   }
 

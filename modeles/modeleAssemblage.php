@@ -127,7 +127,7 @@ class modeleAssemblage extends modeleSuper {
 
     }
 
-    if($type_piece == 'roue'){
+    if($id_taille){
 
       $req .= "AND id_taille = $id_taille";
 

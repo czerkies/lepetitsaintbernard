@@ -54,6 +54,18 @@
       <input type="hidden" name="roue" value="<?= $_GET['roue']; ?>" required>
 
     <?php
+    break;
+    case 'guidon':
+    ?>
+
+      <h2>Choisissez votre Guidon</h2>
+      <p>Votre guidon sera la pièce maitresse de votre vélo, tout les autres éléments en découlent.</p>
+      <input type="hidden" name="cadre" value="<?= $_GET['cadre']; ?>" required>
+      <input type="hidden" name="roue" value="<?= $_GET['roue']; ?>" required>
+      <input type="hidden" name="selle" value="<?= $_GET['selle']; ?>" required>
+
+    <?php
+    break;
     default:
       # code...
       break;
