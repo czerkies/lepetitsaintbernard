@@ -87,5 +87,14 @@
       $('#infos_'+$content).addClass('appear');
     });
   </script>
+  <?php } if($meta['menu'] === 'configuration') { ?>
+    <script type="text/javascript">
+      $('.selection').click(function(){
+        var $id_select = this.id;
+        console.log($id_select);
+        $('.selection').removeClass('select');
+        $('#'+$id_select).addClass('select');
+      });
+    </script>
   <?php } ?>
 </html>

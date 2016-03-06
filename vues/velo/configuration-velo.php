@@ -38,7 +38,7 @@
   </div>
 <?php } if($etape != 'sexe') { ?>
 
-  <form class="" action="<?= RACINE_SITE.'configuration/'.$_GET['type'].'/'.$_GET['sexe']; ?>/" method="get">
+  <form class="large" action="<?= RACINE_SITE.'configuration/'.$_GET['type'].'/'.$_GET['sexe']; ?>/" method="get">
 
   <?php switch ($etape) {
     case 'cadre':
@@ -110,15 +110,35 @@
     if($donneesPieces){
       foreach ($donneesPieces as $key => $value) {
     ?>
-      <input type="radio" id="<?= $value['id_piece']; ?>" name="<?= $etape; ?>" value="<?= $value['id_piece']; ?>">
-      <label for="<?= $value['id_piece']; ?>"><?= $value['titre'].'<br>'; ?>
+      <input class="hidden" type="radio" id="<?= $value['id_piece']; ?>" name="<?= $etape; ?>" value="<?= $value['id_piece']; ?>">
+      <label for="<?= $value['id_piece']; ?>">
+        <div id="selection-<?= $value['id_piece']; ?>" class="blocpiece selection">
+          <div class="img_piece">
+            <img src="<?= RACINE_SITE.$value['img']; ?>" alt="<?= $value['titre']; ?>">
+          </div>
+          <div class="details_piece">
+            <p class="titre"><?= $value['titre']; ?></p>
+            <p class="description"><?= $value['description']; ?></p>
+            <?php if(($value['pignon'] && $value['plateau']) == null) { ?>
+              <p><b>Matière</b> : <?= ucfirst($value['matiere']); ?></p>
+              <?php } else { ?>
+                <p><b>Groupe</b> : <?= $value['plateau'].'/'.$value['pignon']; ?></p>
+              <?php } ?>
+            <p><b>Poids</b> : <?= $value['poids']; ?> Kilos</p>
+            <p><b>Prix</b> : <?= $value['prix']; ?> €</p>
+          </div>
+        </div>
+      </label>
     <?php } ?>
+    <div class="form-group submit">
       <input type="submit" value="Valider">
+    </div>
     <?php } ?>
   </form>
   <?php if(!empty($donneesPieces) || $etape === 'confirmation'){ ?>
+    <h2>Informations sur votre vélo :</h2>
     <p>Poids : <?= $poids; ?> Kilos.</p>
-    <p>Prix : <?= $prix; ?> €.</p>
+    <p>Prix : <?= $prix; ?> € TTC.</p>
   <?php } ?>
 
 <?php } ?>

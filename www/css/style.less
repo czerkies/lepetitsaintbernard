@@ -387,6 +387,9 @@ form {
     border-radius: @radius;
     box-shadow: @boxshadow;
   }
+  .hidden {
+    display: none;
+  }
 }
 
 .error {
@@ -544,8 +547,17 @@ form {
       }
     }
   }
-  &:hover {
+  &:hover{
     box-shadow: @boxshadow;
+  }
+  &.selection {
+    cursor: pointer;
+    transition: border 250ms ease;
+    &:active,
+    &.select {
+      box-shadow: @boxshadow;
+      border-color: @fond;
+    }
   }
 }
 
