@@ -66,12 +66,15 @@ class controleurMembres extends controleurSuper {
       }
     }
 
+    // Gestion de la deconnexion si userConnect
     if($userConnect) {
       if(isset($_GET['deconnexion']) && !empty($_GET['deconnexion']) && $_GET['deconnexion'] === 'true'){
-        session_unset();
+
+        unset($_SESSION['membre']);
         $userConnect = FALSE;
         $userConnectAdmin = FALSE;
         $meta['deconnexion'] = TRUE;
+
       }
     }
 
@@ -241,16 +244,13 @@ class controleurMembres extends controleurSuper {
             $mdp_sch = str_shuffle("lpsb1234");
             $mdp = substr($mdp_sch, 0, 6);
 
-            $headers = 'Content-Type: text/html; charset=\"UTF-8\";' . "\r\n";
-            $headers .= 'FROM: Le petit ST Bernard - Nouveau mot de passe  <motdepasse@lepetitstbernard.fr>' . "\r\n";
-
             $message = 'Voici votre nouveau mot de passe pour accéder à Lokisalle : ' . $mdp;
 
             if($contMail->nouveauMdp($mdp, $_POST['email'])){
 
-              mail($_POST['email'], 'Changement de mot de passe - Le petit saint Bernard',  $message, $headers);
+              $formulaire->sendMail($_POST['email'], 'Changement de mot de passe', $message);
 
-              $msg['error']['confirm'] = "Vos informations ont été mis à jour.";
+              $msg['error']['confirm'] = "Un Email vous a été envoyé.";
 
             }
           }
