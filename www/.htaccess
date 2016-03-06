@@ -25,8 +25,9 @@ RewriteRule ^admin/ajouter-reference/ index.php?controleur=stocks&action=ajoutRe
 
 RewriteRule ^votre-velo/ index.php?controleur=assemblage&action=veloPerso [L]
 
-RewriteRule ^configuration-(.*)/(.*)/ index.php?controleur=assemblage&action=configurationVelo&type=$1&sexe=$2 [QSA,L]
-RewriteRule ^configuration-(.*)/ index.php?controleur=assemblage&action=configurationVelo&type=$1 [L]
+RewriteRule ^configuration/(.*)/(.*)/ index.php?controleur=assemblage&action=configurationVelo&type=$1&sexe=$2 [QSA,L]
+RewriteRule ^configuration/(.*)/ index.php?controleur=assemblage&action=configurationVelo&type=$1 [L]
+RewriteRule ^configuration/ index.php?controleur=assemblage&action=configurationVelo [L]
 
 RewriteRule ^panier/ index.php?controleur=panier&action=affichagePanier [QSA,L]
 

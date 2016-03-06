@@ -51,12 +51,13 @@ class controleurAssemblage extends controleurSuper {
 
     $pieces = new modeleAssemblage();
 
+    $etape = 'type';
+
     // Type de vélo
     if(isset($_GET['type']) && !empty($_GET['type'])
     && ($_GET['type'] === 'route' || $_GET['type'] === 'vtt')){
 
       $meta['title'] = 'Sexe - Configurer votre vélo de Route';
-      $meta['menu'] = 'configuration-'.$_GET['type'];
       $etape = 'sexe';
 
       // Sexe du visiteur
@@ -121,6 +122,8 @@ class controleurAssemblage extends controleurSuper {
                   $poids += $donneesGroupe['poids'];
                   $prix += $donneesGroupe['prix'];
                   $urlPanier .= '&groupe='.$_GET['groupe'];
+
+                  $donneesPieces = false;
 
                 }
 

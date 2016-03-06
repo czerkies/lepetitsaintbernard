@@ -15,7 +15,7 @@ class controleurPanier extends controleurSuper {
 
     session_start();
     $meta['title'] = 'Votre Panier';
-    $meta['menu'] = 'votre-panier';
+    $meta['menu'] = 'panier';
     $userConnect = $this->userConnect();
     $userConnectAdmin = $this->userConnectAdmin();
 
@@ -89,7 +89,7 @@ class controleurPanier extends controleurSuper {
         }
 
       } else {
-        $msg['error']['confirm'] = 'Certains éléments ne correspondent pas pour ajouter votre vélo dans le panier.';
+        $msg['error']['generale'] = 'Certains éléments ne correspondent pas pour ajouter votre vélo dans le panier.';
       }
 
     }
@@ -124,7 +124,7 @@ class controleurPanier extends controleurSuper {
 
         } else {
 
-          $msg['error']['stock'] = "Votre quantité n'a pas pu été modifier car il n'y a pas assez de stock.";
+          $msg['error']['generale'] = "Votre quantité n'a pas pu été modifier car il n'y a pas assez de stock.";
 
         }
 

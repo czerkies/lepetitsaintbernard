@@ -16,10 +16,10 @@
               <a <?php if(isset($meta['menu']) && $meta['menu'] === 'votre-velo') echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>votre-velo/">Votre Vélo</a>
             </li>
             <li>
-              <a <?php if(isset($meta['menu']) && $meta['menu'] === 'configuration-route') echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>configuration-route/">Route</a>
+              <a <?php if(isset($meta['menu']) && $meta['menu'] === 'configuration') echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>configuration/">Configurer un vélo</a>
             </li>
             <li>
-              <a <?php if(isset($meta['menu']) && $meta['menu'] === 'configuration-vtt') echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>configuration-vtt/">VTT</a>
+              <a <?php if(isset($meta['menu']) && $meta['menu'] === 'panier') echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>panier/">Panier</a>
             </li>
             <?php if(!($userConnect || $userConnectAdmin)){ ?>
               <li>
