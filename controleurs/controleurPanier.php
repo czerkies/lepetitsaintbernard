@@ -100,11 +100,16 @@ class controleurPanier extends controleurSuper {
       if($_GET['supp_velo'] === 'panier'){
 
         unset($_SESSION['panier']);
+        $msg['error']['confirm'] = 'Votre panier a bien été vidé.';
 
       } elseif(is_numeric($_GET['supp_velo'])) {
 
-        if(array_key_exists($_GET['supp_velo'], $_SESSION['panier'])) unset($_SESSION['panier'][$_GET['supp_velo']]);
+        if(array_key_exists($_GET['supp_velo'], $_SESSION['panier'])) {
 
+          unset($_SESSION['panier'][$_GET['supp_velo']]);
+          $msg['error']['confirm'] = 'Votre article a bien été supprimé.';
+
+        }
       }
     }
 
@@ -124,7 +129,7 @@ class controleurPanier extends controleurSuper {
 
         } else {
 
-          $msg['error']['generale'] = "Votre quantité n'a pas pu été modifier car il n'y a pas assez de stock.";
+          $msg['error']['generale'] = "Votre quantité n'a pas été modifié car il n'y a pas assez de stock.";
 
         }
 
@@ -132,7 +137,13 @@ class controleurPanier extends controleurSuper {
 
     }
 
-    $this->Render('../vues/velo/panier.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
+    // Total du panier
+    $total = 0;
+    foreach ($_SESSION['panier'] as $key => $value) {
+      $total += $value['quantite'] * $value['prix'];
+    }
+
+    $this->Render('../vues/velo/panier.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'total' => $total));
 
   }
 
