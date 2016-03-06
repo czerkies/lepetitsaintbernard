@@ -145,6 +145,40 @@ class controleurPanier extends controleurSuper {
       }
     }
 
+    // Payer la commande
+    if(isset($_POST['payer'])){
+
+      if(isset($_POST['cgv'])){
+
+        $commande = new modeleCommandes();
+        $formulaire = new controleurFonctions();
+
+        // Controler le stock
+
+        // Réduire stock selon commande
+
+        $msg['error']['confirm'] = "Votre achat a bien été effectué.<br>
+        Vous allez recevoir un mail confirmant votre commande.<br><br>
+        Merci de laisser un avis sur celle-ci.";
+
+        $id_commande_velo = substr(hexdec(uniqid()), 8, 16);
+
+        $commande->insertCommande($id_commande_velo, $total, $_SESSION['membre']['id_membre']);
+
+        foreach ($_SESSION['panier'] as $key => $value) {
+          $commande->insertVeloCommande($id_commande_velo, $key, $value['type_velo'], $value['sexe'], $value['prix'], $value['poids'], $value['quantite']);
+        }
+
+        //$formulaire->sendMail();
+
+        //unset($_SESSION['panier']);
+
+      } else {
+        $msg['error']['cgv'] = "Veuillez accepter les confitions gérérales de vente.";
+      }
+
+    }
+
     $this->Render('../vues/velo/panier.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'total' => $total));
 
   }

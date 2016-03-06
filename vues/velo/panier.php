@@ -39,12 +39,15 @@ include '../vues/include/dialogue.php';
     </li>
   </ul>
 </div>
-  <div class="callto">
-    <a class="button w100 d50" href="<?= RACINE_SITE; ?>panier/">Payer la commande</a>
+<form class="large" action="<?= RACINE_SITE; ?>panier/" method="post">
+  <p><input type="checkbox" id="cgv" name="cgv" required> <label for="cgv">J'accepte les conditions générales de vente (<a href="<?= RACINE_SITE; ?>conditions-generales-de-ventes/">Voir</a>)</label></p>
+  <div class="form-group submit">
+    <input type="submit" name="payer" value="Payer la commande">
   </div>
-  <div class="callto">
-    <a class="button w100 d50" href="<?= RACINE_SITE; ?>panier/?supp_velo=panier">Vider le panier</a>
-  </div>
+</form>
+<div class="callto">
+  <a class="button w100 d50" href="<?= RACINE_SITE; ?>panier/?supp_velo=panier">Vider le panier</a>
+</div>
 <?php } else { ?>
   <p>Votre panier est vide !</p>
   <div class="bloc w50">
