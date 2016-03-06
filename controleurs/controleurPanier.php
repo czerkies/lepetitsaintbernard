@@ -139,8 +139,10 @@ class controleurPanier extends controleurSuper {
 
     // Total du panier
     $total = 0;
-    foreach ($_SESSION['panier'] as $key => $value) {
-      $total += $value['quantite'] * $value['prix'];
+    if(isset($_SESSION['panier'])){
+      foreach ($_SESSION['panier'] as $key => $value) {
+        $total += $value['quantite'] * $value['prix'];
+      }
     }
 
     $this->Render('../vues/velo/panier.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'total' => $total));

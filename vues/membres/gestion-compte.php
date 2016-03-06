@@ -8,7 +8,7 @@
 
   <div class="bloc w50">
     <div class="callto">
-      <a class="button w100 d100" href="<?= RACINE_SITE; ?>votre-velo/">Mes vélos unique</a>
+      <a class="button w100 d100" href="<?= RACINE_SITE; ?>votre-velo/">Voir mon vélo</a>
     </div>
   </div>
   <div class="bloc w50">
