@@ -161,7 +161,7 @@ class controleurPanier extends controleurSuper {
         Vous allez recevoir un mail confirmant votre commande.<br><br>
         Merci de laisser un avis sur celle-ci.";
 
-        $id_commande_velo = substr(hexdec(uniqid()), 8, 16);
+        $id_commande_velo = $_SESSION['membre']['id_membre'].substr(hexdec(uniqid()), 9, 16);
 
         $commande->insertCommande($id_commande_velo, $total, $_SESSION['membre']['id_membre']);
 
