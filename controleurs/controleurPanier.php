@@ -168,9 +168,9 @@ class controleurPanier extends controleurSuper {
             $commande->insertVeloCommande($id_commande_velo, $key, $value['type_velo'], $value['sexe'], $value['prix'], $value['poids'], $value['quantite']);
           }
 
-        //$formulaire->sendMail();
+          //$formulaire->sendMail();
 
-        //unset($_SESSION['panier']);
+          unset($_SESSION['panier']);
 
         } else {
 

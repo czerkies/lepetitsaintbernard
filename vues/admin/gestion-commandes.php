@@ -1,0 +1,3 @@
+<?php
+if($userConnectAdmin){}
+?>
