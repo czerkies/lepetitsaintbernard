@@ -153,25 +153,31 @@ class controleurPanier extends controleurSuper {
         $commande = new modeleCommandes();
         $formulaire = new controleurFonctions();
 
-        // Controler le stock
+        // Controle si stock toujours suffisant
+        if($this->verifQuantiteAvantMaj()){
 
-        // Réduire stock selon commande
+          $msg['error']['confirm'] = "Votre achat a bien été effectué.<br>
+          Vous allez recevoir un mail confirmant votre commande.<br><br>
+          Merci de laisser un avis sur celle-ci.";
 
-        $msg['error']['confirm'] = "Votre achat a bien été effectué.<br>
-        Vous allez recevoir un mail confirmant votre commande.<br><br>
-        Merci de laisser un avis sur celle-ci.";
+          $id_commande_velo = $_SESSION['membre']['id_membre'].substr(hexdec(uniqid()), 9, 16);
 
-        $id_commande_velo = $_SESSION['membre']['id_membre'].substr(hexdec(uniqid()), 9, 16);
+          $commande->insertCommande($id_commande_velo, $total, $_SESSION['membre']['id_membre']);
 
-        $commande->insertCommande($id_commande_velo, $total, $_SESSION['membre']['id_membre']);
-
-        foreach ($_SESSION['panier'] as $key => $value) {
-          $commande->insertVeloCommande($id_commande_velo, $key, $value['type_velo'], $value['sexe'], $value['prix'], $value['poids'], $value['quantite']);
-        }
+          foreach ($_SESSION['panier'] as $key => $value) {
+            $commande->insertVeloCommande($id_commande_velo, $key, $value['type_velo'], $value['sexe'], $value['prix'], $value['poids'], $value['quantite']);
+          }
 
         //$formulaire->sendMail();
 
         //unset($_SESSION['panier']);
+
+        } else {
+
+          $msg['error']['general'] = "Une des pièces est insufisante dans nos stocks.<br>
+          Veuillez vérifier les quantités de votre panier.";
+
+        }
 
       } else {
         $msg['error']['cgv'] = "Veuillez accepter les confitions gérérales de vente.";
@@ -190,7 +196,7 @@ class controleurPanier extends controleurSuper {
   * @param (int) $quantite
   * @return bool
   */
-  public function verifQuantiteAvantMaj($id_velo, $quantite = null){
+  public function verifQuantiteAvantMaj($id_velo = null, $quantite = null){
 
     $assemblage = new modeleAssemblage();
 
@@ -219,7 +225,21 @@ class controleurPanier extends controleurSuper {
 
     if(array_search(null, $verifQuantite) === false){
 
-      $_SESSION['panier'][$id_velo]['quantite'] += $newQuantite;
+      // Si un id_velo est présent alors MAJ session
+      if($id_velo) {
+
+        $_SESSION['panier'][$id_velo]['quantite'] += $newQuantite;
+
+      // Sinon MAJ BDD
+      } else {
+
+        $stock = new modeleStocks();
+
+        foreach ($piecesQuantite as $key => $value) {
+          $stock->updateQuantitePiece(-$value, $key);
+        }
+
+      }
 
       return true;
 
