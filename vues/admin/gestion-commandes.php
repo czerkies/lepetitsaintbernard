@@ -2,11 +2,19 @@
 
 <h2>Les commandes</h2>
 
-<?php if($donneesCmdVelo){ ?>
+<?php if($donneesCmdVelo['cmd']){ ?>
 
-<h2>Commande en details</h2>
+<h2>Commande <?= $donneesCmdVelo['cmd']['id_commande_velo']; ?> en details</h2>
 
+<p>
+  <b>La commande a été passé par :</b> <?= strtoupper($donneesCmdVelo['cmd']['nom']).' '.ucfirst($donneesCmdVelo['cmd']['prenom']); ?>.<br>
+  <b>À la date du :</b> <?= $donneesCmdVelo['cmd']['date_commande']; ?>.<br>
+  <b>Total de la commande :</b> <?= $donneesCmdVelo['cmd']['total']; ?> €.<br>
+</p>
 
+<?php foreach ($donneesCmdVelo['liste'] as $key => $value) {
+  echo $value['reference'].'<br>';
+} ?>
 <?php } if(!empty($listeCommandes)){ ?>
   <div class="tableau">
     <div class="head">

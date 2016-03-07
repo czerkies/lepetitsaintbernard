@@ -24,9 +24,9 @@ class controleurCommandes extends controleurSuper {
 
     if(isset($_GET['details']) && !empty($_GET['details']) && is_numeric($_GET['details'])){
 
-      if($donneesCmdVelo = $commandes->affichageUneCommande($_GET['details'])){
+      if($commandes->affichageUneCommande($_GET['details'])){
 
-        
+        $donneesCmdVelo = $commandes->affichageUneCommande($_GET['details']);
 
       }
 
