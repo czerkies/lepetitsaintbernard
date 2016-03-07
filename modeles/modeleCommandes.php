@@ -66,7 +66,7 @@ class modeleCommandes extends modeleSuper {
   */
   public function affichageCommandes(){
 
-    $donnees = $this->bdd()->query("SELECT c.*, DATE_FORMAT(date, '%d/%m/%Y %h:%m') as date_commande, m.prenom, m.nom, m.email
+    $donnees = $this->bdd()->query("SELECT c.*, DATE_FORMAT(date, '%d/%m/%Y %H:%i') as date_commande, m.prenom, m.nom, m.email
     FROM commandes c, membres m
     WHERE c.id_membre = m.id_membre
     ORDER BY date DESC");

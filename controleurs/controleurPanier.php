@@ -146,7 +146,7 @@ class controleurPanier extends controleurSuper {
     }
 
     // Payer la commande
-    if(isset($_POST['payer'])){
+    if(isset($_SESSION['panier']) && isset($_POST['payer'])){
 
       if(isset($_POST['cgv'])){
 
