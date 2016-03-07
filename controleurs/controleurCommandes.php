@@ -18,12 +18,23 @@ class controleurCommandes extends controleurSuper {
     $userConnectAdmin = $this->userConnectAdmin();
 
     $msg['error'] = [];
+    $donneesCmdVelo = null;
 
     $commandes = new modeleCommandes();
 
+    if(isset($_GET['details']) && !empty($_GET['details']) && is_numeric($_GET['details'])){
+
+      if($donneesCmdVelo = $commandes->affichageUneCommande($_GET['details'])){
+
+        
+
+      }
+
+    }
+
     $listeCommandes = $commandes->affichageCommandes();
 
-    $this->Render('../vues/admin/gestion-commandes.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'listeCommandes' => $listeCommandes));
+    $this->Render('../vues/admin/gestion-commandes.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'listeCommandes' => $listeCommandes, 'donneesCmdVelo' => $donneesCmdVelo));
 
   }
 

@@ -75,4 +75,21 @@ class modeleCommandes extends modeleSuper {
 
   }
 
+  /**
+  * Récupération d'une commande
+  *
+  * @param $id_commande
+  * @return (array) $result
+  */
+  public function affichageUneCommande($id_commande){
+
+    $donnees = $this->bdd()->query("SELECT c.*, DATE_FORMAT(date, '%d/%m/%Y %H:%i') as date_commande, m.prenom, m.nom, m.email
+    FROM commandes c, membres m
+    WHERE c.id_membre = m.id_membre
+    AND id_commande = $id_commande");
+
+    return $result = $donnees->fetch(PDO::FETCH_ASSOC);
+
+  }
+
 }
