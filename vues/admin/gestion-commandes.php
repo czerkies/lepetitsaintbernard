@@ -11,10 +11,29 @@
   <b>À la date du :</b> <?= $donneesCmdVelo['cmd']['date_commande']; ?>.<br>
   <b>Total de la commande :</b> <?= $donneesCmdVelo['cmd']['total']; ?> €.<br>
 </p>
+<div class="tableau">
+  <div class="head">
+    <div class="cel w20">Ref. Vélo</div>
+    <div class="cel w15">Type</div>
+    <div class="cel w15">Sexe</div>
+    <div class="cel w15">Prix</div>
+    <div class="cel w20">Poids</div>
+    <div class="cel w15">Quantite</div>
+  </div>
+  <ul class="body">
+    <?php foreach($donneesCmdVelo['liste'] as $value) { ?>
+      <li>
+        <span class="w20"><?= $value['reference']; ?></span>
+        <span class="w15"><?= ucfirst($value['type_velo']); ?></span>
+        <span class="w15"><?= ucfirst($value['sexe']); ?></span>
+        <span class="w15"><?= $value['prix']; ?> €</span>
+        <span class="w20"><?= $value['poids']; ?> Kilos</span>
+        <span class="w15"><?= $value['quantite']; ?></span>
+      </li>
+    <?php } ?>
+  </ul>
 
-<?php foreach ($donneesCmdVelo['liste'] as $key => $value) {
-  echo $value['reference'].'<br>';
-} ?>
+</div>
 <?php } if(!empty($listeCommandes)){ ?>
   <div class="tableau">
     <div class="head">
