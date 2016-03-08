@@ -470,6 +470,7 @@ form {
     margin: 0;
     padding: 0;
     li {
+      color: #444;
       float: left;
       width: 100%;
       list-style: none;
@@ -478,8 +479,14 @@ form {
       background: @fond;
       padding: 0;
       margin: 10px 0;
-      transition: background-color 250ms ease, box-shadow 250ms ease;
+      transition: background-color 250ms ease, box-shadow 250ms ease, color 250ms ease;
       &:hover {
+        color: #000;
+        background: @hover;
+        box-shadow: @boxshadow;
+      }
+      &.select {
+        border-color: @fond;
         background: @hover;
         box-shadow: @boxshadow;
       }

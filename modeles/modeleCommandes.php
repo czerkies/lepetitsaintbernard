@@ -61,15 +61,20 @@ class modeleCommandes extends modeleSuper {
   /**
   * Récupération des commandes
   *
-  * @param
+  * @param (int) $id_membre Option
   * @return (array) $result
   */
-  public function affichageCommandes(){
+  public function affichageCommandes($id_membre = null){
 
-    $donnees = $this->bdd()->query("SELECT c.*, DATE_FORMAT(date, '%d/%m/%Y') as date_commande, m.prenom, m.nom, m.email
+    $req = "SELECT c.*, DATE_FORMAT(date, '%d/%m/%Y') as date_commande, m.prenom, m.nom, m.email
     FROM commandes c, membres m
-    WHERE c.id_membre = m.id_membre
-    ORDER BY date DESC");
+    WHERE c.id_membre = m.id_membre ";
+
+    if($id_membre) $req .= "AND id_membre = $id_membre ";
+
+    $req .= "ORDER BY date DESC";
+
+    $donnees = $this->bdd()->query($req);
 
     return $result = $donnees->fetchAll(PDO::FETCH_ASSOC);
 

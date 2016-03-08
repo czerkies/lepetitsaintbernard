@@ -446,6 +446,7 @@ form .hidden {
   padding: 0;
 }
 .tableau .body li {
+  color: #444;
   float: left;
   width: 100%;
   list-style: none;
@@ -454,9 +455,15 @@ form .hidden {
   background: #eeeeee;
   padding: 0;
   margin: 10px 0;
-  transition: background-color 250ms ease, box-shadow 250ms ease;
+  transition: background-color 250ms ease, box-shadow 250ms ease, color 250ms ease;
 }
 .tableau .body li:hover {
+  color: #000;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.tableau .body li.select {
+  border-color: #eeeeee;
   background: #ffffff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
