@@ -1,6 +1,13 @@
 <?php
 include '../vues/include/dialogue.php';
+if($avis){
 ?>
+
+  <div class="callto">
+    <a class="button w100 d50" href="<?= RACINE_SITE; ?>panier/votre-avis/?avis=<?= $avis; ?>">Laisser un avis sur la commande</a>
+  </div>
+
+<?php } ?>
 
 <h2>Votre panier</h2>
 <p>Ici, vous pouvez modifier votre panier ou valider votre commande.</p>
@@ -65,10 +72,3 @@ include '../vues/include/dialogue.php';
     </div>
   </div>
 <?php } ?>
-
-
-<?php
-echo '<pre>';
-//var_dump($_SESSION['panier']);
-echo '</pre>';
-?>

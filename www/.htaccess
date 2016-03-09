@@ -11,6 +11,8 @@ RewriteRule ^mon-compte/details/(.*)$ index.php?controleur=membres&action=gestio
 RewriteRule ^mon-compte/ index.php?controleur=membres&action=gestionCompte [L]
 RewriteRule ^mot-de-passe-oublie/ index.php?controleur=membres&action=motDePasseOublie [L]
 
+RewriteRule ^panier/votre-avis/ index.php?controleur=avis&action=enregistrementAvis [QSA,L]
+
 #ADMIN
 
 RewriteRule ^admin/gestion-membres/suppression/(.*)$ index.php?controleur=membresAdmin&action=gestionMembres&supp=$1 [L]

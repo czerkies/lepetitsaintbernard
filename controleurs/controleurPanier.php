@@ -20,6 +20,7 @@ class controleurPanier extends controleurSuper {
     $userConnectAdmin = $this->userConnectAdmin();
 
     $msg['error'] = array();
+    $avis = 27746455;
 
     $assemblage = new modeleAssemblage();
 
@@ -160,6 +161,8 @@ class controleurPanier extends controleurSuper {
           Vous allez recevoir un mail confirmant votre commande.<br><br>
           Merci de laisser un avis sur celle-ci.";
 
+          $avis = $id_velo;
+
           $id_commande_velo = $_SESSION['membre']['id_membre'].substr(hexdec(uniqid()), 9, 16);
 
           $commande->insertCommande($id_commande_velo, $total, $_SESSION['membre']['id_membre']);
@@ -180,12 +183,12 @@ class controleurPanier extends controleurSuper {
         }
 
       } else {
-        $msg['error']['cgv'] = "Veuillez accepter les confitions gérérales de vente.";
+        $msg['error']['cgv'] = "Veuillez accepter les conditions gérérales de vente.";
       }
 
     }
 
-    $this->Render('../vues/velo/panier.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'total' => $total));
+    $this->Render('../vues/velo/panier.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'total' => $total, 'avis' => $avis));
 
   }
 

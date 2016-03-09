@@ -116,4 +116,23 @@ class modeleCommandes extends modeleSuper {
 
   }
 
+  /**
+  * Controle si un avis n'a pas déjà été laissé sur la commande par le bon id_membre
+  *
+  * @param (int) $id_commande_velo
+  * @param (int) $id_membre
+  *
+  * @return (bool)
+  */
+  public function controleAvisIdCommande($id_commande_velo, $id_membre){
+
+    $donnees = $this->bdd()->query("SELECT id_commande FROM commandes
+      WHERE id_commande_velo = $id_commande_velo
+      AND id_membre = $id_membre
+    ");
+
+    return $donnees->rowCount();
+
+  }
+
 }
