@@ -37,6 +37,8 @@
 
   <h2>Les commandes</h2>
 
+  <p>Le CA de l'entreprise s'élève à : <b><?= $caLpsb; ?></b> €.</p>
+
   <div class="tableau">
     <div class="head">
       <div class="cel w10">ID</div>

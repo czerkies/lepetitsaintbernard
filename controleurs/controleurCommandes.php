@@ -34,7 +34,12 @@ class controleurCommandes extends controleurSuper {
 
     $listeCommandes = $commandes->affichageCommandes();
 
-    $this->Render('../vues/admin/gestion-commandes.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'listeCommandes' => $listeCommandes, 'donneesCmdVelo' => $donneesCmdVelo));
+    $caLpsb = 0;
+    foreach ($listeCommandes as $value) {
+      $caLpsb += $value['total'];
+    }
+
+    $this->Render('../vues/admin/gestion-commandes.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'listeCommandes' => $listeCommandes, 'donneesCmdVelo' => $donneesCmdVelo, 'caLpsb' => $caLpsb));
 
   }
 

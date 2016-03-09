@@ -462,6 +462,7 @@ form .hidden {
   background: #ffffff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
+.tableau .body li:active,
 .tableau .body li.select {
   border-color: #eeeeee;
   background: #ffffff;

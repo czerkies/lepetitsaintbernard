@@ -35,51 +35,47 @@
 
   <?php } if(!empty($listeCommandes)){ ?>
 
-  <h2>Vos commandes</h2>
+  <h2>Vos 5 dernières commandes</h2>
 
     <div class="tableau">
       <div class="head">
-        <div class="cel w10">ID</div>
-        <div class="cel w15">Nom</div>
-        <div class="cel w15">Prénom</div>
-        <div class="cel w20">Email</div>
-        <div class="cel w20">Montant</div>
-        <div class="cel w15">Date</div>
+        <div class="cel w25">ID</div>
+        <div class="cel w25">Montant</div>
+        <div class="cel w50">Date</div>
       </div>
 
       <ul class="body">
         <?php foreach($listeCommandes as $value) { ?>
           <a href="<?= RACINE_SITE; ?>mon-compte/details/<?= $value['id_commande']; ?>#details">
             <li <?php if(isset($_GET['details']) && $value['id_commande'] === $_GET['details']) echo 'class="select"'; ?>>
-              <span class="w10"><?= $value['id_commande_velo']; ?></span>
-              <span class="w15"><?= ucfirst($value['nom']); ?></span>
-              <span class="w15"><?= ucfirst($value['prenom']); ?></span>
-              <span class="w20"><?= $value['email']; ?></span>
-              <span class="w20"><?= $value['total']; ?> €</span>
-              <span class="w15"><?= $value['date_commande']; ?></span>
+              <span class="w25"><?= $value['id_commande_velo']; ?></span>
+              <span class="w25"><?= $value['total']; ?> €</span>
+              <span class="w50"><?= $value['date_commande']; ?></span>
             </li>
           </a>
         <?php } ?>
       </ul>
 
     </div>
+  <?php } else { ?>
+    
+    <p>
+      Vous n'avez encore passé aucune commande !<br>
+      N'attendez plus pour voir votre vélo parfait ou configurer le votre.
+    </p>
+    <div class="bloc w50">
+      <div class="callto">
+        <a class="button w100 d100" href="<?= RACINE_SITE; ?>votre-velo/">Voir mon vélo</a>
+      </div>
+    </div>
+    <div class="bloc w50">
+      <div class="callto">
+        <a class="button w100 d100" href="<?= RACINE_SITE; ?>configuration/">Configurer mon vélo</a>
+      </div>
+    </div>
+
   <?php } ?>
 
-  <p>
-    Vous n'avez encore passé aucune commande !<br>
-    N'attendez plus pour voir votre vélo parfait ou configurer le votre.
-  </p>
-
-  <div class="bloc w50">
-    <div class="callto">
-      <a class="button w100 d100" href="<?= RACINE_SITE; ?>votre-velo/">Voir mon vélo</a>
-    </div>
-  </div>
-  <div class="bloc w50">
-    <div class="callto">
-      <a class="button w100 d100" href="<?= RACINE_SITE; ?>configuration/">Configurer mon vélo</a>
-    </div>
-  </div>
   <h2 id="vosInformations">Vos informations</h2>
 
   <?php include '../vues/include/dialogue.php'; ?>
