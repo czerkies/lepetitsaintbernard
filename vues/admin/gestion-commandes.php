@@ -50,7 +50,7 @@
     <ul class="body">
       <?php foreach($listeCommandes as $value) { ?>
         <a href="<?= RACINE_SITE; ?>admin/gestion-commandes/details/<?= $value['id_commande']; ?>#details">
-          <li <?php if($value['id_commande'] === $_GET['details']) echo 'class="select"'; ?>>
+          <li <?php if(isset($_GET['details']) && $value['id_commande'] === $_GET['details']) echo 'class="select"'; ?>>
             <span class="w10"><?= $value['id_commande_velo']; ?></span>
             <span class="w15"><?= ucfirst($value['nom']); ?></span>
             <span class="w15"><?= ucfirst($value['prenom']); ?></span>

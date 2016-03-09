@@ -70,9 +70,11 @@ class modeleCommandes extends modeleSuper {
     FROM commandes c, membres m
     WHERE c.id_membre = m.id_membre ";
 
-    if($id_membre) $req .= "AND id_membre = $id_membre ";
+    if($id_membre) $req .= "AND m.id_membre = $id_membre ";
 
-    $req .= "ORDER BY date DESC";
+    $req .= "ORDER BY date DESC ";
+
+    if($id_membre) $req .= "LIMIT 5";
 
     $donnees = $this->bdd()->query($req);
 
