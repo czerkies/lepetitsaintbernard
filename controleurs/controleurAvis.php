@@ -5,6 +5,8 @@
 */
 class controleurAvis extends controleurSuper {
 
+  const ERREUR_POST = 'Une erreur est survenue lors de votre demande.';
+
   /**
   * La fonction permet de controler et enregistrer l'avis de l'utilisateur.
   *
@@ -20,19 +22,59 @@ class controleurAvis extends controleurSuper {
     $msg['error'] = [];
     $formulaireAvis = false;
 
-    $avis = new modeleAvis();
+    $avisBDD= new modeleAvis();
     $formulaire = new controleurFonctions();
 
-    if($this->controlePostAvis($_GET['avis'], $_SESSION['membre']['id_membre'])){
+    if($userConnect){
 
-      $formulaireAvis = true;
+      if($this->controlePostAvis($_GET['avis'], $_SESSION['membre']['id_membre'])){
 
-      // Si post, controler les champs, si la commande existe et appartient au bon membre et n'a pas déjà été posté.
-      
-    } else {
+        $formulaireAvis = true;
 
-      $msg['error']['general'] = "Aucun avis ne peut être laissé sur cette comande de votre part.";
+        // Si post, controler les champs, si la commande existe et appartient au bon membre et n'a pas déjà été posté.
+        if($_POST){
 
+          if(isset($_POST['id_commande_velo']) && isset($_POST['prenom']) && isset($_POST['avis'])){
+
+            if(empty($_POST['prenom']) || strlen($_POST['prenom']) > 32 || strlen($_POST['prenom']) < 2){
+              $msg['error']['prenom'] = "Veuillez donner un <b>pseudo</b> entre 2 et 32 caractères.";
+            }
+
+            if(empty($_POST['avis']) || strlen($_POST['avis']) > 4500 || strlen($_POST['avis']) < 10){
+              $msg['error']['avis'] = "Veuillez donner votre <b>avis</b> entre 10 et 4500 caractères.";
+            }
+
+            if(!$this->controlePostAvis($_POST['id_commande_velo'], $_SESSION['membre']['id_membre'])){
+              $msg['error']['general'] = self::ERREUR_POST;
+            }
+
+            if(empty($msg['error'])){
+
+              foreach ($_POST as $key => $value){
+                $_POST[$key] = htmlspecialchars($value, ENT_QUOTES);
+              }
+
+              extract($_POST);
+
+              $avisBDD->insertAvis($id_commande_velo, $_SESSION['membre']['id_membre'], $prenom, $avis);
+
+              $msg['error']['confirm'] = "Merci beaucoup !<br>Votre avis a bien été posté.";
+
+              $formulaireAvis = false;
+
+            }
+
+          } else {
+            $msg['error']['general'] = self::ERREUR_POST;
+          }
+
+        }
+
+      } else {
+
+        $msg['error']['general'] = "Aucun avis ne peut être laissé sur cette comande de votre part.";
+
+      }
     }
 
     $this->Render('../vues/membres/ajout-avis.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'formulaire' => $formulaire, 'formulaireAvis' => $formulaireAvis));
@@ -50,11 +92,11 @@ class controleurAvis extends controleurSuper {
   public function controlePostAvis($id_commande_velo, $id_membre){
 
     $concordanceMembreCMD = new modeleCommandes();
-    $avis = new modeleAvis();
+    $avisBDD = new modeleAvis();
 
     if($concordanceMembreCMD->controleAvisIdCommande($id_commande_velo, $id_membre)){
 
-      if(!$avis->existeAvis($id_commande_velo, $id_membre)){
+      if(!$avisBDD->existeAvis($id_commande_velo)){
 
         return true;
 

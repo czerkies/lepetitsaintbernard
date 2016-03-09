@@ -161,8 +161,6 @@ class controleurPanier extends controleurSuper {
           Vous allez recevoir un mail confirmant votre commande.<br><br>
           Merci de laisser un avis sur celle-ci.";
 
-          $avis = $id_velo;
-
           $id_commande_velo = $_SESSION['membre']['id_membre'].substr(hexdec(uniqid()), 9, 16);
 
           $commande->insertCommande($id_commande_velo, $total, $_SESSION['membre']['id_membre']);
@@ -170,6 +168,8 @@ class controleurPanier extends controleurSuper {
           foreach ($_SESSION['panier'] as $key => $value) {
             $commande->insertVeloCommande($id_commande_velo, $key, $value['type_velo'], $value['sexe'], $value['prix'], $value['poids'], $value['quantite']);
           }
+
+          $avis = $id_commande_velo;
 
           //$formulaire->sendMail();
 

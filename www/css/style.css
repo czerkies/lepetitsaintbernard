@@ -673,6 +673,10 @@ form .hidden {
     width: 98%;
     margin: 0 1%;
   }
+  form .form-group.w100 textarea {
+    max-width: 100%;
+    min-height: 250px;
+  }
   form .form-group.radio input[type="radio"] {
     float: left;
     width: 6%;
