@@ -95,10 +95,26 @@ class controleurAvis extends controleurSuper {
 
     $msg['error'] = [];
 
-    $avisBDD= new modeleAvis();
+    $avisBDD = new modeleAvis();
     $formulaire = new controleurFonctions();
 
-    $this->Render('../vues/admin/gestion-avis.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
+    if(isset($_GET['supp']) && !empty($_GET['supp']) && is_numeric($_GET['supp'])){
+
+      if($avisBDD->controleExistAvis($_GET['supp'])){
+
+        $avisBDD->suppAvis($_GET['supp']);
+
+        $msg['error']['confirm'] = "L'avis a bien été supprimé.";
+
+      } else {
+        $msg['error']['general'] = self::ERREUR_POST;
+      }
+
+    }
+
+    $avisDonnees = $avisBDD->affichageAvisAdmin();
+
+    $this->Render('../vues/admin/gestion-avis.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'avisDonnees' => $avisDonnees));
 
   }
 

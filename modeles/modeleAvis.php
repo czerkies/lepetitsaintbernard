@@ -43,4 +43,48 @@ class modeleAvis extends modeleSuper {
 
   }
 
+  /**
+  * Affichage de tout les avis ADMIN
+  *
+  * @return (array) $avis
+  */
+  public function affichageAvisAdmin(){
+
+    $donnees = $this->bdd()->query("SELECT a.*, DATE_FORMAT(a.date, '%d/%m/%Y') as date_fr, m.nom, m.prenom
+      FROM avis a, membres m
+      WHERE a.id_membre = m.id_membre
+      ORDER BY date DESC
+    ");
+
+    return $avis = $donnees->fetchAll(PDO::FETCH_ASSOC);
+
+  }
+
+  /**
+  * Controle existance d'un id_avis
+  *
+  * @param (int) $id_avis
+  * @return (int) $exist
+  */
+  public function controleExistAvis($id_avis){
+
+    $donnees = $this->bdd()->query("SELECT * FROM avis WHERE id_avis = $id_avis");
+
+    return $exist = $donnees->rowCount();
+
+  }
+
+  /**
+  * Suppression d'un avis
+  *
+  * @param (int) $id_avis
+  */
+  public function suppAvis($id_avis){
+
+    $delete = $this->bdd()->prepare("DELETE FROM avis WHERE id_avis = $id_avis");
+
+    $delete->execute();
+
+  }
+
 }
