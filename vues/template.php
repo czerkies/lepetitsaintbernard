@@ -69,7 +69,7 @@
     </div>
     <footer>
       <ul>
-        <li><a href="<?= RACINE_SITE; ?>contact/">Contact</a></li>
+        <li><a <?php if(isset($meta['menu']) && ($meta['menu'] === 'contact')) echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>contact/">Contact</a></li>
         <li><a href="#">Foooter 1</a></li>
         <li><a href="#">Foooter 1</a></li>
         <li><a href="#">Foooter 1</a></li>

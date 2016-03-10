@@ -1,10 +1,10 @@
-<h2>Contactez nous !</h2>
+<h2 id="contact">Contactez nous !</h2>
 
 <p>Contactez nous pour toutes questions ou demande.</p>
 
 <?php include '../vues/include/dialogue.php'; ?>
 
-<form class="large" action="" method="post">
+<form class="large" action="#contact" method="post">
 
   <?= $formulaire->fieldsFormInput('Prénom', 'text', 'prenom', 'prenom', "Votre prénom est obligatoire", $msg, 'required', null, null, 'membre'); ?>
 

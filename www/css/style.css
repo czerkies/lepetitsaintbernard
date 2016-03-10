@@ -260,7 +260,8 @@ footer ul li a {
   font-size: 1em;
   padding: 10px;
 }
-footer ul li a:hover {
+footer ul li a:hover,
+footer ul li a.active {
   color: #ffffff;
   text-decoration: underline;
 }
