@@ -10,7 +10,7 @@
 
   <?= $formulaire->fieldsFormInput('Email', 'email', 'email', 'email', "Votre Email est obligatoire", $msg, 'required', null, null, 'membre'); ?>
 
-  <div class="form-group w100<?php if(isset($msg['error']['sexe'])) echo ' error-form'; ?>">
+  <div class="form-group w100<?php if(isset($msg['error']['message'])) echo ' error-form'; ?>">
     <label for="message">Votre message</label>
     <textarea name="message" id="message" placeholder="Votre message" required><?php if(isset($_POST['message'])) echo $_POST['message']; ?></textarea>
     <em>Votre demande ne peut dépasser 10000 caractères</em>
