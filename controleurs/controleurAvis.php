@@ -82,6 +82,27 @@ class controleurAvis extends controleurSuper {
   }
 
   /**
+  * La fonction permet de gérer les avis en ADMIN
+  *
+  */
+  public function gestionAvis(){
+
+    session_start();
+    $meta['title'] = 'Gestion des avis';
+    $meta['menu'] = 'gestion-avis';
+    $userConnect = $this->userConnect();
+    $userConnectAdmin = $this->userConnectAdmin();
+
+    $msg['error'] = [];
+
+    $avisBDD= new modeleAvis();
+    $formulaire = new controleurFonctions();
+
+    $this->Render('../vues/admin/gestion-avis.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
+
+  }
+
+  /**
   * Controle concordance et non existance avis sur CMD
   *
   * @param (int) $id_commande_velo
@@ -100,8 +121,11 @@ class controleurAvis extends controleurSuper {
 
         return true;
 
+      } else {
+        return false;
       }
-
+    } else {
+      return false;
     }
 
   }

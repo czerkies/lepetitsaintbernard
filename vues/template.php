@@ -45,6 +45,9 @@
               <li>
                 <a class="sous_li <?php if(isset($meta['menu']) && ($meta['menu'] === 'gestion-commandes')) echo "active"; ?>" href="<?= RACINE_SITE; ?>admin/gestion-commandes/">Gestion des commandes</a>
               </li>
+              <li>
+                <a class="sous_li <?php if(isset($meta['menu']) && ($meta['menu'] === 'gestion-avis')) echo "active"; ?>" href="<?= RACINE_SITE; ?>admin/gestion-avis/">Gestion des avis</a>
+              </li>
             <?php } ?>
           </ul>
         </nav>

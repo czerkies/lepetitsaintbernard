@@ -220,7 +220,7 @@ class controleurMembres extends controleurSuper {
 
     }
 
-    $listeCommandes = $commandes->affichageCommandes($_SESSION['membre']['id_membre']);
+    $listeCommandes = (isset($_SESSION['membre'])) ? $commandes->affichageCommandes($_SESSION['membre']['id_membre']) : null;
 
     $this->Render('../vues/membres/gestion-compte.php', array('meta' => $meta, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'msg' => $msg, 'formulaire' => $formulaire, 'listeCommandes' => $listeCommandes, 'donneesCmdVelo' => $donneesCmdVelo));
 
