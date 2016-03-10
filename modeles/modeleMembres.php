@@ -218,4 +218,17 @@ class modeleMembres extends modeleSuper {
 
   }
 
+  /**
+  * Récupération des email des membres ADMIN
+  *
+  * @return $listeMembres (array)
+  */
+  public function emailAdmin(){
+
+    $donnees = $this->bdd()->query("SELECT email FROM membres WHERE statut = 1");
+
+    return $listeMembres = $donnees->fetchAll(PDO::FETCH_ASSOC);
+
+  }
+
 }

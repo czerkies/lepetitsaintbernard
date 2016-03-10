@@ -12,7 +12,7 @@
 
   <div class="form-group w100<?php if(isset($msg['error']['sexe'])) echo ' error-form'; ?>">
     <label for="message">Votre message</label>
-    <textarea name="message" id="message" placeholder="Votre message" required><?php if(isset($_POST['avis'])) echo $_POST['avis']; ?></textarea>
+    <textarea name="message" id="message" placeholder="Votre message" required><?php if(isset($_POST['message'])) echo $_POST['message']; ?></textarea>
     <em>Votre demande ne peut dépasser 10000 caractères</em>
   </div>
 

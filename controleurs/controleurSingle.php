@@ -36,6 +36,8 @@ class controleurSingle extends controleurSuper {
     $userConnect = $this->userConnect();
     $userConnectAdmin = $this->userConnectAdmin();
 
+    $msg['error'] = [];
+
     $formulaire = new controleurFonctions();
 
     if($_POST){
@@ -47,17 +49,17 @@ class controleurSingle extends controleurSuper {
           $msg['error']['prenom'] = "Veuillez donner un <b>prénom</b> entre 2 et 32 caractères.";
         }
 
-        if(empty($value['email'])){
+        if(empty($_POST['email'])){
           $msg['error']['email'] = "Veuillez saisir une adresse <b>Email</b>.";
-        } elseif(!filter_var($value['email'], FILTER_VALIDATE_EMAIL)) {
+        } elseif(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
           $msg['error']['email'] = "Votre <b>Email</b> est invalide.";
-        } elseif(strlen($value['email']) > 32){
+        } elseif(strlen($_POST['email']) > 32){
           $msg['error']['email'] = "Votre <b>Email</b> ne doit pas dépasser 32 carractères.";
         }
 
-        if(empty($value['message'])){
+        if(empty($_POST['message'])){
           $msg['error']['message'] = "Veuillez saisir un <b>message</b>.";
-        } elseif(strlen($value['message']) > 250 || strlen($value['message']) < 10){
+        } elseif(strlen($_POST['message']) > 250 || strlen($_POST['message']) < 10){
           $msg['error']['message'] = "Votre <b>message</b> doit contenir entre 10 et 10000 carractères.";
         }
 
@@ -69,7 +71,14 @@ class controleurSingle extends controleurSuper {
 
           extract($_POST);
 
-          $formulaire->sendMail(/*mail*/, 'Demande de contact', $message, $email);
+          $membresAdmin = new modeleMembres();
+
+          $emailAdmin = '';
+          foreach ($membresAdmin->emailAdmin() as $value) {
+            $emailAdmin .= $value['email'].', ';
+          }
+          
+          $formulaire->sendMail($emailAdmin, 'Demande de contact', $message, $email);
 
           $msg['error']['confirm'] = "Votre Email a bien été envoyé.<br>Nous vous répondrons dans les plus brefs délais.";
 
@@ -81,7 +90,7 @@ class controleurSingle extends controleurSuper {
 
     }
 
-    $this->Render('../vues/single/contact.php', array('meta' => $meta, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'formulaire' => $formulaire));
+    $this->Render('../vues/single/contact.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'formulaire' => $formulaire));
 
   }
 
