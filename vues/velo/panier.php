@@ -46,12 +46,19 @@ if($avis){
     </li>
   </ul>
 </div>
-<form class="large" action="<?= RACINE_SITE; ?>panier/" method="post">
-  <p><input type="checkbox" id="cgv" name="cgv" required> <label for="cgv">J'accepte les conditions générales de vente (<a href="<?= RACINE_SITE; ?>conditions-generales-de-ventes/">Voir</a>)</label></p>
-  <div class="form-group submit">
-    <input type="submit" name="payer" value="Payer la commande">
+<?php if($userConnect) { ?>
+  <form class="large" action="<?= RACINE_SITE; ?>panier/" method="post">
+    <p><input type="checkbox" id="cgv" name="cgv" required> <label for="cgv">J'accepte les conditions générales de vente (<a href="<?= RACINE_SITE; ?>conditions-generales-de-ventes/">Voir</a>)</label></p>
+    <div class="form-group submit">
+      <input type="submit" name="payer" value="Payer la commande">
+    </div>
+  </form>
+<?php } else { ?>
+  <p>Vous devez vous connecter pour payer votre commande.</p>
+  <div class="callto">
+    <a class="button w100 d50" href="<?= RACINE_SITE; ?>connexion/">Me connecter</a>
   </div>
-</form>
+<?php } ?>
 <div class="callto">
   <a class="button w100 d50" href="<?= RACINE_SITE; ?>panier/?supp_velo=panier">Vider le panier</a>
 </div>
