@@ -496,6 +496,9 @@ form .hidden {
   font-size: 1em;
   cursor: pointer;
 }
+.tableau .body li a {
+  color: #444;
+}
 .blocpiece {
   transition: box-shadow 250ms ease;
   background: #fff;
