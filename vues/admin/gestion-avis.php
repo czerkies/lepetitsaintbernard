@@ -19,7 +19,7 @@
     <ul class="body">
       <?php foreach($avisDonnees as $value) { ?>
         <li>
-          <span class="w10"><?= $value['id_commande_velo']; ?></span>
+          <span class="w10"><a href="<?= RACINE_SITE.'admin/gestion-commandes/details/'.$value['id_commande']; ?>"><?= $value['id_commande_velo']; ?></a></span>
           <span class="w20"><?= strtoupper($value['nom']).' '.ucfirst($value['prenom']); ?></span>
           <span class="w50"><?= $value['avis']; ?></span>
           <span class="w15"><?= $value['date_fr']; ?></span>

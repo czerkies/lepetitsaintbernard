@@ -50,9 +50,10 @@ class modeleAvis extends modeleSuper {
   */
   public function affichageAvisAdmin(){
 
-    $donnees = $this->bdd()->query("SELECT a.*, DATE_FORMAT(a.date, '%d/%m/%Y') as date_fr, m.nom, m.prenom
-      FROM avis a, membres m
+    $donnees = $this->bdd()->query("SELECT a.*, DATE_FORMAT(a.date, '%d/%m/%Y') as date_fr, m.nom, m.prenom, c.id_commande
+      FROM avis a, membres m, commandes c
       WHERE a.id_membre = m.id_membre
+      AND a.id_commande_velo = c.id_commande_velo
       ORDER BY date DESC
     ");
 
