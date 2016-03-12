@@ -45,7 +45,7 @@ class controleurAvis extends controleurSuper {
             }
 
             if(!$this->controlePostAvis($_POST['id_commande_velo'], $_SESSION['membre']['id_membre'])){
-              $msg['error']['general'] = self::ERREUR_POST;
+              $msg['error']['generale'] = self::ERREUR_POST;
             }
 
             if(empty($msg['error'])){
@@ -65,14 +65,14 @@ class controleurAvis extends controleurSuper {
             }
 
           } else {
-            $msg['error']['general'] = self::ERREUR_POST;
+            $msg['error']['generale'] = self::ERREUR_POST;
           }
 
         }
 
       } else {
 
-        $msg['error']['general'] = "Aucun avis ne peut être laissé sur cette comande de votre part.";
+        $msg['error']['generale'] = "Aucun avis ne peut être laissé sur cette comande de votre part.";
 
       }
     }
@@ -107,7 +107,7 @@ class controleurAvis extends controleurSuper {
         $msg['error']['confirm'] = "L'avis a bien été supprimé.";
 
       } else {
-        $msg['error']['general'] = self::ERREUR_POST;
+        $msg['error']['generale'] = self::ERREUR_POST;
       }
 
     }

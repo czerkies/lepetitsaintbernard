@@ -177,7 +177,7 @@ class controleurPanier extends controleurSuper {
 
         } else {
 
-          $msg['error']['general'] = "Une des pièces est insufisante dans nos stocks.<br>
+          $msg['error']['generale'] = "Une des pièces est insufisante dans nos stocks.<br>
           Veuillez vérifier les quantités de votre panier.";
 
         }

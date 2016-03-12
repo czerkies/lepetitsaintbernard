@@ -77,7 +77,7 @@ class controleurSingle extends controleurSuper {
           foreach ($membresAdmin->emailAdmin() as $value) {
             $emailAdmin .= $value['email'].', ';
           }
-          
+
           $formulaire->sendMail($emailAdmin, 'Demande de contact', $message, $email);
 
           $msg['error']['confirm'] = "Votre Email a bien été envoyé.<br>Nous vous répondrons dans les plus brefs délais.";
@@ -85,7 +85,7 @@ class controleurSingle extends controleurSuper {
         }
 
       } else {
-        $msg['error']['general'] = self::ERREUR_POST;
+        $msg['error']['generale'] = self::ERREUR_POST;
       }
 
     }

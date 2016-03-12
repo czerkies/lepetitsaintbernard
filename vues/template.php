@@ -13,10 +13,13 @@
         <nav <?php if($userConnectAdmin) echo 'class="menu_admin"';?>>
           <ul>
             <li>
+              <a <?php if(isset($meta['menu']) && $meta['menu'] === 'accueil') echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>">Accueil</a>
+            </li>
+            <li>
               <a <?php if(isset($meta['menu']) && $meta['menu'] === 'votre-velo') echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>votre-velo/">Votre Vélo</a>
             </li>
             <li>
-              <a <?php if(isset($meta['menu']) && $meta['menu'] === 'configuration') echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>configuration/">Configurer mon vélo</a>
+              <a <?php if(isset($meta['menu']) && $meta['menu'] === 'configuration') echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>configuration/">Configurer</a>
             </li>
             <li>
               <a <?php if(isset($meta['menu']) && $meta['menu'] === 'panier') echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>panier/">Panier</a>
@@ -33,7 +36,7 @@
                 <a <?php if(isset($meta['menu']) && $meta['menu'] === 'mon-compte') echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>mon-compte/">Mon compte</a>
               </li>
               <li>
-                <a href="<?= RACINE_SITE; ?>connexion/deconnexion/">Se déconnecter</a>
+                <a href="<?= RACINE_SITE; ?>connexion/deconnexion/">Déconnexion</a>
               </li>
             <?php } if($userConnectAdmin) { ?>
               <li>
