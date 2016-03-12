@@ -137,6 +137,71 @@ header .header_cont nav ul li a.active {
 #prin .prin_cont .infos span {
   font-weight: 800;
 }
+/* Avis deff */
+.avis_accueil {
+  height: 450px;
+  position: relative;
+}
+.avis_accueil .avis_1,
+.avis_accueil .avis_2,
+.avis_accueil .avis_3 {
+  width: 98%;
+  position: absolute;
+}
+.avis_accueil .avis_1 {
+  animation: deffAvis_1 16s ease infinite;
+}
+.avis_accueil .avis_2 {
+  animation: deffAvis_2 16s ease infinite;
+}
+.avis_accueil .avis_3 {
+  animation: deffAvis_3 16s ease infinite;
+}
+.avis_accueil .avis_pseudo {
+  font-size: 2em;
+  font-weight: 600;
+}
+.avis_accueil .avis_avis {
+  font-size: 2em;
+}
+.avis_accueil .avis_date {
+  font-size: 1em;
+  text-align: right;
+}
+@keyframes deffAvis_1 {
+  4%,
+  28% {
+    opacity: 1;
+  }
+  0%,
+  32%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes deffAvis_2 {
+  32%,
+  60% {
+    opacity: 1;
+  }
+  0%,
+  28%,
+  64%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes deffAvis_3 {
+  64%,
+  96% {
+    opacity: 1;
+  }
+  0%,
+  60%,
+  100% {
+    opacity: 0;
+  }
+}
 .spe {
   width: 100%;
   float: left;
@@ -643,6 +708,15 @@ form .hidden {
   #prin .prin_cont {
     width: 100%;
     float: left;
+  }
+  /* Avis deff */
+  .avis_accueil {
+    height: 350px;
+    width: 960px;
+  }
+  .avis_accueil .avis_avis {
+    margin: 0 15%;
+    width: 70%;
   }
   /* Bouton call to action */
   .callto .button {

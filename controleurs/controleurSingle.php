@@ -20,7 +20,11 @@ class controleurSingle extends controleurSuper {
     $userConnect = $this->userConnect();
     $userConnectAdmin = $this->userConnectAdmin();
 
-    $this->Render('../vues/single/accueil.php', array('meta' => $meta, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
+    $avisBDD = new modeleAvis();
+
+    $avisRand = $avisBDD->recupAvis();
+
+    $this->Render('../vues/single/accueil.php', array('meta' => $meta, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'avisRand' => $avisRand));
 
   }
 

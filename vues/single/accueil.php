@@ -42,8 +42,20 @@
   <div id="infos_budget" class="hidden">Cette information nous donne accès à la taille du cadre et des roues.</div>
 </div>
 <div class="etape_accueil">
+  <h2>Les avis</h2>
+  <div class="avis_accueil">
+    <?php $i=1; foreach ($avisRand as $value) { ?>
+    <div class="avis_<?= $i; ?>">
+      <p class="avis_pseudo"><?= $value['pseudo']; ?></p>
+      <p class="avis_avis"><?= $value['avis']; ?></p>
+      <p class="avis_date"><em><?= $value['date_fr']; ?></em></p>
+    </div>
+    <?php $i++; } ?>
+  </div>
+</div>
+<div class="etape_accueil">
   <h2>Garantie et support</h2>
-  <p>Chaque vélo est garantie d'une durée de 3ans, notre support technique et commercial est à votre disposition.<br>Vous pouvez nous contacter à tout moment, par notre formulaire de contact ou par téléphone au numéro suivant : 01 02 03 04 05.</p>
+  <p>Chaque vélo est garantie d'une durée de 3 ans, notre support technique et commercial est à votre disposition.<br>Vous pouvez nous contacter à tout moment, par notre formulaire de contact ou par téléphone au numéro suivant : 01 02 03 04 05.</p>
 </div>
 <div class="bloc w50">
   <div class="callto">

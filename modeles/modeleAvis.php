@@ -88,4 +88,21 @@ class modeleAvis extends modeleSuper {
 
   }
 
+  /**
+  * Récupération avis page d'accueil
+  *
+  * @return (array) $lesAvis
+  */
+  public function recupAvis(){
+
+    $donnees = $this->bdd()->query("SELECT *, DATE_FORMAT(date, 'Posté le %d %M %Y') as date_fr
+      FROM avis
+      ORDER BY RAND()
+      LIMIT 3
+    ");
+
+    return $donnees->fetchAll(PDO::FETCH_ASSOC);
+
+  }
+
 }
