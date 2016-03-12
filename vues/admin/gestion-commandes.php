@@ -1,5 +1,7 @@
 <?php if($userConnectAdmin){ ?>
 
+<?php include '../vues/include/dialogue.php'; ?>
+
 <?php if($donneesCmdVelo['cmd']){ ?>
 
 <h2 id="details">Commande <?= $donneesCmdVelo['cmd']['id_commande_velo']; ?> en details</h2>
@@ -30,7 +32,10 @@
       </li>
     <?php } ?>
   </ul>
+</div>
 
+<div class="callto">
+  <a class="button w100 d50 warning" href="<?=RACINE_SITE; ?>admin/gestion-commandes/?supp=<?= $donneesCmdVelo['cmd']['id_commande_velo']; ?>">Supprimer la commande</a>
 </div>
 
 <?php } if(!empty($listeCommandes)){ ?>
@@ -47,18 +52,21 @@
       <div class="cel w20">Email</div>
       <div class="cel w20">Montant</div>
       <div class="cel w15">Date</div>
+      <div class="cel w5">Date</div>
     </div>
 
     <ul class="body">
       <?php foreach($listeCommandes as $value) { ?>
-        <a href="<?= RACINE_SITE; ?>admin/gestion-commandes/details/<?= $value['id_commande']; ?>#details">
           <li <?php if(isset($_GET['details']) && $value['id_commande'] === $_GET['details']) echo 'class="select"'; ?>>
-            <span class="w10"><?= $value['id_commande_velo']; ?></span>
-            <span class="w15"><?= ucfirst($value['nom']); ?></span>
-            <span class="w15"><?= ucfirst($value['prenom']); ?></span>
-            <span class="w20"><?= $value['email']; ?></span>
-            <span class="w20"><?= $value['total']; ?> €</span>
-            <span class="w15"><?= $value['date_commande']; ?></span>
+            <a href="<?= RACINE_SITE; ?>admin/gestion-commandes/details/<?= $value['id_commande']; ?>#details">
+              <span class="w10"><?= $value['id_commande_velo']; ?></span>
+              <span class="w15"><?= ucfirst($value['nom']); ?></span>
+              <span class="w15"><?= ucfirst($value['prenom']); ?></span>
+              <span class="w20"><?= $value['email']; ?></span>
+              <span class="w20"><?= $value['total']; ?> €</span>
+              <span class="w15"><?= $value['date_commande']; ?></span>
+            </a>
+            <span class="cel w5"><a href="<?=RACINE_SITE; ?>admin/gestion-commandes/?supp=<?= $value['id_commande']; ?>">X</a></span>
           </li>
         </a>
       <?php } ?>

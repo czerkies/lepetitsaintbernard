@@ -22,6 +22,7 @@ class controleurCommandes extends controleurSuper {
 
     $commandes = new modeleCommandes();
 
+    // Affichage en détails d'un commande
     if(isset($_GET['details']) && !empty($_GET['details']) && is_numeric($_GET['details'])){
 
       if($commandes->affichageUneCommande($_GET['details'])){
@@ -29,6 +30,15 @@ class controleurCommandes extends controleurSuper {
         $donneesCmdVelo = $commandes->affichageUneCommande($_GET['details']);
 
       }
+
+    }
+
+    // Suppresion d'une commande
+    if(isset($_GET['supp']) && !empty($_GET['supp']) && is_numeric($_GET['supp'])){
+
+      $commandes->suppCommande($_GET['supp']);
+
+      $msg['error']['confirm'] = "La commande a bien été supprimé.";
 
     }
 

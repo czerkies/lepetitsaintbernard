@@ -27,7 +27,7 @@ RewriteRule ^admin/gestion-stocks/ index.php?controleur=stocks&action=gestionSto
 RewriteRule ^admin/ajouter-reference/ index.php?controleur=stocks&action=ajoutReference [QSA,L]
 
 RewriteRule ^admin/gestion-commandes/details/(.*)$ index.php?controleur=commandes&action=gestionCommandes&details=$1 [L]
-RewriteRule ^admin/gestion-commandes/ index.php?controleur=commandes&action=gestionCommandes [L]
+RewriteRule ^admin/gestion-commandes/ index.php?controleur=commandes&action=gestionCommandes [QSA,L]
 
 RewriteRule ^admin/gestion-avis/supp/(.*)$ index.php?controleur=avis&action=gestionAvis&supp=$1 [L]
 RewriteRule ^admin/gestion-avis/ index.php?controleur=avis&action=gestionAvis [L]

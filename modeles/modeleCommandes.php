@@ -135,4 +135,17 @@ class modeleCommandes extends modeleSuper {
 
   }
 
+  /**
+  * Suppression d'une commande
+  *
+  * @param (int) $id_commande
+  */
+  public function suppCommande($id_commande){
+
+    $delete = $this->bdd()->prepare("DELETE FROM commandes WHERE id_commande = $id_commande");
+
+    $delete->execute();
+
+  }
+
 }

@@ -235,6 +235,22 @@ header .header_cont nav ul li a.active {
 .callto .button.w100 {
   width: 98%;
 }
+.callto .button.warning {
+  border-color: #e53e1e;
+  color: #e53e1e;
+}
+.callto .button.warning:hover {
+  background: #e53e1e;
+  color: #eeeeee;
+}
+.callto .button.confirmation {
+  border-color: #08c0a6;
+  color: #08c0a6;
+}
+.callto .button.confirmation:hover {
+  background: #08c0a6;
+  color: #eeeeee;
+}
 /* Footer */
 footer {
   float: left;

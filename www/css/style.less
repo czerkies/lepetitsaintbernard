@@ -250,6 +250,22 @@ header {
     &.w100 {
       width: 98%;
     }
+    &.warning {
+      border-color: @error;
+      color: @error;
+      &:hover {
+        background: @error;
+        color: @fond;
+      }
+    }
+    &.confirmation {
+      border-color: @confirm;
+      color: @confirm;
+      &:hover {
+        background: @confirm;
+        color: @fond;
+      }
+    }
   }
 }
 
