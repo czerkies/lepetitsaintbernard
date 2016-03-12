@@ -60,7 +60,7 @@ if($avis){
   </div>
 <?php } ?>
 <div class="callto">
-  <a class="button w100 d50" href="<?= RACINE_SITE; ?>panier/?supp_velo=panier">Vider le panier</a>
+  <a class="button w100 d50 warning" href="<?= RACINE_SITE; ?>panier/?supp_velo=panier">Vider le panier</a>
 </div>
 <?php } else { ?>
   <p>Votre panier est vide !</p>

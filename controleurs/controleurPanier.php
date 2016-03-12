@@ -20,7 +20,7 @@ class controleurPanier extends controleurSuper {
     $userConnectAdmin = $this->userConnectAdmin();
 
     $msg['error'] = array();
-    $avis = 27746455;
+    $avis = null;
 
     $assemblage = new modeleAssemblage();
 
@@ -109,6 +109,8 @@ class controleurPanier extends controleurSuper {
 
           unset($_SESSION['panier'][$_GET['supp_velo']]);
           $msg['error']['confirm'] = 'Votre article a bien été supprimé.';
+
+          if(empty($_SESSION['panier'])) unset($_SESSION['panier']); 
 
         }
       }
