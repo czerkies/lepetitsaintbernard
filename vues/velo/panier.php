@@ -18,7 +18,7 @@ if($avis){
     <div class="cel w20">Référence</div>
     <div class="cel w15">Type de Vélo</div>
     <div class="cel w15">Sexe</div>
-    <div class="cel w20">Quantite</div>
+    <div class="cel w20">Quantité</div>
     <div class="cel w20">Prix</div>
     <div class="cel w10">Supprimer</div>
   </div>

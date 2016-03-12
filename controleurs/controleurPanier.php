@@ -110,7 +110,7 @@ class controleurPanier extends controleurSuper {
           unset($_SESSION['panier'][$_GET['supp_velo']]);
           $msg['error']['confirm'] = 'Votre article a bien été supprimé.';
 
-          if(empty($_SESSION['panier'])) unset($_SESSION['panier']); 
+          if(empty($_SESSION['panier'])) unset($_SESSION['panier']);
 
         }
       }
@@ -173,8 +173,55 @@ class controleurPanier extends controleurSuper {
 
           $avis = $id_commande_velo;
 
-          //$formulaire->sendMail();
+          // Formatage du mail
+          $sujet = "N° de commande : ".$avis;
 
+          $message = '<div style="width:90%;margin:25px auto;"><img style="width:100%;" src="http://lepetitsainbernard.romanczerkies.fr/img/entete_mail.jpg" alt="Header Le petit saint bernard">
+          <br>
+          Bonjour, merci de votre achat sur Le petit Saint Bernard. Vous retrouverez ci-dessous le récapitulatif de votre commande.<br>';
+          $message .= "Vos coordonnées : ".ucfirst($_SESSION['membre']['prenom'])." ".strtoupper($_SESSION['membre']['nom'])."<br>";
+          $message .= "Votre adresse de facturation : ".$_SESSION['membre']['adresse'].", ".$_SESSION['membre']['cp']." ".$_SESSION['membre']['ville'].".<br>";
+          $message .= "Votre commande a été effectuée le ".date('d/m/Y').".</p>";
+          $message .= '<table border="1">
+            <thead>
+            <tr><th colspan="5">Facture de votre commande</th></tr>
+            <tr>
+              <th>Référence</th>
+              <th>Type de vélo</th>
+              <th>Sexe</th>
+              <th>Quantité</th>
+              <th>Prix</th>
+            </tr>
+            </thead>
+            <tbody>';
+            foreach ($_SESSION['panier'] as $key => $value) {
+              $message .=
+              '<tr>
+                <td>'. $key .'</td>
+                <td>'. ucfirst($value['type_velo']) .'</td>
+                <td>'. $value['sexe'] .'</td>
+                <td>'. $value['quantite'] .'</td>
+                <td>'. $value['prix'] .' € TTC</td>
+              </tr>';
+            }
+
+          $message .= '
+          <tr>
+            <td colspan="4">Montant total :</td>
+            <td colspan="1">'. $total .' € TTC</td>
+          </tr>';
+
+          $message .= '
+          </tbody>
+          </table>';
+
+          $message .= '<br>Le petit Saint Bernard - '.date('Y').'.
+          </div>';
+
+          // Envoie du mail via la fonction
+          $formulaire->sendMail($_SESSION['membre']['email'], $sujet, $message);
+
+          // Suppression du panier
           unset($_SESSION['panier']);
 
         } else {
