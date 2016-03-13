@@ -31,8 +31,7 @@ if($userConnectAdmin){
       <div class="form-group submit">
         <input type="submit" value="Ajouter la nouvelle pièce">
       </div>
-
-
+        
     </form>
 
   <?php } ?>

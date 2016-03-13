@@ -98,4 +98,36 @@ class controleurSingle extends controleurSuper {
 
   }
 
+  /**
+  * Affichage de la page d'accueil
+  *
+  */
+  public function singleCGV(){
+
+    session_start();
+    $meta['title'] = 'Conditions Générale de Vente';
+    $meta['menu'] = 'cgv';
+    $userConnect = $this->userConnect();
+    $userConnectAdmin = $this->userConnectAdmin();
+
+    $this->Render('../vues/single/cgv.php', array('meta' => $meta, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
+
+  }
+
+  /**
+  * Affichage de la page d'accueil
+  *
+  */
+  public function singlePlanDuSite(){
+
+    session_start();
+    $meta['title'] = 'Plan du site';
+    $meta['menu'] = 'plan-du-site';
+    $userConnect = $this->userConnect();
+    $userConnectAdmin = $this->userConnectAdmin();
+
+    $this->Render('../vues/single/plan-du-site.php', array('meta' => $meta, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin));
+
+  }
+
 }

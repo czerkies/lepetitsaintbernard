@@ -82,10 +82,10 @@
           <a <?php if(isset($meta['menu']) && ($meta['menu'] === 'catalogue')) echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>catalogue/">Catalogue</a>
         </li>
         <li>
-          <a href="#">Foooter 1</a>
+          <a <?php if(isset($meta['menu']) && ($meta['menu'] === 'cgv')) echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>cgv/">C.G.V</a>
         </li>
         <li>
-          <a href="#">Foooter 1</a>
+          <a <?php if(isset($meta['menu']) && ($meta['menu'] === 'plan-du-site')) echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>plan-du-site/">Plan du site</a>
         </li>
       </ul>
     </footer>

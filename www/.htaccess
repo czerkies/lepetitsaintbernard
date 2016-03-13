@@ -1,5 +1,11 @@
 RewriteEngine On
 
+#SINGLE
+
+RewriteRule ^contact/ index.php?controleur=single&action=singleContact [L]
+RewriteRule ^cgv/ index.php?controleur=single&action=singleCGV [L]
+RewriteRule ^plan-du-site/ index.php?controleur=single&action=singlePlanDuSite [L]
+
 #MEMBRE
 
 RewriteRule ^connexion/deconnexion/ index.php?controleur=membres&action=connexionMembre&deconnexion=true [L]
@@ -12,8 +18,6 @@ RewriteRule ^mon-compte/ index.php?controleur=membres&action=gestionCompte [L]
 RewriteRule ^mot-de-passe-oublie/ index.php?controleur=membres&action=motDePasseOublie [L]
 
 RewriteRule ^panier/votre-avis/ index.php?controleur=avis&action=enregistrementAvis [QSA,L]
-
-RewriteRule ^contact/ index.php?controleur=single&action=singleContact [L]
 
 #ADMIN
 
