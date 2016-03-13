@@ -158,4 +158,43 @@ class modeleAssemblage extends modeleSuper {
 
   }
 
+  /**
+  * Fonction pour afficher les types_pieces
+  *
+  */
+  public function toutesPieces($key = null, $type_piece = null, $type_velo = null,  $taille = null, $sexe = null){
+
+    $req1 = "SELECT type_piece FROM pieces";
+
+    if($type_piece) $req1 .= " WHERE type_piece = '$type_piece'";
+
+    $req1 .= " GROUP BY type_piece";
+
+    $typePieces = $this->bdd()->query($req1);
+
+
+    foreach ($typePieces->fetchAll(PDO::FETCH_ASSOC) as $value) {
+
+      $req2 = "SELECT * FROM pieces WHERE type_piece = '$value[type_piece]'";
+
+      if($key) $req2 .= " AND (titre LIKE '%$key%'
+      OR matiere LIKE '%$key%'
+      OR description LIKE '%$key%')";
+
+      if($type_velo) $req2 .= " AND type_velo = '$type_velo'";
+
+      if($taille) $req2 .= " AND id_taille = '$taille'";
+
+      if($sexe) $req2 .= " AND sexe = '$sexe'";
+
+      $donnees[$value['type_piece']] = $this->bdd()->query($req2);
+
+      $pieces[$value['type_piece']] = $donnees[$value['type_piece']]->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+
+    return $pieces;
+
+  }
+
 }

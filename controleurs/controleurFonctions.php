@@ -204,11 +204,11 @@ class controleurFonctions extends controleurSuper {
           if($_POST[$name] == $key) $select .= ' selected';
         } elseif(isset($bdd[$name])) {
           if($bdd[$name] == $key) $select .= ' selected';
-        }elseif(isset($_GET[$name])) {
+        } elseif(isset($_GET[$name])) {
           if($_GET[$name] == $key) $select .= 'selected';
-        }elseif(isset($_SESSION[$sessionArray][$name])) {
+        } elseif(isset($_SESSION[$sessionArray][$name])) {
           if($_SESSION[$sessionArray][$name] == $key) $select .= ' selected';
-        }elseif(isset($_COOKIE[$name]) && $_COOKIE[$name] == $key) {
+        } elseif(isset($_COOKIE[$name]) && $_COOKIE[$name] == $key) {
           $select .= ' selected';
         }
 
