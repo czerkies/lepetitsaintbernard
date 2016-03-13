@@ -23,6 +23,11 @@
       <a class="button w100 d100" href="<?= RACINE_SITE; ?>configuration/vtt/">VTT de montagne</a>
     </div>
   </div>
+  <h2>Consulter notre catalogue</h2>
+  <p>Vous pouvez consulter notre catalogue pour voir toutes les pièces disponible avant de configurer.</p>
+  <div class="callto">
+    <a class="button w100 d50" href="<?= RACINE_SITE; ?>catalogue/">Consulter le catalogue</a>
+  </div>
 <?php } elseif($etape === 'sexe') { ?>
   <h2>Sexe</h2>
   <p>Choisissez pour quel type de sexe</p>

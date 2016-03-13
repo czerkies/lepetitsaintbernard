@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Cette classe controle les page single.
+* Cette class controle les pages single.
 *
 */
 class controleurSingle extends controleurSuper {

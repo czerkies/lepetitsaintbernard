@@ -40,6 +40,8 @@ RewriteRule ^configuration/(.*)/(.*)/ index.php?controleur=assemblage&action=con
 RewriteRule ^configuration/(.*)/ index.php?controleur=assemblage&action=configurationVelo&type=$1 [L]
 RewriteRule ^configuration/ index.php?controleur=assemblage&action=configurationVelo [L]
 
+RewriteRule ^catalogue/ index.php?controleur=catalogue&action=pageCatalogue [L]
+
 RewriteRule ^panier/ index.php?controleur=panier&action=affichagePanier [QSA,L]
 
 

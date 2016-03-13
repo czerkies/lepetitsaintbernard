@@ -78,7 +78,7 @@
           <a <?php if(isset($meta['menu']) && ($meta['menu'] === 'contact')) echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>contact/">Contact</a>
         </li>
         <li>
-          <a href="#">Foooter 1</a>
+          <a <?php if(isset($meta['menu']) && ($meta['menu'] === 'catalogue')) echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>catalogue/">Catalogue</a>
         </li>
         <li>
           <a href="#">Foooter 1</a>
