@@ -30,7 +30,7 @@
                 <a <?php if(isset($meta['menu']) && ($meta['menu'] === 'connexion' || $meta['menu'] === 'mot-de-passe-oublie')) echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>connexion/">Mon compte</a>
               </li>
               <li>
-                <a <?php if(isset($meta['menu']) && $meta['menu'] === 'creation-compte') echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>creation-compte/">Créer un compte</a>
+                <a <?php if(isset($meta['menu']) && $meta['menu'] === 'creation-compte') echo 'class="active"'; ?> href="<?= RACINE_SITE; ?>creation-compte/">Création compte</a>
               </li>
             <?php } else { ?>
               <li>
