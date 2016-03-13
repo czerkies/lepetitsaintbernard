@@ -158,11 +158,11 @@ header .header_cont nav ul li a.active {
   animation: deffAvis_3 16s ease infinite;
 }
 .avis_accueil .avis_pseudo {
-  font-size: 2em;
-  font-weight: 600;
+  font-size: 1.75em;
+  font-weight: 800;
 }
 .avis_accueil .avis_avis {
-  font-size: 2em;
+  font-size: 1.75em;
 }
 .avis_accueil .avis_date {
   font-size: 1em;
@@ -744,7 +744,7 @@ form .hidden {
   .spe .round {
     transition: transform 250ms ease, color 250ms ease;
     float: left;
-    margin: 1%;
+    margin: 100px 1%;
     text-align: center;
     font-size: 1.7em;
     letter-spacing: 1px;

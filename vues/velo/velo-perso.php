@@ -3,9 +3,9 @@ if($userConnect){
 
 ?>
 
-<h2>Vos vélos unique</h2>
+<h2>Votre vélo</h2>
 
-<p>Hello</p>
+<p>Voici votre vélo unique : Il a été confectionné pour correspondre au mieux, aux informations que vous nous avez données.</p>
 
 <?php foreach ($veloPerso as $key => $typeVelo) { ?>
   <h2><?= ucfirst($key); ?></h2>
@@ -72,5 +72,23 @@ if($userConnect){
 
 <?php } ?>
 
-<?php
-}
+<?php } else { ?>
+
+  <h2>Votre vélo</h2>
+
+  <p>Pour pouvoir acheter votre vélo, il vous suffis de créer vous connecter ou créer votre compte.</p>
+
+  <div class="bloc w50">
+    <div class="callto">
+      <a class="button w100 d100" href="<?= RACINE_SITE; ?>connexion/">Se connecter</a>
+    </div>
+  </div>
+  <div class="bloc w50">
+    <div class="callto">
+      <a class="button w100 d100" href="<?= RACINE_SITE; ?>creation-compte/">Créer mon compte</a>
+    </div>
+  </div>
+
+<?php }
+
+include '../vues/include/configuration-elements.php'; ?>
