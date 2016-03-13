@@ -1,13 +1,13 @@
-<h2>Notre catalogue</h2>
+<h2 id="resultats">Notre catalogue</h2>
 
 <p>Sur cette page, vous retrouvez très facilement toutes nos pièces en vente. Utilisez le champs de recherche tout trouver celle qui vous conviendrait le mieux par filtres.</p>
 
 <?php include '../vues/include/dialogue.php'; ?>
 
 
-<form class="large" action="#result" method="post">
+<form class="large" action="#resultats" method="post">
 
-  <?= $formulaire->fieldsFormInput('Recherche', 'text', 'key', 'Rechercher par : Titre, Matière ou Description...', 'Rechercher une pièce dans notre catalogue par mot clef', $msg, 'required', 'w100', null); ?>
+  <?= $formulaire->fieldsFormInput('Recherche', 'text', 'key', 'Rechercher par : Titre, Matière ou Description...', 'Rechercher une pièce dans notre catalogue par mot clef', $msg, null, 'w100', null); ?>
 
   <?= $formulaire->fieldsFormSelect('Par type de pièces', $select['type_piece'], 'type_piece', 'Type de pièce', $msg, null, null); ?>
 
@@ -22,7 +22,6 @@
   </div>
 
 </form>
-
 
 <?php
 if($pieces) {
@@ -50,7 +49,7 @@ if($pieces) {
   <?php
       }
     } else {
-      echo "<p>Aucune pièces trouvés pour le type de pieces : ".ucfirst($key).".";
+      echo "<p>Aucune pièces trouvées pour le type de pieces : ".ucfirst($key).".";
     }
   }
 }

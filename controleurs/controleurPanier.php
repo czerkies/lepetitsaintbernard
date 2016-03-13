@@ -142,97 +142,105 @@ class controleurPanier extends controleurSuper {
 
     // Total du panier
     $total = 0;
+    $qtZero = [];
     if(isset($_SESSION['panier'])){
       foreach ($_SESSION['panier'] as $key => $value) {
         $total += $value['quantite'] * $value['prix'];
+        $qtZero[$key] = $value['quantite'];
       }
     }
 
     // Payer la commande
     if(isset($_SESSION['panier']) && isset($_POST['payer'])){
 
-      if(isset($_POST['cgv'])){
+      if(array_search(0, $qtZero) === false){
 
-        $commande = new modeleCommandes();
-        $formulaire = new controleurFonctions();
+        if(isset($_POST['cgv'])){
 
-        // Controle si stock toujours suffisant
-        if($this->verifQuantiteAvantMaj()){
+          $commande = new modeleCommandes();
+          $formulaire = new controleurFonctions();
 
-          $msg['error']['confirm'] = "Votre achat a bien été effectué.<br>
-          Vous allez recevoir un mail confirmant votre commande.<br><br>
-          Merci de laisser un avis sur celle-ci.";
+          // Controle si stock toujours suffisant
+          if($this->verifQuantiteAvantMaj()){
 
-          $id_commande_velo = $_SESSION['membre']['id_membre'].substr(hexdec(uniqid()), 9, 16);
+            $msg['error']['confirm'] = "Votre achat a bien été effectué.<br>
+            Vous allez recevoir un mail confirmant votre commande.<br><br>
+            Merci de laisser un avis sur celle-ci.";
 
-          $commande->insertCommande($id_commande_velo, $total, $_SESSION['membre']['id_membre']);
+            $id_commande_velo = $_SESSION['membre']['id_membre'].substr(hexdec(uniqid()), 9, 16);
 
-          foreach ($_SESSION['panier'] as $key => $value) {
-            $commande->insertVeloCommande($id_commande_velo, $key, $value['type_velo'], $value['sexe'], $value['prix'], $value['poids'], $value['quantite']);
-          }
+            $commande->insertCommande($id_commande_velo, $total, $_SESSION['membre']['id_membre']);
 
-          $avis = $id_commande_velo;
-
-          // Formatage du mail
-          $sujet = "N° de commande : ".$avis;
-
-          $message = '<div style="width:90%;margin:25px auto;"><img style="width:100%;" src="http://lepetitsainbernard.romanczerkies.fr/img/entete_mail.jpg" alt="Header Le petit saint bernard">
-          <br>
-          Bonjour, merci de votre achat sur Le petit Saint Bernard. Vous retrouverez ci-dessous le récapitulatif de votre commande.<br>';
-          $message .= "Vos coordonnées : ".ucfirst($_SESSION['membre']['prenom'])." ".strtoupper($_SESSION['membre']['nom'])."<br>";
-          $message .= "Votre adresse de facturation : ".$_SESSION['membre']['adresse'].", ".$_SESSION['membre']['cp']." ".$_SESSION['membre']['ville'].".<br>";
-          $message .= "Votre commande a été effectuée le ".date('d/m/Y').".</p>";
-          $message .= '<table border="1">
-            <thead>
-            <tr><th colspan="5">Facture de votre commande</th></tr>
-            <tr>
-              <th>Référence</th>
-              <th>Type de vélo</th>
-              <th>Sexe</th>
-              <th>Quantité</th>
-              <th>Prix</th>
-            </tr>
-            </thead>
-            <tbody>';
             foreach ($_SESSION['panier'] as $key => $value) {
-              $message .=
-              '<tr>
-                <td>'. $key .'</td>
-                <td>'. ucfirst($value['type_velo']) .'</td>
-                <td>'. $value['sexe'] .'</td>
-                <td>'. $value['quantite'] .'</td>
-                <td>'. $value['prix'] .' € TTC</td>
-              </tr>';
+              $commande->insertVeloCommande($id_commande_velo, $key, $value['type_velo'], $value['sexe'], $value['prix'], $value['poids'], $value['quantite']);
             }
 
-          $message .= '
-          <tr>
-            <td colspan="4">Montant total :</td>
-            <td colspan="1">'. $total .' € TTC</td>
-          </tr>';
+            $avis = $id_commande_velo;
 
-          $message .= '
-          </tbody>
-          </table>';
+            // Formatage du mail
+            $sujet = "N° de commande : ".$avis;
 
-          $message .= '<br>Le petit Saint Bernard - '.date('Y').'.
-          </div>';
+            $message = '<div style="width:90%;margin:25px auto;"><img style="width:100%;" src="http://lepetitsainbernard.romanczerkies.fr/img/entete_mail.jpg" alt="Header Le petit saint bernard">
+            <br>
+            Bonjour, merci de votre achat sur Le petit Saint Bernard. Vous retrouverez ci-dessous le récapitulatif de votre commande.<br>';
+            $message .= "Vos coordonnées : ".ucfirst($_SESSION['membre']['prenom'])." ".strtoupper($_SESSION['membre']['nom'])."<br>";
+            $message .= "Votre adresse de facturation : ".$_SESSION['membre']['adresse'].", ".$_SESSION['membre']['cp']." ".$_SESSION['membre']['ville'].".<br>";
+            $message .= "Votre commande a été effectuée le ".date('d/m/Y').".</p>";
+            $message .= '<table border="1">
+              <thead>
+              <tr><th colspan="5">Facture de votre commande</th></tr>
+              <tr>
+                <th>Référence</th>
+                <th>Type de vélo</th>
+                <th>Sexe</th>
+                <th>Quantité</th>
+                <th>Prix</th>
+              </tr>
+              </thead>
+              <tbody>';
+              foreach ($_SESSION['panier'] as $key => $value) {
+                $message .=
+                '<tr>
+                  <td>'. $key .'</td>
+                  <td>'. ucfirst($value['type_velo']) .'</td>
+                  <td>'. $value['sexe'] .'</td>
+                  <td>'. $value['quantite'] .'</td>
+                  <td>'. $value['prix'] .' € TTC</td>
+                </tr>';
+              }
 
-          // Envoie du mail via la fonction
-          $formulaire->sendMail($_SESSION['membre']['email'], $sujet, $message);
+            $message .= '
+            <tr>
+              <td colspan="4">Montant total :</td>
+              <td colspan="1">'. $total .' € TTC</td>
+            </tr>';
 
-          // Suppression du panier
-          unset($_SESSION['panier']);
+            $message .= '
+            </tbody>
+            </table>';
+
+            $message .= '<br>Le petit Saint Bernard - '.date('Y').'.
+            </div>';
+
+            // Envoie du mail via la fonction
+            $formulaire->sendMail($_SESSION['membre']['email'], $sujet, $message);
+
+            // Suppression du panier
+            unset($_SESSION['panier']);
+
+          } else {
+
+            $msg['error']['generale'] = "Une des pièces est insufisante dans nos stocks.<br>
+            Veuillez vérifier les quantités de votre panier.";
+
+          }
 
         } else {
-
-          $msg['error']['generale'] = "Une des pièces est insufisante dans nos stocks.<br>
-          Veuillez vérifier les quantités de votre panier.";
-
+          $msg['error']['cgv'] = "Veuillez accepter les conditions gérérales de vente.";
         }
 
       } else {
-        $msg['error']['cgv'] = "Veuillez accepter les conditions gérérales de vente.";
+        $msg['error']['generale'] = "Une de vos quantité est égale à 0. Veuillez supprimer le produit sans quantité.";
       }
 
     }
