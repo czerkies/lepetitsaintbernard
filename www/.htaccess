@@ -1,5 +1,8 @@
 RewriteEngine On
 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
 #SINGLE
 
 RewriteRule ^contact/ index.php?controleur=single&action=singleContact [L]
@@ -48,6 +51,7 @@ RewriteRule ^catalogue/ index.php?controleur=catalogue&action=pageCatalogue [L]
 
 RewriteRule ^panier/ index.php?controleur=panier&action=affichagePanier [QSA,L]
 
+RewriteRule ^page-introuvable/ index.php?controleur=fonction&action=urlIncorrect [L]
 
 ErrorDocument 401 /lepetitsaintbernard/www/page-introuvable/
 ErrorDocument 403 /lepetitsaintbernard/www/page-introuvable/

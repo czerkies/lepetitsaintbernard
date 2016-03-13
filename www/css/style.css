@@ -634,7 +634,7 @@ form .hidden {
   border-color: #eeeeee;
 }
 /********** Responsive **********/
-@media screen and (min-width: 600px) {
+@media screen and (min-device-width: 600px) {
   #bouton_menu {
     display: none;
   }
