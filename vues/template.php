@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="<?= RACINE_SITE; ?>css/style.css">
     <meta name="description" value="Spécialiste du montage de vélo pour la montagne en ligne. Simple et rapide, ce site vous permet d'avoir le vélo bien plus qu'à votre taille.">
     <?php if(isset($meta['deconnexion']) && $meta['deconnexion'] === TRUE) echo '<meta http-equiv="refresh" content="0; url='.RACINE_SITE.'connexion/">'; ?>
+    <script src="<?= RACINE_SITE; ?>js/jquery.js"></script>
   </head>
   <body>
     <header>
@@ -89,28 +90,16 @@
       </ul>
     </footer>
   </body>
-  <script src="<?= RACINE_SITE; ?>js/jquery.js"></script>
   <script type="text/javascript">
     $('#bouton_menu').click(function(){
       $('header ul').toggleClass('menu_actif');
       $(this).toggleClass('actif');
     });
   </script>
-  <?php if($meta['menu'] === 'accueil'){ ?>
-  <script type="text/javascript">
-    $('.spe .round').click(function(){
-      var $content = this.id;
-      $('.spe .round').removeClass('active');
-      $('.infos .appear').removeClass('appear');
-      $('#'+$content).addClass('active');
-      $('#infos_'+$content).addClass('appear');
-    });
-  </script>
-  <?php } if($meta['menu'] === 'configuration') { ?>
+  <?php if($meta['menu'] === 'configuration') { ?>
     <script type="text/javascript">
       $('.selection').click(function(){
         var $id_select = this.id;
-        console.log($id_select);
         $('.selection').removeClass('select');
         $('#'+$id_select).addClass('select');
       });

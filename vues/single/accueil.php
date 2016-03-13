@@ -24,23 +24,7 @@
   <h2>Trouver son vélo</h2>
   <p>Pour trouver son vélo parfait, rien de plus simple, après avoir créé votre profil, nous vous proposerons les vélos qui vous conviendrait le mieux.<br>Nous prenons en compte les critères suivant :</p>
 </div>
-<div class="spe">
-  <div class="round" id="sexe"><span>Sexe</span></div>
-  <div class="round" id="taille"><span>Taille</span></div>
-  <div class="round" id="poids"><span>Poids</span></div>
-  <div class="round" id="age"><span>Age</span></div>
-  <div class="round" id="type"><span>Type</span></div>
-  <div class="round" id="budget"><span>Budget</span></div>
-</div>
-<div class="infos">
-  <div id="infos_prin" class="hidden appear"><span>Les 6 parametres définirons votre vélo idéal.</span><br>Vous pouvez cliquer sur chacun parametres pour en savoir plus.</div>
-  <div id="infos_sexe" class="hidden">Cette information nous donne accès au format du cadre et au type de selle.</div>
-  <div id="infos_taille" class="hidden">Cette information nous donne accès à la taille du cadre et des roues.</div>
-  <div id="infos_poids" class="hidden">Cette information nous donne accès à la taille du cadre et des roues.</div>
-  <div id="infos_age" class="hidden">Cette information nous donne accès à la taille du cadre et des roues.</div>
-  <div id="infos_type" class="hidden">Cette information nous donne accès à la taille du cadre et des roues.</div>
-  <div id="infos_budget" class="hidden">Cette information nous donne accès à la taille du cadre et des roues.</div>
-</div>
+<?php include '../vues/include/configuration-elements.php'; ?>
 <div class="etape_accueil">
   <h2>Les avis</h2>
   <div class="avis_accueil">
