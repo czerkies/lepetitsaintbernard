@@ -100,8 +100,8 @@ class controleurFonctions extends controleurSuper {
 
     if(empty($value['adresse'])){
       $msg['error']['adresse'] = "Veuillez saisir une <b>Adresse</b>.";
-    } elseif(strlen($value['adresse']) < 10 || strlen($value['adresse']) > 30){
-      $msg['error']['adresse'] = "Veuillez saisir une <b>Adresse</b> entre 10 et 30 carractères.";
+    } elseif(strlen($value['adresse']) < 3 || strlen($value['adresse']) > 30){
+      $msg['error']['adresse'] = "Veuillez saisir une <b>Adresse</b> entre 3 et 30 carractères.";
     }
 
     if(empty($value['cp'])){

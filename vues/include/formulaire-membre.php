@@ -2,7 +2,7 @@
 
 $formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Il vous servira d'identifiant", $msg, 'required');
 
-$formulaire->fieldsFormInput('Mot de passe', 'password', 'mdp', 'Mot de passe', "Doit contenir au moins une majuscule ou chiffre", $msg, 'required');
+$formulaire->fieldsFormInput('Mot de passe', 'password', 'mdp', 'Mot de passe', "5 et 32 carractères avec une majuscule ou chiffre", $msg, 'required');
 
 $formulaire->fieldsFormInput('Nom', 'text', 'nom', 'Nom', "Votre Nom est obligatoire", $msg, 'required');
 
@@ -22,9 +22,9 @@ $formulaire->fieldsFormInput('Prénom', 'text', 'prenom', 'Prénom', "Votre Pré
 
 $formulaire->fieldsFormInput('Age', 'number', 'age', 'Age', "Votre age en année", $msg, 'min="16" required');
 
-$formulaire->fieldsFormInput('Taille', 'number', 'taille', '000', "Votre taille en centimètres", $msg, 'min="150" required');
+$formulaire->fieldsFormInput('Taille en Centimètres', 'number', 'taille', '000', "Compris entre 150 et 200 Centimètres", $msg, 'min="150" required');
 
-$formulaire->fieldsFormInput('Poids', 'number', 'poids', 'Poids', "Votre poids en kilogrammes", $msg, 'min="40" required');
+$formulaire->fieldsFormInput('Poids en Kilos', 'number', 'poids', 'Poids', "Compris entre 30 et 200 Kilos", $msg, 'min="40" required');
 
 $valuesType = ['route' => 'Route', 'vtt' => 'VTT', 'both' => 'Les deux'];
 $formulaire->fieldsFormSelect('Type de vélo', $valuesType, 'type', 'Choisissez votre type de vélo', $msg);

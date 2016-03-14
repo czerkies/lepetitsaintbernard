@@ -30,7 +30,7 @@
   </div>
 <?php } elseif($etape === 'sexe') { ?>
   <h2>Sexe</h2>
-  <p>Choisissez pour quel type de sexe</p>
+  <p>Choisissez un vélo pour Femme ou Homme</p>
   <div class="bloc w50">
     <div class="callto">
       <a class="button w100 d100" href="<?= RACINE_SITE; ?>configuration/<?= $_GET['type']; ?>/femme/">Vélo Femme</a>
@@ -58,7 +58,7 @@
     ?>
 
       <h2>Choisissez votre Roue</h2>
-      <p>Votre cadre sera la pièce maitresse de votre vélo, tout les autres éléments en découlent.</p>
+      <p>Cadre > <b>Roue</b></p>
       <input type="hidden" name="cadre" value="<?= $_GET['cadre']; ?>" required>
 
     <?php
@@ -67,7 +67,7 @@
     ?>
 
       <h2>Choisissez votre Selle</h2>
-      <p>Votre selle sera la pièce maitresse de votre vélo, tout les autres éléments en découlent.</p>
+      <p>Cadre > Roue > <b>Selle</b></p>
       <input type="hidden" name="cadre" value="<?= $_GET['cadre']; ?>" required>
       <input type="hidden" name="roue" value="<?= $_GET['roue']; ?>" required>
 
@@ -77,7 +77,7 @@
     ?>
 
       <h2>Choisissez votre Guidon</h2>
-      <p>Votre guidon sera la pièce maitresse de votre vélo, tout les autres éléments en découlent.</p>
+      <p>Cadre > Roue > Selle > <b>Guidon</b></p>
       <input type="hidden" name="cadre" value="<?= $_GET['cadre']; ?>" required>
       <input type="hidden" name="roue" value="<?= $_GET['roue']; ?>" required>
       <input type="hidden" name="selle" value="<?= $_GET['selle']; ?>" required>
@@ -88,7 +88,7 @@
     ?>
 
       <h2>Choisissez votre Groupe</h2>
-      <p>Votre groupe" sera la pièce maitresse de votre vélo, tout les autres éléments en découlent.</p>
+      <p>Cadre > Roue > Selle > Guidon > <b>Groupe</b></p>
       <input type="hidden" name="cadre" value="<?= $_GET['cadre']; ?>" required>
       <input type="hidden" name="roue" value="<?= $_GET['roue']; ?>" required>
       <input type="hidden" name="selle" value="<?= $_GET['selle']; ?>" required>
@@ -98,9 +98,6 @@
     break;
     case 'confirmation':
     ?>
-
-      <h2>Choisissez votre Groupe</h2>
-      <p>Votre groupe" sera la pièce maitresse de votre vélo, tout les autres éléments en découlent.</p>
 
       <div class="callto">
         <a class="button w100 d50" href="<?= RACINE_SITE; ?>panier/?<?= $urlPanier; ?>">Ajouter au panier</a>

@@ -12,7 +12,7 @@
   <div id="infos_sexe" class="hidden">Cette information nous donne accès au format du cadre, au type de selle.</div>
   <div id="infos_taille" class="hidden">Cette information nous donne accès à la taille du cadre et des roues.</div>
   <div id="infos_poids" class="hidden">Cette information nous donne accès à au groupe qui vous conviendrait au mieux.</div>
-  <div id="infos_age" class="hidden">Cette information nous donne accès à quel type de guidon et quel groupe correspondrait au mieux à votre âge.</div>
+  <div id="infos_age" class="hidden">Cette information nous donne accès à quel type de guidon et à un groupe qui correspondrait au mieux à votre âge.</div>
   <div id="infos_type" class="hidden">Avec cela, vous êtes assurés de ne pas grimper un col avec un VTT.</div>
   <div id="infos_budget" class="hidden">Le budget maximal indiquera les meilleures pièces pour votre vélo sans vider votre portefeuille.</div>
 </div>
