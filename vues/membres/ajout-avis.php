@@ -1,6 +1,6 @@
-<?php if($userConnect) { ?>
+<h2>Laissez un avis sur votre commande !</h2>
 
-  <h2>Laissez un avis sur votre commande !</h2>
+<?php if($userConnect) { ?>
 
   <?php include '../vues/include/dialogue.php'; ?>
 
@@ -26,4 +26,10 @@
 
   <?php } ?>
 
-<?php } ?>
+<?php } else { ?>
+
+  <div class="callto">
+    <a class="button w100 d50" href="<?= RACINE_SITE; ?>connexion/">Se connecter</a>
+  </div>
+
+<?php }

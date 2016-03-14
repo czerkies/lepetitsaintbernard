@@ -167,7 +167,9 @@ class controleurPanier extends controleurSuper {
             Vous allez recevoir un mail confirmant votre commande.<br><br>
             Merci de laisser un avis sur celle-ci.";
 
-            $id_commande_velo = $_SESSION['membre']['id_membre'].substr(hexdec(uniqid()), 9, 16);
+            $id_commande_velo_ent = $_SESSION['membre']['id_membre'].hexdec(uniqid());
+
+            $id_commande_velo = (int) substr($id_commande_velo_ent, 9);
 
             $commande->insertCommande($id_commande_velo, $total, $_SESSION['membre']['id_membre']);
 
@@ -185,7 +187,8 @@ class controleurPanier extends controleurSuper {
             Bonjour, merci de votre achat sur Le petit Saint Bernard. Vous retrouverez ci-dessous le récapitulatif de votre commande.<br>';
             $message .= "Vos coordonnées : ".ucfirst($_SESSION['membre']['prenom'])." ".strtoupper($_SESSION['membre']['nom'])."<br>";
             $message .= "Votre adresse de facturation : ".$_SESSION['membre']['adresse'].", ".$_SESSION['membre']['cp']." ".$_SESSION['membre']['ville'].".<br>";
-            $message .= "Votre commande a été effectuée le ".date('d/m/Y').".</p>";
+            $message .= "Votre commande a été effectuée le ".date('d/m/Y').".<br><br>";
+            $message .= '<a href="http://lepetit-stbernard.romanczerkies.fr/panier/votre-avis/?avis='.$avis.'">Pensez à laisser un avis sur votre commande</a>.</p>';
             $message .= '<table border="1">
               <thead>
               <tr><th colspan="5">Facture de votre commande</th></tr>
