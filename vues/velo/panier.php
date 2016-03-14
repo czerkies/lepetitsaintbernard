@@ -54,9 +54,16 @@ if($avis){
     </div>
   </form>
 <?php } else { ?>
-  <p>Vous devez vous connecter pour payer votre commande.</p>
-  <div class="callto">
-    <a class="button w100 d50" href="<?= RACINE_SITE; ?>connexion/">Me connecter</a>
+  <p>Vous devez vous connecter ou créer votre compte pour passer votre commande.</p>
+  <div class="bloc w50">
+    <div class="callto">
+      <a class="button w100 d100" href="<?= RACINE_SITE; ?>connexion/">Se connecter</a>
+    </div>
+  </div>
+  <div class="bloc w50">
+    <div class="callto">
+      <a class="button w100 d100" href="<?= RACINE_SITE; ?>creation-compte/">Créer mon compte</a>
+    </div>
   </div>
 <?php } ?>
 <div class="callto">

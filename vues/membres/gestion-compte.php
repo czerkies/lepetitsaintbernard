@@ -1,6 +1,14 @@
 <?php if($userConnect){ ?>
 
-  <?php if($donneesCmdVelo['cmd']){ ?>
+  <?php if(isset($_SESSION['panier'])) { ?>
+
+    <p>Vous avez votre panier en attente de commande !</p>
+
+    <div class="callto">
+      <a class="button w100 d50" href="<?= RACINE_SITE; ?>panier/">Voir mon panier</a>
+    </div>
+
+  <?php } if($donneesCmdVelo['cmd']){ ?>
 
   <h2 id="details">Commande <?= $donneesCmdVelo['cmd']['id_commande_velo']; ?> en details</h2>
 
@@ -58,7 +66,7 @@
 
     </div>
   <?php } else { ?>
-    
+
     <p>
       Vous n'avez encore passé aucune commande !<br>
       N'attendez plus pour voir votre vélo parfait ou configurer le votre.

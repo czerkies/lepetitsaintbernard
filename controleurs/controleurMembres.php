@@ -132,7 +132,7 @@ class controleurMembres extends controleurSuper {
             $userConnect = TRUE;
 
             $message = "Merci de votre inscription ".ucfirst($prenom).",<br>
-            Vous pouvez désormais voir votre vélo à la page suivante : <a href=\"http://lepetitstbernard.romanczerkies.fr/votre-velo/\">Nos Salles</a>";
+            Vous pouvez désormais voir votre vélo à la page suivante : <a href=\"http://lepetitstbernard.romanczerkies.fr/votre-velo/\">Votre Vélo</a>";
 
             $formulaire->sendMail($email, 'Bienvenue chez Le petit St Bernard', $message);
 
@@ -259,7 +259,7 @@ class controleurMembres extends controleurSuper {
             $mdp_sch = str_shuffle("lpsb1234");
             $mdp = substr($mdp_sch, 0, 6);
 
-            $message = 'Voici votre nouveau mot de passe pour accéder à Lokisalle : ' . $mdp;
+            $message = 'Voici votre nouveau mot de passe pour accéder au Petit Saint Bernard : ' . $mdp;
 
             if($contMail->nouveauMdp($mdp, $_POST['email'])){
 
