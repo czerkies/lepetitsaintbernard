@@ -1,7 +1,4 @@
-<?php
-if($userConnect){
-
-?>
+<?php if($userConnect){ ?>
 
 <h2>Votre vélo</h2>
 

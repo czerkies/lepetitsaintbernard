@@ -42,8 +42,9 @@ class controleurAssemblage extends controleurSuper {
     $userConnect = $this->userConnect();
     $userConnectAdmin = $this->userConnectAdmin();
 
-    $msg['error'] = array();
-    $donneesPieces = array();
+    $msg['error'] = [];
+    $donneesPieces = [];
+    $donneesEtape = [];
     $etape = null;
     $poids = 0;
     $prix = 0;
@@ -71,56 +72,56 @@ class controleurAssemblage extends controleurSuper {
         $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, $_GET['sexe']);
 
         // Etape Roue
-        if($donneesCadre = $this->verifEtapeSuivante('cadre', $_GET['sexe'])){
+        if($donneesEtape['cadre'] = $this->verifEtapeSuivante('cadre', $_GET['sexe'])){
 
           $meta['title'] = 'Roue - Configurer votre vélo de Route';
           $etape = 'roue';
-          $poids += $donneesCadre['poids'];
-          $prix += $donneesCadre['prix'];
+          $poids += $donneesEtape['cadre']['poids'];
+          $prix += $donneesEtape['cadre']['prix'];
           $urlPanier .= 'cadre='.$_GET['cadre'];
 
-          $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, null, $donneesCadre['id_taille']);
+          $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, null, $donneesEtape['cadre']['id_taille']);
 
           // Etape Selle
-          if($donneesRoue = $this->verifEtapeSuivante('roue', null, $donneesCadre['id_taille'])){
+          if($donneesEtape['roue'] = $this->verifEtapeSuivante('roue', null, $donneesEtape['cadre']['id_taille'])){
 
             $meta['title'] = 'Selle - Configurer votre vélo de Route';
             $etape = 'selle';
-            $poids += $donneesRoue['poids'];
-            $prix += $donneesRoue['prix'];
+            $poids += $donneesEtape['roue']['poids'];
+            $prix += $donneesEtape['roue']['prix'];
             $urlPanier .= '&roue='.$_GET['roue'];
 
             $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, $_GET['sexe']);
 
             // Etape Guidon
-            if($donneesSelle = $this->verifEtapeSuivante('selle', $_GET['sexe'])){
+            if($donneesEtape['selle'] = $this->verifEtapeSuivante('selle', $_GET['sexe'])){
 
               $meta['title'] = 'Guidon - Configurer votre vélo de Route';
               $etape = 'guidon';
-              $poids += $donneesSelle['poids'];
-              $prix += $donneesSelle['prix'];
+              $poids += $donneesEtape['selle']['poids'];
+              $prix += $donneesEtape['selle']['prix'];
               $urlPanier .= '&selle='.$_GET['selle'];
 
-              $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, $_GET['sexe'], $donneesCadre['id_taille']);
+              $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape, $_GET['sexe'], $donneesEtape['cadre']['id_taille']);
 
               // Etape Groupe
-              if($donneesGuidon = $this->verifEtapeSuivante('guidon', $_GET['sexe'], $donneesCadre['id_taille'])){
+              if($donneesEtape['guidon'] = $this->verifEtapeSuivante('guidon', $_GET['sexe'], $donneesEtape['cadre']['id_taille'])){
 
                 $meta['title'] = 'Groupe - Configurer votre vélo de Route';
                 $etape = 'groupe';
-                $poids += $donneesGuidon['poids'];
-                $prix += $donneesGuidon['prix'];
+                $poids += $donneesEtape['guidon']['poids'];
+                $prix += $donneesEtape['guidon']['prix'];
                 $urlPanier .= '&guidon='.$_GET['guidon'];
 
                 $donneesPieces = $pieces->donneesParTypePiece($_GET['type'], $etape);
 
                 // Validation de la configuration
-                if($donneesGroupe = $this->verifEtapeSuivante('groupe')){
+                if($donneesEtape['groupe'] = $this->verifEtapeSuivante('groupe')){
 
                   $meta['title'] = 'Votre vélo - Configurer votre vélo de Route';
                   $etape = 'confirmation';
-                  $poids += $donneesGroupe['poids'];
-                  $prix += $donneesGroupe['prix'];
+                  $poids += $donneesEtape['groupe']['poids'];
+                  $prix += $donneesEtape['groupe']['prix'];
                   $urlPanier .= '&groupe='.$_GET['groupe'];
 
                   $donneesPieces = false;
@@ -140,7 +141,7 @@ class controleurAssemblage extends controleurSuper {
     }
 
 
-    $this->Render('../vues/velo/configuration-velo.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'donneesPieces' => $donneesPieces, 'etape' => $etape, 'poids' => $poids, 'prix' => $prix, 'urlPanier' => $urlPanier));
+    $this->Render('../vues/velo/configuration-velo.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'donneesPieces' => $donneesPieces, 'etape' => $etape, 'poids' => $poids, 'prix' => $prix, 'urlPanier' => $urlPanier, 'donneesEtape' => $donneesEtape));
 
   }
 

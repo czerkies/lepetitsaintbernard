@@ -144,7 +144,7 @@ class modeleAssemblage extends modeleSuper {
   */
   public function concordancePieceTypeDonnees($type_piece, $id_piece, $type_velo, $sexe = null, $id_taille = null){
 
-    $req = "SELECT prix, poids, id_taille FROM pieces WHERE type_piece = '$type_piece'
+    $req = "SELECT * FROM pieces WHERE type_piece = '$type_piece'
     AND id_piece = $id_piece
     AND type_velo = '$type_velo' ";
 
