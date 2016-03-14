@@ -8,7 +8,7 @@
   <div class="round" id="budget"><span>Budget</span></div>
 </div>
 <div class="infos">
-  <div id="infos_prin" class="hidden appear"><span>Les 6 parametres définirons votre vélo idéal.</span><br>Vous pouvez cliquer sur chacun parametres pour en savoir plus.</div>
+  <div id="infos_prin" class="hidden appear"><span>Les 6 paramètres définiront votre vélo idéal.</span><br>Vous pouvez cliquer sur chacun des paramètres pour en savoir plus.</div>
   <div id="infos_sexe" class="hidden">Cette information nous donne accès au format du cadre, au type de selle.</div>
   <div id="infos_taille" class="hidden">Cette information nous donne accès à la taille du cadre et des roues.</div>
   <div id="infos_poids" class="hidden">Cette information nous donne accès à au groupe qui vous conviendrait au mieux.</div>
