@@ -374,6 +374,7 @@ form .form-group label {
   color: #21353e;
   width: 100%;
   padding: 10px;
+  font-size: 1em;
   float: left;
 }
 form .form-group em {
@@ -721,6 +722,10 @@ form .hidden {
     width: 100%;
     float: left;
   }
+  #prin .prin_cont .infos span,
+  #prin .prin_cont .infos div {
+    font-size: 1em;
+  }
   /* Avis deff */
   .avis_accueil {
     height: 350px;
@@ -758,9 +763,11 @@ form .hidden {
     float: left;
     margin: 100px 1%;
     text-align: center;
-    font-size: 1.7em;
     letter-spacing: 1px;
     width: 14.5%;
+  }
+  .spe .round span {
+    font-size: 1em;
   }
   form.middle {
     width: 50%;

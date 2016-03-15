@@ -182,7 +182,7 @@ class controleurPanier extends controleurSuper {
             // Formatage du mail
             $sujet = "N° de commande : ".$avis;
 
-            $message = '<div style="width:90%;margin:25px auto;"><img style="width:100%;" src="http://lepetitsainbernard.romanczerkies.fr/img/entete_mail.jpg" alt="Header Le petit saint bernard">
+            $message = '<div style="width:90%;margin:100px auto 25px;"><img style="width:100%;" src="http://lepetit-stbernard.romanczerkies.fr/img/stb-logo.png" alt="Header Le petit saint bernard">
             <br>
             Bonjour, merci de votre achat sur Le petit Saint Bernard. Vous retrouverez ci-dessous le récapitulatif de votre commande.<br>';
             $message .= "Vos coordonnées : ".ucfirst($_SESSION['membre']['prenom'])." ".strtoupper($_SESSION['membre']['nom'])."<br>";

@@ -373,6 +373,7 @@ form {
       color: @color1;
       width: 100%;
       padding: 10px;
+      font-size: 1em;
       float: left;
     }
     em {
@@ -722,14 +723,22 @@ form {
       }
     }
   }
+
   #prin {
     width: @w_desk;
     margin: auto;
     .prin_cont {
       width: 100%;
       float: left;
+      .infos {
+        span,
+        div {
+          font-size: 1em;          
+        }
+      }
     }
   }
+
   /* Avis deff */
   .avis_accueil {
     height: 350px;
@@ -739,6 +748,7 @@ form {
       width: 70%;
     }
   }
+
   /* Bouton call to action */
   .callto {
     .button {
@@ -768,9 +778,11 @@ form {
       float: left;
       margin: 100px 1%;
       text-align: center;
-      font-size: 1.7em;
       letter-spacing: 1px;
       width:14.5%;
+      span {
+        font-size: 1em;
+      }
     }
   }
 
