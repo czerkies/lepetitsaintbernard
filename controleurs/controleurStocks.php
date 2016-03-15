@@ -22,7 +22,7 @@ class controleurStocks extends controleurSuper {
     // Tailles
     $select['taille'] = ['disabled' => 'Taille du cadre', 1 => '150/161 cm', 2 => '162/174 cm', 3 => '175/187 cm', 4 => '188/200 cm'];
     // Matiere
-    $select['matiere'] = ['disabled' => 'Matière du cadre', 'alluminium' => 'Alluminium', 'carbone' => 'Carbone', 'metal' => 'Metal'];
+    $select['matiere'] = ['disabled' => 'Matière du cadre', 'aluminium' => 'Aluminim', 'carbone' => 'Carbone', 'metal' => 'Metal'];
     // Sexe
     $select['sexe'] = ['disabled' => 'Cadre pour homme ou femme', 'homme' => 'Homme', 'femme' => 'Femme'];
     // Pignon

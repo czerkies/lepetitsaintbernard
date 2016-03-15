@@ -2,7 +2,7 @@
 
 ?>
 
-<h2 id="config">configurez votre propre <?php if(isset($_GET['type']) && $_GET['type'] === 'route') {
+<h2 id="config">Configurez votre propre <?php if(isset($_GET['type']) && $_GET['type'] === 'route') {
   echo 'vélo de Route';
 } elseif (isset($_GET['type']) && $_GET['type'] === 'vtt') {
   echo 'VTT';
@@ -50,7 +50,7 @@
     ?>
 
       <h2>Choisissez votre Cadre</h2>
-      <p>Votre cadre sera la pièce maitresse de votre vélo, tout les autres éléments en découlent.</p>
+      <p>Votre cadre sera la pièce maitresse de votre vélo, tous les autres éléments en découlent.</p>
 
     <?php
     break;

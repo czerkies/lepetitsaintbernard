@@ -75,4 +75,4 @@ break;
   <em>Entrez une description de la pièce (250 carractères max)</em>
 </div>
 
-<?php $formulaire->fieldsFormInput('Photo de la pièce', 'file', 'img', '', 'Photo au format ".jpg" uniquement', $msg, 'accept="image/jpeg" required', 'w100'); ?>
+<?php $formulaire->fieldsFormInput('Photo de la pièce', 'file', 'img', '', 'Photo au format ".jpg" uniquement', $msg, 'accept="image/jpeg"', 'w100'); ?>

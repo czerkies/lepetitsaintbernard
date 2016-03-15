@@ -48,7 +48,7 @@ if($avis){
 </div>
 <?php if($userConnect) { ?>
   <form class="large" action="<?= RACINE_SITE; ?>panier/" method="post">
-    <p><input type="checkbox" id="cgv" name="cgv" required> <label for="cgv">J'accepte les conditions générales de vente (<a href="<?= RACINE_SITE; ?>conditions-generales-de-ventes/">Voir</a>)</label></p>
+    <p><input type="checkbox" id="cgv" name="cgv" required> <label for="cgv">J'accepte les conditions générales de vente (<a href="<?= RACINE_SITE; ?>cgv/">Voir</a>)</label></p>
     <div class="form-group submit">
       <input type="submit" name="payer" value="Payer la commande">
     </div>

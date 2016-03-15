@@ -132,7 +132,7 @@ class controleurMembres extends controleurSuper {
             $userConnect = TRUE;
 
             $message = "Merci de votre inscription ".ucfirst($prenom).",<br>
-            Vous pouvez désormais voir votre vélo à la page suivante : <a href=\"http://lepetitstbernard.romanczerkies.fr/votre-velo/\">Votre Vélo</a>";
+            Vous pouvez désormais voir votre vélo à la page suivante : <a href=\"http://lepetit-stbernard.romanczerkies.fr/votre-velo/\">Votre Vélo</a>";
 
             $formulaire->sendMail($email, 'Bienvenue chez Le petit St Bernard', $message);
 
