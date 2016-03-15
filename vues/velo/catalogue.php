@@ -17,6 +17,8 @@
 
   <?= $formulaire->fieldsFormSelect('Par sexe', $select['sexe'], 'sexe', 'Piece pour Femme ou Homme', $msg, null, null); ?>
 
+  <?= $formulaire->fieldsFormSelect('Classer le résultats', $select['order'], 'order', 'Classer les produits par Prix ou Poids', $msg, null, null); ?>
+
   <div class="form-group submit">
     <input type="submit" value="Rechercher">
   </div>

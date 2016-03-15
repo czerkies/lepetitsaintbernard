@@ -162,7 +162,7 @@ class modeleAssemblage extends modeleSuper {
   * Fonction pour afficher les types_pieces
   *
   */
-  public function toutesPieces($key = null, $type_piece = null, $type_velo = null,  $taille = null, $sexe = null){
+  public function toutesPieces($key = null, $type_piece = null, $type_velo = null,  $taille = null, $sexe = null, $order = null){
 
     $req1 = "SELECT type_piece FROM pieces";
 
@@ -186,6 +186,10 @@ class modeleAssemblage extends modeleSuper {
       if($taille) $req2 .= " AND id_taille = '$taille'";
 
       if($sexe) $req2 .= " AND sexe = '$sexe'";
+
+      if($order) $req2 .= " ORDER BY $order";
+
+      if($order === 'prix') $req2 .= " DESC";
 
       $donnees[$value['type_piece']] = $this->bdd()->query($req2);
 
