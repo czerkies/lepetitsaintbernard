@@ -587,6 +587,12 @@ form .hidden {
   font-size: 1em;
   cursor: pointer;
 }
+.tableau .body li span.img {
+  padding: 5px 0;
+}
+.tableau .body li span.img img {
+  height: 25px;
+}
 .tableau .body li a {
   color: #444;
 }

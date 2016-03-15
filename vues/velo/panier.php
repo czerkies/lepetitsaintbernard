@@ -36,7 +36,7 @@ if($avis){
           </form>
         </span>
         <span class="w20"><?= $value['quantite'] * $value['prix']; ?> € TTC</span>
-        <span class="w10"><a href="<?= RACINE_SITE; ?>panier/?supp_velo=<?= $key; ?>">X</a></span>
+        <span class="w10 img"><a href="<?= RACINE_SITE; ?>panier/?supp_velo=<?= $key; ?>"><img src="<?= RACINE_SITE; ?>img/supp.png" alt="Supprimer" title="Suppriler"></a></span>
       </li>
     <?php } ?>
     <li>
