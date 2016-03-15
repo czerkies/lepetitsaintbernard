@@ -13,22 +13,22 @@
   <?php if($donneesParPiece[$key]){ ?>
     <div class="tableau">
       <div class="head">
-        <div class="cel w5">Réf.</div>
-        <div class="cel w20">Titre</div>
+        <div class="cel w10">Réf.</div>
+        <div class="cel w25">Titre</div>
         <div class="cel w20">Type de Vélo</div>
         <div class="cel w5">Taille</div>
-        <div class="cel w5">Stock</div>
+        <div class="cel w10">Stock</div>
         <div class="cel w20">Modifier</div>
-        <div class="cel w10"></div>
+        <div class="cel w10">Actions</div>
       </div>
       <ul class="body">
         <?php foreach($donneesParPiece[$key] as $value) { ?>
           <li>
-            <span class="w5"><?= $value['id_piece']; ?></span>
-            <span class="w20"><?= $value['titre']; ?></span>
+            <span class="w10"><?= $value['id_piece']; ?></span>
+            <span class="w25"><?= $value['titre']; ?></span>
             <span class="w20"><?= $value['type_velo']; ?></span>
             <span class="w5"><?= $value['id_taille']; ?></span>
-            <span class="w5"><?= $value['quantite']; ?></span>
+            <span class="w10"><?= $value['quantite']; ?></span>
             <span class="w20 input">
               <form action="#<?= $key; ?>" method="post">
                 <input name="id_piece" type="hidden" value="<?= $value['id_piece']; ?>" required>
