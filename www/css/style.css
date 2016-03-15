@@ -35,6 +35,13 @@ p {
   width: 100%;
   color: #444444;
 }
+p a {
+  transition: color 250ms ease;
+  color: #08c0a6;
+}
+p a:hover {
+  color: #21353e;
+}
 header {
   padding: 5px;
   width: 100%;
