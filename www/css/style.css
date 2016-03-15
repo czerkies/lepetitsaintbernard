@@ -279,10 +279,10 @@ header .header_cont nav ul li a.active {
   font-size: 1.5em;
   background: #eeeeee;
   transition: color 250ms ease, background 250ms ease, border-color 250ms ease;
-  color: #21353e;
+  color: #08c0a6;
   padding: 10px;
   border-radius: 2px;
-  border: 2px solid #21353e;
+  border: 2px solid #08c0a6;
   text-decoration: none;
   letter-spacing: 2px;
   text-align: center;
@@ -292,7 +292,7 @@ header .header_cont nav ul li a.active {
 .callto .button:hover,
 .callto .button.actif {
   color: #ffffff;
-  background: #21353e;
+  background: #08c0a6;
   cursor: pointer;
 }
 .callto .button:active {
@@ -402,8 +402,9 @@ form .form-group textarea:focus {
 }
 form .form-group input[type="submit"],
 form .form-group textarea[type="submit"] {
+  border-color: #08c0a6;
   background: #eeeeee;
-  color: #21353e;
+  color: #08c0a6;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   margin: 50px 0;
@@ -411,7 +412,7 @@ form .form-group textarea[type="submit"] {
 }
 form .form-group input[type="submit"]:hover,
 form .form-group textarea[type="submit"]:hover {
-  background: #21353e;
+  background: #08c0a6;
   color: #ffffff;
 }
 form .form-group input[type="submit"]:active,

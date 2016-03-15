@@ -275,10 +275,10 @@ header {
     font-size: 1.5em;
     background: @fond;
     transition: color 250ms ease, background 250ms ease, border-color 250ms ease;
-    color: @color1;
+    color: @confirm;
     padding: 10px;
     border-radius: @radius;
-    border: 2px solid @color1;
+    border: 2px solid @confirm;
     text-decoration: none;
     letter-spacing: 2px;
     text-align: center;
@@ -287,7 +287,7 @@ header {
     &:hover,
     &.actif {
       color: @hover;
-      background: @color1;
+      background: @confirm;
       cursor: pointer;
     }
     &:active {
@@ -398,14 +398,15 @@ form {
         background: @hover;
       }
       &[type="submit"] {
+        border-color: @confirm;
         background: @fond;
-        color: @color1;
+        color: @confirm;
         box-shadow: @boxshadow;
         cursor: pointer;
         margin: 50px 0;
         letter-spacing: 2px;
         &:hover {
-          background: @color1;
+          background: @confirm;
           color: @hover;
         }
         &:active {
