@@ -187,8 +187,7 @@ class controleurPanier extends controleurSuper {
             Bonjour, merci de votre achat sur Le petit Saint Bernard. Vous retrouverez ci-dessous le récapitulatif de votre commande.<br>';
             $message .= "Vos coordonnées : ".ucfirst($_SESSION['membre']['prenom'])." ".strtoupper($_SESSION['membre']['nom'])."<br>";
             $message .= "Votre adresse de facturation : ".$_SESSION['membre']['adresse'].", ".$_SESSION['membre']['cp']." ".$_SESSION['membre']['ville'].".<br>";
-            $message .= "Votre commande a été effectuée le ".date('d/m/Y').".<br><br>";
-            $message .= '<a href="http://lepetit-stbernard.romanczerkies.fr/panier/votre-avis/?avis='.$avis.'">Pensez à laisser un avis sur votre commande</a>.</p>';
+            $message .= "Votre commande a été effectuée le ".date('d/m/Y').".</p>";
             $message .= '<table border="1">
               <thead>
               <tr><th colspan="5">Facture de votre commande</th></tr>
