@@ -246,6 +246,7 @@ header .header_cont nav ul li a.active {
   padding-top: 50%;
   text-align: center;
   width: 102%;
+  font-size: 2em;
 }
 .spe .round:hover {
   cursor: pointer;
@@ -827,6 +828,9 @@ form .hidden {
     margin: 30px 1%;
   }
   /* Footer */
+  footer {
+    min-width: 960px;
+  }
   footer ul {
     display: block;
     width: 960px;
