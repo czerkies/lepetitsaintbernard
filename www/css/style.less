@@ -43,6 +43,9 @@ h2 {
   display: inline-block;
   width: 100%;
   font-size: 1.75em;
+  b {
+    font-size: inherit;
+  }
 }
 p {
   font-family: 'sb-s', arial;
@@ -50,6 +53,9 @@ p {
   float:left;
   width: 100%;
   color: @color2;
+  b {
+    font-size: inherit;
+  }
   a {
     transition: color 250ms ease;
     color: @confirm;
@@ -493,7 +499,7 @@ form {
   label {
     font-size: 1em;
     b {
-      font-size: 1em;
+      font-size: inherit;
     }
     &:hover {
       cursor: pointer;

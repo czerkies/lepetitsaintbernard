@@ -169,7 +169,7 @@ class controleurPanier extends controleurSuper {
 
             $id_commande_velo_ent = $_SESSION['membre']['id_membre'].hexdec(uniqid());
 
-            $id_commande_velo = (int) substr($id_commande_velo_ent, 9);
+            $id_commande_velo = (int) substr($id_commande_velo_ent, 7);
 
             $commande->insertCommande($id_commande_velo, $total, $_SESSION['membre']['id_membre']);
 
@@ -200,10 +200,10 @@ class controleurPanier extends controleurSuper {
               </tr>
               </thead>
               <tbody>';
-              foreach ($_SESSION['panier'] as $key => $value) {
+              foreach ($_SESSION['panier'] as $value) {
                 $message .=
                 '<tr>
-                  <td>'. $key .'</td>
+                  <td>'. $value['pieces']['cadre'].$value['pieces']['roue'].$value['pieces']['selle'].$value['pieces']['guidon'].$value['pieces']['groupe'] .'</td>
                   <td>'. ucfirst($value['type_velo']) .'</td>
                   <td>'. $value['sexe'] .'</td>
                   <td>'. $value['quantite'] .'</td>

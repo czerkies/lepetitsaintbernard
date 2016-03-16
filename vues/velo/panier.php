@@ -13,6 +13,10 @@ if($avis){
 <p>Ici, vous pouvez modifier votre panier ou valider votre commande.</p>
 
 <?php if(isset($_SESSION['panier'])) { ?>
+
+  <pre>
+    <?php var_dump($_SESSION['panier']); ?>
+  </pre>
 <div class="tableau">
   <div class="head">
     <div class="cel w20">Référence</div>

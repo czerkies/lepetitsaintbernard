@@ -29,12 +29,19 @@ h2 {
   width: 100%;
   font-size: 1.75em;
 }
+h1 b,
+h2 b {
+  font-size: inherit;
+}
 p {
   font-family: 'sb-s', arial;
   font-size: 1.25em;
   float: left;
   width: 100%;
   color: #444444;
+}
+p b {
+  font-size: inherit;
 }
 p a {
   transition: color 250ms ease;
@@ -491,7 +498,7 @@ form .hidden {
   font-size: 1em;
 }
 .error label b {
-  font-size: 1em;
+  font-size: inherit;
 }
 .error label:hover {
   cursor: pointer;
