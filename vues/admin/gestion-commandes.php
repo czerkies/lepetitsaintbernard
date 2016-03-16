@@ -52,7 +52,7 @@
       <div class="cel w20">Email</div>
       <div class="cel w20">Montant</div>
       <div class="cel w15">Date</div>
-      <div class="cel w5">Date</div>
+      <div class="cel w5">Supp.</div>
     </div>
 
     <ul class="body">
@@ -66,7 +66,7 @@
               <span class="w20"><?= $value['total']; ?> €</span>
               <span class="w15"><?= $value['date_commande']; ?></span>
             </a>
-            <span class="cel w5"><a href="<?=RACINE_SITE; ?>admin/gestion-commandes/?supp=<?= $value['id_commande']; ?>">X</a></span>
+            <span class="cel w5 img"><a href="<?=RACINE_SITE; ?>admin/gestion-commandes/?supp=<?= $value['id_commande']; ?>" onclick="return(confirm('Supprimer cette commande ?'));"><img src="<?= RACINE_SITE; ?>img/supp.png" alt="Supprimer" title="Supprimer"></a></span>
           </li>
         </a>
       <?php } ?>

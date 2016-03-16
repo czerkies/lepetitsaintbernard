@@ -27,8 +27,8 @@ if($userConnectAdmin){
             <span class="w20"><?= $value['nom']; ?></span>
             <span class="w20"><?= $value['email']; ?></span>
             <span class="w20"><?= $value['ville']; ?></span>
-            <span class="w5"><?php if($value['statut'] == 0) { ?>
-              <a href="<?= RACINE_SITE; ?>admin/gestion-membres/suppression/<?= $value['id_membre']; ?>">X</a>
+            <span class="w5 img"><?php if($value['statut'] == 0) { ?>
+              <a href="<?= RACINE_SITE; ?>admin/gestion-membres/suppression/<?= $value['id_membre']; ?>" onclick="return(confirm('Supprimer ce membre ?'));"><img src="<?= RACINE_SITE; ?>img/supp.png" alt="Supprimer" title="Supprimer"></a>
             <?php } ?>
             </span>
           </li>

@@ -36,7 +36,7 @@ if($avis){
           </form>
         </span>
         <span class="w20"><?= $value['quantite'] * $value['prix']; ?> € TTC</span>
-        <span class="w10 img"><a href="<?= RACINE_SITE; ?>panier/?supp_velo=<?= $key; ?>"><img src="<?= RACINE_SITE; ?>img/supp.png" alt="Supprimer" title="Suppriler"></a></span>
+        <span class="w10 img"><a href="<?= RACINE_SITE; ?>panier/?supp_velo=<?= $key; ?>" onclick="return(confirm('Supprimer ce vélo du panier ?'));"><img src="<?= RACINE_SITE; ?>img/supp.png" alt="Supprimer" title="Supprimer"></a></span>
       </li>
     <?php } ?>
     <li>

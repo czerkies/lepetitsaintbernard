@@ -36,8 +36,8 @@
                 <input type="submit" name="upadateQuantite" title="Valider la quantité" value="Ok">
               </form>
             </span>
-            <span class="w5"><a href="<?= RACINE_SITE; ?>admin/gestion-stocks/modification/<?= $value['id_piece']; ?>"> | </a></span>
-            <span class="w5"><a href="<?= RACINE_SITE; ?>admin/gestion-stocks/suppression/<?= $value['id_piece']; ?>">X</a></span>
+            <span class="w5 img"><a href="<?= RACINE_SITE; ?>admin/gestion-stocks/modification/<?= $value['id_piece']; ?>"><img src="<?= RACINE_SITE; ?>img/modif.png" alt="Modifier" title="Modifier"></a></span>
+            <span class="w5 img"><a href="<?= RACINE_SITE; ?>admin/gestion-stocks/suppression/<?= $value['id_piece']; ?>" onclick="return(confirm('Supprimer cette pièce ?'));"><img src="<?= RACINE_SITE; ?>img/supp.png" alt="Supprimer" title="Supprimer"></a></span>
           </li>
         <?php } ?>
       </ul>

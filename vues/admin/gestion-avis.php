@@ -23,7 +23,7 @@
           <span class="w20"><?= strtoupper($value['nom']).' '.ucfirst($value['prenom']); ?></span>
           <span class="w50"><?= $value['avis']; ?></span>
           <span class="w15"><?= $value['date_fr']; ?></span>
-          <span class="w5"><a href="<?= RACINE_SITE; ?>admin/gestion-avis/supp/<?= $value['id_avis']; ?>">X</a></span>
+          <span class="w5 img"><a href="<?= RACINE_SITE; ?>admin/gestion-avis/supp/<?= $value['id_avis']; ?>" onclick="return(confirm('Supprimer cet avis ?'));"><img src="<?= RACINE_SITE; ?>img/supp.png" alt="Supprimer" title="Supprimer"></a></span>
         </li>
       <?php } ?>
     </ul>
