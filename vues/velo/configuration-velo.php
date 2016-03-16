@@ -123,6 +123,23 @@
               <p><b>Matière</b> : <?= ucfirst($value['matiere']); ?></p>
               <?php } else { ?>
                 <p><b>Groupe</b> : <?= $value['plateau'].'/'.$value['pignon']; ?></p>
+              <?php } if($value['id_taille']) { ?>
+                <p><b>Taille</b> :
+                  <?php switch ($value['id_taille']) {
+                    case 1:
+                      echo '150/161cm';
+                      break;
+                    case 2:
+                      echo '162/174cm';
+                      break;
+                    case 3:
+                      echo '175/187cm';
+                      break;
+                    case 4:
+                      echo '188/200cm';
+                      break;
+                  } ?>
+                </p>
               <?php } ?>
             <p><b>Poids</b> : <?= $value['poids']; ?> Kilos</p>
             <p><b>Prix</b> : <?= $value['prix']; ?> €</p>
@@ -155,7 +172,24 @@
             <p><b>Matière</b> : <?= ucfirst($value['matiere']); ?></p>
             <?php } else { ?>
               <p><b>Groupe</b> : <?= $value['plateau'].'/'.$value['pignon']; ?></p>
-            <?php } ?>
+              <?php } if($value['id_taille']) { ?>
+                <p><b>Taille</b> :
+                  <?php switch ($value['id_taille']) {
+                    case 1:
+                      echo '150/161cm';
+                      break;
+                    case 2:
+                      echo '162/174cm';
+                      break;
+                    case 3:
+                      echo '175/187cm';
+                      break;
+                    case 4:
+                      echo '188/200cm';
+                      break;
+                  } ?>
+                </p>
+              <?php } ?>
           <p><b>Poids</b> : <?= $value['poids']; ?> Kilos</p>
           <p><b>Prix</b> : <?= $value['prix']; ?> € TTC</p>
         </div>

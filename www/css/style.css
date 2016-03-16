@@ -643,6 +643,9 @@ form .hidden {
 .blocpiece .details_piece p.titre {
   font-weight: 800;
 }
+.blocpiece .details_piece p b {
+  font-size: 1em;
+}
 .blocpiece:hover {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
@@ -844,7 +847,7 @@ form .hidden {
     border-radius: 2px;
     width: 31.3%;
     margin: 25px 1%;
-    height: 375px;
+    height: 400px;
     float: left;
   }
   .blocpiece .img_piece {
