@@ -42,7 +42,7 @@
 
   <h2>Les commandes</h2>
 
-  <p>Le CA de l'entreprise s'élève à : <b><?= $caLpsb; ?></b> €.</p>
+  <p>Le CA de l'entreprise s'élève à : <b><?= $caLpsbHT; ?></b> € TTC.</p>
 
   <div class="tableau">
     <div class="head">

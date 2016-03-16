@@ -10,7 +10,7 @@
   box-sizing: border-box;
   -webkit-font-smoothing: subpixel-antialiased;
   font-family: 'sb-s', arial;
-  font-size: 25px;
+  font-size: 35px;
 }
 a {
   text-decoration: none;
@@ -26,7 +26,9 @@ h2 {
   font-family: 'sb-b', arial;
   letter-spacing: 2px;
   display: inline-block;
-  width: 100%;
+  width: 98%;
+  margin-left: 1%;
+  margin-right: 1%;
   font-size: 1.75em;
 }
 h1 b,
@@ -37,10 +39,14 @@ p {
   font-family: 'sb-s', arial;
   font-size: 1.25em;
   float: left;
-  width: 100%;
+  width: 98%;
+  margin-left: 1%;
+  margin-right: 1%;
   color: #444444;
 }
-p b {
+p b,
+p a,
+p strong {
   font-size: inherit;
 }
 p a {
@@ -253,7 +259,7 @@ header .header_cont nav ul li a.active {
   padding-top: 50%;
   text-align: center;
   width: 102%;
-  font-size: 2em;
+  font-size: inherit;
 }
 .spe .round:hover {
   cursor: pointer;
@@ -637,9 +643,10 @@ form .hidden {
   padding: 5px;
   position: absolute;
   z-index: 200;
+  font-weight: 800;
   color: #000;
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
-  font-size: 1.5em;
+  text-shadow: 0 0 16px #ffffff;
+  font-size: 2em;
 }
 .blocpiece .details_piece {
   display: inline-block;

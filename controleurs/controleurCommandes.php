@@ -48,8 +48,9 @@ class controleurCommandes extends controleurSuper {
     foreach ($listeCommandes as $value) {
       $caLpsb += $value['total'];
     }
+    $caLpsbHT = $caLpsb - ($caLpsb * 20 / 100);
 
-    $this->Render('../vues/admin/gestion-commandes.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'listeCommandes' => $listeCommandes, 'donneesCmdVelo' => $donneesCmdVelo, 'caLpsb' => $caLpsb));
+    $this->Render('../vues/admin/gestion-commandes.php', array('meta' => $meta, 'msg' => $msg, 'userConnect' => $userConnect, 'userConnectAdmin' => $userConnectAdmin, 'listeCommandes' => $listeCommandes, 'donneesCmdVelo' => $donneesCmdVelo, 'caLpsbHT' => $caLpsbHT));
 
   }
 
