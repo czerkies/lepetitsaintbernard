@@ -37,7 +37,7 @@ class modeleAssemblage extends modeleSuper {
       $veloAssemble[$value]['selle'] = $selle->fetch(PDO::FETCH_ASSOC);
 
       // Guidon
-      $guidon = $this->bdd()->query("SELECT * FROM pieces WHERE type_velo = '$value' AND type_piece = 'guidon' AND sexe = '$sexe' AND quantite > 0 AND prix <= (($budget/100)*10) ORDER BY prix DESC LIMIT 1");
+      $guidon = $this->bdd()->query("SELECT * FROM pieces WHERE type_velo = '$value' AND type_piece = 'guidon' AND sexe = '$sexe' AND id_taille = $id_taille AND quantite > 0 AND prix <= (($budget/100)*10) ORDER BY prix DESC LIMIT 1");
 
       $veloAssemble[$value]['guidon'] = $guidon->fetch(PDO::FETCH_ASSOC);
 
