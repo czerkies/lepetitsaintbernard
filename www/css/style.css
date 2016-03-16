@@ -486,6 +486,12 @@ form .hidden {
     transform: scale(1);
   }
 }
+.error label {
+  font-size: 1em;
+}
+.error label b {
+  font-size: 1em;
+}
 .error label:hover {
   cursor: pointer;
 }

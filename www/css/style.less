@@ -489,8 +489,14 @@ form {
   background: @hover;
   padding: 10px;
   font-size: 1.25em;
-  label:hover {
-    cursor: pointer;
+  label {
+    font-size: 1em;
+    b {
+      font-size: 1em;
+    }
+    &:hover {
+      cursor: pointer;
+    }
   }
   &.confirm {
     color: @confirm;
