@@ -35,7 +35,7 @@
 </div>
 
 <div class="callto">
-  <a class="button w100 d50 warning" href="<?=RACINE_SITE; ?>admin/gestion-commandes/?supp=<?= $donneesCmdVelo['cmd']['id_commande']; ?>">Supprimer la commande</a>
+  <a class="button w100 d50 warning" href="<?=RACINE_SITE; ?>admin/gestion-commandes/?supp=<?= $donneesCmdVelo['cmd']['id_commande']; ?>" onclick="return(confirm('Voulez-vous vraiment supprimer la commande ?'));">Supprimer la commande</a>
 </div>
 
 <?php } if(!empty($listeCommandes)){ ?>
