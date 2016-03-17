@@ -73,6 +73,11 @@
     </ul>
 
   </div>
-<?php } ?>
+<?php } else { ?>
 
-<?php } ?>
+  <p>Aucune commande</p>
+
+<?php
+  }
+}
+?>
