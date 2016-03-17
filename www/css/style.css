@@ -46,7 +46,8 @@ p {
 }
 p b,
 p a,
-p strong {
+p strong,
+p label {
   font-size: inherit;
 }
 p a {
@@ -659,7 +660,7 @@ form .hidden {
   font-weight: 800;
 }
 .blocpiece .details_piece p b {
-  font-size: 1em;
+  font-size: inherit;
 }
 .blocpiece:hover {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);

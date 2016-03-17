@@ -49,6 +49,13 @@ if($avis){
 <?php if($userConnect) { ?>
   <form class="large" action="<?= RACINE_SITE; ?>panier/" method="post">
     <p><input type="checkbox" id="cgv" name="cgv" required> <label for="cgv">J'accepte les conditions générales de vente (<a href="<?= RACINE_SITE; ?>cgv/">Voir</a>)</label></p>
+    <p>Toutes les commandes sont à payer en chèque à l'adresse suivant :<br>
+      <b>7 Route du Petit Saint Bernard, 17000 Bourg Saint Maurice.</b><br>
+    </p>
+    <p>
+      À l'odre de :<br>
+      <b>Le Petit Saint Bernard SA</b>
+    </p>
     <div class="form-group submit">
       <input type="submit" name="payer" value="Payer la commande">
     </div>

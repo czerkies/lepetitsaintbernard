@@ -1,6 +1,6 @@
 <h2 id="resultats">Notre catalogue</h2>
 
-<p>Sur cette page, vous retrouvez très facilement toutes nos pièces en vente. Utilisez le champs de recherche trouver celle qui vous conviendrait le mieux par filtres.</p>
+<p>Sur cette page, vous retrouvez très facilement toutes nos pièces en vente. Utilisez le champ de recherche et trouvez celle qui vous conviendrait le mieux par filtres.</p>
 
 <?php include '../vues/include/dialogue.php'; ?>
 
@@ -17,7 +17,7 @@
 
   <?= $formulaire->fieldsFormSelect('Par sexe', $select['sexe'], 'sexe', 'Piece pour Femme ou Homme', $msg, null, null); ?>
 
-  <?= $formulaire->fieldsFormSelect('Classer le résultats', $select['order'], 'order', 'Classer les produits par Prix ou Poids', $msg, null, null); ?>
+  <?= $formulaire->fieldsFormSelect('Classer le résultat', $select['order'], 'order', 'Classer les produits par Prix ou Poids', $msg, null, null); ?>
 
   <div class="form-group submit">
     <input type="submit" value="Rechercher">

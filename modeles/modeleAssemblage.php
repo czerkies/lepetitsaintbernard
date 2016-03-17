@@ -106,7 +106,7 @@ class modeleAssemblage extends modeleSuper {
   }
 
   /**
-  * Recherche des données pour le tunnel d'achat
+  * Recherche des données pour le 'tunnel d'achat'
   *
   * @param (string) $type_velo
   * @param (string) $type_piece
@@ -124,6 +124,8 @@ class modeleAssemblage extends modeleSuper {
     if($sexe) $req .= "AND sexe = '$sexe'";
 
     if($id_taille) $req .= "AND id_taille = $id_taille";
+
+    $req .= " ORDER BY prix DESC";
 
     $donnees = $this->bdd()->query($req);
 

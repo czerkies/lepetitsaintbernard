@@ -6,9 +6,9 @@
 
 <form class="large" action="#contact" method="post">
 
-  <?= $formulaire->fieldsFormInput('Prénom', 'text', 'prenom', 'prenom', "Votre prénom est obligatoire", $msg, 'required', null, null, 'membre'); ?>
+  <?= $formulaire->fieldsFormInput('Prénom', 'text', 'prenom', 'Prénom', "Votre prénom est obligatoire", $msg, 'required', null, null, 'membre'); ?>
 
-  <?= $formulaire->fieldsFormInput('Email', 'email', 'email', 'email', "Votre Email est obligatoire", $msg, 'required', null, null, 'membre'); ?>
+  <?= $formulaire->fieldsFormInput('Email', 'email', 'email', 'Email', "Votre Email est obligatoire", $msg, 'required', null, null, 'membre'); ?>
 
   <div class="form-group w100<?php if(isset($msg['error']['message'])) echo ' error-form'; ?>">
     <label for="message">Votre message</label>
