@@ -43,7 +43,7 @@
     <a href="<?= RACINE_SITE; ?>catalogue/">Notre catalogue</a>
   </p>
   <p>
-    <a href="<?= RACINE_SITE; ?>cgv/">Conditions générale de ventes</a>
+    <a href="<?= RACINE_SITE; ?>cgv/">Conditions générales de ventes</a>
   </p>
   <p>
     <a href="<?= RACINE_SITE; ?>plan-du-site/">Le Plan du site</a>

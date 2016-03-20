@@ -26,6 +26,13 @@
 </div>
 <?php include '../vues/include/configuration-elements.php'; ?>
 <div class="etape_accueil">
+  <h2>Notre catalogue</h2>
+  <p>N'hésitez pas à consulter notre catalogue pour découvrir toutes les pièces disponibles.</p>
+  <div class="callto">
+    <a class="button w100 d50" href="<?= RACINE_SITE; ?>catalogue/">Consulter le catalogue</a>
+  </div>
+</div>
+<div class="etape_accueil">
   <h2>Les avis</h2>
   <div class="avis_accueil">
     <?php $i=1; foreach ($avisRand as $value) { ?>

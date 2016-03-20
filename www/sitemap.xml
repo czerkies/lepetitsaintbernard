@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/votre-velo/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/configuration/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/panier/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/connexion/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/creation-compte/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/contact/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/catalogue/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/cgv/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/plan-du-site/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/configuration/route/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/configuration/vtt/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/mot-de-passe-oublie/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/configuration/route/femme/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/configuration/route/homme/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/configuration/vtt/femme/</loc>
+  </url>
+  <url>
+    <loc>http://lepetit-stbernard.romanczerkies.fr/configuration/vtt/homme/</loc>
+  </url>
+</urlset>
